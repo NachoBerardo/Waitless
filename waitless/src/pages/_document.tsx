@@ -4,8 +4,8 @@ import  Footer  from './footer'
 export default function Document() {
   return (
     <Html lang="en">
-      <Head />
-      <body > 
+      <Head/>
+      <body> 
         <Main/> 
         <NextScript />
       </body>

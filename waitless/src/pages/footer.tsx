@@ -2,9 +2,9 @@ import Image from 'next/image';
 
 export default function Footer() {
     return(
-        <footer className="bg-gray-500 w-screen h-1/6 fixed bottom-0">
-            <div className="container min-w-full grid place-items-center">
-                <button  className="flex flex-col gap-8">
+        <footer className= "flex w-screen h-1/6 fixed bottom-0 bg-caca content-center">
+            <div className="flex min-w-full gap-24 justify-center place-items-center  ">
+                <button className=" ">
                     <Image 
                         src="/homeicon.jpg" 
                         alt='Icono casa'
@@ -12,7 +12,7 @@ export default function Footer() {
                         height={50}
                     />
                 </button>
-                <button  className="flex flex-col gap-8 -translate-y-full">
+                <button  className="">
                     <Image 
                         src="/table.png" 
                         alt='Icono mesa'
