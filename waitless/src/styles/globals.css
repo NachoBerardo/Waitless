@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+#footer{
+  height: 7%
+}
+
 *{
   border: 1px solid green
 }

@@ -15,7 +15,7 @@ module.exports = {
     },
 
     colors:{
-      'caca': '#675D50',
+      'footer': '#675D50',
     }
   },
   plugins: [],

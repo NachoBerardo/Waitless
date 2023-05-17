@@ -2,8 +2,8 @@ import Image from 'next/image';
 
 export default function Footer() {
     return(
-        <footer className= "flex w-screen h-1/6 fixed bottom-0 bg-caca content-center">
-            <div className="flex min-w-full gap-24 justify-center place-items-center  ">
+        <footer className= "flex w-screen fixed bottom-0 bg-footer content-center" id="footer">
+            <div className="flex min-w-full gap-20 justify-center place-items-center ">
                 <button className=" ">
                     <Image 
                         src="/homeicon.jpg" 
