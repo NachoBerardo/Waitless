@@ -15,7 +15,9 @@ module.exports = {
     },
 
     colors:{
-      'footer': '#675D50',
+      'footer': '#04AA6D',
+      'footer_hover': '#3e8e41',
+      'footer_active': '#3e8e41',
     }
   },
   plugins: [],
