@@ -2,10 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-#footer{
-  height: 7%;
-  width: 100%;
-}
 
 #footer_button{
   cursor: pointer;
@@ -18,7 +14,7 @@
 #footer_button:active {background-color: #3e8e41; box-shadow: 0 5px #666; transform: translateY(2px)}
 
 *{
-  /* border: 1px solid green */
+   border: 1px solid red 
 }
 :root {
   --foreground-rgb: 0, 0, 0;

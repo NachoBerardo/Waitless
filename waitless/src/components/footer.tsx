@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 export default function Footer() {
     return(
-        <footer className= "flex fixed bottom-0 content-center" id="footer">
+        <footer className= "flex fixed bottom-0 content-center w-[100%] h-[7%]" >
             <div className="flex min-w-full gap-20 justify-center place-items-center bg-footer">
                 <button className="" id="footer_button"   >
                     <Image 

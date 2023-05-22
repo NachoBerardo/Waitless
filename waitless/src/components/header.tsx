@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 export default function Header() {
     return(
-        <header className="flex w-screen fixed top-0 bg-opacity-100 " id="header">
+        <header className="flex w-screen top-0 bg-opacity-100 ">
             <button>
                 <Image 
                     src="/homeicon.jpg" 
