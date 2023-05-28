@@ -10,16 +10,28 @@ export default function Home() {
       <main className="w-screen h-screen bg-background ">
         <Header></Header>
         
-        <div className="h-[100%] pb-[7%]">
-          <div className="mt-2 w-fit h-[5%]">
-            <a href="" className="pr-2 pl-2">Hola</a>
-            <a href="" className="pr-2 pl-2">Hola</a>
-            <a href="" className="pr-2 pl-2">Hola</a>
-            <a href="" className="pr-2 pl-2">Hola</a>
-
+        <div className="h-full pb-[7px] bg-background overflow-x-hidden">
+          <div className="mt-0 w-full h-[5%] overflow-x-auto bg-buscador flex place-items-center ">
+            <a href="" className="pr-4 pl-4 text-black">Hola</a>
+            <a href="" className="pr-4 pl-4 text-black">Hola</a>
+            <a href="" className="pr-4 pl-4 text-black">Hola</a>
+            <a href="" className="pr-4 pl-4 text-black">Hola</a>
+            <a href="" className="pr-4 pl-4 text-black">Hola</a>
+            <a href="" className="pr-4 pl-4 text-black">Hola</a>
+            <a href="" className="pr-4 pl-4 text-black">Hola</a>
+            <a href="" className="pr-4 pl-4 text-black">Hola</a>
           </div>
-          <div className="justify-center m-auto mt-14 h-[15%] w-[85%] bg-div">
-            <p>Hola que tal</p>
+
+          <h1 className='text-black mt-2'>Entradas</h1>
+
+          <div className='flex content-around justify-center '>
+            <div className="m-auto mt-2 ml-[5px] mr-[5px] h-[180px] w-[190px]">
+              
+            </div>
+            <div className="m-auto mt-2 ml-[5px] mr-[5px] h-[180px] w-[190px]">
+              
+            </div>
+            
           </div>
         </div>
 
