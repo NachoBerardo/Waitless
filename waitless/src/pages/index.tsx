@@ -22,11 +22,16 @@ export default function Home() {
             <a href="" className="pr-4 pl-4 text-black">Hola</a>
           </div>
 
-          <h1 className='text-black mt-2'>Entradas</h1>
+          <h1 className='text-black text mt-2'>Entradas</h1>
 
           <div className='flex content-around justify-center '>
             <div className="m-auto mt-2 ml-[5px] mr-[5px] h-[180px] w-[190px]">
-              
+              <Image 
+                src="/provoleta.jpg" 
+                alt='Provoleta'
+                width={50}
+                height={50}
+              />
             </div>
             <div className="m-auto mt-2 ml-[5px] mr-[5px] h-[180px] w-[190px]">
               
