@@ -39,7 +39,8 @@ module.exports = {
       'div': '#f3f0f0',
       'buscador': '#b0acac',
       'header': '#423d3d',
-      'black': '#000000'
+      'black': '#000000',
+      'white': '#FFFFFF'
     }
   },
   plugins: [],
