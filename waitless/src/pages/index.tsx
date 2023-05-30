@@ -27,11 +27,11 @@ export default function Home() {
           <div className='flex content-around justify-center '>
             <div className="container m-auto mt-2 ml-[5px] mr-[5px] h-fit w-[190px] justify-center flex-col bg-div rounded-lg"> 
               <div className="h-fit w-fit m-2 overflow-hidden ">
-                 <img src="/provoleta.jpg" alt="" />
+                 <img src="/provoleta.jpg" alt="" className='rounded-lg'/>
               </div>
               <div className="p-3">
-                <h3 className="pb-4">Provoleta a la provenzal </h3>
-                <p>Una rica provoleta del leche de vaca y mucho texto para rellenar</p>
+                <h3 className="pb-4 text-black">Provoleta a la provenzal </h3>
+                <p className='text-black'>Una rica provoleta del leche de vaca y mucho texto para rellenar</p>
               </div>
             </div>
             <div className="m-auto mt-2 ml-[5px] mr-[5px] h-[200px] w-[190px]">
