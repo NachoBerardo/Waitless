@@ -11,8 +11,8 @@ export default function Home() {
         <div className="h-full pb-[7px] bg-background overflow-x-hidden">
 
           <header className="flex w-screen top-0 bg-opacity-100 h-[140px] overflow-hidden">
-              <div className='overflow-hidden h-fit w-fit'>
-                  <img src="/SolomiaFotoEntrada.jpeg" alt="" className=""/>
+              <div className='container overflow-hidden h-full w-full'>
+                  <img src="/SolomiaFotoEntrada.jpeg" alt="" className="h-[100%] w-[100%] object-contain"/>
               </div>
           </header>
           
