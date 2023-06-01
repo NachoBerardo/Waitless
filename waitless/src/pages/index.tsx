@@ -8,9 +8,14 @@ const inter = Inter({ subsets: ['latin'] })
 export default function Home() {
   return (
       <main className="w-screen h-screen bg-background ">
-        <Header></Header>
-        
         <div className="h-full pb-[7px] bg-background overflow-x-hidden">
+
+          <header className="flex w-screen top-0 bg-opacity-100 h-[140px] overflow-hidden">
+              <div className='overflow-hidden h-fit w-fit'>
+                  <img src="/SolomiaFotoEntrada.jpeg" alt="" className="justify-center"/>
+              </div>
+          </header>
+          
           <div className="mt-0 w-full h-[5%] overflow-x-auto bg-buscador flex place-items-center ">
             <a href="" className="pr-4 pl-4 text-black">Hola</a>
             <a href="" className="pr-4 pl-4 text-black">Hola</a>
@@ -24,7 +29,7 @@ export default function Home() {
 
           <h3 className='text-black text mt-2'>Entradas</h3>
 
-          <div className='grid content-around justify-center grid-cols-2'>
+          <div className='grid content-around grid-cols-2 justify-evenly'>
             <div className="container mt-2 mx-[5px] mb-4 h-fit w-[190px] justify-center flex-col bg-div rounded-lg"> 
               <div className="h-fit w-fit mx-2 mt-2 overflow-hidden ">
                  <img src="/provoleta.jpg" alt="" className='rounded-lg'/>
