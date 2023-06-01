@@ -45,7 +45,7 @@ html{
 #footer_button:active {background-color: #3e8e41; box-shadow: 0 5px #666; transform: translateY(2px)}
 
 *{
-    border: 1px solid red  
+    /* border: 1px solid red   */
 }
 :root {
   --foreground-rgb: 0, 0, 0;

@@ -31,7 +31,7 @@ export default function Home() {
 
           <div className='flex content-around flex-wrap justify-evenly'>
             <div className="w-1/2 p-2 flex justify-center min-w-fit">
-              <div className="container mt-2 mx-[5px] mb-4 h-fit w-[190px] bg-div rounded-lg"> 
+              <div className="container mt-2 mx-[5px] mb-4 h-fit w-[173px] bg-div rounded-lg"> 
                 <div className="h-fit w-fit mx-2 mt-2 overflow-hidden ">
                   <img src="/provoleta.jpg" alt="" className='rounded-lg'/>
                 </div>
@@ -42,8 +42,8 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="w-1/2 p-2">
-              <div className="container mt-2 mx-[5px] mb-4 h-fit w-[190px] bg-div rounded-lg"> 
+            <div className="w-1/2 p-2 flex justify-center min-w-fit">
+              <div className="container mt-2 mx-[5px] mb-4 h-fit w-[173px] bg-div rounded-lg"> 
                 <div className="h-fit w-fit mx-2 mt-2 overflow-hidden ">
                   <img src="/provoleta.jpg" alt="" className='rounded-lg'/>
                 </div>
@@ -54,41 +54,39 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="container mb-4 mt-2 mx-[5px] h-fit w-[190px] flex-col bg-div rounded-lg"> 
-              <div className="h-fit w-fit mx-2 mt-2 overflow-hidden ">
-                 <img src="/provoleta.jpg" alt="" className='rounded-lg'/>
-              </div>
-              <div className="pl-3">
-                <h5 className="pb-2 pt-1 text-black leading-snug">Provoleta a la provenzal </h5>
-                <p className='text-black leading-snug pb-2'>Una rica provoleta del leche de vaca y mucho texto para rellenar</p>
-              </div>
-            </div>
-          
-            <div className="container mb-4 mt-2 mx-[5px] h-fit w-[190px] flex-col bg-div rounded-lg"> 
-              <div className="h-fit w-fit mx-2 mt-2 overflow-hidden ">
-                 <img src="/provoleta.jpg" alt="" className='rounded-lg'/>
-              </div>
-              <div className="pl-3">
-                <h5 className="pb-2 pt-1 text-black leading-snug">Provoleta a la provenzal </h5>
-                <p className='text-black leading-snug pb-2'>Una rica provoleta del leche de vaca y mucho texto para rellenar</p>
+            <div className="w-1/2 p-2 flex justify-center min-w-fit">
+              <div className="container mt-2 mx-[5px] mb-4 h-fit w-[173px] bg-div rounded-lg"> 
+                <div className="h-fit w-fit mx-2 mt-2 overflow-hidden ">
+                  <img src="/provoleta.jpg" alt="" className='rounded-lg'/>
+                </div>
+                <div className="pl-3">
+                  <h5 className="pb-2 pt-1 text-black leading-snug">Provoleta a la provenzal </h5>
+                  <p className='text-black leading-snug pb-2'>Una rica provoleta del leche de vaca y mucho texto para rellenar</p>
+                </div>
               </div>
             </div>
-            <div className="container mb-4 mt-2 mx-[5px] h-fit w-[190px] flex-col bg-div rounded-lg"> 
-              <div className="h-fit w-fit mx-2 mt-2 overflow-hidden ">
-                 <img src="/provoleta.jpg" alt="" className='rounded-lg'/>
-              </div>
-              <div className="pl-3">
-                <h5 className="pb-2 pt-1 text-black leading-snug">Provoleta a la provenzal </h5>
-                <p className='text-black leading-snug pb-2'>Una rica provoleta del leche de vaca y mucho texto para rellenar</p>
+
+            <div className="w-1/2 p-2 flex justify-center min-w-fit">
+              <div className="container mt-2 mx-[5px] mb-4 h-fit w-[173px] bg-div rounded-lg"> 
+                <div className="h-fit w-fit mx-2 mt-2 overflow-hidden ">
+                  <img src="/provoleta.jpg" alt="" className='rounded-lg'/>
+                </div>
+                <div className="pl-3">
+                  <h5 className="pb-2 pt-1 text-black leading-snug">Provoleta a la provenzal </h5>
+                  <p className='text-black leading-snug pb-2'>Una rica provoleta del leche de vaca y mucho texto para rellenar</p>
+                </div>
               </div>
             </div>
-            <div className="container mb-4 mt-2 mx-[5px] h-fit w-[190px] flex-col bg-div rounded-lg"> 
-              <div className="h-fit w-fit mx-2 mt-2 overflow-hidden ">
-                 <img src="/provoleta.jpg" alt="" className='rounded-lg'/>
-              </div>
-              <div className="pl-3">
-                <h5 className="pb-2 pt-1 text-black leading-snug">Provoleta a la provenzal </h5>
-                <p className='text-black leading-snug pb-2'>Una rica provoleta del leche de vaca y mucho texto para rellenar</p>
+
+            <div className="w-1/2 p-2 flex justify-center min-w-fit">
+              <div className="container mt-2 mx-[5px] mb-4 h-fit w-[173px] bg-div rounded-lg"> 
+                <div className="h-fit w-fit mx-2 mt-2 overflow-hidden ">
+                  <img src="/provoleta.jpg" alt="" className='rounded-lg'/>
+                </div>
+                <div className="pl-3">
+                  <h5 className="pb-2 pt-1 text-black leading-snug">Provoleta a la provenzal </h5>
+                  <p className='text-black leading-snug pb-2'>Una rica provoleta del leche de vaca y mucho texto para rellenar</p>
+                </div>
               </div>
             </div>
           </div>
