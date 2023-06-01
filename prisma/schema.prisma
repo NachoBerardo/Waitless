@@ -1,0 +1,16 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "./generated/prisma-client-js" //Additionally and optionally you can define a custom output folder for the generated assets with output.
+}
+
+datasource db {
+  provider = "mysql"
+  url = env("DATABASE_URL")
+  relationMode = "prisma"
+}
+
+model Food{
+  id        Int      @id@default(autoincrement())
+  name      String?
+}
+
