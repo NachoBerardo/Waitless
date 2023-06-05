@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Repositorio de Proyecto final 5to año",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -18,7 +19,9 @@
   },
   "homepage": "https://github.com/NachoBerardo/Waitless#readme",
   "dependencies": {
-    "@prisma/client": "^4.15.0",
+    "@prisma/client": "^4.15.0"
+  },
+  "devDependencies": {
     "prisma": "^4.15.0"
   }
 }
