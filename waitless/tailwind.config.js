@@ -5,6 +5,7 @@ module.exports = {
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
+  
   theme: {
     extend: {
       backgroundImage: {
@@ -35,9 +36,9 @@ module.exports = {
       'footer': '#04AA6D',
       'footer_hover': '#3e8e41',
       'footer_active': '#3e8e41',
-      'background': '#e4e1e1',
+      'background': '#FCFCFC',
       'div': '#f3f0f0',
-      'buscador': '#b0acac',
+      'buscador': '#FFFFFF',
       'header': '#423d3d',
       'black': '#000000',
       'white': '#FFFFFF'
