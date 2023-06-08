@@ -60,14 +60,14 @@ const MaxLength = (description:string, MaxCharcters:number):string => {
           </div>
 
           <h3 className='text-black text mt-2 ml-1 '>Entradas</h3>
-          <div className='grid grid-cols-2 gap-x-1'>
+          <div className='grid grid-cols-2 gap-x-4 justify-center'>
             {entradas.map((comida, index) =>(                
 
-              <div className="container m-2 h-fit flex-shrink-0" key={index}> 
+              <div className="container m-2 h-fit content-center" key={index}> 
                 <div className="h-[105px] w-[150px] mx-2 mt-2 overflow-hidden ">
                   <img src={comida[1]} alt="" className='rounded-lg h-fit w-fit'/>
                 </div>
-                <div className="pl-3 max-w-[150px] ">
+                <div className="pl-3 max-w-[160px] ">
                   <h5 className="pb-1 pt-1 text-black leading-snug overflow-hidden">{comida[0]}</h5>
                   <p className='text-black leading-snug pb-2 max-h- overflow-hidden text-ellipsis'>{MaxLength(comida[2], 50)}</p>
                 </div>
@@ -75,7 +75,19 @@ const MaxLength = (description:string, MaxCharcters:number):string => {
 
             ))}
             
-            {/* drawer */}
+            {/*   <div className='grid grid-cols-2 gap-x-1'>
+            {entradas.map((comida, index) =>(                
+
+              <div className="container m-auto h-fit w-[173px]" key={index}> 
+                <div className="h-[105px] w-[150px] mx-2 mt-2 overflow-hidden ">
+                  <img src={comida[1]} alt="" className='rounded-lg h-fit w-fit'/>
+                </div>
+                <div className="pl-3 max-w-fit ">
+                  <h5 className="pb-1 pt-1 text-black leading-snug">{comida[0]}</h5>
+                  <p className='text-black leading-snug pb-2 max-l overflow-hidden text-ellipsis'>{MaxLength(comida[2], 50)}</p>
+                </div>
+              </div>
+ */}
           
 
           </div>
