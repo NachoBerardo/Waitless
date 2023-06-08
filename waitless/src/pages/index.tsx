@@ -39,7 +39,7 @@ const MaxLength = (description:string, MaxCharcters:number):string => {
 }
 
   return (
-      <main className="w-screen h-screen bg-background">
+      <main className="">
         <div className="h-full pb-[7px] bg-background overflow-x-hidden">
 
           <header className="flex w-screen top-0 bg-opacity-100 h-[140px] overflow-hidden">
@@ -63,17 +63,18 @@ const MaxLength = (description:string, MaxCharcters:number):string => {
           <div className='grid grid-cols-2 gap-x-1'>
             {entradas.map((comida, index) =>(                
 
-              <div className="container mt-2 mb-2 h-fit w-[173px]  " key={index}> 
+              <div className="container m-2 h-fit flex-shrink-0" key={index}> 
                 <div className="h-[105px] w-[150px] mx-2 mt-2 overflow-hidden ">
                   <img src={comida[1]} alt="" className='rounded-lg h-fit w-fit'/>
                 </div>
-                <div className="pl-3 max-w-fit ">
-                  <h5 className="pb-1 pt-1 text-black leading-snug">{comida[0]}</h5>
-                  <p className='text-black leading-snug pb-2 max-l overflow-hidden text-ellipsis'>{MaxLength(comida[2], 50)}</p>
+                <div className="pl-3 max-w-[150px] ">
+                  <h5 className="pb-1 pt-1 text-black leading-snug overflow-hidden">{comida[0]}</h5>
+                  <p className='text-black leading-snug pb-2 max-h- overflow-hidden text-ellipsis'>{MaxLength(comida[2], 50)}</p>
                 </div>
               </div>
 
             ))}
+            
             {/* drawer */}
           
 
@@ -81,5 +82,6 @@ const MaxLength = (description:string, MaxCharcters:number):string => {
           <Footer></Footer>
         </div>
       </main>
+      
   )
 }
