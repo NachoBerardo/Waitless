@@ -37,11 +37,13 @@ module.exports = {
       'footer_hover': '#3e8e41',
       'footer_active': '#3e8e41',
       'background': '#FCFCFC',
+      'background_popup': '#E3EEEC',
       'div': '#f3f0f0',
       'buscador': '#FFFFFF',
       'header': '#423d3d',
       'black': '#000000',
       'white': '#FFFFFF'
+
     }
   },
   plugins: [],
