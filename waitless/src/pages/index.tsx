@@ -111,8 +111,10 @@ export default function Menu() {
                 <p className="text pt-2 px-4 text-black leading-snug ">{entradas[keyPlato][2]}</p>
                 <p className="text-black px-4 pt-2">3000$</p>
               </div>
-              <div className="w-screen h-[200px] bg-background overflow-scroll mt-7">
-                <h5 className="text-black pt-2 px-4">Acompañamentos</h5>
+              <div className="w-screen h-[80px] bg-background overflow-scroll mt-7">
+                <h4 className="text-black pt-2 px-4">Guarnicion</h4>
+                <h6 className="text-black pt-1 px-4 font-normal">Elija 1 opción</h6>
+
               </div>
 
             </div>
