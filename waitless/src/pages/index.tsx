@@ -102,19 +102,19 @@ export default function Menu() {
                     alt=""
                     className="h-[100%] w-[100%] "
                   />
-                  <button onClick={()=>setShowFood(false)} className="absolute h-[25px] w-[25px] bg-background top-[50%] mt-[-25%] mx-1 rounded-md ">
+                  <button onClick={()=>setShowFood(false)} className="absolute h-[25px] w-[25px] bg-background top-[50%] mt-[-20%] mx-1 rounded-md ">
                     <img src="arrow.png" alt="" /></button>
                 </div>
               </header>
-              <div className="w-screen h-[140px] bg-background overflow-scroll ">
+              <div className="w-screen h-fit pb-4 bg-background overflow-scroll ">
                 <h4 className="text pt-3 px-4 text-black">{entradas[keyPlato][0]}</h4>
                 <p className="text pt-2 px-4 text-black leading-snug ">{entradas[keyPlato][2]}</p>
                 <p className="text-black px-4 pt-2">3000$</p>
               </div>
-              <div className="w-screen h-[80px] bg-background overflow-scroll mt-7">
-                <h4 className="text-black pt-2 px-4">Guarnicion</h4>
-                <h6 className="text-black pt-1 px-4 font-normal">Elija 1 opción</h6>
-
+              <div className="w-screen h-fit pb-4 bg-background overflow-scroll mt-7">
+                <h4 className="text-black pt-4 px-4 w-fit">Guarnicion</h4>
+                <button className="h-[40px] w-[40px] bg-footer relative ml-[85%] mt-[-10%]"></button>
+                <h6 className="text-black pb-4 px-4 font-normal">Elija 1 opción</h6>
               </div>
 
             </div>
@@ -131,7 +131,7 @@ export default function Menu() {
               </div>
             </header>
 
-            <div className="mt-0 w-full h-[5%] overflow-x-auto bg-buscador flex place-items-center ">
+            <div className="mt-0 w-full h-[5%] overflow-x-auto bg-buscador flex place-items-center drop-shadow-md">
               <a href="" className="pr-4 pl-4 text-black">
                 Hola
               </a>
@@ -160,7 +160,7 @@ export default function Menu() {
 
             <h3 className="text-black text mt-2 ml-1 ">Entradas</h3>
 
-            <div className="grid grid-cols-2 gap-x-4 justify-center">
+            <div className="grid grid-cols-2 gap-x-4 justify-center m-auto w-[400px]">
               {entradas.map((comida, key) => (
                 <div
                   onClick={(event) => handleclick(key, true)}
