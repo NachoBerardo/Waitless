@@ -96,14 +96,17 @@ export default function Menu() {
             <div className="h-screen w-screen pb-[7px] bg-background_popup overflow-x-hidden">
               <header className="flex w-screen top-0  h-[200px] overflow-hidden items-center">
                 
-                <div className=" h-fit w-fit relative">
-                  <img
+                <div className=" h-fit w-fit relative bg-gradient-to-b from-black">
+                <img
                     src={entradas[keyPlato][1]}
                     alt=""
                     className="h-[100%] w-[100%] "
-                  />
-                  <button onClick={()=>setShowFood(false)} className="absolute h-[25px] w-[25px] bg-background top-[50%] mt-[-20%] mx-1 rounded-md ">
-                    <img src="arrow.png" alt="" /></button>
+                >
+                  
+                </img>
+                  
+                  <button onClick={()=>setShowFood(false)} className="absolute h-[25px] w-[25px] top-[50%] mt-[-24%] ml-2">
+                    <img src="arrowWhite.svg" alt="" /></button>
                 </div>
               </header>
               <div className="w-screen h-fit pb-4 bg-background overflow-scroll ">
@@ -111,7 +114,7 @@ export default function Menu() {
                 <p className="text pt-2 px-4 text-black leading-snug ">{entradas[keyPlato][2]}</p>
                 <p className="text-black px-4 pt-2">3000$</p>
               </div>
-              <div className="w-screen h-fit pb-4 bg-background overflow-scroll mt-7">
+              <div className="w-screen h-fit pb-4 bg-background overflow-scroll mt-7 ">
                 <h4 className="text-black pt-4 px-4 w-fit">Guarnicion</h4>
                 <button className="h-[40px] w-[40px] bg-footer relative ml-[85%] mt-[-10%]"></button>
                 <h6 className="text-black pb-4 px-4 font-normal">Elija 1 opción</h6>
