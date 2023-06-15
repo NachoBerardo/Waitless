@@ -102,26 +102,28 @@ export default function Menu() {
                       className="h-[100%] w-[100%] "
                   >
                   </img>
-                  <div className="absolute top-0 bottom-0 left-0 right-0 flex items-center justify-center z-10 bg-gradient-to-b from-black opacity-[0.4]"/>
+                  <div className="absolute top-0 bottom-0 left-0 right-0 flex items-center justify-center z-10 bg-gradient-to-b from-black opacity-[0.55]"/>
                   <button onClick={()=>setShowFood(false)} className="absolute h-[25px] w-[25px] top-[50%] mt-[-24%] ml-2 z-20">
                     <img src="arrowWhite.svg" alt="" /></button>
                 </div>
               </header>
-              {/* <div className="w-screen h-fit pb-4 bg-background overflow-scroll ">
+                <div className="w-screen h-fit pb-4 bg-background overflow-scroll ">
                 <h4 className="text pt-3 px-4 text-black">{entradas[keyPlato][0]}</h4>
                 <p className="text pt-2 px-4 text-black leading-snug ">{entradas[keyPlato][2]}</p>
                 <p className="text-black px-4 pt-2">3000$</p>
               </div>
-              <div className="w-screen h-fit pb-4 bg-background overflow-scroll mt-7 ">
+              <div className="w-screen h-fit pb-4 bg-background overflow-scroll mt-7 relative">
                 <h4 className="text-black pt-4 px-4 w-fit">Guarnicion</h4>
-                <button className="h-[40px] w-[40px] bg-footer relative ml-[85%] mt-[-10%]"></button>
+                <button className="h-[20px] w-[20px] absolute ml-[90%] pt-1 rotate-180">
+                  <img src="arrow-up.svg" alt="" />
+                </button>
                 <h6 className="text-black pb-4 px-4 font-normal">Elija 1 opción</h6>
-              </div> */}
+              </div> 
 
             </div>
         ) : (
           <>
-            <header className="flex w-screen top-0  h-[140px] overflow-hidden justify-center items-center">
+            <header className="flex w-screen top-0  h-[164px] overflow-hidden justify-center items-center">
               <div className="container h-fit w-fit ">
                 <img
                   src="/SolomiaFotoEntrada.jpeg"
@@ -131,43 +133,43 @@ export default function Menu() {
               </div>
             </header>
 
-            <div className="mt-0 w-full h-[5%] overflow-x-auto bg-buscador flex place-items-center drop-shadow-md">
-              <a href="" className="pr-4 pl-4 text-black">
+            <div className="mt-0 w-full h-[40px] overflow-x-auto bg-buscador flex place-items-center drop-shadow-md">
+              <a href="" className="pr-5 pl-5 text-black font-bold text-md">
                 Hola
               </a>
-              <a href="" className="pr-4 pl-4 text-black">
+              <a href="" className="pr-5 pl-5 text-black font-bold">
                 Hola
               </a>
-              <a href="" className="pr-4 pl-4 text-black">
+              <a href="" className="pr-5 pl-5 text-black font-bold">
                 Hola
               </a>
-              <a href="" className="pr-4 pl-4 text-black">
+              <a href="" className="pr-5 pl-5 text-black font-bold">
                 Hola
               </a>
-              <a href="" className="pr-4 pl-4 text-black">
+              <a href="" className="pr-5 pl-5 text-black font-bold">
                 Hola
               </a>
-              <a href="" className="pr-4 pl-4 text-black">
+              <a href="" className="pr-5 pl-5 text-black">
                 Hola
               </a>
-              <a href="" className="pr-4 pl-4 text-black">
+              <a href="" className="pr-5 pl-5 text-black">
                 Hola
               </a>
-              <a href="" className="pr-4 pl-4 text-black">
+              <a href="" className="pr-5 pl-5 text-black">
                 Hola
               </a>
             </div>
 
-            <h3 className="text-black text mt-2 ml-1 ">Entradas</h3>
+            <h3 className="text-black text mt-4 ml-4 ">Entradas</h3>
 
-            <div className="grid grid-cols-2 gap-x-4 justify-center m-auto w-[400px]">
+            <div className="grid grid-cols-2 gap-x-2 justify-center m-auto w-[400px]">
               {entradas.map((comida, key) => (
                 <div
                   onClick={(event) => handleclick(key, true)}
                   className="container m-2 h-fit content-center"
                   key={key}
                 >
-                  <div className="h-[105px] w-[150px] mx-2 mt-2 overflow-hidden ">
+                  <div className="h-[105px] w-[150px] mx-2 mt-1 overflow-hidden ">
                     <img
                       src={comida[1]}
                       alt=""
@@ -179,7 +181,7 @@ export default function Menu() {
                       {comida[0]}
                     </h5>
                     <p className="text-black leading-snug pb-2 max-h- overflow-hidden text-ellipsis">
-                      {MaxLength(comida[2], 50)}
+                      {MaxLength(comida[2], 35)}
                     </p>
                   </div>
                 </div>
