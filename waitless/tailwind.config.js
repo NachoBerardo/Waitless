@@ -42,7 +42,8 @@ module.exports = {
       'buscador': '#FFFFFF',
       'header': '#423d3d',
       'black': '#000000',
-      'white': '#FFFFFF'
+      'white': '#FFFFFF',
+      'populetter': '#919191'
 
     }
   },

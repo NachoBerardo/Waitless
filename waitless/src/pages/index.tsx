@@ -108,16 +108,16 @@ export default function Menu() {
                 </div>
               </header>
                 <div className="w-screen h-fit pb-4 bg-background overflow-scroll ">
-                <h4 className="text pt-3 px-4 text-black">{entradas[keyPlato][0]}</h4>
-                <p className="text pt-2 px-4 text-black leading-snug ">{entradas[keyPlato][2]}</p>
-                <p className="text-black px-4 pt-2">3000$</p>
+                <h4 className="text pt-4 px-4 text-black">{entradas[keyPlato][0]}</h4>
+                <p className="text pt-1 px-4 text-populetter leading-snug ">{entradas[keyPlato][2]}</p>
+                <p className="text-black px-4 pt-1 font-bold">3000$</p>
               </div>
-              <div className="w-screen h-fit pb-4 bg-background overflow-scroll mt-7 relative">
+              <div className="w-screen h-fit pb-4 bg-background overflow-scroll mt-2 relative">
                 <h4 className="text-black pt-4 px-4 w-fit">Guarnicion</h4>
                 <button className="h-[20px] w-[20px] absolute ml-[90%] pt-1 rotate-180">
                   <img src="arrow-up.svg" alt="" />
                 </button>
-                <h6 className="text-black pb-4 px-4 font-normal">Elija 1 opción</h6>
+                <h6 className="text-populetter pb-4 px-4 font-normal">Elija 1 opción</h6>
               </div> 
 
             </div>
@@ -133,7 +133,7 @@ export default function Menu() {
               </div>
             </header>
 
-            <div className="mt-0 w-full h-[40px] overflow-x-auto bg-buscador flex place-items-center drop-shadow-md">
+            <div className="mt-0 w-full h-[40px] overflow-x-auto bg-buscador flex place-items-center drop-shadow-md sticky top-0">
               <a href="" className="pr-5 pl-5 text-black font-bold text-md">
                 Hola
               </a>
@@ -162,7 +162,7 @@ export default function Menu() {
 
             <h3 className="text-black text mt-4 ml-4 ">Entradas</h3>
 
-            <div className="grid grid-cols-2 gap-x-2 justify-center m-auto w-[400px]">
+            <div className="grid grid-cols-2 gap-x-2 justify-center m-auto w-[360px]">
               {entradas.map((comida, key) => (
                 <div
                   onClick={(event) => handleclick(key, true)}
@@ -177,10 +177,10 @@ export default function Menu() {
                     />
                   </div>
                   <div className="pl-3 max-w-[160px] ">
-                    <h5 className="pb-1 pt-1 text-black leading-snug overflow-hidden">
+                    <h5 className=" text-black leading-snug overflow-hidden">
                       {comida[0]}
                     </h5>
-                    <p className="text-black leading-snug pb-2 max-h- overflow-hidden text-ellipsis">
+                    <p className="text-populetter leading-snug pb-2 max-h- overflow-hidden text-ellipsis">
                       {MaxLength(comida[2], 35)}
                     </p>
                   </div>
