@@ -1,7 +1,7 @@
 import bodyParser from 'body-parser' ;
 import express from 'express' ;
 //import usersRoutes from './routes/users.js';
-import { getFood, getFood, createFood, updateFood, deleteFood} from './database.js'
+import { getFood, createFood, updateFood, deleteFood} from './database.js'
 const app = express () ;// initalize express application. The whole application lies in this function.
 const PORT = 5000;
 

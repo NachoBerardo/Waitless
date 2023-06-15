@@ -1,5 +1,34 @@
 {
+<<<<<<< HEAD
   "dependencies": {
     "dotenv": "^16.1.4"
+=======
+  "name": "waitless",
+  "version": "1.0.0",
+  "description": "Repositorio de Proyecto final 5to año",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NachoBerardo/Waitless.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NachoBerardo/Waitless/issues"
+  },
+  "homepage": "https://github.com/NachoBerardo/Waitless#readme",
+  "dependencies": {
+    "@prisma/client": "^4.15.0",
+    "express": "^4.18.2",
+    "prisma": "^4.15.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+>>>>>>> bf99b333d6061d9b308f0f3865cff056d224fe14
   }
 }
