@@ -92,24 +92,22 @@ export default function Menu() {
     <main className="">
       <div className="h-screen w-screen pb-[7px] bg-background overflow-x-hidden">
         {showFood ? (
-          <>
-            <div className="h-screen w-screen pb-[7px] bg-background_popup overflow-x-hidden">
+            <div className="h-screen w-screen pb-[7px] bg-background_popup overflow-x-hidden ">
               <header className="flex w-screen top-0  h-[200px] overflow-hidden items-center">
                 
-                <div className=" h-fit w-fit relative bg-gradient-to-b from-black">
-                <img
-                    src={entradas[keyPlato][1]}
-                    alt=""
-                    className="h-[100%] w-[100%] "
-                >
-                  
-                </img>
-                  
-                  <button onClick={()=>setShowFood(false)} className="absolute h-[25px] w-[25px] top-[50%] mt-[-24%] ml-2">
+                <div className=" h-fit w-fit relative  " id="FotoComida">
+                  <img
+                      src={entradas[keyPlato][1]}
+                      alt=""
+                      className="h-[100%] w-[100%] "
+                  >
+                  </img>
+                  <div className="absolute top-0 bottom-0 left-0 right-0 flex items-center justify-center z-10 bg-gradient-to-b from-black opacity-[0.4]"/>
+                  <button onClick={()=>setShowFood(false)} className="absolute h-[25px] w-[25px] top-[50%] mt-[-24%] ml-2 z-20">
                     <img src="arrowWhite.svg" alt="" /></button>
                 </div>
               </header>
-              <div className="w-screen h-fit pb-4 bg-background overflow-scroll ">
+              {/* <div className="w-screen h-fit pb-4 bg-background overflow-scroll ">
                 <h4 className="text pt-3 px-4 text-black">{entradas[keyPlato][0]}</h4>
                 <p className="text pt-2 px-4 text-black leading-snug ">{entradas[keyPlato][2]}</p>
                 <p className="text-black px-4 pt-2">3000$</p>
@@ -118,10 +116,9 @@ export default function Menu() {
                 <h4 className="text-black pt-4 px-4 w-fit">Guarnicion</h4>
                 <button className="h-[40px] w-[40px] bg-footer relative ml-[85%] mt-[-10%]"></button>
                 <h6 className="text-black pb-4 px-4 font-normal">Elija 1 opción</h6>
-              </div>
+              </div> */}
 
             </div>
-          </>
         ) : (
           <>
             <header className="flex w-screen top-0  h-[140px] overflow-hidden justify-center items-center">
@@ -187,20 +184,6 @@ export default function Menu() {
                   </div>
                 </div>
               ))}
-
-              {/*   <div className='grid grid-cols-2 gap-x-1'>
-        {entradas.map((comida, index) =>(                
-
-          <div className="container m-auto h-fit w-[173px]" key={index}> 
-            <div className="h-[105px] w-[150px] mx-2 mt-2 overflow-hidden ">
-              <img src={comida[1]} alt="" className='rounded-lg h-fit w-fit'/>
-            </div>
-            <div className="pl-3 max-w-fit ">
-              <h5 className="pb-1 pt-1 text-black leading-snug">{comida[0]}</h5>
-              <p className='text-black leading-snug pb-2 max-l overflow-hidden text-ellipsis'>{MaxLength(comida[2], 50)}</p>
-            </div>
-          </div>
-*/}
             </div>
           </>
         )}

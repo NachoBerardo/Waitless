@@ -47,6 +47,22 @@ html{
 *{
    /* border: 1px solid red    */
 }
+/* #FotoComida {
+  width: fit-content; 
+  height: fit-content;
+  
+}
+
+#FotoComida::after {
+  display: block;
+  position: relative;
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0, #000 100%);
+  margin-top: -150px;
+  height: 150px;
+  width: 100%;
+  content: '';
+} */
+
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
