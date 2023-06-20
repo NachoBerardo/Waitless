@@ -43,7 +43,8 @@ module.exports = {
       'header': '#423d3d',
       'black': '#000000',
       'white': '#FFFFFF',
-      'populetter': '#919191'
+      'populetter': '#919191',
+      'input': '#F1F1F1'
 
     }
   },

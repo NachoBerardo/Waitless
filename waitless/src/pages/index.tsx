@@ -5,6 +5,10 @@ import Header from "../components/header";
 import { type } from "os";
 import { useState } from "react";
 import { truncate } from "fs";
+import { scrollbar } from "../components/scrollbar";
+import { headerPlato } from "../components/headerPlato";
+import { headerMenu } from "../components/headerMenu";
+import { acompañamientos } from "../components/acompañamientos";
 
 const inter = Inter({ subsets: ["latin"] });
 type entradas = [string, string, string];
@@ -14,52 +18,62 @@ export default function Menu() {
     [
       "Provoleta",
       "/provoleta.jpg",
-      "Una rica provoleta de leche de vaca y mucho texto para rellenar aaaaa Una rica provoleta de leche de vaca y mucho texto para rellenar aaaaa Una rica provoleta de leche de vaca y mucho texto para rellenar aaaaa",
+      "Deliciosa provoleta de leche de vaca fundida, acompañada de sabrosos condimentos",
+      "2234",
     ],
     [
       "Asado",
       "/asado.jpg",
-      "El asado argentino es una tradicional preparación de carne a la parrilla.",
+      "El exquisito asado argentino, preparado a la perfección en nuestra parrilla",
+      "4675",
     ],
     [
       "Empanadas",
       "/provoleta.jpg",
-      "Las empanadas argentinas son deliciosos pasteles rellenos de carne, pollo, verduras o queso.",
+      "Deliciosas empanadas argentinas rellenas de carne, pollo, verduras o queso, horneadas hasta la perfección",
+      "8113",
     ],
     [
       "Milanesa",
       "/provoleta.jpg",
-      "La milanesa es un plato argentino hecho a base de carne empanada y frita.",
+      "Irresistible milanesa argentina de carne empanada y frita, acompañada de guarnición",
+      "6231",
     ],
     [
       "Locro",
       "/provoleta.jpg",
-      "El locro es un guiso típico argentino que contiene maíz, porotos, carne de cerdo y verduras.",
+      "Nuestro delicioso locro argentino, un guiso tradicional con maíz, porotos, carne de cerdo y verduras",
+      "3678",
     ],
     [
       "Matambre",
       "",
-      "El matambre es un corte de carne argentino relleno y enrollado.",
+      "Exquisito matambre argentino relleno y enrollado, servido con guarnición de temporada",
+      "4261",
     ],
     [
       "Humita",
       "",
-      "La humita es una preparación típica argentina a base de choclo (maíz tierno) y condimentos.",
+      "Sabrosa humita argentina a base de choclo (maíz tierno) y condimentos, acompañada de pan casero",
+      "5296",
     ],
     [
       "Ñoquis",
       "",
-      "Los ñoquis son una pasta de papa típica de Argentina, que se suele comer los días 29 de cada mes.",
+      "Tradicionales ñoquis argentinos de papa, bañados en nuestra irresistible salsa casera",
+      "9372",
     ],
     [
       "Dulce de leche",
       "",
-      "El dulce de leche es un caramelo de leche muy popular en Argentina.",
+      "Delicioso dulce de leche argentino, perfecto para endulzar tus postres y bebidas",
+      "4856",
     ],
     [
       "Pastel de papas",
       "",
-      "El pastel de papas es una deliciosa preparación argentina que combina capas de puré de papas con carne molida.",
+      "Nuestro suculento pastel de papas argentino, capas de puré de papas con carne molida y gratinado al horno",
+      "2754",
     ],
   ];
 
@@ -80,85 +94,68 @@ export default function Menu() {
   };
 
   const [showFood, setShowFood] = useState(false);
+  const [rotation, setRotation] = useState(false);
   const [keyPlato, setKeyPlato] = useState(0);
 
   const handleclick = (key: number, estado: boolean) => {
     setShowFood(estado);
     setKeyPlato(key);
-    console.log(entradas[key]);
+  };
+
+  const handleClickRotation = () => {
+    setRotation(!rotation);
   };
 
   return (
     <main className="">
-      <div className="h-screen w-screen pb-[7px] bg-background overflow-x-hidden">
+      <div className="h-screen w-screen pb-[7px] bg-background overflow-x-hidden no-scrollbar">
         {showFood ? (
-            <div className="h-screen w-screen pb-[7px] bg-background_popup overflow-x-hidden ">
-              <header className="flex w-screen top-0  h-[200px] overflow-hidden items-center">
-                
-                <div className=" h-fit w-fit relative  " id="FotoComida">
-                  <img
-                      src={entradas[keyPlato][1]}
-                      alt=""
-                      className="h-[100%] w-[100%] "
-                  >
-                  </img>
-                  <div className="absolute top-0 bottom-0 left-0 right-0 flex items-center justify-center z-10 bg-gradient-to-b from-black opacity-[0.55]"/>
-                  <button onClick={()=>setShowFood(false)} className="absolute h-[25px] w-[25px] top-[50%] mt-[-24%] ml-2 z-20">
-                    <img src="arrowWhite.svg" alt="" /></button>
-                </div>
-              </header>
-                <div className="w-screen h-fit pb-4 bg-background overflow-scroll ">
-                <h4 className="text pt-4 px-4 text-black">{entradas[keyPlato][0]}</h4>
-                <p className="text pt-1 px-4 text-populetter leading-snug ">{entradas[keyPlato][2]}</p>
-                <p className="text-black px-4 pt-1 font-bold">3000$</p>
-              </div>
-              <div className="w-screen h-fit pb-4 bg-background overflow-scroll mt-2 relative">
-                <h4 className="text-black pt-4 px-4 w-fit">Guarnicion</h4>
-                <button className="h-[20px] w-[20px] absolute ml-[90%] pt-1 rotate-180">
-                  <img src="arrow-up.svg" alt="" />
-                </button>
-                <h6 className="text-populetter pb-4 px-4 font-normal">Elija 1 opción</h6>
-              </div> 
-
+          <div className="h-screen w-screen pb-[7px] bg-background_popup overflow-x-hidden ">
+            {headerPlato(entradas, keyPlato, setShowFood)}
+            <div className="w-screen h-fit pb-4 bg-background overflow-scroll drop-shadow-md">
+              <h4 className="text pt-4 px-4 text-black">
+                {entradas[keyPlato][0]}
+              </h4>
+              <p className="text pt-1 px-4 text-populetter leading-snug ">
+                {entradas[keyPlato][2]}
+              </p>
+              <p className="text-black px-4 pt-1 font-bold">3000$</p>
             </div>
+            <div className="w-screen h-fit pb-4 bg-background overflow-scroll mt-2 relative drop-shadow-md">
+              <h4 className="text-black pt-4 px-4 w-fit">Guarnicion</h4>
+              <button
+                style={{ transform: `rotate(${rotation ? "180deg" : "0deg"})` }}
+                className={"h-[16px] w-[16px] absolute top-4 right-7 transform focus:rotate-0 transition-transform"}
+                onClick={handleClickRotation}
+              >
+                <img src="arrow-up.svg" alt="" />
+              </button>
+              <h6 className="text-populetter pb-4 px-4 font-normal">
+                Elija 1 opción
+              </h6>
+              {rotation ? (
+                acompañamientos()
+                
+              ) : (
+                <></>
+              )}
+            </div>
+            <div className="w-screen h-fit pb-4 bg-background overflow-scroll mt-2 relative drop-shadow-md">
+                <h4 className="text-black px-4 pt-4 pb-3">¿Tenes alguna especificacion?</h4>
+                <div className="flex h-full w-full justify-center">
+                 <input type="text" className="w-[90%] h-20 bg-input text-black px-4 pb-4" placeholder="Especificaciones..."/>
+                </div>
+            </div>
+
+            <footer className="w-full h-[88px] bg-background bottom-0 absolute shadow-top" id="footerMenu" >
+
+            </footer>
+          </div>
         ) : (
           <>
-            <header className="flex w-screen top-0  h-[164px] overflow-hidden justify-center items-center">
-              <div className="container h-fit w-fit ">
-                <img
-                  src="/SolomiaFotoEntrada.jpeg"
-                  alt=""
-                  className="h-[100%] w-[100%] object-contain"
-                />
-              </div>
-            </header>
+            {headerMenu()}
 
-            <div className="mt-0 w-full h-[40px] overflow-x-auto bg-buscador flex place-items-center drop-shadow-md sticky top-0">
-              <a href="" className="pr-5 pl-5 text-black font-bold text-md">
-                Hola
-              </a>
-              <a href="" className="pr-5 pl-5 text-black font-bold">
-                Hola
-              </a>
-              <a href="" className="pr-5 pl-5 text-black font-bold">
-                Hola
-              </a>
-              <a href="" className="pr-5 pl-5 text-black font-bold">
-                Hola
-              </a>
-              <a href="" className="pr-5 pl-5 text-black font-bold">
-                Hola
-              </a>
-              <a href="" className="pr-5 pl-5 text-black">
-                Hola
-              </a>
-              <a href="" className="pr-5 pl-5 text-black">
-                Hola
-              </a>
-              <a href="" className="pr-5 pl-5 text-black">
-                Hola
-              </a>
-            </div>
+            {scrollbar()}
 
             <h3 className="text-black text mt-4 ml-4 ">Entradas</h3>
 
@@ -169,11 +166,11 @@ export default function Menu() {
                   className="container m-2 h-fit content-center"
                   key={key}
                 >
-                  <div className="h-[105px] w-[150px] mx-2 mt-1 overflow-hidden ">
+                  <div className="h-[105px] w-[150px] mx-2 mt-1 overflow-hidden grid content-center">
                     <img
                       src={comida[1]}
                       alt=""
-                      className="rounded-lg h-fit w-fit"
+                      className="rounded-lg min-h-full min-w-full"
                     />
                   </div>
                   <div className="pl-3 max-w-[160px] ">
@@ -193,3 +190,4 @@ export default function Menu() {
     </main>
   );
 }
+
