@@ -11,7 +11,7 @@ app.use(bodyParser.json()); //saying we will use js data in whole app
 
 //Trae lo que pido
 app.get("/menu", async (req, res) => {
-const menus = await getFood()
+const menus = await getAllFood()
 res.send(menus)
 })
 //Trae lo que quiero según su ID
