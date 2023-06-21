@@ -44,8 +44,10 @@ module.exports = {
       'black': '#000000',
       'white': '#FFFFFF',
       'populetter': '#919191',
-      'input': '#F1F1F1'
-
+      'input': '#F1F1F1',
+      'btngreen': '#03CDA9',
+      'input': '#F1F1F1',
+      
     }
   },
   plugins: [],

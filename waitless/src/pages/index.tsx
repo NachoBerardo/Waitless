@@ -140,16 +140,22 @@ export default function Menu() {
                 <></>
               )}
             </div>
-            <div className="w-screen h-fit pb-4 bg-background overflow-scroll mt-2 relative drop-shadow-md">
+            <div className="w-screen h-fit pb-4 mb-24 bg-background overflow-scroll mt-2 relative drop-shadow-md">
                 <h4 className="text-black px-4 pt-4 pb-3">¿Tenes alguna especificacion?</h4>
                 <div className="flex h-full w-full justify-center">
                  <input type="text" className="w-[90%] h-20 bg-input text-black px-4 pb-4" placeholder="Especificaciones..."/>
                 </div>
             </div>
 
-            <footer className="w-full h-[88px] bg-background bottom-0 absolute shadow-top" id="footerMenu" >
-
-            </footer>
+            <footer className="w-full h-[90px] bg-background bottom-0 absolute shadow-top flex items-center" id="footerMenu" >
+                <button className=" bg-btngreen absolute rounded-2xl right-0  mr-7 h-[38px] w-[89px]">
+                  <p className="text-white">Agregar</p>
+                </button>
+                <button className="border-solid border-2 border-[#252525] absolute rounded-2xl right-0 flex items-center mr-[126px] h-[38px] w-[89px]">
+                  <p className="text-[#252525]">0</p>
+                  <p className="text-[#252525] right-0 absolute">+</p>
+                </button>
+            </footer> 
           </div>
         ) : (
           <>
