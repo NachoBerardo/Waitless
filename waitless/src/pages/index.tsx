@@ -110,7 +110,7 @@ export default function Menu() {
     <main className="">
       <div className="h-screen w-screen pb-[7px] bg-background overflow-x-hidden no-scrollbar">
         {showFood ? (
-          <div className="h-screen w-screen pb-[7px] bg-background_popup overflow-x-hidden ">
+          <div className="h-screen w-screen pb-[7px] bg-background_popup overflow-x-hidden no-scrollbar">
             {headerPlato(entradas, keyPlato, setShowFood)}
             <div className="w-screen h-fit pb-4 bg-background overflow-scroll drop-shadow-md">
               <h4 className="text pt-4 px-4 text-black">
@@ -151,10 +151,15 @@ export default function Menu() {
                 <button className=" bg-btngreen absolute rounded-2xl right-0  mr-7 h-[38px] w-[89px]">
                   <p className="text-white">Agregar</p>
                 </button>
-                <button className="border-solid border-2 border-[#252525] absolute rounded-2xl right-0 flex items-center mr-[126px] h-[38px] w-[89px]">
-                  <p className="text-[#252525]">0</p>
-                  <p className="text-[#252525] right-0 absolute">+</p>
-                </button>
+                <div className="border-solid border-2 border-[#252525] absolute rounded-2xl right-0 flex items-center justify-between mr-[126px] h-[38px] w-[89px]">
+                  <button className="text-[#252525] h-[14px] w-[14px] flex items-center justify-center my-2 ml-1 ">-</button> {/*8 de arriba, 4 del margin y 20 entre otros botones*/} 
+                  <button className="text-[#252525] h-[14px] w-[14px] flex items-center justify-center">10</button>
+                  <button className="text-[#252525] h-[14px] w-[14px] flex items-center justify-center mr-1 ">+</button>
+                </div>
+                <div className="h-full absolute">
+                  <p className="text-[#252525] ml-7 top-0 mt-5 ">Subtotal</p>
+                  <h4 className="text-[#252525] ml-7">$2.000,0</h4>
+                </div>
             </footer> 
           </div>
         ) : (
