@@ -1,8 +1,4 @@
 {
-<<<<<<< HEAD
-  "dependencies": {
-    "dotenv": "^16.1.4"
-=======
   "name": "waitless",
   "version": "1.0.0",
   "description": "Repositorio de Proyecto final 5to año",
@@ -24,11 +20,12 @@
   "homepage": "https://github.com/NachoBerardo/Waitless#readme",
   "dependencies": {
     "@prisma/client": "^4.15.0",
+    "dotenv": "^16.3.1",
     "express": "^4.18.2",
+    "mysql2": "^3.4.0",
     "prisma": "^4.15.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.22"
->>>>>>> bf99b333d6061d9b308f0f3865cff056d224fe14
   }
 }

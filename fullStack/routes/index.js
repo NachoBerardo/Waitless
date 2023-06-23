@@ -22,7 +22,7 @@ res.send(menu)
 })
 
 //Agrega a menu lo que quieras
-app.post("/menu", async (req, res) => {
+app.post("/menu/create", async (req, res) => {
 const { title, contents } = req.body
 const menu = await createFood(title, contents)
 res.status(201).send(menu)

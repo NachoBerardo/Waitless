@@ -1,6 +1,6 @@
-import mysql from 'mysql2'
-import dotenv from 'dotenv'
+const mysql = require('mysql2');
 
+import dotenv from 'dotenv'
 dotenv.config()
 const connection = mysql.createConnection(process.env.DATABASE_URL).promise()
 console.log('Connected to PlanetScale!')
@@ -45,3 +45,4 @@ export async function deleteFood(id) {
   `, [id])
   return result.affectedRows > 0
 }
+
