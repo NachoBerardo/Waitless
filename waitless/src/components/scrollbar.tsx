@@ -1,12 +1,13 @@
 const ScrollBar:React.FC = () => {
-  return <div className="mt-0 w-full h-[40px] overflow-x-auto bg-buscador flex place-items-center drop-shadow-md sticky top-0 no-scrollbar">
-    <a href="#entradas" className="pr-5 pl-5 text-black font-bold text-md">
+  return <div className=" w-full h-[40px] overflow-x-auto gap-5 bg-buscador flex place-items-center drop-shadow-md sticky top-0 no-scrollbar">
+    <a href="#entradas" className="pl-5 text-black font-bold text-md h-full grid place-content-center  active:text-btngreen ">
       Entradas
+      {/* <div className="absolute bottom-0  w-[75px] h-[7px] rounded-t bg-btngreen"></div> */}
     </a>
-    <a href="#principales" className="pr-5 pl-5 text-black font-bold">
+    <a href="#principales" className=" text-black font-bold h-full grid place-content-center active:text-btngreen ">
       Principales
     </a>
-    <a href="#postres" className="pr-5 pl-5 text-black font-bold">
+    <a href="#postres" className="text-black font-bold h-full grid place-content-center active:text-btngreen ">
       Postres
     </a>
   </div>;

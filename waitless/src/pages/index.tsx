@@ -161,7 +161,7 @@ export default function Menu() {
               {combinedArray[2].map((comida, key) => (
                 <div
                   onClick={(event) => handleclick(key, true, 2)}
-                  className="container m-2 h-fit content-center"
+                  className="container m-2 h-fit content-center pb-28"
                   key={key}
                 >
                   <div className="h-[105px] w-[150px] mx-2 mt-1 overflow-hidden grid content-center">
