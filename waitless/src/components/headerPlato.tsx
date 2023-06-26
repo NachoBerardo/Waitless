@@ -1,9 +1,8 @@
-export function headerPlato(entradas: string[][], keyPlato: number, setShowFood: React.Dispatch<React.SetStateAction<boolean>>) {
+export function headerPlato(url: string, setShowFood:React.Dispatch<React.SetStateAction<boolean>>) {
   return <header className="flex w-screen top-0  h-[204px] overflow-hidden items-center">
-
     <div className=" h-fit w-fit relative  " id="FotoComida">
       <img
-        src={entradas[keyPlato][1]}
+        src={url} 
         alt=""
         className="h-[100%] w-[100%] "
       >
@@ -13,4 +12,5 @@ export function headerPlato(entradas: string[][], keyPlato: number, setShowFood:
         <img src="arrowWhite.svg" alt="" /></button>
     </div>
   </header>;
+  
 }

@@ -1,17 +1,15 @@
 import Image from "next/image";
 import { Inter } from "next/font/google";
-import Footer from "../components/footer";
-import Header from "../components/header";
 import { type } from "os";
 import { useState } from "react";
-import { truncate } from "fs";
-import { scrollbar } from "../components/scrollbar";
-import { headerPlato } from "../components/headerPlato";
-import { headerMenu } from "../components/headerMenu";
-import { acompañamientos } from "../components/acompañamientos";
+import ScrollBar  from "../components/scrollbar";
+import HeaderMenu  from "../components/headerMenu";
+import  PopUp  from "../components/PopUp";
+import  FooterMenu  from "../components/footerMenu";
 
 const inter = Inter({ subsets: ["latin"] });
-type entradas = [string, string, string];
+
+
 
 export default function Menu() {
   const entradas = [
@@ -22,16 +20,31 @@ export default function Menu() {
       "2234",
     ],
     [
+      "Empanadas",
+      "/empanada.jpg",
+      "Deliciosas empanadas argentinas rellenas de carne, pollo, verduras o queso, horneadas hasta la perfección",
+      "8113",
+    ],
+    [
+      "Humita",
+      "/Humitas.jpg",
+      "Sabrosa humita argentina a base de choclo (maíz tierno) y condimentos, acompañada de pan casero",
+      "5296",
+    ],
+    [
+      "Pastel de papas",
+      "/pasteldepapa.jpg",
+      "Nuestro suculento pastel de papas argentino, capas de puré de papas con carne molida y gratinado al horno",
+      "2754",
+    ],
+  ];
+
+  const principales = [
+    [
       "Asado",
       "/asado.jpg",
       "El exquisito asado argentino, preparado a la perfección en nuestra parrilla",
       "4675",
-    ],
-    [
-      "Empanadas",
-      "/provoleta.jpg",
-      "Deliciosas empanadas argentinas rellenas de carne, pollo, verduras o queso, horneadas hasta la perfección",
-      "8113",
     ],
     [
       "Milanesa",
@@ -47,35 +60,33 @@ export default function Menu() {
     ],
     [
       "Matambre",
-      "",
+      "/provoleta.jpg",
       "Exquisito matambre argentino relleno y enrollado, servido con guarnición de temporada",
       "4261",
     ],
     [
-      "Humita",
-      "",
-      "Sabrosa humita argentina a base de choclo (maíz tierno) y condimentos, acompañada de pan casero",
-      "5296",
-    ],
-    [
-      "Ñoquis",
-      "",
-      "Tradicionales ñoquis argentinos de papa, bañados en nuestra irresistible salsa casera",
-      "9372",
-    ],
-    [
-      "Dulce de leche",
-      "",
-      "Delicioso dulce de leche argentino, perfecto para endulzar tus postres y bebidas",
-      "4856",
-    ],
-    [
       "Pastel de papas",
-      "",
+      "/provoleta.jpg",
       "Nuestro suculento pastel de papas argentino, capas de puré de papas con carne molida y gratinado al horno",
       "2754",
     ],
   ];
+
+  const postres = [
+    [
+      "Dulce de Leche",
+      "/dulcedeleche.jpeg",
+      "dulce de leche",
+      "300",
+    ],
+    [
+      "Flan",
+      "",
+      "Mixto o bala",
+      "1000",
+    ],
+  ];
+  const combinedArray = [entradas, principales, postres];
 
   const MaxLength = (description: string, MaxCharcters: number): string => {
     if (description.length <= MaxCharcters) {
@@ -94,86 +105,36 @@ export default function Menu() {
   };
 
   const [showFood, setShowFood] = useState(false);
-  const [rotation, setRotation] = useState(false);
   const [keyPlato, setKeyPlato] = useState(0);
+  const [arrayUsed, setarrayUsed] = useState(0);
 
-  const handleclick = (key: number, estado: boolean) => {
+  const handleclick = (key: number, estado: boolean, array: number) => {
     setShowFood(estado);
     setKeyPlato(key);
-  };
-
-  const handleClickRotation = () => {
-    setRotation(!rotation);
+    setarrayUsed(array);
   };
 
   return (
     <main className="">
       <div className="h-screen w-screen pb-[7px] bg-background overflow-x-hidden no-scrollbar">
         {showFood ? (
-          <div className="h-screen w-screen pb-[7px] bg-background_popup overflow-x-hidden no-scrollbar">
-            {headerPlato(entradas, keyPlato, setShowFood)}
-            <div className="w-screen h-fit pb-4 bg-background overflow-scroll drop-shadow-md">
-              <h4 className="text pt-4 px-4 text-black">
-                {entradas[keyPlato][0]}
-              </h4>
-              <p className="text pt-1 px-4 text-populetter leading-snug ">
-                {entradas[keyPlato][2]}
-              </p>
-              <p className="text-black px-4 pt-1 font-bold">3000$</p>
-            </div>
-            <div className="w-screen h-fit pb-4 bg-background overflow-scroll mt-2 relative drop-shadow-md">
-              <h4 className="text-black pt-4 px-4 w-fit">Guarnicion</h4>
-              <button
-                style={{ transform: `rotate(${rotation ? "180deg" : "0deg"})` }}
-                className={"h-[16px] w-[16px] absolute top-4 right-7 transform focus:rotate-0 transition-transform"}
-                onClick={handleClickRotation}
-              >
-                <img src="arrow-up.svg" alt="" />
-              </button>
-              <h6 className="text-populetter pb-4 px-4 font-normal">
-                Elija 1 opción
-              </h6>
-              {rotation ? (
-                acompañamientos()
-                
-              ) : (
-                <></>
-              )}
-            </div>
-            <div className="w-screen h-fit pb-4 mb-24 bg-background overflow-scroll mt-2 relative drop-shadow-md">
-                <h4 className="text-black px-4 pt-4 pb-3">¿Tenes alguna especificacion?</h4>
-                <div className="flex h-full w-full justify-center">
-                 <input type="text" className="w-[90%] h-20 bg-input text-black px-4 pb-4" placeholder="Especificaciones..."/>
-                </div>
-            </div>
-
-            <footer className="w-full h-[90px] bg-background bottom-0 absolute shadow-top flex items-center" id="footerMenu" >
-                <button className=" bg-btngreen absolute rounded-2xl right-0  mr-7 h-[38px] w-[89px]">
-                  <p className="text-white">Agregar</p>
-                </button>
-                <div className="border-solid border-2 border-[#252525] absolute rounded-2xl right-0 flex items-center justify-between mr-[126px] h-[38px] w-[89px]">
-                  <button className="text-[#252525] h-[14px] w-[14px] flex items-center justify-center my-2 ml-1 ">-</button> {/*8 de arriba, 4 del margin y 20 entre otros botones*/} 
-                  <button className="text-[#252525] h-[14px] w-[14px] flex items-center justify-center">10</button>
-                  <button className="text-[#252525] h-[14px] w-[14px] flex items-center justify-center mr-1 ">+</button>
-                </div>
-                <div className="h-full absolute">
-                  <p className="text-[#252525] ml-7 top-0 mt-5 ">Subtotal</p>
-                  <h4 className="text-[#252525] ml-7">$2.000,0</h4>
-                </div>
-            </footer> 
-          </div>
+          <PopUp combinedArray={combinedArray} arrayUsed={arrayUsed} keyPlato={keyPlato} setShowFood={setShowFood}></PopUp>
         ) : (
           <>
-            {headerMenu()}
+            <HeaderMenu/>
+            <ScrollBar/>
 
-            {scrollbar()}
-
-            <h3 className="text-black text mt-4 ml-4 ">Entradas</h3>
-
+            <h3 className="text-black text mt-4 ml-4" id="entradas">Entradas</h3>
             <div className="grid grid-cols-2 gap-x-2 justify-center m-auto w-[360px]">
-              {entradas.map((comida, key) => (
+              {combinedArray[0].map((comida, key) => (
+                newFunction(handleclick, key, comida, MaxLength)
+              ))}
+            </div>
+            <h3 className="text-black text mt-4 ml-4" id="principales">Platos principales</h3>
+            <div className="grid grid-cols-2 gap-x-2 justify-center m-auto w-[360px]">
+              {combinedArray[1].map((comida, key) => (
                 <div
-                  onClick={(event) => handleclick(key, true)}
+                  onClick={(event) => handleclick(key, true, 1)}
                   className="container m-2 h-fit content-center"
                   key={key}
                 >
@@ -195,10 +156,62 @@ export default function Menu() {
                 </div>
               ))}
             </div>
+            <h3 className="text-black text mt-4 ml-4" id="postres">Postres</h3>
+            <div className="grid grid-cols-2 gap-x-2 justify-center m-auto w-[360px]">
+              {combinedArray[2].map((comida, key) => (
+                <div
+                  onClick={(event) => handleclick(key, true, 2)}
+                  className="container m-2 h-fit content-center"
+                  key={key}
+                >
+                  <div className="h-[105px] w-[150px] mx-2 mt-1 overflow-hidden grid content-center">
+                    <img
+                      src={comida[1]}
+                      alt=""
+                      className="rounded-lg min-h-full min-w-full"
+                    />
+                  </div>
+                  <div className="pl-3 max-w-[160px] ">
+                    <h5 className=" text-black leading-snug overflow-hidden">
+                      {comida[0]}
+                    </h5>
+                    <p className="text-populetter leading-snug pb-2 max-h- overflow-hidden text-ellipsis">
+                      {MaxLength(comida[2], 35)}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <FooterMenu/>
           </>
         )}
       </div>
     </main>
   );
+}
+
+
+
+function newFunction(handleclick: (key: number, estado: boolean, array: number) => void, key: number, comida: string[], MaxLength: (description: string, MaxCharcters: number) => string) {
+  return <div
+    onClick={(event) => handleclick(key, true, 0)}
+    className="container m-2 h-fit content-center"
+    key={key}
+  >
+    <div className="h-[105px] w-[150px] mx-2 mt-1 overflow-hidden grid content-center">
+      <img
+        src={comida[1]}
+        alt=""
+        className="rounded-lg min-h-full min-w-full" />
+    </div>
+    <div className="pl-3 max-w-[160px] ">
+      <h5 className=" text-black leading-snug overflow-hidden">
+        {comida[0]}
+      </h5>
+      <p className="text-populetter leading-snug pb-2 max-h- overflow-hidden text-ellipsis">
+        {MaxLength(comida[2], 35)}
+      </p>
+    </div>
+  </div>;
 }
 
