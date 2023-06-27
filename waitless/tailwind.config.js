@@ -39,14 +39,16 @@ module.exports = {
       'background': '#FCFCFC',
       'background_popup': '#E3EEEC',
       'div': '#f3f0f0',
-      'buscador': '#FFFFFF',
       'header': '#423d3d',
       'black': '#000000',
       'white': '#FFFFFF',
       'populetter': '#919191',
       'input': '#F1F1F1',
       'btngreen': '#03CDA9',
-      'input': '#F1F1F1',
+      'letraGris': '#25252580',
+      'letraGrisOscuro': '#252525',
+      'LineaPedido': '#E3EEEC',
+
       
     }
   },

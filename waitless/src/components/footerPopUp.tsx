@@ -3,14 +3,16 @@ interface Props {
   titulo: string;
   descripcion: string; 
   precio: string;
-  setShowFood: React.Dispatch<React.SetStateAction<boolean>>; 
+  setShowPopUP: React.Dispatch<React.SetStateAction<boolean>>; 
+  setShowMenu: React.Dispatch<React.SetStateAction<boolean>>;
+
 }
 interface Order{
   name: string;
   description: string;
   price: string;
 }
-const FooterPopUp: React.FC<Props> = ({titulo, descripcion, precio, setShowFood}) => {
+const FooterPopUp: React.FC<Props> = ({titulo, descripcion, precio, setShowPopUP, setShowMenu}) => {
   const [cantidad, setCantidad] = useState(0);
   const [pedido, setPedido] = useState<Order[]>([]);
   const handleClickSumar = () => {
@@ -24,11 +26,10 @@ const FooterPopUp: React.FC<Props> = ({titulo, descripcion, precio, setShowFood}
   };
 
   const handlePedido = () =>{
-
-    addPedido(titulo, descripcion, precio)
+    addPedido(titulo, descripcion, precio);
     console.log(pedido);
-    setShowFood(false);
-   
+    setShowPopUP(false);
+    setShowMenu(true);
   }
 
   const addPedido = (name:string, description: string, price: string) =>{

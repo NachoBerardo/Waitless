@@ -2,14 +2,12 @@ import Image from "next/image";
 import { Inter } from "next/font/google";
 import { type } from "os";
 import { useState } from "react";
-import ScrollBar  from "../components/scrollbar";
-import HeaderMenu  from "../components/headerMenu";
-import  PopUp  from "../components/PopUp";
-import  FooterMenu  from "../components/footerMenu";
+import ScrollBar from "../components/scrollbar";
+import HeaderMenu from "../components/headerMenu";
+import PopUp from "../components/PopUp";
+import FooterMenu from "../components/footerMenu";
 
 const inter = Inter({ subsets: ["latin"] });
-
-
 
 export default function Menu() {
   const entradas = [
@@ -73,18 +71,8 @@ export default function Menu() {
   ];
 
   const postres = [
-    [
-      "Dulce de Leche",
-      "/dulcedeleche.jpeg",
-      "dulce de leche",
-      "300",
-    ],
-    [
-      "Flan",
-      "",
-      "Mixto o bala",
-      "1000",
-    ],
+    ["Dulce de Leche", "/dulcedeleche.jpeg", "dulce de leche", "300"],
+    ["Flan", "", "Mixto o bala", "1000"],
   ];
   const combinedArray = [entradas, principales, postres];
 
@@ -104,12 +92,15 @@ export default function Menu() {
     return descrptionShort + " ...";
   };
 
-  const [showFood, setShowFood] = useState(false);
+  const [showPopUP, setShowPopUP] = useState(false);
+  const [showMenu, setShowMenu] = useState(false);
+  const [showPedido, setShowshowPedido] = useState(true);
   const [keyPlato, setKeyPlato] = useState(0);
   const [arrayUsed, setarrayUsed] = useState(0);
 
   const handleclick = (key: number, estado: boolean, array: number) => {
-    setShowFood(estado);
+    setShowPopUP(estado);
+    setShowMenu(!estado)
     setKeyPlato(key);
     setarrayUsed(array);
   };
@@ -117,20 +108,51 @@ export default function Menu() {
   return (
     <main className="">
       <div className="h-screen w-screen pb-[7px] bg-background overflow-x-hidden no-scrollbar">
-        {showFood ? (
-          <PopUp combinedArray={combinedArray} arrayUsed={arrayUsed} keyPlato={keyPlato} setShowFood={setShowFood}></PopUp>
-        ) : (
+        {showPopUP ? (
+          <PopUp
+            combinedArray={combinedArray}
+            arrayUsed={arrayUsed}
+            keyPlato={keyPlato}
+            setShowPopUP={setShowPopUP}
+            setShowMenu={setShowMenu}
+          ></PopUp>
+        ) : (<></>)}
+        {showMenu ? (
           <>
-            <HeaderMenu/>
-            <ScrollBar/>
+            <HeaderMenu />
+            <ScrollBar />
 
-            <h3 className="text-black text mt-4 ml-4" id="entradas">Entradas</h3>
+            <h3 className="text-black text mt-4 ml-4" id="entradas">
+              Entradas
+            </h3>
             <div className="grid grid-cols-2 gap-x-2 justify-center m-auto w-[360px]">
               {combinedArray[0].map((comida, key) => (
-                newFunction(handleclick, key, comida, MaxLength)
+                <div
+                  onClick={(event) => handleclick(key, true, 0)}
+                  className="container m-2 h-fit content-center"
+                  key={key}
+                >
+                  <div className="h-[105px] w-[150px] mx-2 mt-1 overflow-hidden grid content-center">
+                    <img
+                      src={comida[1]}
+                      alt=""
+                      className="rounded-lg min-h-full min-w-full"
+                    />
+                  </div>
+                  <div className="pl-3 max-w-[160px] ">
+                    <h5 className=" text-black leading-snug overflow-hidden">
+                      {comida[0]}
+                    </h5>
+                    <p className="text-populetter leading-snug pb-2 max-h- overflow-hidden text-ellipsis">
+                      {MaxLength(comida[2], 35)}
+                    </p>
+                  </div>
+                </div>
               ))}
             </div>
-            <h3 className="text-black text mt-4 ml-4" id="principales">Platos principales</h3>
+            <h3 className="text-black text mt-4 ml-4" id="principales">
+              Platos principales
+            </h3>
             <div className="grid grid-cols-2 gap-x-2 justify-center m-auto w-[360px]">
               {combinedArray[1].map((comida, key) => (
                 <div
@@ -156,7 +178,9 @@ export default function Menu() {
                 </div>
               ))}
             </div>
-            <h3 className="text-black text mt-4 ml-4" id="postres">Postres</h3>
+            <h3 className="text-black text mt-4 ml-4" id="postres">
+              Postres
+            </h3>
             <div className="grid grid-cols-2 gap-x-2 justify-center m-auto w-[360px]">
               {combinedArray[2].map((comida, key) => (
                 <div
@@ -182,36 +206,50 @@ export default function Menu() {
                 </div>
               ))}
             </div>
-            <FooterMenu/>
+            <FooterMenu />
           </>
-        )}
+        ) : (<></>)}
+        {showPedido ? (
+          <>
+            <div className="h-screen w-screen pb-[7px] bg-white overflow-x-hidden no-scrollbar">
+              <header className="top-0 w-full h-[67px] flex items-center justify-center bg-white drop-shadow-md relative">
+                <h3 className="font-bold text-black">Pedido de tu mesa</h3>
+                  <button className=" absolute left-0 ml-4 h-[25px] w-[25px] bg-footer">
+                    <img src="arrowWhite.svg" alt="" />
+                  </button>
+              </header>
+              <div className="h-full w-full p-2">
+                <div className="w-full h-fit ">
+                  <h3 className="text-black pl-2 pt-6 overflow-hidden inline-flex"> Papa al horno</h3>
+                  <p className="pl-2 text-letraGris">aaaaaaaaaaaaaaaaaaa</p>
+                  <p className="pl-2 text-letraGrisOscuro pt-1 pb-4">500$</p>
+                  <div className="w-full h-fit flex justify-center">
+                    <hr className="border-b bg-LineaPedido w-[90%] h-px mb-4"/>
+                  </div>
+                </div>
+                <div className="w-full h-fit ">
+                  <h3 className="text-black pl-2 pt-6 overflow-hidden inline-flex"> Papa al horno</h3>
+                  <p className="pl-2 text-letraGris">aaaaaaaaaaaaaaaaaaa</p>
+                  <p className="pl-2 text-letraGrisOscuro pt-1 pb-4">500$</p>
+                  <div className="w-full h-fit flex justify-center">
+                    <hr className="border-b bg-LineaPedido w-[90%] h-px mb-4"/>
+                  </div>
+                </div>
+                <div className="w-full h-fit ">
+                  <h3 className="text-black pl-2 pt-6 overflow-hidden inline-flex"> Papa al horno</h3>
+                  <p className="pl-2 text-letraGris">aaaaaaaaaaaaaaaaaaa</p>
+                  <p className="pl-2 text-letraGrisOscuro pt-1 pb-4">500$</p>
+                  <div className="w-full h-fit flex justify-center">
+                    <hr className="border-b bg-LineaPedido w-[90%] h-px mb-4"/>
+                  </div>
+                </div>
+
+              
+              </div>
+            </div>
+          </>
+        ) : (<></>)}
       </div>
     </main>
   );
 }
-
-
-
-function newFunction(handleclick: (key: number, estado: boolean, array: number) => void, key: number, comida: string[], MaxLength: (description: string, MaxCharcters: number) => string) {
-  return <div
-    onClick={(event) => handleclick(key, true, 0)}
-    className="container m-2 h-fit content-center"
-    key={key}
-  >
-    <div className="h-[105px] w-[150px] mx-2 mt-1 overflow-hidden grid content-center">
-      <img
-        src={comida[1]}
-        alt=""
-        className="rounded-lg min-h-full min-w-full" />
-    </div>
-    <div className="pl-3 max-w-[160px] ">
-      <h5 className=" text-black leading-snug overflow-hidden">
-        {comida[0]}
-      </h5>
-      <p className="text-populetter leading-snug pb-2 max-h- overflow-hidden text-ellipsis">
-        {MaxLength(comida[2], 35)}
-      </p>
-    </div>
-  </div>;
-}
-

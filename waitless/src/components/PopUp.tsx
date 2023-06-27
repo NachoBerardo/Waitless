@@ -1,4 +1,4 @@
-import { headerPlato } from "./headerPlato";
+import HeaderPlato  from "./headerPlato";
 import { acompañamientos } from "./acompañamientos";
 import  FooterPopUp  from "./footerPopUp";
 import { useState } from "react";
@@ -7,17 +7,18 @@ interface Props {
   combinedArray: string[][][];
   arrayUsed: number; 
   keyPlato: number; 
-  setShowFood: React.Dispatch<React.SetStateAction<boolean>>;
+  setShowPopUP: React.Dispatch<React.SetStateAction<boolean>>;
+  setShowMenu: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const PopUp: React.FC<Props> = ({combinedArray, arrayUsed, keyPlato, setShowFood}) => {
+const PopUp: React.FC<Props> = ({combinedArray, arrayUsed, keyPlato, setShowPopUP, setShowMenu}) => {
   const [rotation, setRotation] = useState(false);
   const handleClickRotation = () => {
     setRotation(!rotation);
   };
 
   return <div className="h-screen w-screen pb-[7px] bg-background_popup overflow-x-hidden no-scrollbar">
-    {headerPlato(combinedArray[arrayUsed][keyPlato][1], setShowFood)}
+   <HeaderPlato url={combinedArray[arrayUsed][keyPlato][1]} setShowPopUP={setShowPopUP} setShowMenu={setShowMenu}/>
     <div className="w-screen h-fit pb-4 bg-background overflow-scroll drop-shadow-md">
       <h4 className="text pt-4 px-4 text-black">
         {combinedArray[arrayUsed][keyPlato][0]}
@@ -53,7 +54,7 @@ const PopUp: React.FC<Props> = ({combinedArray, arrayUsed, keyPlato, setShowFood
       </div>
     </div>
 
-    <FooterPopUp titulo={combinedArray[arrayUsed][keyPlato][0]} descripcion={combinedArray[arrayUsed][keyPlato][2]} precio={combinedArray[arrayUsed][keyPlato][3]} setShowFood={setShowFood}/>
+    <FooterPopUp titulo={combinedArray[arrayUsed][keyPlato][0]} descripcion={combinedArray[arrayUsed][keyPlato][2]} precio={combinedArray[arrayUsed][keyPlato][3]}setShowPopUP={setShowPopUP}/>
   </div>;
 }
 export default PopUp
