@@ -1,6 +1,6 @@
 import bodyParser from 'body-parser' ;
 import express from 'express' ;
-import { getFood, createFood, updateFood, deleteFood} from './database.js'
+import { getFood, createFood, updateFood, deleteFood} from './database.js' 
 const app = express (); 
 const PORT = 5000;
 
