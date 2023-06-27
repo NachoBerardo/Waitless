@@ -93,8 +93,8 @@ export default function Menu() {
   };
 
   const [showPopUP, setShowPopUP] = useState(false);
-  const [showMenu, setShowMenu] = useState(false);
-  const [showPedido, setShowshowPedido] = useState(true);
+  const [showMenu, setShowMenu] = useState(true);
+  const [showPedido, setShowPedido] = useState(false);
   const [keyPlato, setKeyPlato] = useState(0);
   const [arrayUsed, setarrayUsed] = useState(0);
 
@@ -104,6 +104,14 @@ export default function Menu() {
     setKeyPlato(key);
     setarrayUsed(array);
   };
+
+  const handleClickArrowBack = (pedido:boolean, Menu: boolean) =>{
+    setShowPedido(pedido);
+    setShowMenu(Menu);
+    var a = document.getElementById("div1");
+    var distancia = a?.offsetTop;
+    console.log(distancia);
+  }
 
   return (
     <main className="">
@@ -125,7 +133,7 @@ export default function Menu() {
             <h3 className="text-black text mt-4 ml-4" id="entradas">
               Entradas
             </h3>
-            <div className="grid grid-cols-2 gap-x-2 justify-center m-auto w-[360px]">
+            <div className="grid grid-cols-2 gap-x-2 justify-center m-auto w-[360px]" id="div1">
               {combinedArray[0].map((comida, key) => (
                 <div
                   onClick={(event) => handleclick(key, true, 0)}
@@ -150,7 +158,7 @@ export default function Menu() {
                 </div>
               ))}
             </div>
-            <h3 className="text-black text mt-4 ml-4" id="principales">
+            <h3 className="text-black text mt-4 ml-4" id="principales" >
               Platos principales
             </h3>
             <div className="grid grid-cols-2 gap-x-2 justify-center m-auto w-[360px]">
@@ -206,15 +214,15 @@ export default function Menu() {
                 </div>
               ))}
             </div>
-            <FooterMenu />
+            <FooterMenu setShowPedido={setShowPedido} setShowMenu={setShowMenu}/>
           </>
         ) : (<></>)}
         {showPedido ? (
           <>
             <div className="h-screen w-screen pb-[7px] bg-white overflow-x-hidden no-scrollbar">
-              <header className="top-0 w-full h-[67px] flex items-center justify-center bg-white drop-shadow-md relative">
+              <header className="top-0 w-full h-[67px] flex items-center justify-center bg-white drop-shadow-md relative" >
                 <h3 className="font-bold text-black">Pedido de tu mesa</h3>
-                  <button className=" absolute left-0 ml-4 h-[25px] w-[25px] bg-footer">
+                  <button className=" absolute left-0 ml-4 h-[25px] w-[25px] bg-footer" onClick={(event) => handleClickArrowBack(false, true)}>
                     <img src="arrowWhite.svg" alt="" />
                   </button>
               </header>
