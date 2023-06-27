@@ -115,7 +115,7 @@ export default function Menu() {
 
   return (
     <main className="">
-      <div className="h-screen w-screen pb-[7px] bg-background overflow-x-hidden no-scrollbar">
+      <div className="h-screen w-screen pb-[7px] bg-background overflow-x-hidden no-scrollbar" id="general">
         {showPopUP ? (
           <PopUp
             combinedArray={combinedArray}

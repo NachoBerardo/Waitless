@@ -1,9 +1,15 @@
 const ScrollBar:React.FC = () => {
   const handleClickScroll = (id:string) => {
     const element = document.getElementById(id);
+    const element2 = document.getElementById("general");
+
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-      // element.scroll(40, 0)
+      let element_rect = element.getBoundingClientRect();
+      element2?.scrollBy({
+        top:  element_rect["top"] -45,
+        left: 0,
+        behavior: 'smooth'
+      })
     }
   };
   return <div className=" w-full h-[40px] overflow-x-auto gap-5 bg-white flex place-items-center drop-shadow-md sticky top-0 no-scrollbar">
