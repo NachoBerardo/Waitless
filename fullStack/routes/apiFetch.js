@@ -1,11 +1,11 @@
 import useQuery  from '@tanstack/react-query'
 //const myModule = require( '@tanstack/react-query').useQuery;
 //import { getFood, getAllFood, createFood, updateFood, deleteFood} from './database.js'
-const getFood = require('./database.js').getFood;
-const getAllFood = require('./database.js').getAllFood;
-const createFood = require('./database.js').createFood;
-const updateFood = require('./database.js').updateFood;
-const deleteFood = require('./database.js').deleteFood;
+const getFood = require('../index.js').getFood;
+const getAllFood = require('../index.js').getAllFood;
+const createFood = require('../index.js').createFood;
+const updateFood = require('../index.js').updateFood;
+const deleteFood = require('../index.js').deleteFood;
 
 
 function llamarTodoMenu() {

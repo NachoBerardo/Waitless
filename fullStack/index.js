@@ -1,13 +1,14 @@
-const mysql = require('mysql2');
-
+//const mysql = require('../mysql2');
+import mysql from 'mysql2';
 import dotenv from 'dotenv'
-dotenv.config()
+//dotenv  = require ('../dotenv');
+dotenv.config() 
 const connection = mysql.createConnection(process.env.DATABASE_URL).promise()
 console.log('Connected to PlanetScale!')
 
 
-export async function getAllFood() {
-  const [rows] = await pool.query("SELECT * FROM Food")
+export async function getAllFood()  {
+  const [rows] = await connection.query("SELECT * FROM Food")
   return rows
 }
 

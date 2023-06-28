@@ -1,6 +1,6 @@
 import bodyParser from 'body-parser' ;
 import express from 'express' ;
-import { getFood, createFood, updateFood, deleteFood} from './database.js' 
+import { getAllFood, getFood, createFood, updateFood, deleteFood} from '../index.js' 
 const app = express (); 
 const PORT = 5000;
 
@@ -9,13 +9,13 @@ app.use(bodyParser.json());
 //Trae lo que pido
 app.get("/menu", async (req, res) => {
 const menus = await getAllFood()
-res.send(menus)
+res.js(menus)
 })
 //Trae lo que quiero según su ID
 app.get("/menu/:id", async (req, res) => {
 const id = req.params.id
 const menu = await getFood(id)
-res.send(menu)
+res.js(menu)
 })
 
 //Agrega a menu lo que quieras
