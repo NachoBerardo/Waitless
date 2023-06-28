@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "@tanstack/react-query": "^4.29.19",
+    "type": "module",
+    "mysql2": "^3.4.2"
+  }
+}
