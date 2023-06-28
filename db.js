@@ -2,21 +2,21 @@ import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
-/*(async () => {
-    const response = await prisma.Food.create({
+(async () => {
+    const response = await prisma.food.create({
         data: {
-            name: "Entraña",
-            category: "Carnes",
-            price: 2000,
-            description: "La entraña a la parrilla es un suculento corte de carne que se destaca por su jugosidad y sabor intenso.",
-            imagen: "",
+            name: "Matambre",
+            category: "Plato principal",
+            price: 2500,
+            description: "Exquisito matambre argentino relleno y enrollado, servido con guarnición de temporada.",
+            image: "",
             video: "",
         },
     })
     console.log(response);
-})();*/
+})();
 
-(async () => {
+/*(async () => {
   const updateFood = await prisma.Food.update({ //updateMany
     where: {
       id: {
@@ -28,4 +28,4 @@ const prisma = new PrismaClient();
       },
   })
   console.log(updateFood);
-})();
+})();*/

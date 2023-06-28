@@ -14,12 +14,12 @@ model Food {
   name        String
   price       Int
   description String
-  imagen      String
-  video       String
+  image       String 
+  video       String 
 }
 
-model Order {
-  id Int @id @default(autoincrement())
-  sendedAt DateTime @default(now())
+//model Order {
+  //id Int @id @default(autoincrement())
+  //sendedAt DateTime @default(now())
   //idFood tabla de relacion
-}
+//}
