@@ -1,8 +1,7 @@
 const ScrollBar:React.FC = () => {
   const handleClickScroll = (id:string) => {
-    const element = document.getElementById(id);
     const element2 = document.getElementById("general");
-
+    const element = document.getElementById(id);
     if (element) {
       let element_rect = element.getBoundingClientRect();
       element2?.scrollBy({
@@ -12,6 +11,11 @@ const ScrollBar:React.FC = () => {
       })
     }
   };
+  const a = () =>{
+    console.log(window.pageYOffset);
+  } 
+  window.addEventListener('scroll', a);
+
   return <div className=" w-full h-[40px] overflow-x-auto gap-5 bg-white flex place-items-center drop-shadow-md sticky top-0 no-scrollbar">
     <a onClick={(event) => handleClickScroll("entradas")} className="pl-5 text-black font-bold text-md h-full grid place-content-center  active:text-btngreen ">
       Entradas
