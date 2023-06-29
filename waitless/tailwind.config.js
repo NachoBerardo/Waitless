@@ -32,6 +32,10 @@ module.exports = {
       // => @media (min-width: 1536px) { ... }
     },
 
+    fontFamily:{
+      'open-sans':'Open Sans',
+    },
+
     colors:{
       'footer': '#04AA6D',
       'footer_hover': '#3e8e41',

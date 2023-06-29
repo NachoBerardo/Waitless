@@ -6,8 +6,16 @@ import ScrollBar from "../components/scrollbar";
 import HeaderMenu from "../components/headerMenu";
 import PopUp from "../components/PopUp";
 import FooterMenu from "../components/footerMenu";
+//import useQuery from "../apiFetch.js"
+//import QueryClientProvider from '@tanstack/react-query'
+//<QueryClientProvider client={queryClient}></QueryClientProvider>
+//import { llamarTodoMenu, llamarComida, crearComida, actualizarComida, borrarComida} from '../apiFetch.js'
+
+
 
 const inter = Inter({ subsets: ["latin"] });
+
+
 
 export default function Menu() {
   const entradas = [
