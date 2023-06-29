@@ -92,7 +92,7 @@ export const updateFoodWithPrisma = async (title, contents, id) => {
   try {
     const updateFood = await prisma.food.update({
       where: {
-        id: id
+        idFood: id
       },
       data: {
         title: title,
@@ -120,7 +120,7 @@ export const deleteFoodWithPrisma = async (title, contents, id) => {
   try {
     const deleteFood = await prisma.food.delete({
       where: {
-        id: id
+        idFood: id
       },
       data: {
         title: title,
