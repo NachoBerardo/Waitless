@@ -1,38 +1,39 @@
 import useQuery  from '@tanstack/react-query'
 //const myModule = require( '@tanstack/react-query').useQuery;
 //import { getFood, getAllFood, createFood, updateFood, deleteFood} from './database.js'
-const getFood = require('../index.js').getFood;
-const getAllFood = require('../index.js').getAllFood;
-const createFood = require('../index.js').createFood;
-const updateFood = require('../index.js').updateFood;
-const deleteFood = require('../index.js').deleteFood;
+const getFood = require('../index.js').getFoodWithPrisma;
+const getAllFood = require('../index.js').getAllFoodWithPrisma;
+const createFood = require('../index.js').createFoodWithPrisma;
+const updateFood = require('../index.js').updateFoodWithPrisma;
+const deleteFood = require('../index.js').deleteFoodWithPrisma;
 
 
-function llamarTodoMenu() {
+export function llamarTodoMenu() {
 // Access the client
+//Main poner un <QueryClientProvider client={queryClient}>
     const queryClient = useQueryClient()
   // Queries
     const allMenu = useQuery({ queryKey: ['todoMenu'], queryFn: getAllFood })
 }
-function llamarComida() {
+export function llamarComida() {
     // Access the client
         const queryClient = useQueryClient()
       // Queries
         const menuFood = useQuery({ queryKey: ['menuComida'], queryFn: getFood })
     }
-function crearComida() {
+export function crearComida() {
     // Access the client
         const queryClient = useQueryClient()
         // Queries
         const nuevoPedido = useQuery({ queryKey: ['creadoComida'], queryFn: createFood })
     }
-function borrarComida() {
+export function borrarComida() {
     // Access the client
         const queryClient = useQueryClient()
         // Queries
         const noPedido = useQuery({ queryKey: ['borradoComida'], queryFn: deleteFood })
     }
-function actualizarComida() {
+export function actualizarComida() {
     // Access the client
         const queryClient = useQueryClient()
         // Queries
@@ -54,7 +55,7 @@ function actualizarComida() {
           {noPedido.data?.map((todo) => (
             <li key={todo.id}>{todo.title}</li>
           ))}
-          {cambioComida.data?.map((todo) => (
+          {cambioComida.data?.map((todo) => ( 
             <li key={todo.id}>{todo.title}</li>
           ))}
         </ul>
