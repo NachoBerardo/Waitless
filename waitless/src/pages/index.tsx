@@ -6,6 +6,8 @@ import ScrollBar from "../components/scrollbar";
 import HeaderMenu from "../components/headerMenu";
 import PopUp from "../components/PopUp";
 import FooterMenu from "../components/footerMenu";
+import Flecha from "../../public/arrowBlack.svg"
+
 //import useQuery from "../apiFetch.js"
 //import QueryClientProvider from '@tanstack/react-query'
 //<QueryClientProvider client={queryClient}></QueryClientProvider>
@@ -230,13 +232,14 @@ export default function Menu() {
             <div className="h-screen w-screen pb-[7px] bg-white overflow-x-hidden no-scrollbar">
               <header className="top-0 w-full h-[67px] flex items-center justify-center bg-white drop-shadow-md relative" >
                 <h3 className="font-bold text-black">Pedido de tu mesa</h3>
-                  <button className=" absolute left-0 ml-4 h-[25px] w-[25px] bg-footer" onClick={(event) => handleClickArrowBack(false, true)}>
-                    <img src="arrowWhite.svg" alt="" />
+                  <button className=" absolute left-0 ml-4 h-[25px] w-[25px] " onClick={(event) => handleClickArrowBack(false, true)}>
+                    <img src="arrowBlack.svg" alt="" className="h-full w-full" />
                   </button>
               </header>
               <div className="h-full w-full p-2">
                 <div className="w-full h-fit ">
-                  <h3 className="text-black pl-2 pt-6 overflow-hidden inline-flex"> Papa al horno</h3>
+                <hr className="bg-LineaVerdePedido mt-9 h-[2px]"/>
+                  <h3 className="text-black pl-2 pt-16 overflow-hidden inline-flex"> Papa al horno</h3>
                   <p className="pl-2 text-letraGris">aaaaaaaaaaaaaaaaaaa</p>
                   <p className="pl-2 text-letraGrisOscuro pt-1 pb-4">500$</p>
                   <div className="w-full h-fit flex justify-center">

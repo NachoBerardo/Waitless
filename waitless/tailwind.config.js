@@ -52,6 +52,7 @@ module.exports = {
       'letraGris': '#25252580',
       'letraGrisOscuro': '#252525',
       'LineaPedido': '#E3EEEC',
+      'LineaVerdePedido': '#B4F1E6',
 
       
     }
