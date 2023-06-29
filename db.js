@@ -1,20 +1,20 @@
 import { PrismaClient } from "@prisma/client";
 
-const prisma = new PrismaClient();
+export const prisma = new PrismaClient();
 
-(async () => {
-    const response = await prisma.food.create({
-        data: {
-            name: "Matambre",
-            category: "Plato principal",
-            price: 2500,
-            description: "Exquisito matambre argentino relleno y enrollado, servido con guarnición de temporada.",
-            image: "",
-            video: "",
-        },
-    })
-    console.log(response);
-})();
+// (async () => {
+//     const response = await prisma.food.create({
+//         data: {
+//             name: "Matambre",
+//             category: "Plato principal",
+//             price: 2500,
+//             description: "Exquisito matambre argentino relleno y enrollado, servido con guarnición de temporada.",
+//             image: "",
+//             video: "",
+//         },
+//     })
+//     console.log(response);
+// })();
 
 /*(async () => {
   const updateFood = await prisma.Food.update({ //updateMany
