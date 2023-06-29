@@ -6,7 +6,8 @@ import ScrollBar from "../components/scrollbar";
 import HeaderMenu from "../components/headerMenu";
 import PopUp from "../components/PopUp";
 import FooterMenu from "../components/footerMenu";
-import Flecha from "../../public/arrowBlack.svg"
+import BtnSumarRestar from "../components/btnSumarRestar"
+
 
 //import useQuery from "../apiFetch.js"
 //import QueryClientProvider from '@tanstack/react-query'
@@ -239,10 +240,13 @@ export default function Menu() {
               <div className="h-full w-full">
               <hr className="bg-LineaVerdePedido mt-9 h-[2px] static"/>
               <p className="text-LineaVerdePedido absolute">Gimena</p>
-                <div className="w-full h-fit p-2" >
+                <div className="w-full h-fit p-2 ">
                   <h4 className="text-black pl-2 pt-[26px] overflow-hidden inline-flex" id="comidaPedido"> Papa al horno</h4>
                   <p className="pl-2 text-letraGris max-w-[156px]">aaaaaaaaaaaaaaaaaaa</p>
                   <p className="pl-2 text-letraGrisOscuro pt-1 pb-4">500$</p>
+                  <div className="h-fit w-fit right-0 top-0 ">
+                    <BtnSumarRestar></BtnSumarRestar>
+                  </div>
                   <div className="w-full h-fit flex justify-center">
                     <hr className="border-b bg-LineaPedido w-[90%] h-px mb-4"/>
                   </div>
