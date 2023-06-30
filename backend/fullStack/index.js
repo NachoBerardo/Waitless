@@ -1,7 +1,7 @@
 //const mysql = require('../mysql2');
 import mysql from 'mysql2';
 import dotenv from 'dotenv'
-
+//hola
 //import { prisma } from "../db.js"
 import { PrismaClient } from "@prisma/client";
 export const prisma = new PrismaClient();
