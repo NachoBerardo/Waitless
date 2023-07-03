@@ -3,7 +3,7 @@ import express from 'express' ;
 import { getAllFoodWithPrisma, getFoodWithPrisma, createFoodWithPrisma, updateFoodWithPrisma, deleteFoodWithPrisma} from '../index.js' 
 const app = express (); 
 const PORT = 3000;
-
+//h
 app.use(bodyParser.json()); 
 
 //Trae lo que pido
