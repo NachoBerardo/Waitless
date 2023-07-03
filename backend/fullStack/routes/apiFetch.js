@@ -1,43 +1,44 @@
-import useQuery  from '@tanstack/react-query'
+import { useQuery } from '@tanstack/react-query'
 //const myModule = require( '@tanstack/react-query').useQuery;
-//import { getFood, getAllFood, createFood, updateFood, deleteFood} from './database.js'
+import { getFoodWithPrisma, getAllFoodWithPrisma, createFoodWithPrisma, updateFoodWithPrisma, deleteFoodWithPrisma} from '../index.js'
+/*
 const getFood = require('../index.js').getFoodWithPrisma;
 const getAllFood = require('../index.js').getAllFoodWithPrisma;
 const createFood = require('../index.js').createFoodWithPrisma;
 const updateFood = require('../index.js').updateFoodWithPrisma;
 const deleteFood = require('../index.js').deleteFoodWithPrisma;
-
+*/
 
 export function llamarTodoMenu() {
 // Access the client
 //Main poner un <QueryClientProvider client={queryClient}>
     const queryClient = useQueryClient()
   // Queries
-    const allMenu = useQuery({ queryKey: ['todoMenu'], queryFn: getAllFood })
+    const allMenu = useQuery({ queryKey: ['todoMenu'], queryFn: getAllFoodWithPrisma })
 }
 export function llamarComida() {
     // Access the client
         const queryClient = useQueryClient()
       // Queries
-        const menuFood = useQuery({ queryKey: ['menuComida'], queryFn: getFood })
+        const menuFood = useQuery({ queryKey: ['menuComida'], queryFn: getFoodWithPrisma })
     }
 export function crearComida() {
     // Access the client
         const queryClient = useQueryClient()
         // Queries
-        const nuevoPedido = useQuery({ queryKey: ['creadoComida'], queryFn: createFood })
+        const nuevoPedido = useQuery({ queryKey: ['creadoComida'], queryFn: createFoodWithPrisma })
     }
 export function borrarComida() {
     // Access the client
         const queryClient = useQueryClient()
         // Queries
-        const noPedido = useQuery({ queryKey: ['borradoComida'], queryFn: deleteFood })
+        const noPedido = useQuery({ queryKey: ['borradoComida'], queryFn: deleteFoodWithPrisma })
     }
 export function actualizarComida() {
     // Access the client
         const queryClient = useQueryClient()
         // Queries
-        const cambioComida = useQuery({ queryKey: ['actualizadoComida'], queryFn: updateFood })
+        const cambioComida = useQuery({ queryKey: ['actualizadoComida'], queryFn: updateFoodWithPrisma })
     }
 /*
     return(
@@ -61,5 +62,18 @@ export function actualizarComida() {
         </ul>
         </div>
   )
+
+  {menuFood.data?.map((todo) => (
+              <li key={todo.idFood}>{todo.name}</li>
+            ))}
+            {nuevoPedido.data?(todo) => (
+              <li key={todo.idFood}>{todo.name}</li>
+            ))}
+            {noPedido.data?.map((todo) => (
+              <li key={todo.idFood}>{todo.name}</li>
+            ))}
+            {cambioComida.data?.map((todo) => ( 
+              <li key={todo.idFood}>{todo.name}</li>
+            ))}
   */
  

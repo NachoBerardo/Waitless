@@ -6,12 +6,14 @@ import ScrollBar from "../components/scrollbar";
 import HeaderMenu from "../components/headerMenu";
 import PopUp from "../components/PopUp";
 import FooterMenu from "../components/footerMenu";
-import Flecha from "../../public/arrowBlack.svg"
+import {useQuery} from '@tanstack/react-query';
+import {QueryClientProvider, QueryClient} from '@tanstack/react-query'
+import { llamarTodoMenu, llamarComida, crearComida, actualizarComida, borrarComida} from '../../../backend/fullStack/routes/apiFetch'
 
-//import useQuery from "../apiFetch.js"
-//import QueryClientProvider from '@tanstack/react-query'
-//<QueryClientProvider client={queryClient}></QueryClientProvider>
-//import { llamarTodoMenu, llamarComida, crearComida, actualizarComida, borrarComida} from '../apiFetch.js'
+
+
+const queryClient = new QueryClient();
+<QueryClientProvider client={queryClient}></QueryClientProvider>
 
 
 
