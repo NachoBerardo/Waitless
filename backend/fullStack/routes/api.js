@@ -14,7 +14,7 @@ res.json(menus)
 
 //Trae lo que quiero según su ID
 app.get("/menu/:id", async (req, res) => {
-const id = req.params.id
+const id = parseInt(req.params.id)
 const menu = await getFoodWithPrisma(id)
 res.json(menu)
 })
@@ -27,14 +27,14 @@ res.status(201).json(menu)
 })
 //Modifica de menu lo que quieras
 app.put("/menu/:id", async (req, res) => {
-const id = req.params.id
+const id = parseInt(req.params.id)
 const { title, contents } = req.body
 const menu = await updateFoodWithPrisma(title, contents, id)
 res.json(menu)
 })
 //Borra de menu lo que quieras
 app.delete("/menu/:id", async (req, res) => {
-const id = req.params.id
+const id = parseInt(req.params.id)
 const success = await deleteFoodWithPrisma(id)
 res.json({ success })
 })
