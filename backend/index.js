@@ -1,10 +1,8 @@
 //const mysql = require('../mysql2');
-import mysql from 'mysql2';
 import dotenv from 'dotenv'
 //hola
-//import { prisma } from "../db.js"
-import { PrismaClient } from "@prisma/client";
-export const prisma = new PrismaClient();
+import { prisma } from "./db.js"
+
 
 //dotenv  = require ('../dotenv');
 dotenv.config() 
@@ -15,14 +13,13 @@ dotenv.config()
   return rows}
 */
 
-
-export const getAllFoodWithPrisma = async () => {
+export const getAllFoodWithPrisma = async (req, res) => {
   try {
     const getFood = await prisma.food.findMany()
 
     if(!getFood) return console.log("not food found")
 
-    return getFood
+    return res.json({message: "Food found", data: getFood})
   } catch (error) {
     console.log(error)    
   }

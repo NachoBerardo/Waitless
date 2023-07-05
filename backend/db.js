@@ -1,5 +1,5 @@
-//import { PrismaClient } from "@prisma/client";
-//export const prisma = new PrismaClient();
+import { PrismaClient } from "@prisma/client";
+export const prisma = new PrismaClient();
 
 // (async () => {
 //     const response = await prisma.food.create({
