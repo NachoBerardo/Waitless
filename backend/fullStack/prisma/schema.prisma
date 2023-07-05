@@ -23,3 +23,10 @@ model Food {
   //sendedAt DateTime @default(now())
   //idFood tabla de relacion
 //}
+
+
+model Mozo{
+  idMozo Int @id @default(autoincrement())
+  nombreMozo String 
+}
+
