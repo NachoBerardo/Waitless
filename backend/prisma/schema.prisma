@@ -9,17 +9,41 @@ datasource db {
 }
 
 model Food {
-  idFood      Int    @id @default(autoincrement())
-  category    String
-  name        String
-  price       Int
-  description String
-  image       String 
-  video       String 
+  idFood       Int      @id @default(autoincrement())
+  category     String
+  name         String
+  price        Int
+  description  String?
+  //sideDish  Boolean
+  image        String
+  video        String?
+  foodOrder    Order?  @relation(fields: [orderId], references: [idOrder])
+  orderId  Int?
 }
 
-//model Order {
-  //id Int @id @default(autoincrement())
-  //sendedAt DateTime @default(now())
-  //idFood tabla de relacion
-//}
+model Order{
+  idOrder    Int      @id @default(autoincrement())
+  sendedAt   DateTime @default(now())
+  aclaration String?
+  foods      Food[]
+  foodIdFood Int
+}
+
+model Table{
+  idTable Int     @id @default(autoincrement())
+  state   Boolean
+  area    Int?
+}
+
+model Mozo{
+  idMozo Int @id @default(autoincrement())
+  nombreMozo String 
+}
+
+model Commands{
+  idComanda String @id @default(uuid())
+  sendedAt DateTime @default(now()) 
+  total Float 
+  //idMesa
+  //idPedido
+}
