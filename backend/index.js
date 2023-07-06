@@ -24,16 +24,7 @@ export const getAllFoodWithPrisma = async (req, res) => {
     console.log(error)    
   }
 }
-/*
-export async function getFood(id) {
-  const [rows] = await connection.query(`
-  SELECT * 
-  FROM Food
-  WHERE id = ?
-  `, [id])
-  return rows[0]
-}
-*/
+
 export const getFoodWithPrisma = async (id) => {
   try {
     const getFood = await prisma.food.findUnique({
@@ -50,16 +41,6 @@ export const getFoodWithPrisma = async (id) => {
   }
 }
 
-/*
-export async function createFood(title, contents) {
-  const [result] = await connection.query(`
-  INSERT INTO Food (title, contents)
-  VALUES (?, ?)
-  `, [title, contents])
-  const id = result.insertId
-  return getFood(id)
-}
-*/
 export const createFoodWithPrisma = async (title, contents) => {
   try {
     const createFood = await prisma.food.create({
@@ -76,17 +57,7 @@ export const createFoodWithPrisma = async (title, contents) => {
     console.log(error)    
   }
 }
-/*
-export async function updateFood(title, contents,id) {
-  const [result] = await connection.query(`
-  UPDATE Food
-  SET title = ?, contents = ?, created  = NOW() 
-  where id = ?
-  `, [title, contents,id])
-  
-  return getFood(id)
-  }
-  */
+
 export const updateFoodWithPrisma = async (title, contents, id) => {
   try {
     const updateFood = await prisma.food.update({
@@ -106,15 +77,7 @@ export const updateFoodWithPrisma = async (title, contents, id) => {
     console.log(error)    
   }
 }
-/*
-export async function deleteFood(id) {
-  const [result] = await connection.query(`
-  DELETE FROM Food
-  WHERE id = ?
-  `, [id])
-  return result.affectedRows > 0
-}
-*/
+
 export const deleteFoodWithPrisma = async (title, contents, id) => {
   try {
     const deleteFood = await prisma.food.delete({

@@ -8,7 +8,7 @@ import PopUp from "../components/PopUp";
 import FooterMenu from "../components/footerMenu";
 import {useQuery} from '@tanstack/react-query';
 import {QueryClientProvider, QueryClient} from '@tanstack/react-query'
-import { llamarTodoMenu, llamarComida, crearComida, actualizarComida, borrarComida} from '../../../backend/fullStack/routes/apiFetch'
+import { llamarTodoMenu, llamarComida, crearComida, actualizarComida, borrarComida} from '../../../backend/routes/apiFetch'
 
 
 

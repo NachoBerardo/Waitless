@@ -1,28 +1,73 @@
-import {QueryClientProvider, QueryClient} from '@tanstack/react-query'
-import { llamarTodoMenu, llamarComida, crearComida, actualizarComida, borrarComida} from '../../../backend/fullStack/routes/apiFetch'
+import { QueryClientProvider, QueryClient, useQueryClient } from '@tanstack/react-query'
+import { llamarTodoMenu, llamarComida, crearComida, actualizarComida, borrarComida } from '../../../backend/routes/apiFetch'
 import { useQuery } from '@tanstack/react-query'
-import { getFoodWithPrisma, getAllFoodWithPrisma, createFoodWithPrisma, updateFoodWithPrisma, deleteFoodWithPrisma} from '../../../backend/fullStack/index.js'
+import { useEffect, useState } from 'react'
+import axios from 'axios'
 
-const queryClient = new QueryClient();
-<QueryClientProvider client={queryClient}></QueryClientProvider>
+interface MenuTypes {
+  idFood: number
+  category: string
+  name: string
+  description: string
+}
 
-const allMenu = useQuery({ queryKey: ['todoMenu'], queryFn: getAllFoodWithPrisma })
-const menuFood = useQuery({ queryKey: ['menuComida'], queryFn: getFoodWithPrisma })
-const nuevoPedido = useQuery({ queryKey: ['creadoComida'], queryFn: createFoodWithPrisma })
-const noPedido = useQuery({ queryKey: ['borradoComida'], queryFn: deleteFoodWithPrisma })
-const cambioComida = useQuery({ queryKey: ['actualizadoComida'], queryFn: updateFoodWithPrisma })
+const Abru = () => {
+  const [menu, setMenu] = useState<MenuTypes[]>([])
+  // const allMenu = useQuery({
+  //   queryKey: ['todoMenu'], queryFn: async () => {
+  //     const response = await fetch("http://localhost:3001/", {
+  //       mode: "no-cors",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //     }).then((response) => console.log(response.json()))
+  //   }
+  // })
+  //const menuFood = useQuery({ queryKey: ['menuComida'], queryFn: getFoodWithPrisma })
+  //const nuevoPedido = useQuery({ queryKey: ['creadoComida'], queryFn: createFoodWithPrisma })
+  //const noPedido = useQuery({ queryKey: ['borradoComida'], queryFn: deleteFoodWithPrisma })
+  //const cambioComida = useQuery({ queryKey: ['actualizadoComida'], queryFn: updateFoodWithPrisma })
 
-export default function Abru() {
+
+  const getAllMenus = async () => {
+    try {
+      await axios.get("http://localhost:3001/menu").then((response) => {
+        response.data !== [] ? setMenu(response.data.data) : []
+      }).catch((err) => console.log(err))
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  useEffect(() => {
+    getAllMenus()
+  }, [])
+
+  useEffect(() => {
+    console.log(menu)
+  }, [menu])
+
   return (
-    
-        <div>
-          <ul>
-            {allMenu.data?.map((todo) => (
-              <li key={todo.idFood}>{todo.name}</li>
-            ))}
-            
-          </ul>
-          </div>
-    
+    <div>
+      <ul>
+        {
+          Array.isArray(menu) ? (
+            menu.map((item, index) => {
+              return (
+                <li key={index} className="">
+                  <h2>{item.name}</h2>
+                  <strong>{item.category}</strong>
+                  <p>
+                    {item.description}
+                  </p>
+                </li>
+              )
+            })
+          ) : "ESTA VACIO"
+        }
+      </ul>
+    </div>
   );
 }
+
+export default Abru
