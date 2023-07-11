@@ -39,9 +39,7 @@ const Abru = () => {
     }
   }
 
-  useEffect(() => {
-    getAllMenus()
-  }, [])
+  getAllMenus()
 
   useEffect(() => {
     console.log(menu)

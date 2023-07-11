@@ -4,7 +4,14 @@ import  FooterPopUp  from "./footerPopUp";
 import { useState } from "react";
 
 interface Props {
-  combinedArray: string[][][];
+  combinedArray: [[{
+    //idFood: string;
+    name: string ;
+    description: string;
+   // category: string;
+    price: string;
+    image: string;
+  }]];
   arrayUsed: number; 
   keyPlato: number; 
   setShowPopUP: React.Dispatch<React.SetStateAction<boolean>>;
@@ -18,15 +25,15 @@ const PopUp: React.FC<Props> = ({combinedArray, arrayUsed, keyPlato, setShowPopU
   };
 
   return <div className="h-screen w-screen pb-[7px] bg-background_popup overflow-x-hidden no-scrollbar">
-   <HeaderPlato url={combinedArray[arrayUsed][keyPlato][1]} setShowPopUP={setShowPopUP} setShowMenu={setShowMenu}/>
+   <HeaderPlato url={combinedArray[arrayUsed][keyPlato].image} setShowPopUP={setShowPopUP} setShowMenu={setShowMenu}/>
     <div className="w-screen h-fit pb-4 bg-background overflow-scroll drop-shadow-md">
       <h4 className="text pt-4 px-4 text-black">
-        {combinedArray[arrayUsed][keyPlato][0]}
+        {combinedArray[arrayUsed][keyPlato].name}
       </h4>
       <p className="text pt-1 px-4 text-populetter leading-snug ">
-        {combinedArray[arrayUsed][keyPlato][2]}
+        {combinedArray[arrayUsed][keyPlato].description}
       </p>
-      <p className="text-black px-4 pt-1 font-bold">{combinedArray[arrayUsed][keyPlato][3]}$</p>
+      <p className="text-black px-4 pt-1 font-bold">{combinedArray[arrayUsed][keyPlato].price}$</p>
     </div>
     <div className="w-screen h-fit pb-4 bg-background overflow-scroll mt-2 relative drop-shadow-md">
       <h4 className="text-black pt-4 px-4 w-fit">Guarnicion</h4>
@@ -54,7 +61,7 @@ const PopUp: React.FC<Props> = ({combinedArray, arrayUsed, keyPlato, setShowPopU
       </div>
     </div>
 
-    <FooterPopUp titulo={combinedArray[arrayUsed][keyPlato][0]} descripcion={combinedArray[arrayUsed][keyPlato][2]} precio={combinedArray[arrayUsed][keyPlato][3]}setShowPopUP={setShowPopUP} setShowMenu={setShowMenu}/>
+    <FooterPopUp titulo={combinedArray[arrayUsed][keyPlato].image} descripcion={combinedArray[arrayUsed][keyPlato].description} precio={combinedArray[arrayUsed][keyPlato].price}setShowPopUP={setShowPopUP} setShowMenu={setShowMenu}/>
   </div>;
 }
 export default PopUp

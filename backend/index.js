@@ -1,17 +1,8 @@
 //const mysql = require('../mysql2');
 import dotenv from 'dotenv'
-//hola
 import { prisma } from "./db.js"
-
-
 //dotenv  = require ('../dotenv');
 dotenv.config() 
-// const connection = mysql.createConnection(process.env.DATABASE_URL).promise()
-//console.log('Connected to PlanetScale!')
-/* export async function getAllFood()  {
-  const [rows] = await connection.query("SELECT * FROM Food")
-  return rows}
-*/
 
 export const getAllFoodWithPrisma = async (req, res) => {
   try {
