@@ -13,19 +13,20 @@ import axios from "axios";
 
 
 
-interface MenuTypes {
-  idFood: number
-  category: string
-  name: string
-  description: string
-  image : string
+export interface MenuTypes {
+  idFood: number;
+  category: string;
+  price: string;
+  name: string;
+  description: string;
+  image : string;
 }
 
 const queryClient = new QueryClient();
 <QueryClientProvider client={queryClient}></QueryClientProvider>
 
 const inter = Inter({ subsets: ["latin"] });
-const [menu, setMenu] = useState<MenuTypes[]>([])
+const [menu, setMenu] = useState<MenuTypes[][]>([])
 export default function Menu() {
   // const entradas = [
   //   [
@@ -91,21 +92,41 @@ export default function Menu() {
   //   ["Dulce de Leche", "/dulcedeleche.jpeg", "dulce de leche", "300"],
   //   ["Flan", "", "Mixto o bala", "1000"],
   // ];
+//const entrada = "Entrada";
 
-  
-  const platoEntrada = menu.filter((plato) => {
-  return plato.category === "Entrada";
-  });
-  const platoPrincipal = menu.filter((plato) => {
-  return plato.category === "Principal";
-  });
-  const platoPostre = menu.filter((plato) => {
-  return plato.category === "Postre";
-  });
-  const combinedArray = [platoEntrada, platoPrincipal, platoPostre];
+let platoEntrada: MenuTypes[][] = [];
+let platoPrincipal: MenuTypes[][] = [];
+let platoPostre: MenuTypes[][] = [];
 
+  for (let i = 0; i < menu.length; i++) {  
+    platoEntrada = menu.filter((plato) => {
+    return plato[i].category === "Entrada";
+    });
+    platoPrincipal = menu.filter((plato) => {
+    return plato[i].category === "Principal";
+    });
+    platoPostre = menu.filter((plato) => {
+    return plato[i].category === "Postre";
+    });
+  }
+  let combinedArray = [platoEntrada, platoPrincipal, platoPostre];
+  console.log(combinedArray);
+    
+    // for (let i = 0; i < menu.length; i++) {
+    //   const currentPlato = menu[i];
+    //   if (currentPlato.category === "Entrada") {
+    //     platoEntrada.push(currentPlato);
+    //   } else if (currentPlato.category === "Principal") {
+    //     platoPrincipal.push(currentPlato);
+    //   } else if (currentPlato.category === "Postre") {
+    //     platoPostre.push(currentPlato);
+    //   }
+    // }
+    
+    // const combinedArray = [platoEntrada, platoPrincipal, platoPostre];
+    
 
- 
+    
 
   const getAllMenus = async () => {
     try {

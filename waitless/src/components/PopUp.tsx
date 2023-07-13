@@ -2,16 +2,10 @@ import HeaderPlato  from "./headerPlato";
 import { acompañamientos } from "./acompañamientos";
 import  FooterPopUp  from "./footerPopUp";
 import { useState } from "react";
+import { MenuTypes } from "@/pages";
 
 interface Props {
-  combinedArray: [[{
-    //idFood: string;
-    name: string ;
-    description: string;
-   // category: string;
-    price: string;
-    image: string;
-  }]];
+  combinedArray: MenuTypes[][]; 
   arrayUsed: number; 
   keyPlato: number; 
   setShowPopUP: React.Dispatch<React.SetStateAction<boolean>>;
