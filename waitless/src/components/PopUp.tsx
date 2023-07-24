@@ -23,7 +23,7 @@ const PopUp: React.FC<Props> = ({combinedArray, arrayUsed, keyPlato, setShowPopU
       <h4 className="text pt-4 px-4 text-black">
         {combinedArray[arrayUsed][keyPlato][0]}
       </h4>
-      <p className="text pt-1 px-4 text-populetter leading-snug ">
+      <p className="text pt-1 px-4 text-populetter leading-tight not-italic">
         {combinedArray[arrayUsed][keyPlato][2]}
       </p>
       <p className="text-black px-4 pt-1 font-bold">{combinedArray[arrayUsed][keyPlato][3]}$</p>
@@ -50,11 +50,11 @@ const PopUp: React.FC<Props> = ({combinedArray, arrayUsed, keyPlato, setShowPopU
     <div className="w-screen h-fit pb-4 mb-24 bg-background overflow-scroll mt-2 relative drop-shadow-md">
       <h4 className="text-black px-4 pt-4 pb-3">¿Tenes alguna especificacion?</h4>
       <div className="flex h-full w-full justify-center">
-        <input type="text" className="w-[90%] h-20 bg-input text-black px-4 pb-4" placeholder="Especificaciones..." />
+        <input type="text" className="w-[90%] h-20 bg-input text-black px-4 pb-4 focus:outline-none focus:ring-2 ring-FocusEspecificaciones" placeholder="Especificaciones..." />
       </div>
     </div>
 
-    <FooterPopUp titulo={combinedArray[arrayUsed][keyPlato][0]} descripcion={combinedArray[arrayUsed][keyPlato][2]} precio={combinedArray[arrayUsed][keyPlato][3]}setShowPopUP={setShowPopUP} setShowMenu={setShowMenu}/>
+    <FooterPopUp titulo={combinedArray[arrayUsed][keyPlato][0]} descripcion={combinedArray[arrayUsed][keyPlato][2]} precio={combinedArray[arrayUsed][keyPlato][3]} setShowPopUP={setShowPopUP} setShowMenu={setShowMenu}/>
   </div>;
 }
 export default PopUp

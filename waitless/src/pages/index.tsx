@@ -222,38 +222,46 @@ export default function Menu() {
             <div className="h-screen w-screen pb-[7px] bg-white overflow-x-hidden no-scrollbar">
               <header className="top-0 w-full h-[67px] flex items-center justify-center bg-white drop-shadow-md relative" >
                 <h3 className="font-bold text-black">Pedido de tu mesa</h3>
-                  <button className=" absolute left-0 ml-4 h-[25px] w-[25px] bg-footer" onClick={(event) => handleClickArrowBack(false, true)}>
-                    <img src="arrowWhite.svg" alt="" />
+                  <button className=" absolute left-0 ml-4 h-[25px] w-[25px] rotate-[270deg]" onClick={(event) => handleClickArrowBack(false, true)}>
+                    <img src="arrow-up.svg" alt="" />
                   </button>
-              </header>
-              <div className="h-full w-full p-2">
-                <div className="w-full h-fit ">
-                  <h3 className="text-black pl-2 pt-6 overflow-hidden inline-flex"> Papa al horno</h3>
-                  <p className="pl-2 text-letraGris">aaaaaaaaaaaaaaaaaaa</p>
-                  <p className="pl-2 text-letraGrisOscuro pt-1 pb-4">500$</p>
-                  <div className="w-full h-fit flex justify-center">
-                    <hr className="border-b bg-LineaPedido w-[90%] h-px mb-4"/>
+              </header>z
+              <div className="h-full w-full p-5">
+                <div className=" h-fit w-full">
+                  <div className="w-full h-fit flex items-center pb-2 pl-1">
+                    <h4 className="text-black">Caro</h4>
+                    <div className="relative w-[90%] h-2">
+                      <hr className="text-black border-b w-full h-px absolute top-1/2 ml-2 " />
+                    </div>
                   </div>
-                </div>
-                <div className="w-full h-fit ">
-                  <h3 className="text-black pl-2 pt-6 overflow-hidden inline-flex"> Papa al horno</h3>
-                  <p className="pl-2 text-letraGris">aaaaaaaaaaaaaaaaaaa</p>
-                  <p className="pl-2 text-letraGrisOscuro pt-1 pb-4">500$</p>
-                  <div className="w-full h-fit flex justify-center">
-                    <hr className="border-b bg-LineaPedido w-[90%] h-px mb-4"/>
-                  </div>
-                </div>
-                <div className="w-full h-fit ">
-                  <h3 className="text-black pl-2 pt-6 overflow-hidden inline-flex"> Papa al horno</h3>
-                  <p className="pl-2 text-letraGris">aaaaaaaaaaaaaaaaaaa</p>
-                  <p className="pl-2 text-letraGrisOscuro pt-1 pb-4">500$</p>
-                  <div className="w-full h-fit flex justify-center">
-                    <hr className="border-b bg-LineaPedido w-[90%] h-px mb-4"/>
+                  <div className="w-full h-fit pedido-box-shadow mb-6 rounded-[10px]">
+                    <h3 className="text-black pl-2 pt-6 overflow-hidden inline-flex"> Papa al horno</h3>
+                    <p className="pl-2 text-letraGris">aaaaaaaaaaaaaaaaaaa</p>
+                    <p className="pl-2 text-letraGrisOscuro pt-1 pb-4">500$</p>
+                    <div className="w-full h-fit flex justify-center">
+                      <hr className="border-b bg-LineaPedido w-[90%] h-px mb-4"/>
+                    </div>
                   </div>
                 </div>
 
-              
+                <div className=" h-fit w-full">
+                  <div className="w-full h-fit flex items-center pb-2 pl-1">
+                    <h4 className="text-black">Abril</h4>
+                    <div className="relative w-[90%] h-2">
+                      <hr className="text-black border-b w-full h-px absolute top-1/2 ml-2 " />
+                    </div>
+                  </div>
+                  <div className="w-full h-fit pedido-box-shadow mb-6 rounded-[10px]">
+                    <h3 className="text-black pl-2 pt-6 overflow-hidden inline-flex"> Papa firta</h3>
+                    <p className="pl-2 text-letraGris">bbbbbbbbbbbbb</p>
+                    <p className="pl-2 text-letraGrisOscuro pt-1 pb-4">900$</p>
+                    <div className="w-full h-fit flex justify-center">
+                      <hr className="border-b bg-LineaPedido w-[90%] h-px mb-4"/>
+                    </div>
+                  </div>
+                </div>
               </div>
+              
             </div>
           </>
         ) : (<></>)}

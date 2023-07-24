@@ -31,6 +31,10 @@ module.exports = {
       '2xl': '1536px',
       // => @media (min-width: 1536px) { ... }
     },
+    
+    fontFamily: {
+      sans: ['"PT Sans"', 'sans-serif']
+    },
 
     colors:{
       'footer': '#04AA6D',
@@ -48,6 +52,7 @@ module.exports = {
       'letraGris': '#25252580',
       'letraGrisOscuro': '#252525',
       'LineaPedido': '#E3EEEC',
+      'FocusEspecificaciones': '#9A9898',
 
       
     }

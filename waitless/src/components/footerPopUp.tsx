@@ -13,14 +13,14 @@ interface Order{
   price: string;
 }
 const FooterPopUp: React.FC<Props> = ({titulo, descripcion, precio, setShowPopUP, setShowMenu}) => {
-  const [cantidad, setCantidad] = useState(0);
+  const [cantidad, setCantidad] = useState(1);
   const [pedido, setPedido] = useState<Order[]>([]);
   const handleClickSumar = () => {
     setCantidad(cantidad + 1);
   };
 
   const handleClickRestar = () => {
-    if(cantidad>=1){
+    if(cantidad>1){
       setCantidad(cantidad - 1);
     }
   };

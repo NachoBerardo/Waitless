@@ -1,3 +1,5 @@
+import { useState, useEffect } from "react";
+
 const ScrollBar:React.FC = () => {
   const handleClickScroll = (id:string) => {
     const element = document.getElementById(id);
@@ -12,6 +14,8 @@ const ScrollBar:React.FC = () => {
       })
     }
   };
+
+  
   return <div className=" w-full h-[40px] overflow-x-auto gap-5 bg-white flex place-items-center drop-shadow-md sticky top-0 no-scrollbar">
     <a onClick={(event) => handleClickScroll("entradas")} className="pl-5 text-black font-bold text-md h-full grid place-content-center  active:text-btngreen ">
       Entradas
