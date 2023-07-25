@@ -36,6 +36,10 @@ module.exports = {
       sans: ['"PT Sans"', 'sans-serif']
     },
 
+    fontFamily:{
+      'open-sans':'Open Sans',
+    },
+
     colors:{
       'footer': '#04AA6D',
       'footer_hover': '#3e8e41',
@@ -53,7 +57,7 @@ module.exports = {
       'letraGrisOscuro': '#252525',
       'LineaPedido': '#E3EEEC',
       'FocusEspecificaciones': '#9A9898',
-
+      'LineaVerdePedido': '#B4F1E6',
       
     }
   },

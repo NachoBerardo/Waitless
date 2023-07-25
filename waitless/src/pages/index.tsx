@@ -251,6 +251,7 @@ export default function Menu() {
                       <hr className="text-black border-b w-full h-px absolute top-1/2 ml-2 " />
                     </div>
                   </div>
+                  
                   <div className="w-full h-fit pedido-box-shadow mb-6 rounded-[10px]">
                     <h3 className="text-black pl-2 pt-6 overflow-hidden inline-flex"> Papa firta</h3>
                     <p className="pl-2 text-letraGris">bbbbbbbbbbbbb</p>
