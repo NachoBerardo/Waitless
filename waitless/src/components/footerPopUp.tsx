@@ -14,7 +14,6 @@ interface Order{
   price: string;
 }
 const FooterPopUp: React.FC<Props> = ({titulo, descripcion, precio, setShowPopUP, setShowMenu}) => {
-<<<<<<< HEAD
   const [cantidad, setCantidad] = useState(1);
   const [pedido, setPedido] = useState<Order[]>([]);
   const handleClickSumar = () => {
@@ -27,10 +26,6 @@ const FooterPopUp: React.FC<Props> = ({titulo, descripcion, precio, setShowPopUP
     }
   };
 
-=======
-  const [pedido, setPedido] = useState<Order[]>([]);
-  
->>>>>>> 424e8ccef8b9366cfe103a95840d9559191a4765
   const handlePedido = () =>{
     addPedido(titulo, descripcion, precio);
     console.log(pedido);

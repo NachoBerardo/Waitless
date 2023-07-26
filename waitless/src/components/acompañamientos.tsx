@@ -1,6 +1,6 @@
 export function acompañamientos() {
   return(
-    <fieldset>
+    <fieldset >
       <div className="h-full w-full p-2">
         <div className="w-full h-full pb-4">
           <p className="text-black pl-2  overflow-hidden inline-flex"> Papa al horno{" "}</p>
