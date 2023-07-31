@@ -1,5 +1,7 @@
 import FooterMenu from "./footerMenu";
 import BtnSumarRestar2 from "./btnSumarRestar2";
+import { useState } from "react";
+
 
 interface Props { 
   setShowPedido: React.Dispatch<React.SetStateAction<boolean>>;
@@ -9,10 +11,17 @@ const ContenidoPedido:React.FC<Props> = ({setShowPedido, setShowMenu}) => {
   const handleClickArrowBack = (pedido:boolean, Menu: boolean) =>{
     setShowPedido(pedido);
     setShowMenu(Menu);
-    
   }
+  const [showPedidoEnviado, setShowPedidoEnviado] = useState(false);
 
-  return <div className="h-screen w-screen pb-[7px] bg-white overflow-x-hidden no-scrollbar">
+  return <main>
+    {showPedidoEnviado ? (
+        <>
+          <div className="h-full w-full bg-footer"></div>
+        </>
+        ) : (
+        <>
+          <div className="h-screen w-screen pb-[7px] bg-white overflow-x-hidden no-scrollbar">
     <header className="top-0 w-full h-[67px] flex items-center justify-center bg-white drop-shadow-md relative">
       <h3 className="font-bold text-black">Pedido de tu mesa</h3>
       <button className=" absolute left-0 ml-4 h-[25px] w-[25px] " onClick={(event) => handleClickArrowBack(false, true)}>
@@ -54,13 +63,10 @@ const ContenidoPedido:React.FC<Props> = ({setShowPedido, setShowMenu}) => {
             <BtnSumarRestar2></BtnSumarRestar2>
           </div>
         </div>
-        <div className="w-full h-fit flex justify-center">
-          <hr className="border-b bg-LineaPedido w-[100%] h-px mb-4 mx-7" />
-        </div>
 
         {/* separadooooooor */}
 
-        <div className=" flex mt-9 ">
+        <div className=" flex mt-3">
           <div className="relative w-[100%] h-6">
             <hr className="bg-populetter h-[4px] w-full absolute bottom-[35%]" />
           </div>
@@ -93,13 +99,13 @@ const ContenidoPedido:React.FC<Props> = ({setShowPedido, setShowMenu}) => {
             <BtnSumarRestar2></BtnSumarRestar2>
           </div>
         </div>
-        <div className="w-full h-fit flex justify-center">
-          <hr className="border-b bg-LineaPedido w-[100%] h-px mb-4 mx-7" />
-        </div>
-
       </div>
     </div>
-    <FooterMenu setShowPedido={setShowMenu} setShowMenu={setShowPedido} txtBoton="Enviar Pedido" />
-  </div>;
+    <FooterMenu setShowPedido={setShowMenu} setShowMenu={setShowMenu} setShowPedidoEnviado={setShowPedido} txtBoton="Enviar Pedido" />
+  </div>
+        </>
+        )}
+    
+    </main>;
 }
 export default ContenidoPedido;

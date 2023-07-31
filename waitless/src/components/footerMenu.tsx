@@ -2,6 +2,7 @@ import { useState } from "react";
 interface Props { 
   setShowPedido: React.Dispatch<React.SetStateAction<boolean>>;
   setShowMenu: React.Dispatch<React.SetStateAction<boolean>>;
+  setShowPedidoEnviado: React.Dispatch<React.SetStateAction<boolean>>;
   txtBoton: string;
 }
 

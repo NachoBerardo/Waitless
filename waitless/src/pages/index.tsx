@@ -213,14 +213,15 @@ export default function Menu() {
                 </div>
               ))}
             </div>
-            <FooterMenu setShowPedido={setShowPedido} setShowMenu={setShowMenu} txtBoton="Ver Pedido"/>
+            <FooterMenu setShowPedido={setShowPedido} setShowMenu={setShowMenu} setShowPedidoEnviado={setShowMenu} txtBoton="Ver Pedido"/>
           </>
         ) : (<></>)}
         {showPedido ? (
         <>
-          <ContenidoPedido setShowMenu={setShowMenu} setShowPedido={setShowPedido}/>
+          <ContenidoPedido setShowMenu={setShowMenu} setShowPedido={setShowPedido} />
         </>
         ) : (<></>)}
+
       </div>
     </main>
   );
