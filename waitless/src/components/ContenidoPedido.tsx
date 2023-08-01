@@ -17,7 +17,14 @@ const ContenidoPedido:React.FC<Props> = ({setShowPedido, setShowMenu}) => {
   return <main>
     {showPedidoEnviado ? (
         <>
-          <div className="h-full w-full bg-footer"></div>
+          <div className="h-screen w-screen bg-white grid items-center">
+            <div className=" h-fit w-fit grid place-items-center ">
+              <h3 className="text-black mx-6 text-center font-normal">Tu pedido fue enviado y está en preparación</h3>
+              <button className="rounded-[40px] w-[168px] h-[38px] bg-btngreen mt-7">
+                <h5 className="text-white">Volver al Menu</h5>
+              </button>
+            </div>
+          </div>
         </>
         ) : (
         <>
@@ -101,7 +108,7 @@ const ContenidoPedido:React.FC<Props> = ({setShowPedido, setShowMenu}) => {
         </div>
       </div>
     </div>
-    <FooterMenu setShowPedido={setShowMenu} setShowMenu={setShowMenu} setShowPedidoEnviado={setShowPedido} txtBoton="Enviar Pedido" />
+    <FooterMenu setShowPedido={setShowPedido} setShowMenu={setShowMenu} setShowPedidoEnviado={setShowPedidoEnviado} EstadoPedidoEnviado={true} EstadoMenu={false} EstadoPedido={true} txtBoton="Enviar Pedido" />
   </div>
         </>
         )}
