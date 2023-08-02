@@ -19,22 +19,25 @@ export interface MenuTypes {
   price: string;
   name: string;
   description: string;
-  image : string;
+  image: string;
 }
 
 const queryClient = new QueryClient();
 <QueryClientProvider client={queryClient}></QueryClientProvider>
 
 const inter = Inter({ subsets: ["latin"] });
-const [menu, setMenu] = useState<MenuTypes[][]>([])
+
+
+
 export default function Menu() {
+  const [menu, setMenu] = useState<MenuTypes[]>([]);
   // const entradas = [
-  //   [
-  //     "Provoleta",
-  //     "/provoleta.jpg",
-  //     "Deliciosa provoleta de leche de vaca fundida, acompañada de sabrosos condimentos",
-  //     "2234",
-  //   ],
+  //   {
+  //     nombre: "Provoleta",
+  //     imagen: "/provoleta.jpg",
+  //     descripcion: "Deliciosa provoleta de leche de vaca fundida, acompañada de sabrosos condimentos",
+  //     precio: "2234",
+  //   },
   //   [
   //     "Empanadas",
   //     "/empanada.jpg",
@@ -92,41 +95,43 @@ export default function Menu() {
   //   ["Dulce de Leche", "/dulcedeleche.jpeg", "dulce de leche", "300"],
   //   ["Flan", "", "Mixto o bala", "1000"],
   // ];
-//const entrada = "Entrada";
+  //const entrada = "Entrada";
 
-let platoEntrada: MenuTypes[][] = [];
-let platoPrincipal: MenuTypes[][] = [];
-let platoPostre: MenuTypes[][] = [];
+  const separateMenuItemsByCategory = (menuItems: MenuTypes[]): MenuTypes[][] => {
+    let platoEntrada: MenuTypes[] = [];
+    let platoPrincipal: MenuTypes[] = [];
+    let platoPostre: MenuTypes[] = [];
 
-  for (let i = 0; i < menu.length; i++) {  
-    platoEntrada = menu.filter((plato) => {
-    return plato[i].category === "Entrada";
-    });
-    platoPrincipal = menu.filter((plato) => {
-    return plato[i].category === "Principal";
-    });
-    platoPostre = menu.filter((plato) => {
-    return plato[i].category === "Postre";
-    });
-  }
-  let combinedArray = [platoEntrada, platoPrincipal, platoPostre];
-  console.log(combinedArray);
-    
-    // for (let i = 0; i < menu.length; i++) {
-    //   const currentPlato = menu[i];
-    //   if (currentPlato.category === "Entrada") {
-    //     platoEntrada.push(currentPlato);
-    //   } else if (currentPlato.category === "Principal") {
-    //     platoPrincipal.push(currentPlato);
-    //   } else if (currentPlato.category === "Postre") {
-    //     platoPostre.push(currentPlato);
-    //   }
-    // }
-    
-    // const combinedArray = [platoEntrada, platoPrincipal, platoPostre];
-    
+    const entradas = menuItems.filter((item) => item.category === "Entrada");
+    const principales = menuItems.filter((item) => item.category === "Principal");
+    const postres = menuItems.filter((item) => item.category === "Postre");
 
-    
+    return [entradas, principales, postres];
+  };
+  const combinedArray = separateMenuItemsByCategory(menu);
+  /*
+    for (let i = 0; i < menu.length; i++) {  
+      platoEntrada = menu.filter((plato) => {
+      return plato[i].category === "Entrada";
+      });
+      platoPrincipal = menu.filter((plato) => {
+      return plato[i].category === "Principal";
+      });
+      platoPostre = menu.filter((plato) => {
+      return plato[i].category === "Postre";
+      });
+    }
+    let combinedArray = [platoEntrada, platoPrincipal, platoPostre];
+    console.log(combinedArray);
+    */
+
+  // const combinedArray = [platoEntrada, platoPrincipal, platoPostre];
+  /*
+  for (let i = 0; i < combinedArray.length; i++) {
+    const currentPlato = combinedArray[i];
+  }  
+*/
+
 
   const getAllMenus = async () => {
     try {
@@ -178,11 +183,12 @@ let platoPostre: MenuTypes[][] = [];
   }
 
   return (
+
     <main className="">
       <div className="h-screen w-screen pb-[7px] bg-background overflow-x-hidden no-scrollbar" id="general">
         {showPopUP ? (
           <PopUp
-            combinedArray={menu}
+            combinedArray={combinedArray}
             arrayUsed={arrayUsed}
             keyPlato={keyPlato}
             setShowPopUP={setShowPopUP}
@@ -225,6 +231,7 @@ let platoPostre: MenuTypes[][] = [];
             <h3 className="text-black text mt-4 ml-4" id="principales" >
               Platos principales
             </h3>
+
             <div className="grid grid-cols-2 gap-x-2 justify-center m-auto w-[360px]">
               {combinedArray[1].map((comida, key) => (
                 <div
@@ -325,4 +332,4 @@ let platoPostre: MenuTypes[][] = [];
       </div>
     </main>
   );
-        }
+}
