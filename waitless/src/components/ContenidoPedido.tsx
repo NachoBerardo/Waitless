@@ -8,9 +8,10 @@ interface Props {
   setShowMenu: React.Dispatch<React.SetStateAction<boolean>>;
 }
 const ContenidoPedido:React.FC<Props> = ({setShowPedido, setShowMenu}) => {
-  const handleClickArrowBack = (pedido:boolean, Menu: boolean) =>{
-    setShowPedido(pedido);
-    setShowMenu(Menu);
+  const handleClickArrowBack = (EstadoMenu:boolean, EstadoPedido:boolean, EstadoPedidoEnviado:boolean ) =>{
+    setShowPedido(EstadoPedido);
+    setShowMenu(EstadoMenu);
+    setShowPedidoEnviado(EstadoPedidoEnviado)
   }
   const [showPedidoEnviado, setShowPedidoEnviado] = useState(false);
 
@@ -20,8 +21,9 @@ const ContenidoPedido:React.FC<Props> = ({setShowPedido, setShowMenu}) => {
           <div className="h-screen w-screen bg-white grid items-center">
             <div className=" h-fit w-fit grid place-items-center ">
               <h3 className="text-black mx-6 text-center font-normal">Tu pedido fue enviado y está en preparación</h3>
-              <button className="rounded-[40px] w-[168px] h-[38px] bg-btngreen mt-7">
-                <h5 className="text-white">Volver al Menu</h5>
+              <button className="rounded-[40px] w-fit h-[38px] bg-btngreen mt-7 flex justify-center items-center " onClick={(event) => handleClickArrowBack(true, false, false)}>
+                  <img src="BackArowWhite.svg" alt="" className="w-5 h-5 my-2 mr-1 ml-2"/>
+                  <h5 className="text-white my-2 mr-2">Volver al Menu</h5>
               </button>
             </div>
           </div>
@@ -31,7 +33,7 @@ const ContenidoPedido:React.FC<Props> = ({setShowPedido, setShowMenu}) => {
           <div className="h-screen w-screen pb-[7px] bg-white overflow-x-hidden no-scrollbar">
     <header className="top-0 w-full h-[67px] flex items-center justify-center bg-white drop-shadow-md relative">
       <h3 className="font-bold text-black">Pedido de tu mesa</h3>
-      <button className=" absolute left-0 ml-4 h-[25px] w-[25px] " onClick={(event) => handleClickArrowBack(false, true)}>
+      <button className=" absolute left-0 ml-4 h-[25px] w-[25px] " onClick={(event) => handleClickArrowBack(true, false, false)}>
         <img src="arrowBlack.svg" alt="" className="h-full w-full" />
       </button>
     </header>
