@@ -25,24 +25,28 @@ const PantallaRestaurante:React.FC = () => {
 
                     </img>
                 </header>
-                <div className="ml-20 mt-10 py-3 pl-7 w-fit h-fit left-0 border-solid border-2 rounded-[10px] flex flex-col items-center border-BordeGrisPedido">
+                <div className="ml-20 mt-10 py-3 pl-7 w-fit h-fit border-solid border-2 rounded-[10px] flex-col items-center border-BordeGrisPedido ">
                     <div className="flex items-center">
-                        <h5 className="text-black item-">Filtrar</h5>
+                        <h5 className="text-black left-0">Filtrar</h5>
                         <button
                             style={{ transform: `rotate(${rotation ? "180deg" : "0deg"})` }}
                             onClick={handleClickRotation}
-                            className={"h-[16px] w-[16px] ml-4 mr-7 transform focus:rotate-0 transition-transform"}
+                            className={"h-[16px] w-[16px] ml-4 mr-7 transform focus:rotate-0 transition-transform right-0"}
 
                         >
                             <img src="arrow-up.svg" alt=""  />
                         </button>
                     </div>
-                </div>
-                {rotation ? (
+                    {rotation ? (
+                        <button className="pb-2 pt-2">
+                            <h5 className=" pl-3 text-LetraDropDown font-normal pr-7"> Pendientes</h5>
+                            <hr className="w-full "/>
+                        </button>
+                    ) : (
                     <></>
-                ) : (
-                    <div className="ml-20 top-0 h-4 w-4 bg-footer"></div>
-                )}
+                    )}
+                </div>
+                
             </div>
         </main>;
     

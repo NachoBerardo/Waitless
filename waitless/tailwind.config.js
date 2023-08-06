@@ -60,6 +60,7 @@ module.exports = {
       'LineaVerdePedido': '#B4F1E6',
       'BordeGrisPedido': '#00000033',
       'ActiveHeaderRestaurante': '#CFD9D7',
+      'LetraDropDown': '#00000080',
       
     }
   },
