@@ -31,6 +31,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export default function Menu() {
   const [menu, setMenu] = useState<MenuTypes[]>([]);
+  
   // const entradas = [
   //   {
   //     nombre: "Provoleta",
@@ -102,13 +103,16 @@ export default function Menu() {
     let platoPrincipal: MenuTypes[] = [];
     let platoPostre: MenuTypes[] = [];
 
-    const entradas = menuItems.filter((item) => item.category === "Entrada");
-    const principales = menuItems.filter((item) => item.category === "Principal");
-    const postres = menuItems.filter((item) => item.category === "Postre");
+    console.log(menuItems);
+
+    const entradas = menuItems.filter((item) => item.category === "entradas");
+    const principales = menuItems.filter((item) => item.category === "plato principal");
+    const postres = menuItems.filter((item) => item.category === "postre");
 
     return [entradas, principales, postres];
   };
   const combinedArray = separateMenuItemsByCategory(menu);
+  console.log(combinedArray);
   /*
     for (let i = 0; i < menu.length; i++) {  
       platoEntrada = menu.filter((plato) => {
