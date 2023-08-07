@@ -38,7 +38,7 @@ const FooterPopUp: React.FC<Props> = ({titulo, descripcion, precio, setShowPopUP
     setPedido(pedido => [...pedido, {name, description, price} ]);
   }
 
-return <footer className="w-full h-[90px] bg-background bottom-0 absolute shadow-top flex items-center" id="footerMenu">
+return <footer className="w-full h-[90px] bg-background bottom-0 fixed shadow-top flex items-center" id="footerMenu">
     <button className=" bg-btngreen absolute rounded-2xl right-0  mr-7 h-[38px] w-[89px]" onClick={handlePedido}>
       <p className="text-white" >Agregar</p>
     </button>
