@@ -25,13 +25,13 @@ const PantallaRestaurante:React.FC = () => {
 
                     </img>
                 </header>
-                <div className="ml-20 mt-10 py-3  pr-[68px] w-fit h-fit border-solid border-2 rounded-[10px] flex-col items-center border-BordeGrisPedido transition-transform">
-                    <div className="flex items-center pl-7">
-                        <h5 className="text-black left-0">Filtrar</h5>
+                <div className="ml-20 mt-10 py-3 pr-[68px] w-fit h-fit border-solid border-2 rounded-[10px] flex-col items-center border-BordeGrisPedido transition-transform">
+                    <div className="flex items-center justify-between pl-7 pr-3">
+                        <h5 className="text-black">Filtrar</h5>
                         <button
                             style={{ transform: `rotate(${rotation ? "0deg" : "180deg"})` }}
                             onClick={handleClickRotation}
-                            className={"h-[16px] w-[16px] ml-4 mr-7 transform focus:rotate-0 transition-transform right-0"}
+                            className={"h-[16px] w-[16px] ml-4 mr-7 transform focus:rotate-0 transition-transform "}
 
                         >
                             <img src="arrow-up.svg" alt=""  />
@@ -40,32 +40,32 @@ const PantallaRestaurante:React.FC = () => {
                     {rotation ? (
                         <div className="grid">
                             <button className="pb-2 pt-2">
-                                <div className="">
-                                    <h5 className="text-LetraDropDown pl-10 font-normal text-left"> 
+                                <div className="pl-7">
+                                    <h5 className="text-LetraDropDown ml-3 font-normal text-left"> 
                                         Pendientes
                                     </h5>
                                     <hr className="w-full "/>
                                 </div>
                             </button>
                             <button className="pb-2 pt-2">
-                                <div className="">
-                                    <h5 className="text-LetraDropDown pl-10 font-normal text-left"> 
+                                <div className="pl-7">
+                                    <h5 className="text-LetraDropDown ml-3 font-normal text-left"> 
                                         En Proceso
                                     </h5>
                                     <hr className="w-full "/>
                                 </div>
                             </button>
                             <button className="pb-2 pt-2">
-                                <div className="">
-                                    <h5 className="text-LetraDropDown pl-10 font-normal text-left"> 
+                                <div className="pl-7">
+                                    <h5 className="text-LetraDropDown ml-3 font-normal text-left"> 
                                         Completados
                                     </h5>
                                     <hr className="w-full "/>
                                 </div>
                             </button>
-                            <button className="pb-2 pt-2">
-                                <div className="">
-                                    <h5 className="text-LetraDropDown pl-10 font-normal text-left"> 
+                            <button className="pb-1 pt-2">
+                                <div className="pl-7">
+                                    <h5 className="text-LetraDropDown ml-3 font-normal text-left"> 
                                         Todos
                                     </h5>
                                     <hr className="w-full "/>
@@ -73,8 +73,6 @@ const PantallaRestaurante:React.FC = () => {
                             </button>
                             
                         </div>
-                       
-                        
                     ) : (
                     <></>
                     )}
