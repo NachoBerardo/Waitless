@@ -9,7 +9,7 @@ const PantallaRestaurante:React.FC = () => {
     return <main>
             <div className="w-screen h-screen bg-white">
                 <header className="h-fit w-full flex shadow-lg items-center">
-                    <div className="pl-8 flex items-center h-full w-fit py-5">
+                    <div className="pl-8 flex items-center h-full w-fit py-7">
                         <img src="/TresLineas.svg" className="w-16 h-16" />
                         <button className="px-[84px]">
                             <h3 className="text-black px-7 py-4 rounded-lg hover:bg-LineaPedido active:bg-ActiveHeaderRestaurante">Comandas</h3>
@@ -25,49 +25,51 @@ const PantallaRestaurante:React.FC = () => {
 
                     </img>
                 </header>
-                <div className="ml-20 mt-10 py-3 pr-[68px] w-fit h-fit border-solid border-2 rounded-[10px] flex-col items-center border-BordeGrisPedido transition-transform">
-                    <div className="flex items-center justify-between pl-7 pr-3">
-                        <h5 className="text-black">Filtrar</h5>
+
+
+                <div className="ml-20 mt-10 py-3 w-[252px] h-fit border-solid border-2 rounded-[10px] flex-col items-center border-BordeGrisPedido transition-transform">
+                    <div className="flex items-center justify-between w-full pl-7 ">
+                        <h4 className="text-black">Filtrar</h4>
                         <button
                             style={{ transform: `rotate(${rotation ? "0deg" : "180deg"})` }}
                             onClick={handleClickRotation}
-                            className={"h-[16px] w-[16px] ml-4 mr-7 transform focus:rotate-0 transition-transform "}
+                            className={"h-[16px] w-[16px] mr-5 transform focus:rotate-0 transition-transform "}
 
                         >
                             <img src="arrow-up.svg" alt=""  />
                         </button>
                     </div>
                     {rotation ? (
-                        <div className="grid">
+                        <div className="grid pr-7">
                             <button className="pb-2 pt-2">
                                 <div className="pl-7">
-                                    <h5 className="text-LetraDropDown ml-3 font-normal text-left"> 
+                                    <h4 className="text-LetraDropDown ml-3 font-normal text-left"> 
                                         Pendientes
-                                    </h5>
+                                    </h4>
                                     <hr className="w-full "/>
                                 </div>
                             </button>
                             <button className="pb-2 pt-2">
                                 <div className="pl-7">
-                                    <h5 className="text-LetraDropDown ml-3 font-normal text-left"> 
+                                    <h4 className="text-LetraDropDown ml-3 font-normal text-left"> 
                                         En Proceso
-                                    </h5>
+                                    </h4>
                                     <hr className="w-full "/>
                                 </div>
                             </button>
                             <button className="pb-2 pt-2">
                                 <div className="pl-7">
-                                    <h5 className="text-LetraDropDown ml-3 font-normal text-left"> 
+                                    <h4 className="text-LetraDropDown ml-3 font-normal text-left"> 
                                         Completados
-                                    </h5>
+                                    </h4>
                                     <hr className="w-full "/>
                                 </div>
                             </button>
                             <button className="pb-1 pt-2">
                                 <div className="pl-7">
-                                    <h5 className="text-LetraDropDown ml-3 font-normal text-left"> 
+                                    <h4 className="text-LetraDropDown ml-3 font-normal text-left"> 
                                         Todos
-                                    </h5>
+                                    </h4>
                                     <hr className="w-full "/>
                                 </div>
                             </button>
