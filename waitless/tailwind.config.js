@@ -61,6 +61,8 @@ module.exports = {
       'BordeGrisPedido': '#00000033',
       'ActiveHeaderRestaurante': '#CFD9D7',
       'LetraDropDown': '#00000080',
+      'activeDropdown': '#CCC',
+
       
     }
   },
