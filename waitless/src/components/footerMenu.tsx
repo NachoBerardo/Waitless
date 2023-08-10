@@ -20,9 +20,11 @@ return <footer className="w-full h-[90px] bg-background bottom-0 absolute shadow
   </footer>;
 }
 export default FooterMenu;
+
 //poner en el Onclick
+//faltan variables del pedido, entre otras.
 function pedidoNuevo() {
-  const pedido = fetch("http://localhost:3000", {
+  const pedido = fetch("http://localhost:3001", {
     method: "POST", 
     body: JSON.stringify({
       idPedido: idPedido,
@@ -30,4 +32,5 @@ function pedidoNuevo() {
       comentarios: comentarios
     })
   })
+
 }
