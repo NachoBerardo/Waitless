@@ -6,7 +6,7 @@ const DropDownRestaurante: React.FC=()=>{
             setRotation(!rotation);
           };
     return <div>
-            <div className=" absolute left-0 ml-20 mt-10 py-3 w-[252px] h-fit border-solid border-2 z-10 rounded-[10px] flex-col items-center border-BordeGrisPedido transition-transform">
+            <div className=" absolute left-0 ml-20 mt-10 py-3 w-[252px] h-fit border-solid border-2 z-20 rounded-[10px] flex-col items-center bg-white border-BordeGrisPedido transition-transform">
                 <div className="flex items-center justify-between w-full pl-7 ">
                     <h4 className="text-black">Filtrar</h4>
                     <button
