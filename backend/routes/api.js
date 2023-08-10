@@ -29,9 +29,9 @@ app.get("/menu/:id", async (req, res) => {
 })
 
 //Agrega a menu lo que quieras
-app.post("/menu/create", async (req, res) => {
+app.post("/menu", async (req, res) => {
     const { title, contents } = req.body
-    const menu = await createFoodWithPrisma(title, contents)
+    const pedido = await createFoodWithPrisma(title, contents)
     res.status(201).json(menu)
 })
 //Modifica de menu lo que quieras

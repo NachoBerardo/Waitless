@@ -34,8 +34,9 @@ export const getFoodWithPrisma = async (id) => {
 
 export const createFoodWithPrisma = async (title, contents) => {
   try {
-    const createFood = await prisma.food.create({
+    const createFood = await prisma.pedido.create({
       data: {
+        idpedido : idpedido,
         title: title,
         contents: contents
       }
