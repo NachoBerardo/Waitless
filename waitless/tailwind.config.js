@@ -59,14 +59,11 @@ module.exports = {
       'FocusEspecificaciones': '#9A9898',
       'LineaVerdePedido': '#B4F1E6',
       'BordeGrisPedido': '#00000033',
+      'RojoPedido': '#D2382E', 
       'ActiveHeaderRestaurante': '#CFD9D7',
       'LetraDropDown': '#00000080',
       'activeDropdown': '#CCC',
       'BorderPedidosRestaurante': '#AAB2B1',
-      'RojoPedido': '#d2382ecc'
-
-
-      
     }
   },
   plugins: [],
