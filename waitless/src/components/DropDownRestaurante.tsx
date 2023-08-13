@@ -1,9 +1,34 @@
 import { useState } from "react";
+interface Props { 
+    setPendientes: React.Dispatch<React.SetStateAction<boolean>>;
+    setEnProceso: React.Dispatch<React.SetStateAction<boolean>>;
+    setCompletados: React.Dispatch<React.SetStateAction<boolean>>;
+  }
 
-const DropDownRestaurante: React.FC=()=>{
+const DropDownRestaurante: React.FC<Props>=({setCompletados, setEnProceso, setPendientes})=>{
         const [rotation, setRotation] = useState(false);
         const handleClickRotation = () => {
             setRotation(!rotation);
+          };
+          const handleClickPendientes = () => {
+            setPendientes(true);
+            setCompletados(false);
+            setEnProceso(false)
+          };
+          const handleClickEnProceso = () => {
+            setPendientes(false);
+            setCompletados(false);
+            setEnProceso(true)
+          };
+          const handleClickCompletados = () => {
+            setPendientes(false);
+            setCompletados(true);
+            setEnProceso(false)
+          };
+          const handleClickTodos = () => {
+            setPendientes(true);
+            setCompletados(true);
+            setEnProceso(true)
           };
     return <div>
             <div className=" absolute left-0 ml-20 mt-10 py-3 w-[252px] h-fit border-solid border-2 z-20 rounded-[10px] flex-col items-center bg-white border-BordeGrisPedido transition-transform">
@@ -20,7 +45,7 @@ const DropDownRestaurante: React.FC=()=>{
                 </div>
                 {rotation ? (
                     <div className="grid pr-7">
-                        <button className="pb-2 pt-2">
+                        <button className="pb-2 pt-2" onClick={handleClickPendientes}>
                             <div className="pl-7 ">
                                 <h4 className="text-LetraDropDown hover:bg-background_popup active:bg-activeDropdown pl-3 font-normal text-left">
                                     Pendientes
@@ -28,7 +53,7 @@ const DropDownRestaurante: React.FC=()=>{
                                 <hr className="w-full " />
                             </div>
                         </button>
-                        <button className="pb-2 pt-2">
+                        <button className="pb-2 pt-2" onClick={handleClickEnProceso}>
                             <div className="pl-7">
                                 <h4 className="text-LetraDropDown hover:bg-background_popup active:bg-activeDropdown pl-3 font-normal text-left">
                                     En Proceso
@@ -36,7 +61,7 @@ const DropDownRestaurante: React.FC=()=>{
                                 <hr className="w-full " />
                             </div>
                         </button>
-                        <button className="pb-2 pt-2">
+                        <button className="pb-2 pt-2" onClick={handleClickCompletados}>
                             <div className="pl-7">
                                 <h4 className="text-LetraDropDown hover:bg-background_popup active:bg-activeDropdown pl-3 font-normal text-left">
                                     Completados
@@ -45,7 +70,7 @@ const DropDownRestaurante: React.FC=()=>{
                             </div>
                         </button>
                         <button className="pb-1 pt-2">
-                            <div className="pl-7">
+                            <div className="pl-7" onClick={handleClickTodos}>
                                 <h4 className="text-LetraDropDown hover:bg-background_popup active:bg-activeDropdown pl-3 font-normal text-left">
                                     Todos
                                 </h4>
