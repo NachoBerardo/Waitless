@@ -19,6 +19,8 @@ module.exports = {
       'sm': '640px',
       'monitor': '1400px',
       'xl': '1700px',
+      'custombp': {'raw': '(min-height: 950px)'},
+      'notebook': {'raw': '(max-height: 949px)'},
     },
     
     fontFamily: {

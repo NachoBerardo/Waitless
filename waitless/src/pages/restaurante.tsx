@@ -35,9 +35,9 @@ const PantallaRestaurante:React.FC = () => {
                 </header>
                 <DropDownRestaurante setPendientes={setPendientes} setCompletados={setCompletados} setEnProceso={setEnProceso}/>
 
-                <div className="grid grid-cols-3 justify-around m-auto monitor:pt-6 xl:pt-11 z-10 pb-20 ">
+                <div className="grid grid-cols-3 justify-around m-auto monitor:pt-6 xl:pt-11 z-10 ">
                     {pendientes ?(
-                        <div className="xl:h-[660px] monitor:h-[570px] ml-20 border-4 rounded-[10px] border-solid border-BorderPedidosRestaurante overflow-scroll no-scrollbar">
+                        <div className="custombp:h-[660px] notebook:h-[570px] ml-20 border-4 rounded-[10px] border-solid border-BorderPedidosRestaurante overflow-scroll no-scrollbar">
                         <h4 className="text-BorderPedidosRestaurante pl-5 pt-5 pb-11">Pendientes</h4>
                         {pedidos.map((pedidos, key)=>(
                             <div className="bg-RojoPedido mx-7">
@@ -50,7 +50,7 @@ const PantallaRestaurante:React.FC = () => {
                         <></>
                     )}
                     {enProceso ?(
-                        <div className="xl:h-[660px] monitor:h-[570px] ml-6 mr-6 border-4 rounded-[10px] border-solid border-BorderPedidosRestaurante overflow-scroll no-scrollbar">
+                        <div className="custombp:h-[660px] notebook:h-[570px] ml-6 mr-6 border-4 rounded-[10px] border-solid border-BorderPedidosRestaurante overflow-scroll no-scrollbar">
                         <h4 className="text-BorderPedidosRestaurante pl-5 pt-5 pb-11">Pendientes</h4>
                         {pedidos.map((pedidos, key)=>(
                             <div className="bg-[#D29B2ECC] mx-7">
@@ -63,7 +63,7 @@ const PantallaRestaurante:React.FC = () => {
                         <></>
                     )}
                     {completados ?(
-                        <div className="xl:h-[660px] monitor:h-[570px] mr-20 border-4 rounded-[10px] border-solid border-BorderPedidosRestaurante overflow-scroll no-scrollbar">
+                        <div className="custombp:h-[660px] notebook:h-[570px] mr-20 border-4 rounded-[10px] border-solid border-BorderPedidosRestaurante overflow-scroll no-scrollbar">
                         <h4 className="text-BorderPedidosRestaurante pl-5 pt-5 pb-11">Pendientes</h4>
                         {pedidos.map((pedidos, key)=>(
                             <div className="bg-[#00B493] mx-7">
@@ -76,7 +76,7 @@ const PantallaRestaurante:React.FC = () => {
                         <></>
                     )}
                 </div>
-                <footer className="bottom-0 absolute w-full h-fit flex justify-center items-center pb-3">
+                <footer className="absolute bottom-0 w-full h-fit flex justify-center items-center pb-3 pt-5">
                     <button>
                       <img src="tacho.svg" alt="" className="w-16 h-16"/>
                     </button>
