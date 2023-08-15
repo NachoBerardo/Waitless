@@ -10,8 +10,8 @@ const Pedidos: React.FC<Props> = ({ pedidos, color}) => {
         setRotation(!rotation);
     };
     const background = `bg-${color}`;
-    
-    return <div className={` ${background} grid mb-5 rounded-[10px] mx-10`}>
+    console.log(background);
+    return <div className={`${background} grid mb-5 rounded-[10px] mx-10`}>
     <div className={` flex justify-around items-center `}>
         <h5 className="py-4 text-black">#{pedidos[0]}</h5>
         <h5 className="py-4 text-black">{pedidos[1]}hs</h5>

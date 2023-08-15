@@ -40,7 +40,9 @@ const PantallaRestaurante:React.FC = () => {
                         <div className="custombp:h-[660px] notebook:h-[570px] ml-20 border-4 rounded-[10px] border-solid border-BorderPedidosRestaurante overflow-scroll no-scrollbar">
                         <h4 className="text-BorderPedidosRestaurante pl-5 pt-5 pb-11">Completados</h4>
                         {pedidos.map((pedidos, key)=>(
+                            <div key={key}>
                               <Pedidos pedidos={pedidos} color={"RojoPedido"}></Pedidos>
+                            </div>
                         ))}
                         
                     </div>
@@ -51,8 +53,9 @@ const PantallaRestaurante:React.FC = () => {
                         <div className="custombp:h-[660px] notebook:h-[570px] ml-6 mr-6 border-4 rounded-[10px] border-solid border-BorderPedidosRestaurante overflow-scroll no-scrollbar">
                         <h4 className="text-BorderPedidosRestaurante pl-5 pt-5 pb-11">En Proceso</h4>
                         {pedidos.map((pedidos, key)=>(
+                            <div key={key}>
                                 <Pedidos pedidos={pedidos} color={"[#D29B2ECC]"}></Pedidos>
-                            
+                            </div>
                         ))}
                         
                     </div>
@@ -63,9 +66,9 @@ const PantallaRestaurante:React.FC = () => {
                         <div className="custombp:h-[660px] notebook:h-[570px] mr-20 border-4 rounded-[10px] border-solid border-BorderPedidosRestaurante overflow-scroll no-scrollbar">
                         <h4 className="text-BorderPedidosRestaurante pl-5 pt-5 pb-11">Pendientes</h4>
                         {pedidos.map((pedidos, key)=>(
-                         
-                            <Pedidos pedidos={pedidos} color={"[#00B493]"}></Pedidos>
-                            
+                            <div key={key}>
+                               <Pedidos pedidos={pedidos} color={"[#00B493]"}></Pedidos>   
+                            </div>    
                         ))}
                         
                     </div>
