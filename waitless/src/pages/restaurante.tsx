@@ -38,11 +38,9 @@ const PantallaRestaurante:React.FC = () => {
                 <div className="grid grid-cols-3 justify-around m-auto monitor:pt-6 xl:pt-11 z-10 ">
                     {pendientes ?(
                         <div className="custombp:h-[660px] notebook:h-[570px] ml-20 border-4 rounded-[10px] border-solid border-BorderPedidosRestaurante overflow-scroll no-scrollbar">
-                        <h4 className="text-BorderPedidosRestaurante pl-5 pt-5 pb-11">Pendientes</h4>
+                        <h4 className="text-BorderPedidosRestaurante pl-5 pt-5 pb-11">Completados</h4>
                         {pedidos.map((pedidos, key)=>(
-                            <div className="bg-RojoPedido mx-7">
-                              <Pedidos pedidos={pedidos}></Pedidos>
-                            </div>
+                              <Pedidos pedidos={pedidos} color={"RojoPedido"}></Pedidos>
                         ))}
                         
                     </div>
@@ -51,11 +49,10 @@ const PantallaRestaurante:React.FC = () => {
                     )}
                     {enProceso ?(
                         <div className="custombp:h-[660px] notebook:h-[570px] ml-6 mr-6 border-4 rounded-[10px] border-solid border-BorderPedidosRestaurante overflow-scroll no-scrollbar">
-                        <h4 className="text-BorderPedidosRestaurante pl-5 pt-5 pb-11">Pendientes</h4>
+                        <h4 className="text-BorderPedidosRestaurante pl-5 pt-5 pb-11">En Proceso</h4>
                         {pedidos.map((pedidos, key)=>(
-                            <div className="bg-[#D29B2ECC] mx-7">
-                                <Pedidos pedidos={pedidos}></Pedidos>
-                            </div>
+                                <Pedidos pedidos={pedidos} color={"[#D29B2ECC]"}></Pedidos>
+                            
                         ))}
                         
                     </div>
@@ -66,9 +63,9 @@ const PantallaRestaurante:React.FC = () => {
                         <div className="custombp:h-[660px] notebook:h-[570px] mr-20 border-4 rounded-[10px] border-solid border-BorderPedidosRestaurante overflow-scroll no-scrollbar">
                         <h4 className="text-BorderPedidosRestaurante pl-5 pt-5 pb-11">Pendientes</h4>
                         {pedidos.map((pedidos, key)=>(
-                            <div className="bg-[#00B493] mx-7">
-                            <Pedidos pedidos={pedidos}></Pedidos>
-                            </div>
+                         
+                            <Pedidos pedidos={pedidos} color={"[#00B493]"}></Pedidos>
+                            
                         ))}
                         
                     </div>
