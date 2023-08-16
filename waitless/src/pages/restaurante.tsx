@@ -6,7 +6,7 @@ const PantallaRestaurante:React.FC = () => {
     
 
     const pedidos = [
-        ["1", "12:15","Provoleta, Empanadas, Mucho textoparaver overflowwwwwwwww"],["2","12:20","Provoleta, Empanadas, Mucho textoparaver overfloooooooooowwwwwwwww"],["3","12:25","Provoleta, Empanadas, Mucho textoparaver overflowwwwwwwww"],["4","12:30","Provoleta"],["5","12:30","Provoleta"],["6","12:30","Provoleta"],["7","12:30","Provoleta"],["8","12:30","Provoleta"],["8","12:30","Provoleta"],["8","12:30","Provoleta"]
+        [["1"], ["12:15"], ["Empanada", "Churrasco"]],[["2"],["12:20"],["Empanada", "Churrasco", "Provoleta", "a", "Volcan de chocolate con helado"]],[["3"],["12:25"],["Empanada", "Churrasco"]],[["4"],["12:30"],["Empanada", "Churrasco"]],[["5"],["12:30"],["Empanada", "Churrasco"]],[["6"],["12:30"],["Empanada", "Churrasco"]],[["7"],["12:30"],["Empanada", "Churrasco"]],[["8"],["12:30"],["Empanada", "Churrasco"]],[["8"],["12:30"],["Empanada", "Churrasco"]],[["8"],["12:30"],["Empanada", "Churrasco"]]
     ];
     const[pendientes, setPendientes] = useState(true);
     const[enProceso, setEnProceso] = useState(true);
@@ -41,7 +41,7 @@ const PantallaRestaurante:React.FC = () => {
                         <h4 className="text-BorderPedidosRestaurante pl-5 pt-5 pb-11">Completados</h4>
                         {pedidos.map((pedidos, key)=>(
                             <div key={key}>
-                              <Pedidos pedidos={pedidos} color={"RojoPedido"}></Pedidos>
+                              <Pedidos pedidos={pedidos} color={"RojoPedido"} key={key}></Pedidos>
                             </div>
                         ))}
                         
@@ -54,7 +54,7 @@ const PantallaRestaurante:React.FC = () => {
                         <h4 className="text-BorderPedidosRestaurante pl-5 pt-5 pb-11">En Proceso</h4>
                         {pedidos.map((pedidos, key)=>(
                             <div key={key}>
-                                <Pedidos pedidos={pedidos} color={"[#D29B2ECC]"}></Pedidos>
+                                <Pedidos pedidos={pedidos} color={"[#D29B2ECC]"} key={key}></Pedidos>
                             </div>
                         ))}
                         
@@ -67,7 +67,7 @@ const PantallaRestaurante:React.FC = () => {
                         <h4 className="text-BorderPedidosRestaurante pl-5 pt-5 pb-11">Pendientes</h4>
                         {pedidos.map((pedidos, key)=>(
                             <div key={key}>
-                               <Pedidos pedidos={pedidos} color={"[#00B493]"}></Pedidos>   
+                               <Pedidos pedidos={pedidos} color={"[#00B493]"} key={key}></Pedidos>   
                             </div>    
                         ))}
                         
