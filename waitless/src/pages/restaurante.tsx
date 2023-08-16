@@ -41,7 +41,7 @@ const PantallaRestaurante:React.FC = () => {
                         <h4 className="text-BorderPedidosRestaurante pl-5 pt-5 pb-11">Completados</h4>
                         {pedidos.map((pedidos, key)=>(
                             <div key={key}>
-                              <Pedidos pedidos={pedidos} color={"RojoPedido"} key={key}></Pedidos>
+                              <Pedidos pedidos={pedidos} color={"rojo"} key={key}></Pedidos>
                             </div>
                         ))}
                         
@@ -54,7 +54,7 @@ const PantallaRestaurante:React.FC = () => {
                         <h4 className="text-BorderPedidosRestaurante pl-5 pt-5 pb-11">En Proceso</h4>
                         {pedidos.map((pedidos, key)=>(
                             <div key={key}>
-                                <Pedidos pedidos={pedidos} color={"[#D29B2ECC]"} key={key}></Pedidos>
+                                <Pedidos pedidos={pedidos} color={"amarillo"} key={key}></Pedidos>
                             </div>
                         ))}
                         
@@ -67,7 +67,7 @@ const PantallaRestaurante:React.FC = () => {
                         <h4 className="text-BorderPedidosRestaurante pl-5 pt-5 pb-11">Pendientes</h4>
                         {pedidos.map((pedidos, key)=>(
                             <div key={key}>
-                               <Pedidos pedidos={pedidos} color={"[#00B493]"} key={key}></Pedidos>   
+                               <Pedidos pedidos={pedidos} color={"verde"} key={key}></Pedidos>   
                             </div>    
                         ))}
                         
