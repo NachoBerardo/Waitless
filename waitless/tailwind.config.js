@@ -55,7 +55,7 @@ module.exports = {
       'LetraDropDown': '#00000080',
       'activeDropdown': '#CCC',
       'BorderPedidosRestaurante': '#AAB2B1',
-      'Rojito': 'rgba(138, 38, 31, 0.50)',
+      'Rojito': 'rgba(210, 56, 46, 0.20)',
     }
   },
   plugins: [],
