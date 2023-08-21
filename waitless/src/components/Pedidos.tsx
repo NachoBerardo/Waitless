@@ -25,14 +25,31 @@ interface Props {
 const Pedidos: React.FC<Props> = ({ pedidos, color, key, id, hora, pedidoCompleto}) => {
 //-------------------------Constantes de dragg----------------------------- https://www.youtube.com/watch?v=Q1PYQPK9TaM&ab_channel=asat
     const dragItem = useRef<[string[], number, string] | null>(null);
+
     const dragNode = useRef<EventTarget  | null>(null);
-    
+
+    const HandleDragEnd=()=>{
+        console.log("Termino")
+        setDragging(false);
+        if (dragNode.current instanceof EventTarget) {
+            dragNode.current.removeEventListener('dragend', HandleDragEnd);
+        }
+        dragItem.current = null;
+        dragNode.current = null
+    };
+
     const [dragging, setDragging] = useState(false);
 
+    const HandleDragEnter=(e: React.SyntheticEvent<EventTarget>, pedidos: string[], id:number, hora:string)=>{
+        console.log("colision"+ pedidos, id, hora)
+    }
+
     const handleDragStart = (e: React.SyntheticEvent<EventTarget>, pedidos: string[], id:number, hora:string, ) =>{
-        console.log(pedidos, id, hora)
+        console.log("Empezó" + pedidos, id, hora)
         dragItem.current = [pedidos, id, hora];
         dragNode.current = e.currentTarget;
+        dragNode.current.addEventListener('dragend', HandleDragEnd)
+        setDragging(true);
     }
 
 //-------------------------Constantes de rotacion y colores-----------------------------
@@ -46,8 +63,14 @@ const Pedidos: React.FC<Props> = ({ pedidos, color, key, id, hora, pedidoComplet
         amarillo: ['bg-[#D29B2ECC]', 'bg-[#d29b2e40]'],
         rojo: ['bg-RojoPedido', 'bg-[#d2382e33]'],
     }
+//----------------------------------- HTML ---------------------------------------
     
-    return <div draggable={true} onDragStart={(e)=>{handleDragStart(e, pedidos, id, hora)}} className={`grid mb-5 rounded-[10px] mx-10 cursor-pointer `}>
+    return <div 
+        draggable={true} 
+        onDragStart={(e)=>{handleDragStart(e, pedidos, id, hora)}} 
+        onDragEnter={dragging?(e)=>{HandleDragEnter(e, pedidos, id, hora)}:undefined}
+        className={`grid mb-5 rounded-[10px] mx-10 cursor-pointer `}
+    >
         <div className={` ${colorvariants[color][0]} flex justify-around items-center`}>
             <h5 className="py-4 text-black">#{id}</h5>
             <h5 className="py-4 text-black">{hora}hs</h5>
