@@ -1,8 +1,6 @@
 import { useState } from "react";
 import Pedidos from "../components/Pedidos";
 import DropDownRestaurante from "../components/DropDownRestaurante";
-import { DndContext, closestCenter } from "@dnd-kit/core";
-import { SortableContext, verticalListSortingStrategy } from "@dnd-kit/sortable";
 
 type TipoPedido= {
     pedidos: string[];

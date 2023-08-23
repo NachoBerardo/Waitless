@@ -39,7 +39,21 @@ const Pedidos: React.FC<Props> = ({ pedidos, color, key, id, hora, pedidoComplet
     const [dragging, setDragging] = useState(false);
 
     const HandleDragEnter=(e: React.SyntheticEvent<EventTarget>, pedidos: string[], id:number, hora:string)=>{
-        console.log("colision"+ pedidos, id, hora)
+        if (dragItem.current) {
+            const [draggedPedidos, draggedId, draggedHora] = dragItem.current;
+            if (e.target instanceof HTMLElement) {
+              // Compare the dragged data with the data of the colliding element
+              if (pedidos === draggedPedidos && id === draggedId && hora === draggedHora) {
+                console.log("Colliding with dragged element");
+              }
+              else{
+                  console.log("AAAAAAAAAAAAAAAAAAAAAA");
+              }
+            }
+          }
+        else{
+            console.log("aaaa")
+        }
     }
 
     const handleDragStart = (e: React.SyntheticEvent<EventTarget>, pedidos: string[], id:number, hora:string, ) =>{
@@ -64,7 +78,7 @@ const Pedidos: React.FC<Props> = ({ pedidos, color, key, id, hora, pedidoComplet
     
     return <div 
         draggable={true} 
-        onDragStart={(e)=>{handleDragStart(e, pedidos, id, hora)}} 
+        onDragStart={(eve)=>{handleDragStart(eve, pedidos, id, hora)}} 
         onDragEnter={(e)=>{HandleDragEnter(e, pedidos, id, hora)}}
         className={`grid mb-5 rounded-[10px] mx-10 cursor-pointer `}
     >
