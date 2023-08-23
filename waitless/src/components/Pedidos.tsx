@@ -1,6 +1,5 @@
 import { useState, useRef } from "react";
-import { useSortable } from "@dnd-kit/sortable";
-import { CSS } from "@dnd-kit/utilities";
+
 
 interface Props { 
     pedidos: string[];
@@ -30,7 +29,6 @@ const Pedidos: React.FC<Props> = ({ pedidos, color, key, id, hora, pedidoComplet
 
     const HandleDragEnd=()=>{
         console.log("Termino")
-        setDragging(false);
         if (dragNode.current instanceof EventTarget) {
             dragNode.current.removeEventListener('dragend', HandleDragEnd);
         }
@@ -49,7 +47,6 @@ const Pedidos: React.FC<Props> = ({ pedidos, color, key, id, hora, pedidoComplet
         dragItem.current = [pedidos, id, hora];
         dragNode.current = e.currentTarget;
         dragNode.current.addEventListener('dragend', HandleDragEnd)
-        setDragging(true);
     }
 
 //-------------------------Constantes de rotacion y colores-----------------------------
@@ -68,7 +65,7 @@ const Pedidos: React.FC<Props> = ({ pedidos, color, key, id, hora, pedidoComplet
     return <div 
         draggable={true} 
         onDragStart={(e)=>{handleDragStart(e, pedidos, id, hora)}} 
-        onDragEnter={dragging?(e)=>{HandleDragEnter(e, pedidos, id, hora)}:undefined}
+        onDragEnter={(e)=>{HandleDragEnter(e, pedidos, id, hora)}}
         className={`grid mb-5 rounded-[10px] mx-10 cursor-pointer `}
     >
         <div className={` ${colorvariants[color][0]} flex justify-around items-center`}>
