@@ -9,7 +9,7 @@ datasource db {
 }
 
 model Food {
-  idFood      Int     @id @default(autoincrement())
+  id          Int     @id @default(autoincrement())
   category    String
   name        String
   price       Int
@@ -17,34 +17,38 @@ model Food {
   sideDish    Boolean
   image       String
   video       String?
-
-  foodOrder Order? @relation(fields: [orderId], references: [idOrder])
-  orderId   Int    @unique
+  foodOrder   Order?  @relation(fields: [orderId], references: [id])
+  orderId     Int?    @unique
 }
 
 model Order {
-  idOrder    Int      @id @default(autoincrement())
-  sendedAt   DateTime @default(now())
+  id         Int       @id @default(autoincrement())
+  //idCustomer String[]
+  sendedAt   DateTime  @default(now())
   aclaration String?
   foods      Food[]
-  foodIdFood Int
+  foodId     Int
+  Commands   Commands? @relation(fields: [commandsId], references: [id])
+  commandsId Int?      @unique
 }
 
-// model Table {
-//   idTable Int     @id @default(autoincrement())
-//   state   Boolean
-//   area    Int?
-// }
+model Table {
+  id       Int     @id @default(autoincrement())
+  state    Boolean
+  area     Int?
+  Waiter   Waiter? @relation(fields: [waiterId], references: [id])
+  waiterId Int?    @unique
+}
 
-// model Mozo {
-//   idMozo     Int    @id @default(autoincrement())
-//   nombreMozo String
-// }
+model Waiter {
+  id     Int     @id @default(autoincrement())
+  name   String
+  tables Table[]
+}
 
-// model Commands {
-//   idComanda String   @id @default(uuid())
-//   sendedAt  DateTime @default(now())
-//   total     Float
-//   //idMesa
-//   //idPedido
-// }
+model Commands {
+  id       Int      @id @default(autoincrement())
+  sendedAt DateTime @default(now())
+  total    Float
+  orders   Order[]
+}
