@@ -8,7 +8,8 @@ interface Props {
     color:keyof ColorVariants;
     key: number;
     pedidoCompleto: TipoPedido; 
-  }
+    setPedido: React.Dispatch<React.SetStateAction<TipoPedido[]>>;
+}
   type TipoPedido= {
     pedidos: string[];
     hora: string;
@@ -21,7 +22,7 @@ interface Props {
     rojo: string[];
 }
 
-const Pedidos: React.FC<Props> = ({ pedidos, color, key, id, hora, pedidoCompleto}) => {
+const Pedidos: React.FC<Props> = ({ pedidos, color, key, id, hora, setPedido}) => {
 //-------------------------Constantes de dragg----------------------------- https://www.youtube.com/watch?v=Q1PYQPK9TaM&ab_channel=asat
     const dragItem = useRef<[string[], number, string] | null>(null);
 
@@ -39,6 +40,7 @@ const Pedidos: React.FC<Props> = ({ pedidos, color, key, id, hora, pedidoComplet
     const [dragging, setDragging] = useState(false);
 
     const HandleDragEnter=(e: React.SyntheticEvent<EventTarget>, pedidos: string[], id:number, hora:string)=>{
+        const currentItem = dragItem.current; 
         if (dragItem.current) {
             const [draggedPedidos, draggedId, draggedHora] = dragItem.current;
             if (e.target instanceof HTMLElement) {
@@ -46,13 +48,11 @@ const Pedidos: React.FC<Props> = ({ pedidos, color, key, id, hora, pedidoComplet
               if (pedidos === draggedPedidos && id === draggedId && hora === draggedHora) {
                 console.log("Colliding with dragged element");
               }
-              else{
-                  console.log("AAAAAAAAAAAAAAAAAAAAAA");
-              }
             }
           }
         else{
             console.log("aaaa")
+            
         }
     }
 
