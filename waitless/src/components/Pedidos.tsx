@@ -7,13 +7,13 @@ interface Props {
     hora:string;
     color:keyof ColorVariants;
     key: number;
-    pedidoCompletoActual: TipoPedido[]; 
+    pedidoEntero: TipoPedido[]; 
+    pedidoActual: TipoPedido; 
     setPedidoActual: React.Dispatch<React.SetStateAction<TipoPedido[]>>;
     setPedidoIzquierda: React.Dispatch<React.SetStateAction<TipoPedido[]>>;
     setPedidoDerecha: React.Dispatch<React.SetStateAction<TipoPedido[]>>;
     PedidoIzquierda: boolean;
     PedidoDerecha: boolean;
-    
 }
   type TipoPedido= {
     pedidos: string[];
@@ -27,7 +27,7 @@ interface Props {
     rojo: string[];
 }
 
-const Pedidos: React.FC<Props> = ({ pedidos, color, key, id, hora, setPedidoActual, pedidoCompletoActual}) => {
+const Pedidos: React.FC<Props> = ({ pedidos, color, key, id, pedidoActual, hora, setPedidoActual, pedidoEntero, setPedidoDerecha, setPedidoIzquierda, PedidoIzquierda, PedidoDerecha, }) => {
 //-------------------------Constantes de rotacion y colores-----------------------------
 
     const [rotation, setRotation] = useState(false);
@@ -41,23 +41,29 @@ const Pedidos: React.FC<Props> = ({ pedidos, color, key, id, hora, setPedidoActu
     };
 
     const handleClickIzquierda = () =>{
-
+        if (PedidoIzquierda){
+            // console.log("entró")
+            setPedidoIzquierda(pedidoviejo => [...pedidoviejo, pedidoActual])
+            setPedidoActual(pedidoEntero.filter(item => item.id !== id));  
+        }
     };
 
     const handleClickDerecha = () =>{
-        setPedidoActual(pedidoCompletoActual.filter(item => item.id !== id));
-
-        console.log(pedidoCompletoActual);
+        if (PedidoDerecha){
+            // console.log("entró")
+            setPedidoDerecha(pedidoviejo => [...pedidoviejo, pedidoActual])
+            
+            setPedidoActual(pedidoEntero.filter(item => item.id !== id));  
+        }
     };
 
     const handleRemoveItem = () => {
-        const pedidoActual = pedidoCompletoActual.filter(item => item.id !== id);
-        setPedidoActual(pedidoCompletoActual.filter(item => item.id !== id));
-        console.log(pedidoCompletoActual);
+        setPedidoActual(pedidoEntero.filter(item => item.id !== id));
+        // console.log(pedidoEntero);
       };
 //----------------------------------- HTML ---------------------------------------
     
-    return <div className={`grid mb-5 rounded-[10px] mx-10 cursor-pointer `} >
+    return <div className={`grid mb-5  mx-10 cursor-pointer `} >
         <div className={` ${colorvariants[color][0]} flex justify-around items-center`}>
             <h5 className="py-4 text-black">#{id}</h5>
             <h5 className="py-4 text-black">{hora}hs</h5>
@@ -79,13 +85,13 @@ const Pedidos: React.FC<Props> = ({ pedidos, color, key, id, hora, setPedidoActu
                 ))}
                 <div className={`z-20 px-4 py-3 flex justify-between items-center ${colorvariants[color][1]} border-t border-black w-full`}>
                     <button>
-                        <img src="arrow-up.svg" alt="" className="-rotate-90 h-[16px] w-[16px]"/>
+                        <img src="arrow-up.svg" alt="" className="-rotate-90 h-[16px] w-[16px]" onClick={handleClickIzquierda}/>
                     </button>
                     <button>
                       <img src="tacho.svg" alt="" className="w-[40px] h-[40px]" onClick={handleRemoveItem}/>
                     </button>
                     <button>
-                       <img src="arrow-up.svg" alt="" className="rotate-90 h-[16px] w-[16px]"/>    
+                       <img src="arrow-up.svg" alt="" className="rotate-90 h-[16px] w-[16px]" onClick={handleClickDerecha}/>    
                     </button>
                 </div>
                 

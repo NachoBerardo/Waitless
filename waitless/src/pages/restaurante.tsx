@@ -10,7 +10,7 @@ type TipoPedido= {
 const handleDragEnterBasura=()=>{}
   
 const PantallaRestaurante:React.FC = () => {
-    let [pedidosPendientes, setPedidosPendiente] = useState<TipoPedido[]>([
+    const [pedidosPendientes, setPedidosPendiente] = useState<TipoPedido[]>([
         { pedidos: ['Empanada', 'Churrasco'], hora: '12:15', id: 1 },
         { pedidos: ["Empanada", "Churrasco", "Provoleta", "a", "Volcan de chocolate con helado"], hora: '12:20', id: 2 },
         { pedidos: ["Carne", "Churrasco"], hora: '12:25', id: 3 },
@@ -66,7 +66,20 @@ const PantallaRestaurante:React.FC = () => {
                             <h4 className="text-BorderPedidosRestaurante pl-5 pt-5 pb-11">Completados</h4>
                             {pedidosCompletados.map((pedidosMap, key)=>(
                                     <div key={key}>
-                                        <Pedidos setPedido={setpedidosCompletados} pedidoCompleto={pedidosCompletados} pedidos={pedidosMap.pedidos} id={pedidosMap.id} hora={pedidosMap.hora} color={"rojo"} key={key}></Pedidos>
+                                        <Pedidos 
+                                        setPedidoActual={setpedidosCompletados}
+                                        pedidoEntero={pedidosCompletados} 
+                                        pedidoActual={pedidosMap} 
+                                        pedidos={pedidosMap.pedidos} 
+                                        id={pedidosMap.id} 
+                                        hora={pedidosMap.hora}
+                                        color={"rojo"} 
+                                        key={key}
+                                        setPedidoDerecha={setpedidosEnproceso}
+                                        setPedidoIzquierda={setPedidosPendiente}
+                                        PedidoDerecha = {true}
+                                        PedidoIzquierda = {false}
+                                         ></Pedidos>
                                     </div>
                             ))}
                             </div>
@@ -80,7 +93,19 @@ const PantallaRestaurante:React.FC = () => {
                         <h4 className="text-BorderPedidosRestaurante pl-5 pt-5 pb-11">En Proceso</h4>
                         {pedidosEnproceso.map((pedidosMap, key)=>(
                                 <div key={key}>
-                                    <Pedidos setPedido={setpedidosEnproceso} pedidoCompleto={pedidosEnproceso} pedidos={pedidosMap.pedidos} id={pedidosMap.id} hora={pedidosMap.hora} color={"amarillo"} key={key}></Pedidos>
+                                    <Pedidos setPedidoActual={setpedidosEnproceso} 
+                                    pedidoActual={pedidosMap}
+                                    pedidoEntero={pedidosEnproceso}
+                                    pedidos={pedidosMap.pedidos} 
+                                    id={pedidosMap.id} 
+                                    hora={pedidosMap.hora} 
+                                    color={"amarillo"} 
+                                    key={key}
+                                    setPedidoDerecha={setPedidosPendiente}
+                                    setPedidoIzquierda={setpedidosCompletados}
+                                    PedidoDerecha = {true}
+                                    PedidoIzquierda = {true}
+                                    ></Pedidos>
                                 </div>
                         ))}
                         </div>
@@ -92,7 +117,19 @@ const PantallaRestaurante:React.FC = () => {
                         <h4 className="text-BorderPedidosRestaurante pl-5 pt-5 pb-11">Pendientes</h4>
                         {pedidosPendientes.map((pedidosMap, key)=>(
                                 <div key={key}>
-                                    <Pedidos setPedido={setPedidosPendiente} pedidoCompleto={pedidosPendientes} pedidos={pedidosMap.pedidos} id={pedidosMap.id} hora={pedidosMap.hora} color={"verde"} key={key}></Pedidos>   
+                                    <Pedidos setPedidoActual={setPedidosPendiente}
+                                     pedidoEntero={pedidosPendientes}
+                                     pedidoActual={pedidosMap}
+                                     pedidos={pedidosMap.pedidos} 
+                                     id={pedidosMap.id} 
+                                     hora={pedidosMap.hora} 
+                                     color={"verde"} 
+                                     key={key}
+                                     setPedidoDerecha={setpedidosCompletados}
+                                     setPedidoIzquierda={setpedidosEnproceso}
+                                     PedidoDerecha = {false}
+                                     PedidoIzquierda = {true}
+                                     ></Pedidos>   
                                 </div>    
                         ))}
                         </div>
