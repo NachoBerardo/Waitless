@@ -1,7 +1,8 @@
 import bodyParser from 'body-parser';
 import express from 'express';
 import cors from "cors"
-import { getAllFoodWithPrisma, getFoodWithPrisma, createFoodWithPrisma, updateFoodWithPrisma, deleteFoodWithPrisma } from '../index.js'
+import { getAllFoodWithPrisma, getFoodWithPrisma, createFoodWithPrisma, updateFoodWithPrisma, deleteFoodWithPrisma, getAllOrdersWithPrisma } from '../index.js'
+// , getOrderWithPrisma, createOrderWithPrisma, updateOrderWithPrisma, deleteOrderWithPrisma
 const app = express();
 const PORT = 3001;
 
@@ -20,9 +21,16 @@ app.use(cors())
 // })
 
 app.get("/menu", getAllFoodWithPrisma)
+app.get("/order", getAllOrdersWithPrisma)
 
 //Trae lo que quiero según su ID
 app.get("/menu/:id", async (req, res) => {
+    const id = parseInt(req.params.id)
+    const menu = await getOrderwithPrisma(id)
+    res.json(menu)
+})
+
+app.get("/order/:id", async (req, res) => {
     const id = parseInt(req.params.id)
     const menu = await getFoodWithPrisma(id)
     res.json(menu)
