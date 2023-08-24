@@ -45,6 +45,8 @@ const Pedidos: React.FC<Props> = ({ pedidos, color, key, id, pedidoActual, hora,
             // console.log("entró")
             setPedidoIzquierda(pedidoviejo => [...pedidoviejo, pedidoActual])
             setPedidoActual(pedidoEntero.filter(item => item.id !== id));  
+            setRotation(false);
+
         }
     };
 
@@ -52,13 +54,15 @@ const Pedidos: React.FC<Props> = ({ pedidos, color, key, id, pedidoActual, hora,
         if (PedidoDerecha){
             // console.log("entró")
             setPedidoDerecha(pedidoviejo => [...pedidoviejo, pedidoActual])
-            
+            setRotation(false);
             setPedidoActual(pedidoEntero.filter(item => item.id !== id));  
         }
     };
 
     const handleRemoveItem = () => {
         setPedidoActual(pedidoEntero.filter(item => item.id !== id));
+                    setRotation(false);
+
         // console.log(pedidoEntero);
       };
 //----------------------------------- HTML ---------------------------------------
@@ -70,7 +74,7 @@ const Pedidos: React.FC<Props> = ({ pedidos, color, key, id, pedidoActual, hora,
             <button
                 style={{ transform: `rotate(${rotation ? "0deg" : "180deg"})` }}
                 onClick={handleClickRotation}
-                className={"h-[16px] w-[16px] transform focus:rotate-0 transition-transform "}
+                className={"h-[16px] w-[16px] transform  focus:rotate-0 transition-transform "}
             >
                 <img src="arrow-up.svg" alt="" />
             </button>
