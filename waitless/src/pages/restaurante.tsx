@@ -114,7 +114,7 @@ const PantallaRestaurante:React.FC = () => {
                     )}
                     {completados ?(
                         <div className="custombp:h-[660px] notebook:h-[570px] mr-20 border-4 rounded-[10px] border-solid border-BorderPedidosRestaurante overflow-scroll no-scrollbar">
-                        <h4 className="text-BorderPedidosRestaurante pl-5 pt-5 pb-11">Pendientes</h4>
+                        <h4 className="text-BorderPedidosRestaurante pl-5 pt-5 pb-11">Completados</h4>
                         {pedidosCompletados.map((pedidosMap, key)=>(
                                 <div key={key}>
                                     <Pedidos setPedidoActual={setpedidosCompletados}
