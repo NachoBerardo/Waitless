@@ -7,10 +7,10 @@ type TipoPedido= {
     hora: string;
     id: number;
 }
-const handleDragEnd=()=>{}
+const handleDragEnterBasura=()=>{}
   
 const PantallaRestaurante:React.FC = () => {
-    const [pedidosPendientes, setPedidosPendiente] = useState<TipoPedido[]>([
+    let [pedidosPendientes, setPedidosPendiente] = useState<TipoPedido[]>([
         { pedidos: ['Empanada', 'Churrasco'], hora: '12:15', id: 1 },
         { pedidos: ["Empanada", "Churrasco", "Provoleta", "a", "Volcan de chocolate con helado"], hora: '12:20', id: 2 },
         { pedidos: ["Carne", "Churrasco"], hora: '12:25', id: 3 },
@@ -22,22 +22,23 @@ const PantallaRestaurante:React.FC = () => {
         { pedidos: ["Empanada", "Churrasco", "Provoleta", "a", "Volcan de chocolate con helado", "Ensalada de papa y huevo"], hora: '12:55', id: 9 },
     ]);
 
-    const [pedidosEnproceso, setpedidosEnprocesoe] = useState<TipoPedido[]>([
-        { pedidos: ['Provoleta", "Papas fritas'], hora: '1:15', id: 1 },
-        { pedidos: ["Coca", "Helado", "Ensalada de fruta", "Budin de pan", "Volcan de chocolate con helado y dulce de leche aaaaaa"], hora: '1:20', id: 2 },
-        { pedidos: ["Provoleta", "Churrasco"], hora: '1:25', id: 3 },
+    const [pedidosEnproceso, setpedidosEnproceso] = useState<TipoPedido[]>([
+        { pedidos: ['Provoleta", "Papas fritas'], hora: '1:15', id: 11 },
+        { pedidos: ["Coca", "Helado", "Ensalada de fruta", "Budin de pan", "Volcan de chocolate con helado y dulce de leche aaaaaa"], hora: '1:20', id: 12 },
+        { pedidos: ["Provoleta", "Churrasco"], hora: '1:25', id: 13 },
     ]);
 
     const [pedidosCompletados, setpedidosCompletados] = useState<TipoPedido[]>([
-        { pedidos: ["Pure", "Milanesa"], hora: '2:15', id: 1 },
-        { pedidos: ["pollo", "Pasto"], hora: '2:20', id: 2 },
-        { pedidos: ["Papas fritas", "Carne al horno"], hora: '2:25', id: 3 },
-        { pedidos: ["a", "b"], hora: '2:30', id: 4 },
+        { pedidos: ["Pure", "Milanesa"], hora: '2:15', id: 21 },
+        { pedidos: ["pollo", "Pasto"], hora: '2:20', id: 22 },
+        { pedidos: ["Papas fritas", "Carne al horno"], hora: '2:25', id: 32 },
+        { pedidos: ["a", "b"], hora: '2:30', id: 24 },
 
     ]);
     const[pendientes, setPendientes] = useState(true);
     const[enProceso, setEnProceso] = useState(true);
     const[completados, setCompletados] = useState(true);
+    
     return <main className="no-scrollbar">
             <div className="w-full min-h-screen h-full bg-white no-scrollbar">
                 <header className="h-fit w-full flex shadow-lg items-center">
@@ -65,7 +66,7 @@ const PantallaRestaurante:React.FC = () => {
                             <h4 className="text-BorderPedidosRestaurante pl-5 pt-5 pb-11">Completados</h4>
                             {pedidosCompletados.map((pedidosMap, key)=>(
                                     <div key={key}>
-                                        <Pedidos pedidoCompleto={pedidosMap} pedidos={pedidosMap.pedidos} id={pedidosMap.id} hora={pedidosMap.hora} color={"rojo"} key={key}></Pedidos>
+                                        <Pedidos setPedido={setpedidosCompletados} pedidoCompleto={pedidosCompletados} pedidos={pedidosMap.pedidos} id={pedidosMap.id} hora={pedidosMap.hora} color={"rojo"} key={key}></Pedidos>
                                     </div>
                             ))}
                             </div>
@@ -79,7 +80,7 @@ const PantallaRestaurante:React.FC = () => {
                         <h4 className="text-BorderPedidosRestaurante pl-5 pt-5 pb-11">En Proceso</h4>
                         {pedidosEnproceso.map((pedidosMap, key)=>(
                                 <div key={key}>
-                                    <Pedidos pedidoCompleto={pedidosMap} pedidos={pedidosMap.pedidos} id={pedidosMap.id} hora={pedidosMap.hora} color={"amarillo"} key={key}></Pedidos>
+                                    <Pedidos setPedido={setpedidosEnproceso} pedidoCompleto={pedidosEnproceso} pedidos={pedidosMap.pedidos} id={pedidosMap.id} hora={pedidosMap.hora} color={"amarillo"} key={key}></Pedidos>
                                 </div>
                         ))}
                         </div>
@@ -91,7 +92,7 @@ const PantallaRestaurante:React.FC = () => {
                         <h4 className="text-BorderPedidosRestaurante pl-5 pt-5 pb-11">Pendientes</h4>
                         {pedidosPendientes.map((pedidosMap, key)=>(
                                 <div key={key}>
-                                    <Pedidos pedidoCompleto={pedidosMap} pedidos={pedidosMap.pedidos} id={pedidosMap.id} hora={pedidosMap.hora} color={"verde"} key={key}></Pedidos>   
+                                    <Pedidos setPedido={setPedidosPendiente} pedidoCompleto={pedidosPendientes} pedidos={pedidosMap.pedidos} id={pedidosMap.id} hora={pedidosMap.hora} color={"verde"} key={key}></Pedidos>   
                                 </div>    
                         ))}
                         </div>
@@ -100,9 +101,8 @@ const PantallaRestaurante:React.FC = () => {
                     )}
                 </div>
                
-                <footer className="absolute bottom-0 w-full h-fit flex justify-center items-center pb-3 pt-5">
+                <footer className="absolute bottom-0 w-full h-fit flex justify-center items-center pb-3 pt-5" >
                     <button>
-                      <img src="tacho.svg" alt="" className="w-16 h-16"/>
                     </button>
                 </footer>
             </div>
