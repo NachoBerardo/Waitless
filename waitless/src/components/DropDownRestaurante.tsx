@@ -13,22 +13,29 @@ const DropDownRestaurante: React.FC<Props>=({setCompletados, setEnProceso, setPe
           const handleClickPendientes = () => {
             setPendientes(true);
             setCompletados(false);
-            setEnProceso(false)
+            setEnProceso(false);
+            setRotation(!rotation);
           };
           const handleClickEnProceso = () => {
             setPendientes(false);
             setCompletados(false);
-            setEnProceso(true)
+            setEnProceso(true);
+            setRotation(!rotation);
+
           };
           const handleClickCompletados = () => {
             setPendientes(false);
             setCompletados(true);
-            setEnProceso(false)
+            setEnProceso(false);
+            setRotation(!rotation);
+
           };
           const handleClickTodos = () => {
             setPendientes(true);
             setCompletados(true);
-            setEnProceso(true)
+            setEnProceso(true);
+            setRotation(!rotation);
+
           };
     return <div>
             <div className=" absolute left-0 ml-20 xl:mt-10 mt-7 py-3 w-[252px] h-fit border-solid border-2 z-20 rounded-[10px] flex-col items-center bg-white border-BordeGrisPedido transition-transform">
