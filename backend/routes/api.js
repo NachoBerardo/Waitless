@@ -1,10 +1,9 @@
 import bodyParser from 'body-parser';
 import express from 'express';
 import cors from "cors"
-import { getAllFoodWithPrisma, getFoodWithPrisma, createFoodWithPrisma, updateFoodWithPrisma, deleteFoodWithPrisma, getAllOrdersWithPrisma } from '../index.js'
-// , getOrderWithPrisma, createOrderWithPrisma, updateOrderWithPrisma, deleteOrderWithPrisma
+import { getAllFoodWithPrisma, getFoodWithPrisma, createFoodWithPrisma, updateFoodWithPrisma, deleteFoodWithPrisma, getAllOrderWithPrisma } from '../index.js'
 const app = express();
-const PORT = 3001;
+const PORT = 3000;
 
 //h
 app.use(bodyParser.json());
@@ -21,20 +20,20 @@ app.use(cors())
 // })
 
 app.get("/menu", getAllFoodWithPrisma)
-app.get("/order", getAllOrdersWithPrisma)
+app.get("/order", getAllOrderWithPrisma)
 
 //Trae lo que quiero según su ID
 app.get("/menu/:id", async (req, res) => {
     const id = parseInt(req.params.id)
-    const menu = await getOrderwithPrisma(id)
-    res.json(menu)
-})
-
-app.get("/order/:id", async (req, res) => {
-    const id = parseInt(req.params.id)
     const menu = await getFoodWithPrisma(id)
     res.json(menu)
 })
+
+/*app.get("/order/:id", async (req, res) => {
+    const id = parseInt(req.params.id)
+    const menu = await getFoodWithPrisma(id)
+    res.json(menu)
+})*/
 
 //Agrega a menu lo que quieras
 app.post("/menu", async (req, res) => {

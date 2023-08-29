@@ -16,18 +16,6 @@ export const getAllFoodWithPrisma = async (req, res) => {
   }
 }
 
-export const getAllOrdersWithPrisma = async (req, res) => {
-  try {
-    const getOrders = await prisma.order.findMany()
-
-    if (!getOrders) return console.log("orders not found")
-
-    return res.json({ message: "Orders found", data: getOrders })
-  } catch (error) {
-    console.log(error)
-  }
-}
-
 export const getFoodWithPrisma = async (id) => {
   try {
     const getFood = await prisma.food.findUnique({
@@ -39,20 +27,6 @@ export const getFoodWithPrisma = async (id) => {
     if (!getFood) return console.log("not food found")
 
     return getFood
-  } catch (error) {
-    console.log(error)
-  }
-}
-
-export const getOrderWithPrisma = async (id) => {
-  try {
-    const getFood = await prisma.order.findUnique({
-      where: {
-        id: id
-      }
-    })
-    if (!getOrder) return console.log("order not found")
-    return getOrder
   } catch (error) {
     console.log(error)
   }
@@ -75,21 +49,6 @@ export const createFoodWithPrisma = async (title, contents) => {
     console.log(error)
   }
 }
-/*
-export const createFoodWithPrisma = async (title, contents) => {
-  try {
-    const getFood = await prisma.order.findUnique({
-      where: {
-        id: id
-      }
-    })
-    if (!getOrder) return console.log("order not found")
-    return getOrder
-  } catch (error) {
-    console.log(error)
-  }
-}*/
-
 
 export const updateFoodWithPrisma = async (title, contents, id) => {
   try {
@@ -126,6 +85,18 @@ export const deleteFoodWithPrisma = async (title, contents, id) => {
     if (!deleteFood) return console.log("not food found")
 
     return deleteFood
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export const getAllOrderWithPrisma = async (req, res) => {
+  try {
+    const getOrder = await prisma.order.findMany()
+
+    if (!getOrder) return console.log("order not found")
+
+    return res.json({ message: "Order found", data: getOrder })
   } catch (error) {
     console.log(error)
   }

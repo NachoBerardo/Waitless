@@ -27,14 +27,22 @@ model Food {
 }
 
 model Order {
-  id         Int       @id @default(autoincrement())
-  //idCustomer String[]
-  sendedAt   DateTime  @default(now())
+  id         Int        @id @default(autoincrement())
+  idCustomer Custumer[]
+  sendedAt   DateTime   @default(now())
   aclaration String?
   foods      Food[]
   foodId     Int
-  Commands   Commands? @relation(fields: [commandsId], references: [id])
-  commandsId Int?      @unique
+  Commands   Commands?  @relation(fields: [commandsId], references: [id])
+  commandsId Int?       @unique
+}
+
+model Custumer {
+  id      Int     @id @default(autoincrement())
+  name    String
+  email   String?
+  Order   Order?  @relation(fields: [orderId], references: [id])
+  orderId Int?
 }
 
 model Table {
