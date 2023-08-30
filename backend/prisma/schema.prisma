@@ -7,12 +7,6 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-// datasource db {
-//   provider     = "mysql"
-//   url          = env("DATABASE_URL")
-//   relationMode = "prisma"
-// }
-
 model Food {
   id          Int     @id @default(autoincrement())
   category    String
@@ -28,11 +22,10 @@ model Food {
 
 model Order {
   id         Int        @id @default(autoincrement())
-  idCustomer Custumer[]
   sendedAt   DateTime   @default(now())
   aclaration String?
+  Customers  Custumer[]
   foods      Food[]
-  foodId     Int
   Commands   Commands?  @relation(fields: [commandsId], references: [id])
   commandsId Int?       @unique
 }
@@ -42,7 +35,7 @@ model Custumer {
   name    String
   email   String?
   Order   Order?  @relation(fields: [orderId], references: [id])
-  orderId Int?
+  orderId Int?    @unique
 }
 
 model Table {
