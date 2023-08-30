@@ -38,6 +38,7 @@ const PantallaRestaurante:React.FC = () => {
     const[pendientes, setPendientes] = useState(true);
     const[enProceso, setEnProceso] = useState(true);
     const[completados, setCompletados] = useState(true);
+    const[moverse, setMoverse] = useState(true);
     
     return <main className="no-scrollbar">
     <div className="w-full min-h-screen h-full bg-white no-scrollbar">
@@ -58,7 +59,7 @@ const PantallaRestaurante:React.FC = () => {
 
             </img>
         </header>
-        <DropDownRestaurante setPendientes={setPendientes} setCompletados={setCompletados} setEnProceso={setEnProceso}/>
+        <DropDownRestaurante setPendientes={setPendientes} setCompletados={setCompletados} setEnProceso={setEnProceso} setMoverse={setMoverse}/>
                 
         <div className="grid grid-cols-3 justify-around m-auto monitor:pt-6 xl:pt-11 z-10 ">
             <div className="ml-20">
@@ -80,7 +81,8 @@ const PantallaRestaurante:React.FC = () => {
                                 setPedidoIzquierda={setpedidosCompletados}
                                 PedidoDerecha = {true}
                                 PedidoIzquierda = {false}
-                                    ></Pedidos>
+                                moverse={moverse}
+                                ></Pedidos>
                             </div>
                     ))}
                 </div>
@@ -105,6 +107,7 @@ const PantallaRestaurante:React.FC = () => {
                                     setPedidoIzquierda={setPedidosPendiente}
                                     PedidoDerecha = {true}
                                     PedidoIzquierda = {true}
+                                    moverse={moverse}
                                     ></Pedidos>
                                 </div>
                         ))}
@@ -130,6 +133,7 @@ const PantallaRestaurante:React.FC = () => {
                                     setPedidoIzquierda={setpedidosEnproceso}
                                     PedidoDerecha = {false}
                                     PedidoIzquierda = {true}
+                                    moverse={moverse}
                                     ></Pedidos>   
                             </div>    
                     ))}

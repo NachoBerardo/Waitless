@@ -14,6 +14,8 @@ interface Props {
     setPedidoDerecha: React.Dispatch<React.SetStateAction<TipoPedido[]>>;
     PedidoIzquierda: boolean;
     PedidoDerecha: boolean;
+    moverse: boolean;
+
 }
   type TipoPedido= {
     pedidos: string[];
@@ -27,7 +29,7 @@ interface Props {
     rojo: string[];
 }
 
-const Pedidos: React.FC<Props> = ({ pedidos, color, key, id, pedidoActual, hora, setPedidoActual, pedidoEntero, setPedidoDerecha, setPedidoIzquierda, PedidoIzquierda, PedidoDerecha, }) => {
+const Pedidos: React.FC<Props> = ({ pedidos, color, key, id, pedidoActual, hora, setPedidoActual, pedidoEntero, setPedidoDerecha, setPedidoIzquierda, PedidoIzquierda, PedidoDerecha, moverse}) => {
 //-------------------------Constantes de rotacion y colores-----------------------------
 
     const [rotation, setRotation] = useState(false);
@@ -42,20 +44,24 @@ const Pedidos: React.FC<Props> = ({ pedidos, color, key, id, pedidoActual, hora,
 
     const handleClickIzquierda = () =>{
         if (PedidoIzquierda){
-            // console.log("entró")
-            setPedidoIzquierda(pedidoviejo => [...pedidoviejo, pedidoActual])
-            setPedidoActual(pedidoEntero.filter(item => item.id !== id));  
-            setRotation(false);
-
+            if (moverse){
+                console.log("entró")
+                setPedidoIzquierda(pedidoviejo => [...pedidoviejo, pedidoActual])
+                setPedidoActual(pedidoEntero.filter(item => item.id !== id));  
+                setRotation(false);
+            }
+           
         }
     };
 
     const handleClickDerecha = () =>{
         if (PedidoDerecha){
-            // console.log("entró")
-            setPedidoDerecha(pedidoviejo => [...pedidoviejo, pedidoActual])
-            setRotation(false);
-            setPedidoActual(pedidoEntero.filter(item => item.id !== id));  
+            if(moverse){
+                console.log("entró")
+                setPedidoDerecha(pedidoviejo => [...pedidoviejo, pedidoActual])
+                setRotation(false);
+                setPedidoActual(pedidoEntero.filter(item => item.id !== id));  
+            }
         }
     };
 

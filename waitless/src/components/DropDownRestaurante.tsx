@@ -3,9 +3,10 @@ interface Props {
     setPendientes: React.Dispatch<React.SetStateAction<boolean>>;
     setEnProceso: React.Dispatch<React.SetStateAction<boolean>>;
     setCompletados: React.Dispatch<React.SetStateAction<boolean>>;
+    setMoverse: React.Dispatch<React.SetStateAction<boolean>>;
   }
 
-const DropDownRestaurante: React.FC<Props>=({setCompletados, setEnProceso, setPendientes})=>{
+const DropDownRestaurante: React.FC<Props>=({setCompletados, setEnProceso, setPendientes, setMoverse})=>{
         const [rotation, setRotation] = useState(false);
         const handleClickRotation = () => {
             setRotation(!rotation);
@@ -15,12 +16,14 @@ const DropDownRestaurante: React.FC<Props>=({setCompletados, setEnProceso, setPe
             setCompletados(false);
             setEnProceso(false);
             setRotation(!rotation);
+            setMoverse(false);
           };
           const handleClickEnProceso = () => {
             setPendientes(false);
             setCompletados(false);
             setEnProceso(true);
             setRotation(!rotation);
+            setMoverse(false);
 
           };
           const handleClickCompletados = () => {
@@ -28,6 +31,7 @@ const DropDownRestaurante: React.FC<Props>=({setCompletados, setEnProceso, setPe
             setCompletados(true);
             setEnProceso(false);
             setRotation(!rotation);
+            setMoverse(false);
 
           };
           const handleClickTodos = () => {
@@ -35,6 +39,7 @@ const DropDownRestaurante: React.FC<Props>=({setCompletados, setEnProceso, setPe
             setCompletados(true);
             setEnProceso(true);
             setRotation(!rotation);
+            setMoverse(true);
 
           };
     return <div>
