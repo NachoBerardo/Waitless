@@ -8,7 +8,7 @@ datasource db {
 }
 
 model Food {
-  id          Int     @id @default(autoincrement())
+  id          Int                   @id @default(autoincrement())
   category    String
   name        String
   price       Int
@@ -16,34 +16,54 @@ model Food {
   sideDish    Boolean
   image       String
   video       String?
-  foodOrder   Order?  @relation(fields: [orderId], references: [id])
-  orderId     Int?    @unique
+  ordersFood  OrderFoodbyCustumer[]
 }
 
 model Order {
-  id         Int        @id @default(autoincrement())
-  sendedAt   DateTime   @default(now())
-  aclaration String?
-  Customers  Custumer[]
-  foods      Food[]
-  Commands   Commands?  @relation(fields: [commandsId], references: [id])
-  commandsId Int?       @unique
+  id                  Int                   @id @default(autoincrement())
+  sendedAt            DateTime              @default(now())
+  aclaration          String?
+  orderFoodByCostumer OrderFoodbyCustumer[]
+  commands            Commands?             @relation(fields: [commandsId], references: [id])
+  commandsId          Int?
 }
 
-model Custumer {
-  id      Int     @id @default(autoincrement())
-  name    String
-  email   String?
-  Order   Order?  @relation(fields: [orderId], references: [id])
-  orderId Int?    @unique
+// model CustumersOnOrders {
+//   customers  Custumer @relation(fields: [customerId], references: [id])
+//   customerId Int
+//   orders     Order    @relation(fields: [orderId], references: [id])
+//   orderId    Int
+//   sendedAt   DateTime @default(now())
+
+//   @@id([customerId, orderId])
+// }
+
+model Customer {
+  id     Int                   @id @default(autoincrement())
+  name   String
+  email  String?
+  orders OrderFoodbyCustumer[]
+}
+
+model OrderFoodbyCustumer {
+  id         Int      @id @default(autoincrement())
+  orderId    Int
+  foodId     Int
+  customerId Int // Linking to the customer who placed the order
+  quantity   Int // Quantity of this food in the order
+  order      Order    @relation(fields: [orderId], references: [id])
+  food       Food     @relation(fields: [foodId], references: [id])
+  customer   Customer @relation(fields: [customerId], references: [id])
+  // ... other fields related to this relation if needed
 }
 
 model Table {
-  id       Int     @id @default(autoincrement())
+  id       Int        @id @default(autoincrement())
   state    Boolean
   area     Int?
-  Waiter   Waiter? @relation(fields: [waiterId], references: [id])
-  waiterId Int?    @unique
+  Waiter   Waiter?    @relation(fields: [waiterId], references: [id])
+  waiterId Int?
+  commands Commands[]
 }
 
 model Waiter {
@@ -57,4 +77,6 @@ model Commands {
   sendedAt DateTime @default(now())
   total    Float
   orders   Order[]
+  tableId  Int?
+  table    Table?   @relation(fields: [tableId], references: [id])
 }
