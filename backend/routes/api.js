@@ -5,7 +5,6 @@ import { getAllFoodWithPrisma, getFoodWithPrisma, createFoodWithPrisma, updateFo
 const app = express();
 const PORT = 3000;
 
-//h
 app.use(bodyParser.json());
 app.use(express.json())
 app.use(cors())
@@ -22,13 +21,29 @@ app.use(cors())
 app.get("/menu", getAllFoodWithPrisma)
 app.get("/order", getAllOrderWithPrisma)
 
+
 //Trae lo que quiero según su ID
 app.get("/menu/:id", async (req, res) => {
     const id = parseInt(req.params.id)
     const menu = await getFoodWithPrisma(id)
     res.json(menu)
 })
-
+app.get("/orders/:id", async (req, res) => {
+    const id = parseInt(req.params.id)
+    const orders = await getOrderByPrismaID(id)
+    if(!orders) {
+        throw new Error("The order is empty")
+     }
+    res.json(orders)
+})
+app.get("/orders", async (req, res) => {
+    const orders = await getAllOrderWithPrisma()
+    if(!orders) {
+    throw new Error("The order list is empty")
+ }
+ res.json({message: "Success", data: orders})
+  })
+    
 /*app.get("/order/:id", async (req, res) => {
     const id = parseInt(req.params.id)
     const menu = await getFoodWithPrisma(id)
