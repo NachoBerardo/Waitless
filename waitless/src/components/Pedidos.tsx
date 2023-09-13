@@ -74,7 +74,7 @@ const Pedidos: React.FC<Props> = ({ pedidos, color, key, id, pedidoActual, hora,
 //----------------------------------- HTML ---------------------------------------
     
     return <div className={`grid mb-5  mx-10 cursor-pointer `} >
-        <div className={` ${colorvariants[color][0]} flex justify-around items-center`}>
+        <div className={` ${colorvariants[color][0]} flex justify-around items-center rounded-lg`}>
             <h5 className="py-4 text-black">#{id}</h5>
             <h5 className="py-4 text-black">{hora}hs</h5>
             <button

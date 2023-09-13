@@ -47,7 +47,7 @@ export default function Menu() {
     ],
     [
       "Milanesa",
-      "/provoleta.jpg",
+      "/milanesa.jpg",
       "Irresistible milanesa argentina de carne empanada y frita, acompañada de guarnición",
       "6231",
     ],
