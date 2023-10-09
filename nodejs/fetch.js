@@ -1,6 +1,7 @@
-import { useQuery } from '@tanstack/react-query'
+import { useQuery, QueryClient } from '@tanstack/react-query'
+//import { QueryClient, QueryClientProvider, useQuery } from 'react-query'
 //const myModule = require( '@tanstack/react-query').useQuery;
-import { getFoodWithPrisma, getAllFoodWithPrisma, createFoodWithPrisma, updateFoodWithPrisma, deleteFoodWithPrisma, getAllOrdersWithPrisma } from '../index.js'
+import { getFoodWithPrisma, getAllFoodWithPrisma, createFoodWithPrisma, updateFoodWithPrisma, deleteFoodWithPrisma, getAllOrdersWithPrisma, createOrderWithPrisma } from '../index.js'
 //, getOrderWithPrisma, createOrderWithPrisma, updateOrderWithPrisma, deleteOrderWithPrisma s
 /*
 const getFood = require('../index.js').getFoodWithPrisma;
@@ -10,6 +11,7 @@ const updateFood = require('../index.js').updateFoodWithPrisma;
 const deleteFood = require('../index.js').deleteFoodWithPrisma;
 */
 
+const queryClient = new QueryClient();
 export function llamarTodoMenu() {
     // Access the client
     //Main poner un <QueryClientProvider client={queryClient}>
@@ -40,6 +42,12 @@ export function actualizarComida() {
     const queryClient = useQueryClient()
     // Queries
     const cambioComida = useQuery({ queryKey: ['actualizadoComida'], queryFn: updateFoodWithPrisma })
+}
+export function crearPedido() {
+  // Access the client
+  const queryClient = useQueryClient()
+  // Queries
+  const nuevoPedido = useQuery({ queryKey: ['creadoOrder'], queryFn: createOrderWithPrisma })
 }
 
 //PEDIDOS

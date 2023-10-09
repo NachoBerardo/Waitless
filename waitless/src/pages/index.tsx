@@ -70,7 +70,7 @@ export default function Menu() {
 
   const getAllMenus = async () => {
     try {
-      await axios.get("http://localhost:3002/menu").then((response) => {
+      await axios.get("https://perfect-teal-beetle.cyclic.cloud/menu").then((response) => {
         // response.data !== [] ? setMenu(response.data.data) : setMenu([])
         (response.data.length !== 0) ? setMenu(response.data.data) : setMenu([])
       }).catch((err) => console.log(err))

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import BtnSumarRestar from "./btnSumarRestar"
+import { llamarTodoMenu, llamarComida, crearComida, actualizarComida, borrarComida, crearPedido} from '../../../nodejs/fetch';
 interface Props {
   titulo: string;
   descripcion: string; 
@@ -27,7 +28,7 @@ const FooterPopUp: React.FC<Props> = ({titulo, descripcion, precio, setShowPopUP
   };
 
   const handlePedido = () =>{
-    addPedido(titulo, descripcion, precio);
+    crearPedido();
     console.log(pedido);
     setShowPopUP(false);
     setShowMenu(true);
