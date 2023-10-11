@@ -1,6 +1,7 @@
 import { useState } from "react";
 import BtnSumarRestar from "./btnSumarRestar"
 import { llamarTodoMenu, llamarComida, crearComida, actualizarComida, borrarComida, crearPedido } from '../../../nodejs/fetch';
+import axios from "axios";
 interface Props {
   titulo: string;
   descripcion: string;
@@ -37,8 +38,17 @@ const FooterPopUp: React.FC<Props> = ({ titulo, descripcion, precio, setShowPopU
     }
   };
 
-  const handlePedido = () => {
-    crearPedido();
+  const handlePedido = async () => {
+    try {
+      return await axios.post("https://perfect-teal-beetle.cyclic.cloud/menu").then((response) => {
+        // response.data !== [] ? setMenu(response.data.data) : setMenu([])
+        // return response.data.data;
+        
+      }).catch((err) => console.log(err))
+    } catch (error) {
+      console.log(error)
+    }
+    //const nuevoPedido = useQuery({ queryKey: ['creadoOrder'], queryFn: createOrderWithPrisma })
     console.log(pedido);
     setShowPopUP(false);
     setShowMenu(true);
