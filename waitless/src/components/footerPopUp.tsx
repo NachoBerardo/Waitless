@@ -34,7 +34,7 @@ const FooterPopUp: React.FC<Props> = ({ titulo, descripcion, precio, setShowPopU
 
   const handlePedido = async () => {
     try {
-      return await axios.post("https://perfect-teal-beetle.cyclic.cloud/menu").then((response) => {
+      return await axios.post("https://perfect-teal-beetle.cyclic.cloud/orders").then((response) => {
         // response.data !== [] ? setMenu(response.data.data) : setMenu([])
         // return response.data.data;
         
