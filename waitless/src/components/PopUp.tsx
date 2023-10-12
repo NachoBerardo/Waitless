@@ -29,25 +29,7 @@ const PopUp: React.FC<Props> = ({ combinedArray, arrayUsed, keyPlato, setShowPop
       </p>
       <p className="text-black px-4 pt-1 font-bold">${combinedArray[arrayUsed][keyPlato].price}</p>
     </div>
-    <div className="w-screen h-fit pb-4 bg-background overflow-scroll mt-2 relative drop-shadow-md">
-      <h4 className="text-black pt-4 px-4 w-fit">Guarnicion</h4>
-      <button
-        style={{ transform: `rotate(${rotation ? "180deg" : "0deg"})` }}
-        className={"h-[16px] w-[16px] absolute top-4 right-7 transform focus:rotate-0 transition-transform"}
-        onClick={handleClickRotation}
-      >
-        <img src="arrow-up.svg" alt="" />
-      </button>
-      <h6 className="text-populetter pb-4 px-4 font-normal">
-        Elija 1 opción
-      </h6>
-      {rotation ? (
-        acompañamientos()
 
-      ) : (
-        <></>
-      )}
-    </div>
     <div className="w-screen h-fit pb-4 mb-24 bg-background overflow-scroll mt-2 relative drop-shadow-md">
       <h4 className="text-black px-4 pt-4 pb-3">¿Tenes alguna especificacion?</h4>
       <div className="flex h-full w-full justify-center">

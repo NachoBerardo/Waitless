@@ -5,15 +5,16 @@ import ScrollBar from "../components/scrollbar";
 import HeaderMenu from "../components/headerMenu";
 import PopUp from "../components/PopUp";
 import FooterMenu from "../components/footerMenu";
-import ContenidoPedido  from "../components/ContenidoPedido";
+import ContenidoPedido from "../components/ContenidoPedido";
 import { useQuery } from '@tanstack/react-query';
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
-import { llamarTodoMenu, llamarComida, crearComida, actualizarComida, borrarComida, crearPedido} from '../../../nodejs/fetch';
+import { llamarTodoMenu, llamarComida, crearComida, actualizarComida, borrarComida, crearPedido } from '../../../nodejs/fetch';
 import axios from "axios";
 
 export interface MenuTypes {
   idFood: number;
   category: string;
+  sideDish: boolean;
   price: string;
   name: string;
   description: string;
@@ -71,6 +72,7 @@ export default function Menu() {
   const getAllMenus = async () => {
     try {
       await axios.get("https://perfect-teal-beetle.cyclic.cloud/menu").then((response) => {
+        //await axios.get("http://localhost:3002").then((response) => {
         // response.data !== [] ? setMenu(response.data.data) : setMenu([])
         (response.data.length !== 0) ? setMenu(response.data.data) : setMenu([])
       }).catch((err) => console.log(err))
@@ -78,7 +80,7 @@ export default function Menu() {
       console.log(error)
     }
   }
-  
+
   useEffect(() => {
     getAllMenus();
   }, [])
@@ -116,7 +118,7 @@ export default function Menu() {
   const handleClickArrowBack = (pedido: boolean, Menu: boolean) => {
     setShowPedido(pedido);
     setShowMenu(Menu);
-    
+
   }
 
   return (
@@ -223,12 +225,12 @@ export default function Menu() {
                 </div>
               ))}
             </div>
-            <FooterMenu setShowPedido={setShowPedido} setShowMenu={setShowMenu} setShowPedidoEnviado={setShowMenu} EstadoPedidoEnviado={false} EstadoPedido={true} EstadoMenu={false} txtBoton="Ver Pedido"/>
+            <FooterMenu setShowPedido={setShowPedido} setShowMenu={setShowMenu} setShowPedidoEnviado={setShowMenu} EstadoPedidoEnviado={false} EstadoPedido={true} EstadoMenu={false} txtBoton="Ver Pedido" />
           </>
         ) : (<></>)}
         {showPedido ? (
           <>
-             <ContenidoPedido setShowMenu={setShowMenu} setShowPedido={setShowPedido} />
+            <ContenidoPedido setShowMenu={setShowMenu} setShowPedido={setShowPedido} />
           </>
         ) : (<></>)}
       </div>
@@ -349,7 +351,7 @@ export default function Menu() {
 //   const handleClickArrowBack = (pedido:boolean, Menu: boolean) =>{
 //     setShowPedido(pedido);
 //     setShowMenu(Menu);
-    
+
 //   }
 
 //   return (
