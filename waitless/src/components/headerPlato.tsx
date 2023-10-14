@@ -21,7 +21,7 @@ const HeaderPopUp: React.FC<a> = ({url, setShowPopUP, setShowMenu}) => {
       >
       </img>
       <div className="absolute top-0 bottom-0 left-0 right-0 flex items-center justify-center z-10 bg-gradient-to-b from-black opacity-[0.55]" />
-      <button onClick={HandleClick} className="absolute h-[25px] w-[25px] top-[50%] mt-[-24%] ml-2 z-20">
+      <button onClick={HandleClick} className="left-0 absolute top-0 ml-2 mt-2 h-[25px] w-[25px]  z-20">
         <img src="arrowWhite.svg" alt="" /></button>
     </div>
   </header>;

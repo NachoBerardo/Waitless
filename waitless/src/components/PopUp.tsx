@@ -57,7 +57,7 @@ const PopUp: React.FC<Props> = ({ combinedArray, arrayUsed, keyPlato, setShowPop
     <div className="w-screen h-fit pb-4 mb-24 bg-background overflow-scroll mt-2 relative drop-shadow-md">
       <h4 className="text-black px-4 pt-4 pb-3">¿Tenes alguna especificacion?</h4>
       <div className="flex h-full w-full justify-center">
-        <input type="text" className="w-[90%] h-20 bg-input text-black px-4 pb-4" placeholder="Especificaciones..." />
+        <input type="text" className="w-[90%] h-20 bg-input text-black px-4 pb-4 focus:outline-none focus:ring-2 ring-FocusEspecificaciones" placeholder="Especificaciones..." />
       </div>
     </div>
 

@@ -89,10 +89,15 @@ export default function Menu() {
   };
 
   const [showPopUP, setShowPopUP] = useState(false);
-  const [showMenu, setShowMenu] = useState(true);
+  const [showMenu, setShowMenu] = useState(false);
   const [showPedido, setShowPedido] = useState(false);
+  const [showRegistro, setshowRegistro] = useState(true);
   const [keyPlato, setKeyPlato] = useState(0);
   const [arrayUsed, setarrayUsed] = useState(0);
+  const [nombre, setNombre] = useState('');
+  const [numeroMesa, setNumeroMesa] = useState('');
+  const [nombreError, setNombreError] = useState('');
+  const [numeroMesaError, setNumeroMesaError] = useState('');
 
 
   const handleclick = (key: number, estado: boolean, array: number) => {
@@ -108,12 +113,48 @@ export default function Menu() {
 
   }
 
+  const handleClickRegistro = () => {
+    if (nombre === '') {
+      setNombreError('Nombre es obligatorio');
+    } else {
+      setNombreError('');
+    }
+
+    if (numeroMesa === '') {
+      setNumeroMesaError('Número de mesa es obligatorio');
+    } else {
+      setNumeroMesaError('');
+    }
+
+    if (nombre !== '' && numeroMesa !== '') {
+      // Data is valid; you can proceed with whatever you need to do
+      console.log('Nombre:', nombre);
+      console.log('Numero de mesa:', numeroMesa);
+      setShowMenu(true);
+      setshowRegistro(false);
+    }
+   
+  }
+
   return (
 
     <main className="">
       <div className="h-screen w-screen pb-[7px] bg-background overflow-x-hidden no-scrollbar" id="general">
         {isMenuLoading && <p>Loading</p>}
         {isMenuError && <p>Error</p>}
+        {showRegistro && !isMenuLoading && !isMenuError ?(
+        <div className="grid w-full h-full justify-center content-center">
+          <div className=" grid overflow-hidden">
+          <h5 className="text-black ml-1">Nombre:</h5>
+          <input type="text" className="w-32 h-10 m-2 border-black border-2 bg-input text-black" value={nombre} onChange={(e) => setNombre(e.target.value) }/>
+          {nombreError && <div className="text-RojoPedido ml-1">{nombreError}</div>}
+          <h5 className="text-black ml-1">Numero de mesa:</h5>
+          <input type="number" className="w-32 h-10 m-2 border-black border-2 bg-input text-black" value={numeroMesa} onChange={(e) => setNumeroMesa(e.target.value)}/>
+          {numeroMesaError && <div className="text-RojoPedido ml-1">{numeroMesaError}</div>}
+          <button className="w-32 h-10 m-2 text-black border-black border-2 bg-input" onClick={handleClickRegistro}>Enviar</button>
+          </div>
+        </div>
+        ):(<></>)}
         {showPopUP && !isMenuLoading && !isMenuError &&
           <PopUp
             combinedArray={combinedArray!}
