@@ -1,7 +1,15 @@
 import bodyParser from 'body-parser';
 import express from 'express';
 import cors from "cors"
-import { getAllFoodWithPrisma, getFoodWithPrisma, createFoodWithPrisma, updateFoodWithPrisma, deleteFoodWithPrisma, getAllOrderWithPrisma } from '../index.js'
+import { 
+    getAllFoodWithPrisma, 
+    getFoodWithPrisma, 
+    createFoodWithPrisma, 
+    updateFoodWithPrisma, 
+    deleteFoodWithPrisma, 
+    getAllOrderWithPrisma,
+    addFoodToOrder
+} from '../index.js'
 const app = express();
 const PORT = 3002;
 
@@ -39,7 +47,7 @@ app.get("/orders/:id", async (req, res) => {
     }
     res.json(orders)
 })
-app.get("/orders", async (req, res) => {
+app.get("/orderes", async (req, res) => {
     const orders = await getAllOrderWithPrisma()
     if (!orders) {
         throw new Error("The order list is empty")
@@ -59,6 +67,15 @@ app.post("/menu", async (req, res) => {
     const nuevoPedido = await createFoodWithPrisma(title, contents)
     res.status(201).json(nuevoPedido)
 })
+
+app.post("/ordersFood", async (req, res) => {
+    const { foodId, amount } = req.body
+    const customerId = "";
+    const orderId = "";
+    const agregarComida = await addFoodToOrder(orderId, foodId, customerId, amount)
+    res.status(201).json(agregarComida)
+})
+
 //Modifica de menu lo que quieras
 app.put("/menu/:id", async (req, res) => {
     const id = parseInt(req.params.id)
