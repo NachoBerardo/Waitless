@@ -8,7 +8,7 @@ import FooterMenu from "../components/footerMenu";
 import ContenidoPedido from "../components/ContenidoPedido";
 import { useQuery } from '@tanstack/react-query';
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
-import { llamarTodoMenu, llamarComida, crearComida, actualizarComida, borrarComida, crearPedido } from '../../../nodejs/fetch';
+//import { llamarTodoMenu, llamarComida, crearComida, actualizarComida, borrarComida, crearPedido } from '../../../nodejs/fetch';
 import axios from "axios";
 import { useQueryClient } from "@tanstack/react-query";
 
@@ -22,8 +22,8 @@ export interface MenuTypes {
   image: string;
 }
 
-const inter = Inter({ subsets: ["latin"] });
 
+const inter = Inter({ subsets: ["latin"] });
 
 
 export default function Menu() {
@@ -40,6 +40,28 @@ export default function Menu() {
     }
   }
 
+  const getAllCommand = async () => {
+    try {
+      return await axios.get("https://perfect-teal-beetle.cyclic.cloud/command").then((response) => {
+        console.log(response.data.data)
+        return response.data.data
+      }).catch((err) => console.log(err))
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  const getCommandByTable = async () => {
+    try {
+      return await axios.get("https://perfect-teal-beetle.cyclic.cloud/command/:table").then((response) => {
+        console.log(response.data.data)
+        return response.data.data
+      }).catch((err) => console.log(err))
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   // Queries
   const {
     data: allMenu,
@@ -47,6 +69,12 @@ export default function Menu() {
     isError: isMenuError
   } = useQuery({ queryKey: ['menu'], queryFn: getAllMenus })
 
+  //NOSE SI ES NECESARIO
+  const {
+    data: allCommand,
+    isLoading: isCommandLoading,
+    isError: isCommandError
+  } = useQuery({ queryKey: ['command'], queryFn: getAllCommand })
 
   const separateMenuItemsByCategory = (menuItems: MenuTypes[]): MenuTypes[][] => {
     let platoEntrada: MenuTypes[] = [];
