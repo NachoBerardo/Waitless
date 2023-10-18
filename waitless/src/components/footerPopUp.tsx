@@ -2,19 +2,22 @@ import { useState } from "react";
 import BtnSumarRestar from "./btnSumarRestar"
 import { llamarTodoMenu, llamarComida, crearComida, actualizarComida, borrarComida, crearPedido } from '../../../nodejs/fetch';
 import axios from "axios";
+import { useMutation } from "@tanstack/react-query";
+
 interface Props {
   titulo: string;
   descripcion: string;
   precio: string;
   setShowPopUP: React.Dispatch<React.SetStateAction<boolean>>;
   setShowMenu: React.Dispatch<React.SetStateAction<boolean>>;
-
 }
+
 interface Order {
   name: string;
   description: string;
   price: string;
 }
+
 const FooterPopUp: React.FC<Props> = ({ titulo, descripcion, precio, setShowPopUP, setShowMenu }) => {
   const [cantidad, setCantidad] = useState(1);
   const [precioTotal, setPrecioTotal] = useState(+precio);
@@ -31,30 +34,37 @@ const FooterPopUp: React.FC<Props> = ({ titulo, descripcion, precio, setShowPopU
       setPrecioTotal(+precio * (cantidad - 1))
     }
   };
-
-  const handlePedido = async () => {
-    try {
-      return await axios.post("https://perfect-teal-beetle.cyclic.cloud/orders").then((response) => {
-        // response.data !== [] ? setMenu(response.data.data) : setMenu([])
-        // return response.data.data;
-        
-      }).catch((err) => console.log(err))
-    } catch (error) {
-      console.log(error)
-    }
-    //const nuevoPedido = useQuery({ queryKey: ['creadoOrder'], queryFn: createOrderWithPrisma })
-    console.log(pedido);
-    setShowPopUP(false);
-    setShowMenu(true);
-  }
-
   const addPedido = (name: string, description: string, price: string) => {
     const NuevoPedido: Order[] = [...pedido, { name, description, price }];
     setPedido(pedido => [...pedido, { name, description, price }]);
   }
+  
+  function App() {
+    const handlePedido = async () => {
+      try {
+        return await axios.post("https://perfect-teal-beetle.cyclic.cloud/ordersFood", {
+        body: pedido
+        }).then((response) => {
+          
+        }).catch((err) => console.log(err))
+      } catch (error) {
+        console.log(error)
+      }
+      //const nuevoPedido = useQuery({ queryKey: ['creadoOrder'], queryFn: createOrderWithPrisma })
+      
+      setShowPopUP(false);
+      setShowMenu(true);
+    
+      const mutation = useMutation({
+        mutationFn: handlePedido,
+      })
+  }
+    console.log(pedido);
+  }
 
+  
   return <footer className="w-full h-[90px] bg-background bottom-0 fixed shadow-top flex items-center" id="footerMenu">
-    <button className=" bg-btngreen absolute rounded-2xl right-0  mr-7 h-[38px] w-[89px]" onClick={handlePedido}>
+    <button className=" bg-btngreen absolute rounded-2xl right-0  mr-7 h-[38px] w-[89px]" onClick={App}>
       <p className="text-white" >Agregar</p>
     </button>
     <div className="border-solid border-2 border-[#252525] absolute rounded-2xl right-0 flex items-center justify-between mr-[126px] h-[38px] w-[89px]">
@@ -68,4 +78,5 @@ const FooterPopUp: React.FC<Props> = ({ titulo, descripcion, precio, setShowPopU
     </div>
   </footer>;
 }
+
 export default FooterPopUp;
