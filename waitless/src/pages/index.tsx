@@ -133,7 +133,7 @@ export default function Menu() {
       setShowMenu(true);
       setshowRegistro(false);
     }
-   
+
   }
 
   return (
@@ -142,19 +142,19 @@ export default function Menu() {
       <div className="h-screen w-screen pb-[7px] bg-background overflow-x-hidden no-scrollbar" id="general">
         {isMenuLoading && <p>Loading</p>}
         {isMenuError && <p>Error</p>}
-        {showRegistro && !isMenuLoading && !isMenuError ?(
-        <div className="grid w-full h-full justify-center content-center">
-          <div className=" grid overflow-hidden">
-          <h5 className="text-black ml-1">Nombre:</h5>
-          <input type="text" className="w-32 h-10 m-2 border-black border-2 bg-input text-black" value={nombre} onChange={(e) => setNombre(e.target.value) }/>
-          {nombreError && <div className="text-RojoPedido ml-1">{nombreError}</div>}
-          <h5 className="text-black ml-1">Numero de mesa:</h5>
-          <input type="number" className="w-32 h-10 m-2 border-black border-2 bg-input text-black" value={numeroMesa} onChange={(e) => setNumeroMesa(e.target.value)}/>
-          {numeroMesaError && <div className="text-RojoPedido ml-1">{numeroMesaError}</div>}
-          <button className="w-32 h-10 m-2 text-black border-black border-2 bg-input" onClick={handleClickRegistro}>Enviar</button>
+        {showRegistro && !isMenuLoading && !isMenuError ? (
+          <div className="grid w-full h-full justify-center content-center">
+            <div className=" grid overflow-hidden">
+              <h5 className="text-black ml-1">Nombre:</h5>
+              <input type="text" className="w-32 h-10 m-2 border-black border-2 bg-input text-black" value={nombre} onChange={(e) => setNombre(e.target.value)} />
+              {nombreError && <div className="text-RojoPedido ml-1">{nombreError}</div>}
+              <h5 className="text-black ml-1">Numero de mesa:</h5>
+              <input type="number" className="w-32 h-10 m-2 border-black border-2 bg-input text-black" value={numeroMesa} onChange={(e) => setNumeroMesa(e.target.value)} />
+              {numeroMesaError && <div className="text-RojoPedido ml-1">{numeroMesaError}</div>}
+              <button className="w-32 h-10 m-2 text-black border-black border-2 bg-input" onClick={handleClickRegistro}>Enviar</button>
+            </div>
           </div>
-        </div>
-        ):(<></>)}
+        ) : (<></>)}
         {showPopUP && !isMenuLoading && !isMenuError &&
           <PopUp
             combinedArray={combinedArray!}
@@ -164,7 +164,7 @@ export default function Menu() {
             setShowMenu={setShowMenu}
           ></PopUp>
         }
-        {!isMenuLoading && !isMenuError && combinedArray && showMenu? (
+        {!isMenuLoading && !isMenuError && combinedArray && showMenu ? (
           <>
             <HeaderMenu />
             <ScrollBar />
