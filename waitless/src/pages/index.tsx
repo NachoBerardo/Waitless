@@ -29,10 +29,17 @@ interface CommandData {
   tableId: number;
 }
 
+interface FoodOrder {
+  foodName: string,
+  foodId: number,
+  amount: number
+}
+
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Menu() {
   const [menu, setMenu] = useState<MenuTypes[]>([]);
+  const [pedido, setPedido] = useState<FoodOrder[]>([]);
 
   const getAllMenus = async () => {
     try {
@@ -117,7 +124,6 @@ export default function Menu() {
   const [combinedArray, setCombinedArray] = useState<MenuTypes[][]>();
 
   useEffect(() => {
-
     if (allMenu)
       setCombinedArray(separateMenuItemsByCategory(allMenu));
   }, [allMenu]);
@@ -211,8 +217,10 @@ export default function Menu() {
             combinedArray={combinedArray!}
             arrayUsed={arrayUsed}
             keyPlato={keyPlato}
+            pedido={pedido}
             setShowPopUP={setShowPopUP}
             setShowMenu={setShowMenu}
+            setPedido={setPedido}
           ></PopUp>
         }
         {!isMenuLoading && !isMenuError && combinedArray && showMenu ? (
