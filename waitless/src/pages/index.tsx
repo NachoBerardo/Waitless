@@ -8,7 +8,7 @@ import FooterMenu from "../components/footerMenu";
 import ContenidoPedido from "../components/ContenidoPedido";
 import { useQuery } from '@tanstack/react-query';
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
-import { llamarTodoMenu, llamarComida, crearComida, actualizarComida, borrarComida, crearPedido } from '../../../nodejs/fetch';
+//import { llamarTodoMenu, llamarComida, crearComida, actualizarComida, borrarComida, crearPedido } from '../../../nodejs/fetch';
 import axios from "axios";
 import { useQueryClient } from "@tanstack/react-query";
 
@@ -20,6 +20,13 @@ export interface MenuTypes {
   name: string;
   description: string;
   image: string;
+}
+
+interface CommandData {
+  idCommand: number;
+  //sendedAt: time
+  total: number;
+  tableId: number;
 }
 
 const inter = Inter({ subsets: ["latin"] });
@@ -49,16 +56,30 @@ export default function Menu() {
     }
   }
 
-  const getCommandByTable = async () => {
+  // const getCommandByTable = async () => {
+  //   try {
+  //     return await axios.get("https://perfect-teal-beetle.cyclic.cloud/command/:table").then((response) => {
+  //       console.log(response.data.data)
+  //       return response.data.data
+  //     }).catch((err) => console.log(err))
+  //   } catch (error) {
+  //     console.log(error)
+  //   }
+  // }
+
+  const getCommandByTable = async (table: number): Promise<CommandData> => {
     try {
-      return await axios.get("https://perfect-teal-beetle.cyclic.cloud/command/:table").then((response) => {
-        console.log(response.data.data)
-        return response.data.data
-      }).catch((err) => console.log(err))
+      const response = await axios.get<CommandData>(`https://perfect-teal-beetle.cyclic.cloud/command/${table}`);
+      console.log(response.data);
+      return response.data;
     } catch (error) {
-      console.log(error)
+      console.error(error);
+      throw error; // Rethrow the error if necessary.
     }
-  }
+  };
+
+
+
 
   // Queries
   const {
@@ -72,6 +93,12 @@ export default function Menu() {
     isLoading: isCommandLoading,
     isError: isCommandError
   } = useQuery({ queryKey: ['command'], queryFn: getAllCommand })
+
+  // const {
+  //   data: CommandByTable,
+  //   isLoading: isCommandByTableLoading,
+  //   isError: isCommandByTableError
+  // } = useQuery({ queryKey: ['command'], queryFn: getCommandByTable })
 
   const separateMenuItemsByCategory = (menuItems: MenuTypes[]): MenuTypes[][] => {
     let platoEntrada: MenuTypes[] = [];
@@ -93,7 +120,6 @@ export default function Menu() {
 
     if (allMenu)
       setCombinedArray(separateMenuItemsByCategory(allMenu));
-
   }, [allMenu]);
 
 
@@ -114,6 +140,7 @@ export default function Menu() {
   };
 
   const [showPopUP, setShowPopUP] = useState(false);
+  const [comanda, setComanda] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
   const [showPedido, setShowPedido] = useState(false);
   const [showRegistro, setshowRegistro] = useState(true);
@@ -157,12 +184,11 @@ export default function Menu() {
       console.log('Numero de mesa:', numeroMesa);
       setShowMenu(true);
       setshowRegistro(false);
-    }
 
+    }
   }
 
   return (
-
     <main className="">
       <div className="h-screen w-screen pb-[7px] bg-background overflow-x-hidden no-scrollbar" id="general">
         {isMenuLoading && <p>Loading</p>}
