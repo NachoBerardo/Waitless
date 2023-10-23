@@ -8,7 +8,6 @@ import FooterMenu from "../components/footerMenu";
 import ContenidoPedido from "../components/ContenidoPedido";
 import { useQuery } from '@tanstack/react-query';
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
-//import { llamarTodoMenu, llamarComida, crearComida, actualizarComida, borrarComida, crearPedido } from '../../../nodejs/fetch';
 import axios from "axios";
 import { useQueryClient } from "@tanstack/react-query";
 
@@ -63,30 +62,16 @@ export default function Menu() {
     }
   }
 
-  // const getCommandByTable = async () => {
-  //   try {
-  //     return await axios.get("https://perfect-teal-beetle.cyclic.cloud/command/:table").then((response) => {
-  //       console.log(response.data.data)
-  //       return response.data.data
-  //     }).catch((err) => console.log(err))
-  //   } catch (error) {
-  //     console.log(error)
-  //   }
-  // }
-
   const getCommandByTable = async (table: number): Promise<CommandData> => {
     try {
       const response = await axios.get<CommandData>(`https://perfect-teal-beetle.cyclic.cloud/command/${table}`);
-      console.log(response.data);
       return response.data;
     } catch (error) {
       console.error(error);
       throw error; // Rethrow the error if necessary.
     }
   };
-
-
-
+  console.log("This is the command of the table 1", getCommandByTable(1));
 
   // Queries
   const {
@@ -100,12 +85,6 @@ export default function Menu() {
     isLoading: isCommandLoading,
     isError: isCommandError
   } = useQuery({ queryKey: ['command'], queryFn: getAllCommand })
-
-  // const {
-  //   data: CommandByTable,
-  //   isLoading: isCommandByTableLoading,
-  //   isError: isCommandByTableError
-  // } = useQuery({ queryKey: ['command'], queryFn: getCommandByTable })
 
   const separateMenuItemsByCategory = (menuItems: MenuTypes[]): MenuTypes[][] => {
     let platoEntrada: MenuTypes[] = [];
