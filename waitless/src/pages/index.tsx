@@ -62,16 +62,47 @@ export default function Menu() {
     }
   }
 
-  const getCommandByTable = async (table: number): Promise<CommandData> => {
+  // const getCommandByTable = async (table: number): Promise<CommandData> => {
+  //   try {
+  //     const response = await axios.get<CommandData>(`https://perfect-teal-beetle.cyclic.cloud/command/${table}`);
+  //     return response.data;
+  //   } catch (error) {
+  //     console.error(error);
+  //     throw error;
+  //   }
+  // };
+  //console.log("This is the command of the table 1", getCommandByTable(1));
+
+  const getCommandByTable = async (table: number, fieldName?: string) => {
     try {
-      const response = await axios.get<CommandData>(`https://perfect-teal-beetle.cyclic.cloud/command/${table}`);
-      return response.data;
+      const response = await axios.get(`https://perfect-teal-beetle.cyclic.cloud/command/${table}`);
+      if (response.status === 200) {
+        const item = response.data;
+        if (fieldName) {
+          const fieldValue = item[fieldName];
+          return fieldValue;
+        } else {
+          return item;
+        }
+      } else {
+        console.log("Item from Command not found");
+      }
     } catch (error) {
       console.error(error);
-      throw error; // Rethrow the error if necessary.
+      throw error;
     }
   };
-  console.log("This is the command of the table 1", getCommandByTable(1));
+
+  //Como llamar la funcion ns si te sirve Nacho :）
+  getCommandByTable(1, "total")
+    .then(data => {
+      if (data !== null) {
+        console.log(`Field Value: $${data}`);
+      }
+    })
+    .catch(error => {
+      console.error(error);
+    });
 
   // Queries
   const {
