@@ -58,7 +58,7 @@ const ContenidoPedido: React.FC<Props> = ({ setShowPedido, setShowMenu }) => {
                 <div>
                   <h3 className="text-black pl-14 pt-6 overflow-hidden inline-flex"> Papa al horno</h3>
                   <p className="pl-14 text-letraGris truncate">aaaaaaaaaaaaaaaaaaa</p>
-                  <p className="pl-14 text-letraGrisOscuro pt-1 pb-4">500$</p>
+                  <p className="pl-14 text-letraGrisOscuro pt-1 pb-4">$500</p>
                 </div>
                 <div className="flex justify-center items-center">
                   <BtnSumarRestar2></BtnSumarRestar2>
