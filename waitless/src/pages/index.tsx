@@ -207,8 +207,8 @@ export default function Menu() {
   return (
     <main className="">
       <div className="h-screen w-screen pb-[7px] bg-background overflow-x-hidden no-scrollbar" id="general">
-        {isMenuLoading && <p>Loading</p>}
-        {isMenuError && <p>Error</p>}
+        {isMenuLoading && <h1 className="animate-pulse text-black">Loading</h1>}
+        {isMenuError && <h1 className="text-RojoPedido">Error</h1>}
         {showRegistro && !isMenuLoading && !isMenuError ? (
           <div className="grid w-full h-full absolute z-40 backdrop-blur-sm backdrop-brightness-90 justify-center content-center ">
             <div className=" bg-white grid rounded-lg m-10 px-8 ">
