@@ -8,7 +8,6 @@ import FooterMenu from "../components/footerMenu";
 import ContenidoPedido from "../components/ContenidoPedido";
 import { useQuery } from '@tanstack/react-query';
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
-//import { llamarTodoMenu, llamarComida, crearComida, actualizarComida, borrarComida, crearPedido } from '../../../nodejs/fetch';
 import axios from "axios";
 import { useQueryClient } from "@tanstack/react-query";
 import { table } from "console";
@@ -25,15 +24,22 @@ export interface MenuTypes {
 
 interface CommandData {
   idCommand: number;
-  //sendedAt: time
+  sendedAt: Date;
   total: number;
   tableId: number;
+}
+
+interface FoodOrder {
+  foodName: string,
+  foodId: number,
+  amount: number
 }
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Menu() {
   const [menu, setMenu] = useState<MenuTypes[]>([]);
+  const [pedido, setPedido] = useState<FoodOrder[]>([]);
 
   const getAllMenus = async () => {
     try {
@@ -56,31 +62,46 @@ export default function Menu() {
       console.log(error)
     }
   }
-
-  // const getCommandByTable = async (table: number) => {
+  // const getCommandByTable = async (table: number): Promise<CommandData> => {
   //   try {
-  //     return await axios.get(`https://perfect-teal-beetle.cyclic.cloud/command/${table}`).then((response) => {
-  //       console.log(response.data.data)
-  //       return response.data.data
-  //     }).catch((err) => console.log(err))
+  //     const response = await axios.get<CommandData>(`https://perfect-teal-beetle.cyclic.cloud/command/${table}`);
+  //     return response.data;
   //   } catch (error) {
-  //     console.log(error)
+  //     console.error(error);
+  //     throw error;
   //   }
-  // }
+  // };
+  //console.log("This is the command of the table 1", getCommandByTable(1));
 
-  const getCommandByTable = async (tableId: number): Promise<CommandData> => {
+  const getCommandByTable = async (table: number, fieldName?: string) => {
     try {
-      const response = await axios.get<CommandData>(`https://perfect-teal-beetle.cyclic.cloud/command?table=${tableId}`);
-      console.log(response.data);
-      return response.data;
+      const response = await axios.get(`https://perfect-teal-beetle.cyclic.cloud/command/${table}`);
+      if (response.status === 200) {
+        const item = response.data;
+        if (fieldName) {
+          const fieldValue = item[fieldName];
+          return fieldValue;
+        } else {
+          return item;
+        }
+      }
     } catch (error) {
       console.error(error);
-      throw error; // Rethrow the error if necessary.
+      throw error;
     }
   };
 
-  // const result = getCommandByTable(3);
-  // console.log("Result: ", result);
+  //Como llamar la funcion ns si te sirve Nacho :）
+  getCommandByTable(1, "total")
+    .then(data => {
+      if (data !== null) {
+        console.log(`Field Value: $${data}`);
+      }
+    })
+    .catch(error => {
+      console.error(error);
+    });
+
   // Queries
   const {
     data: allMenu,
@@ -93,17 +114,6 @@ export default function Menu() {
     isLoading: isCommandLoading,
     isError: isCommandError,
   } = useQuery({ queryKey: ['command'], queryFn: getAllCommand })
-
-  // const {
-  //   data: CommandByTable,
-  //   isLoading: isCommandByTableLoading,
-  //   isError: isCommandByTableError
-  // } = useQuery(['getCommandByTable', {'command:table'}],
-  // ()=> getCommandByTable());
-
-  const { data, isLoading, error } = useQuery(
-    ['getCommandByTable', { command: tableId }],
-    () => getCommandByTable(tableId));
 
   const separateMenuItemsByCategory = (menuItems: MenuTypes[]): MenuTypes[][] => {
     let platoEntrada: MenuTypes[] = [];
@@ -122,7 +132,6 @@ export default function Menu() {
   const [combinedArray, setCombinedArray] = useState<MenuTypes[][]>();
 
   useEffect(() => {
-
     if (allMenu)
       setCombinedArray(separateMenuItemsByCategory(allMenu));
   }, [allMenu]);
@@ -146,7 +155,7 @@ export default function Menu() {
 
   const [showPopUP, setShowPopUP] = useState(false);
   const [comanda, setComanda] = useState(false);
-  const [showMenu, setShowMenu] = useState(false);
+  const [showMenu, setShowMenu] = useState(true);
   const [showPedido, setShowPedido] = useState(false);
   const [showRegistro, setshowRegistro] = useState(true);
   const [keyPlato, setKeyPlato] = useState(0);
@@ -199,15 +208,15 @@ export default function Menu() {
         {isMenuLoading && <p>Loading</p>}
         {isMenuError && <p>Error</p>}
         {showRegistro && !isMenuLoading && !isMenuError ? (
-          <div className="grid w-full h-full justify-center content-center">
-            <div className=" grid overflow-hidden">
-              <h5 className="text-black ml-1">Nombre:</h5>
+          <div className="grid w-full h-full absolute z-40 backdrop-blur-sm backdrop-brightness-90 justify-center content-center ">
+            <div className=" bg-white grid rounded-lg m-10 px-8 ">
+              <h4 className="text-black  mt-8 mb-7">Ingresar los siguientes datos para ser atendido:</h4>
               <input type="text" className="w-32 h-10 m-2 border-black border-2 bg-input text-black" value={nombre} onChange={(e) => setNombre(e.target.value)} />
               {nombreError && <div className="text-RojoPedido ml-1">{nombreError}</div>}
               <h5 className="text-black ml-1">Numero de mesa:</h5>
               <input type="number" className="w-32 h-10 m-2 border-black border-2 bg-input text-black" value={numeroMesa} onChange={(e) => setNumeroMesa(e.target.value)} />
               {numeroMesaError && <div className="text-RojoPedido ml-1">{numeroMesaError}</div>}
-              <button className="w-32 h-10 m-2 text-black border-black border-2 bg-input" onClick={handleClickRegistro}>Enviar</button>
+              <button className="bg-btngreen rounded-2xl right-0  mr-7 h-[38px] w-[141px]" onClick={handleClickRegistro}>Enviar</button>
             </div>
           </div>
         ) : (<></>)}
@@ -216,8 +225,10 @@ export default function Menu() {
             combinedArray={combinedArray!}
             arrayUsed={arrayUsed}
             keyPlato={keyPlato}
+            pedido={pedido}
             setShowPopUP={setShowPopUP}
             setShowMenu={setShowMenu}
+            setPedido={setPedido}
           ></PopUp>
         }
         {!isMenuLoading && !isMenuError && combinedArray && showMenu ? (

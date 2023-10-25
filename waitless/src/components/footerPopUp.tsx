@@ -8,8 +8,11 @@ interface Props {
   titulo: string;
   descripcion: string;
   precio: string;
+  pedido: FoodOrder[];
+  foodId: number;
   setShowPopUP: React.Dispatch<React.SetStateAction<boolean>>;
   setShowMenu: React.Dispatch<React.SetStateAction<boolean>>;
+  setPedido: React.Dispatch<React.SetStateAction<FoodOrder[]>>;
 }
 
 interface Order {
@@ -18,14 +21,18 @@ interface Order {
   price: string;
 }
 
-const FooterPopUp: React.FC<Props> = ({ titulo, descripcion, precio, setShowPopUP, setShowMenu }) => {
+interface FoodOrder {
+  foodName: string,
+  foodId: number,
+  amount: number
+}
+
+const FooterPopUp: React.FC<Props> = ({ titulo, descripcion, foodId, precio, pedido, setShowPopUP, setShowMenu, setPedido }) => {
   const [cantidad, setCantidad] = useState(1);
   const [precioTotal, setPrecioTotal] = useState(+precio);
-  const [pedido, setPedido] = useState<Order[]>([]);
   const handleClickSumar = () => {
     setCantidad(cantidad + 1);
     setPrecioTotal (+precio * (cantidad + 1))
-    
   };
 
   const handleClickRestar = () => {
@@ -34,37 +41,36 @@ const FooterPopUp: React.FC<Props> = ({ titulo, descripcion, precio, setShowPopU
       setPrecioTotal(+precio * (cantidad - 1))
     }
   };
-  const addPedido = (name: string, description: string, price: string) => {
-    const NuevoPedido: Order[] = [...pedido, { name, description, price }];
-    setPedido(pedido => [...pedido, { name, description, price }]);
+
+  const addPedido = (foodName: string, foodId: number, amount: number) => {
+    setPedido(pedido => [...pedido, { foodName, foodId ,amount }]);
+    console.log(pedido)
   }
   
-  function App() {
-    const handlePedido = async () => {
-      try {
-        return await axios.post("https://perfect-teal-beetle.cyclic.cloud/ordersFood", {
+  const handlePedido = async () => {
+    try {
+      console.log("asdas")
+      return await axios.post("https://perfect-teal-beetle.cyclic.cloud/ordersFood", {
         body: pedido
-        }).then((response) => {
-          
-        }).catch((err) => console.log(err))
-      } catch (error) {
-        console.log(error)
-      }
-      //const nuevoPedido = useQuery({ queryKey: ['creadoOrder'], queryFn: createOrderWithPrisma })
-      
-      setShowPopUP(false);
-      setShowMenu(true);
+      }).then((response) => {
+        
+      }).catch((err) => console.log(err))
+    } catch (error) {
+      console.log(error)
+    }
+    //const nuevoPedido = useQuery({ queryKey: ['creadoOrder'], queryFn: createOrderWithPrisma })
     
-      const mutation = useMutation({
-        mutationFn: handlePedido,
-      })
-  }
-    console.log(pedido);
+    setShowPopUP(false);
+    setShowMenu(true);
+
+    const mutation = useMutation({
+      mutationFn: handlePedido,
+    })
   }
 
   
   return <footer className="w-full h-[90px] bg-background bottom-0 fixed shadow-top flex items-center" id="footerMenu">
-    <button className=" bg-btngreen absolute rounded-2xl right-0  mr-7 h-[38px] w-[89px]" onClick={App}>
+    <button className=" bg-btngreen absolute rounded-2xl right-0  mr-7 h-[38px] w-[89px]" onClick={() => addPedido(titulo, foodId, cantidad)}>
       <p className="text-white" >Agregar</p>
     </button>
     <div className="border-solid border-2 border-[#252525] absolute rounded-2xl right-0 flex items-center justify-between mr-[126px] h-[38px] w-[89px]">
