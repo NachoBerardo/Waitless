@@ -54,6 +54,7 @@ module.exports = {
       'ActiveHeaderRestaurante': '#CFD9D7',
       'LetraDropDown': '#00000080',
       'activeDropdown': '#CCC',
+      'BorderRegister': '#C2C2C2',
       'BorderPedidosRestaurante': '#AAB2B1',
       'Rojito': 'rgba(210, 56, 46, 0.20)',
     }

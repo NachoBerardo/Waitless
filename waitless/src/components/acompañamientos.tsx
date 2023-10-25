@@ -10,7 +10,7 @@ export function acompañamientos() {
 
         <div className="w-full h-full pb-4">
           <p className="text-black pl-2 overflow-hidden inline-flex "> Papa frita{" "}</p>
-          <input type="radio" className="absolute right-0 mr-10 accent-black" name="acompañamiento" />
+          <input type="radio" className="absolute right-0 mr-10 active:border-x-header" name="acompañamiento" />
           <hr className="border-b bg-header w-full h-px" />
         </div>
 

@@ -205,19 +205,17 @@ export default function Menu() {
   return (
     <main className="">
       <div className="h-screen w-screen pb-[7px] bg-background overflow-x-hidden no-scrollbar" id="general">
-        {isMenuLoading && <h1 className="animate-pulse text-black">Loading</h1>}
-        {isMenuError && <h1 className="text-RojoPedido">Error</h1>}
+        {isMenuLoading && <h1 className="animate-spin text-black">Loading</h1>}
+        {isMenuError && <h1 className="text-RojoPedido animate-bounce">Error</h1>}
         {showRegistro && !isMenuLoading && !isMenuError ? (
           <div className="grid w-full h-full absolute z-40 backdrop-blur-sm backdrop-brightness-90 justify-center content-center ">
-            <div className=" bg-white grid rounded-lg m-10 px-8 ">
-
-              <h4 className="text-black  mt-8 mb-7">Ingresar los siguientes datos para ser atendido:</h4>
-              <input type="text" className="w-32 h-10 m-2 border-black border-2 bg-input text-black" value={nombre} onChange={(e) => setNombre(e.target.value)} />
+            <div className=" bg-white rounded-lg m-10 px-9 grid justify-center ">
+              <h4 className="text-black mt-8 mb-7">Ingresar los siguientes datos para ser atendido:</h4> 
+              <input type="text" className="w-full pl-2 h-10 border-BorderRegister rounded-lg border-2 bg-input text-black outline-none" placeholder="Nombre" value={nombre} onChange={(e) => setNombre(e.target.value)} />
               {nombreError && <div className="text-RojoPedido ml-1">{nombreError}</div>}
-              <h5 className="text-black ml-1">Numero de mesa:</h5>
-              <input type="number" className="w-32 h-10 m-2 border-black border-2 bg-input text-black" value={numeroMesa} onChange={(e) => setNumeroMesa(e.target.value)} />
+              <input type="number" className="w-full pl-2 h-10 mt-4 border-BorderRegister rounded-lg border-2 bg-input text-black outline-none" placeholder="Número de mesa" value={numeroMesa} onChange={(e) => setNumeroMesa(e.target.value)} />
               {numeroMesaError && <div className="text-RojoPedido ml-1">{numeroMesaError}</div>}
-              <button className="bg-btngreen rounded-2xl right-0  mr-7 h-[38px] w-[141px]" onClick={handleClickRegistro}>Enviar</button>
+              <button className="bg-btngreen rounded-2xl right-0 mt-10 h-[38px] w-full mb-11" onClick={handleClickRegistro}>Enviar</button>
             </div>
           </div>
         ) : (<></>)}
