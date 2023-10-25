@@ -11,6 +11,7 @@ import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 //import { llamarTodoMenu, llamarComida, crearComida, actualizarComida, borrarComida, crearPedido } from '../../../nodejs/fetch';
 import axios from "axios";
 import { useQueryClient } from "@tanstack/react-query";
+import { table } from "console";
 
 export interface MenuTypes {
   idFood: number;
@@ -56,9 +57,9 @@ export default function Menu() {
     }
   }
 
-  // const getCommandByTable = async () => {
+  // const getCommandByTable = async (table: number) => {
   //   try {
-  //     return await axios.get("https://perfect-teal-beetle.cyclic.cloud/command/:table").then((response) => {
+  //     return await axios.get(`https://perfect-teal-beetle.cyclic.cloud/command/${table}`).then((response) => {
   //       console.log(response.data.data)
   //       return response.data.data
   //     }).catch((err) => console.log(err))
@@ -67,9 +68,9 @@ export default function Menu() {
   //   }
   // }
 
-  const getCommandByTable = async (table: number): Promise<CommandData> => {
+  const getCommandByTable = async (tableId: number): Promise<CommandData> => {
     try {
-      const response = await axios.get<CommandData>(`https://perfect-teal-beetle.cyclic.cloud/command/${table}`);
+      const response = await axios.get<CommandData>(`https://perfect-teal-beetle.cyclic.cloud/command?table=${tableId}`);
       console.log(response.data);
       return response.data;
     } catch (error) {
@@ -78,9 +79,8 @@ export default function Menu() {
     }
   };
 
-
-
-
+  // const result = getCommandByTable(3);
+  // console.log("Result: ", result);
   // Queries
   const {
     data: allMenu,
@@ -89,16 +89,21 @@ export default function Menu() {
   } = useQuery({ queryKey: ['menu'], queryFn: getAllMenus })
 
   const {
-    data: allCommand,
+    data: Command,
     isLoading: isCommandLoading,
-    isError: isCommandError
+    isError: isCommandError,
   } = useQuery({ queryKey: ['command'], queryFn: getAllCommand })
 
   // const {
   //   data: CommandByTable,
   //   isLoading: isCommandByTableLoading,
   //   isError: isCommandByTableError
-  // } = useQuery({ queryKey: ['command'], queryFn: getCommandByTable })
+  // } = useQuery(['getCommandByTable', {'command:table'}],
+  // ()=> getCommandByTable());
+
+  const { data, isLoading, error } = useQuery(
+    ['getCommandByTable', { command: tableId }],
+    () => getCommandByTable(tableId));
 
   const separateMenuItemsByCategory = (menuItems: MenuTypes[]): MenuTypes[][] => {
     let platoEntrada: MenuTypes[] = [];
