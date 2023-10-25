@@ -49,16 +49,16 @@ const ContenidoPedido: React.FC<Props> = ({ setShowPedido, setShowMenu }) => {
                 <div className="relative w-[100%] h-6">
                   <hr className="bg-LineaVerdePedido h-[4px] w-full absolute bottom-[35%]" />
                 </div>
-                <h4 className="text-LineaVerdePedido px-2">Gimena</h4>
+                <h4 className="text-LineaVerdePedido px-2"></h4>
                 <div className="relative w-[100%] h-6">
                   <hr className="bg-LineaVerdePedido h-[4px] w-full absolute bottom-[35%]" />
                 </div>
               </div>
               <div className="w-fit h-fit grid grid-cols-2 gap-x-2 m-auto">
                 <div>
-                  <h3 className="text-black pl-14 pt-6 overflow-hidden inline-flex"> Papa al horno</h3>
-                  <p className="pl-14 text-letraGris truncate">aaaaaaaaaaaaaaaaaaa</p>
-                  <p className="pl-14 text-letraGrisOscuro pt-1 pb-4">$500</p>
+                  <h3 className="text-black pl-14 pt-6 overflow-hidden inline-flex"> </h3>
+                  <p className="pl-14 text-letraGris truncate"></p>
+                  <p className="pl-14 text-letraGrisOscuro pt-1 pb-4"></p>
                 </div>
                 <div className="flex justify-center items-center">
                   <BtnSumarRestar2></BtnSumarRestar2>
@@ -70,9 +70,9 @@ const ContenidoPedido: React.FC<Props> = ({ setShowPedido, setShowMenu }) => {
 
               <div className="w-fit h-fit grid grid-cols-2 gap-x-2 m-auto ">
                 <div>
-                  <h3 className="text-black pl-14 pt-6 overflow-hidden inline-flex"> Pastel de papa</h3>
-                  <p className="pl-14 text-letraGris truncate">bbbbbbbbbbbbb</p>
-                  <p className="pl-14 text-letraGrisOscuro pt-1 pb-4">1500$</p>
+                  <h3 className="text-black pl-14 pt-6 overflow-hidden inline-flex"></h3>
+                  <p className="pl-14 text-letraGris truncate"></p>
+                  <p className="pl-14 text-letraGrisOscuro pt-1 pb-4"></p>
                 </div>
                 <div className="flex justify-center items-center">
                   <BtnSumarRestar2></BtnSumarRestar2>
@@ -85,16 +85,16 @@ const ContenidoPedido: React.FC<Props> = ({ setShowPedido, setShowMenu }) => {
                 <div className="relative w-[100%] h-6">
                   <hr className="bg-populetter h-[4px] w-full absolute bottom-[35%]" />
                 </div>
-                <h4 className="text-populetter px-2">Romina</h4>
+                <h4 className="text-populetter px-2"></h4>
                 <div className="relative w-[100%] h-6">
                   <hr className="bg-populetter h-[4px] w-full absolute bottom-[35%]" />
                 </div>
               </div>
               <div className="w-fit h-fit grid grid-cols-2 gap-x-2 m-auto">
                 <div className="">
-                  <h3 className="text-black pl-14 pt-6 overflow-hidden inline-flex truncate">Calabaza</h3>
-                  <p className="pl-14 text-letraGris truncate">aaaaaaaaaaaaaaaaaaaaa</p>
-                  <p className="pl-14 text-letraGrisOscuro pt-1 pb-4">500$</p>
+                  <h3 className="text-black pl-14 pt-6 overflow-hidden inline-flex truncate"></h3>
+                  <p className="pl-14 text-letraGris truncate"></p>
+                  <p className="pl-14 text-letraGrisOscuro pt-1 pb-4"></p>
                 </div>
                 <div className="flex justify-center items-center">
                   <BtnSumarRestar2></BtnSumarRestar2>
@@ -106,9 +106,9 @@ const ContenidoPedido: React.FC<Props> = ({ setShowPedido, setShowMenu }) => {
 
               <div className="w-fit h-fit grid grid-cols-2 gap-x-2 m-auto">
                 <div>
-                  <h3 className="text-black pl-14 pt-6 overflow-hidden inline-flex"> Milanesa</h3>
-                  <p className="pl-14 text-letraGris truncate">cccccccccccccccccccccc</p>
-                  <p className="pl-14 text-letraGrisOscuro pt-1 pb-4">20000$</p>
+                  <h3 className="text-black pl-14 pt-6 overflow-hidden inline-flex"> </h3>
+                  <p className="pl-14 text-letraGris truncate"></p>
+                  <p className="pl-14 text-letraGrisOscuro pt-1 pb-4"></p>
                 </div>
                 <div className="flex justify-center items-center">
                   <BtnSumarRestar2></BtnSumarRestar2>
