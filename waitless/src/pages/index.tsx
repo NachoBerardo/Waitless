@@ -10,6 +10,7 @@ import { useQuery } from '@tanstack/react-query';
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 import axios from "axios";
 import { useQueryClient } from "@tanstack/react-query";
+import { table } from "console";
 
 export interface MenuTypes {
   idFood: number;
@@ -23,7 +24,7 @@ export interface MenuTypes {
 
 interface CommandData {
   idCommand: number;
-  //sendedAt: time
+  sendedAt: Date;
   total: number;
   tableId: number;
 }
@@ -61,7 +62,6 @@ export default function Menu() {
       console.log(error)
     }
   }
-
   // const getCommandByTable = async (table: number): Promise<CommandData> => {
   //   try {
   //     const response = await axios.get<CommandData>(`https://perfect-teal-beetle.cyclic.cloud/command/${table}`);
@@ -84,8 +84,6 @@ export default function Menu() {
         } else {
           return item;
         }
-      } else {
-        console.log("Item from Command not found");
       }
     } catch (error) {
       console.error(error);
@@ -112,9 +110,9 @@ export default function Menu() {
   } = useQuery({ queryKey: ['menu'], queryFn: getAllMenus })
 
   const {
-    data: allCommand,
+    data: Command,
     isLoading: isCommandLoading,
-    isError: isCommandError
+    isError: isCommandError,
   } = useQuery({ queryKey: ['command'], queryFn: getAllCommand })
 
   const separateMenuItemsByCategory = (menuItems: MenuTypes[]): MenuTypes[][] => {
@@ -212,6 +210,7 @@ export default function Menu() {
         {showRegistro && !isMenuLoading && !isMenuError ? (
           <div className="grid w-full h-full absolute z-40 backdrop-blur-sm backdrop-brightness-90 justify-center content-center ">
             <div className=" bg-white grid rounded-lg m-10 px-8 ">
+
               <h4 className="text-black  mt-8 mb-7">Ingresar los siguientes datos para ser atendido:</h4>
               <input type="text" className="w-32 h-10 m-2 border-black border-2 bg-input text-black" value={nombre} onChange={(e) => setNombre(e.target.value)} />
               {nombreError && <div className="text-RojoPedido ml-1">{nombreError}</div>}
