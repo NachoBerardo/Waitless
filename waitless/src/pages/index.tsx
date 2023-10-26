@@ -212,7 +212,7 @@ export default function Menu() {
             <div className=" bg-white rounded-lg m-10 px-9 grid justify-center ">
               <h4 className="text-black mt-8 mb-7">Ingresar los siguientes datos para ser atendido:</h4>
               <input type="text" className="w-full pl-2 h-10 border-BorderRegister rounded-lg border-2 bg-input text-black outline-none" placeholder="Nombre" value={nombre} onChange={(e) => setNombre(e.target.value)} />
-              {nombreError && <div className="text-RojoPedido ml-1">{nombreError}</div>}
+              {nombreError && <p className="text-RojoPedido ml-1">{nombreError}</p>}
               <input type="number" className="w-full pl-2 h-10 mt-4 border-BorderRegister rounded-lg border-2 bg-input text-black outline-none placeholder:" placeholder="Número de mesa" value={numeroMesa} onChange={(e) => setNumeroMesa(e.target.value)} />
               {numeroMesaError && <div className="text-RojoPedido ml-1">{numeroMesaError}</div>}
               <button className="bg-btngreen rounded-2xl right-0 mt-10 h-[38px] w-full mb-11" onClick={handleClickRegistro}>Enviar</button>
