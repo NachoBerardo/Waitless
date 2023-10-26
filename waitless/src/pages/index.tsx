@@ -207,7 +207,7 @@ export default function Menu() {
       <div className="h-screen w-screen pb-[7px] bg-background overflow-x-hidden no-scrollbar" id="general">
         {/* {isMenuLoading && <h1 className="animate-spin text-black">Loading</h1>}
         {isMenuError && <h1 className="text-RojoPedido animate-bounce">Error</h1>} */}
-        {isMenuLoading && isMenuError && showRegistro ? (
+        { showRegistro ? (
           <div className="grid w-full h-full absolute z-40 backdrop-blur-sm backdrop-brightness-90 justify-center content-center ">
             <div className=" bg-white rounded-lg m-10 px-9 grid justify-center ">
               <h4 className="text-black mt-8 mb-7">Ingresar los siguientes datos para ser atendido:</h4> 
