@@ -90,17 +90,10 @@ export default function Menu() {
       throw error;
     }
   };
+  const [numeroMesa, setNumeroMesa] = useState(0);
 
   //Como llamar la funcion ns si te sirve Nacho :）
-  getCommandByTable(2, "total")
-    .then(data => {
-      if (data !== null) {
-        console.log(`Field Value: $${data}`);
-      }
-    })
-    .catch(error => {
-      console.error(error);
-    });
+
 
   // Queries
   const {
@@ -157,11 +150,12 @@ export default function Menu() {
   const [comanda, setComanda] = useState(false);
   const [showMenu, setShowMenu] = useState(true);
   const [showPedido, setShowPedido] = useState(false);
+  const [showFotterMenu, setShowFotterMenu] = useState(false);
+  const [a, seta] = useState(true);
   const [showRegistro, setshowRegistro] = useState(true);
   const [keyPlato, setKeyPlato] = useState(0);
   const [arrayUsed, setarrayUsed] = useState(0);
   const [nombre, setNombre] = useState('');
-  const [numeroMesa, setNumeroMesa] = useState('');
   const [nombreError, setNombreError] = useState('');
   const [numeroMesaError, setNumeroMesaError] = useState('');
 
@@ -186,20 +180,42 @@ export default function Menu() {
       setNombreError('');
     }
 
-    if (numeroMesa === '') {
+    if (numeroMesa === 0) {
       setNumeroMesaError('Número de mesa es obligatorio');
     } else {
       setNumeroMesaError('');
     }
 
-    if (nombre !== '' && numeroMesa !== '') {
+    if (nombre !== '' && numeroMesa !== 0) {
       // Data is valid; you can proceed with whatever you need to do
       console.log('Nombre:', nombre);
       console.log('Numero de mesa:', numeroMesa);
       setShowMenu(true);
       setshowRegistro(false);
-
+      getCommandByTable(numeroMesa, "total")
+        .then(data => {
+          if (data !== null) {
+            console.log(`Field Value: $${data}`);
+            setShowFotterMenu(true);
+          }
+        })
+        .catch(error => {
+          console.error(error);
+          seta(false)
+        });
     }
+  }
+  if (a == false) {
+    getCommandByTable(numeroMesa, "total")
+      .then(data => {
+        if (data !== null) {
+          console.log(`Field Value: $${data}`);
+          setShowFotterMenu(true);
+        }
+      })
+      .catch(error => {
+        console.error(error);
+      });
   }
 
   return (
@@ -207,13 +223,13 @@ export default function Menu() {
       <div className="h-screen w-screen pb-[7px] bg-background overflow-x-hidden no-scrollbar" id="general">
         {/* {isMenuLoading && <h1 className="animate-spin text-black">Loading</h1>}
         {isMenuError && <h1 className="text-RojoPedido animate-bounce">Error</h1>} */}
-        { showRegistro ? (
+        {showRegistro ? (
           <div className="grid w-full h-full absolute z-40 backdrop-blur-sm backdrop-brightness-90 justify-center content-center ">
             <div className=" bg-white rounded-lg m-10 px-9 grid justify-center ">
               <h4 className="text-black mt-8 mb-7">Ingresar los siguientes datos para ser atendido:</h4>
               <input type="text" className="w-full pl-2 h-10 border-BorderRegister rounded-lg border-2 bg-input text-black outline-none" placeholder="Nombre" value={nombre} onChange={(e) => setNombre(e.target.value)} />
               {nombreError && <div className="text-RojoPedido ml-1">{nombreError}</div>}
-              <input type="number" className="w-full pl-2 h-10 mt-4 border-BorderRegister rounded-lg border-2 bg-input text-black outline-none placeholder:" placeholder="Número de mesa" value={numeroMesa} onChange={(e) => setNumeroMesa(e.target.value)} />
+              <input type="number" className="w-full pl-2 h-10 mt-4 border-BorderRegister rounded-lg border-2 bg-input text-black outline-none placeholder:" placeholder="Número de mesa" value={numeroMesa} onChange={(e) => setNumeroMesa(e.target.valueAsNumber)} />
               {numeroMesaError && <div className="text-RojoPedido ml-1">{numeroMesaError}</div>}
               <button className="bg-btngreen rounded-2xl right-0 mt-10 h-[38px] w-full mb-11" onClick={handleClickRegistro}>Enviar</button>
             </div>
@@ -321,7 +337,7 @@ export default function Menu() {
                 </div>
               ))}
             </div>
-            <FooterMenu setShowPedido={setShowPedido} setShowMenu={setShowMenu} setShowPedidoEnviado={setShowMenu} EstadoPedidoEnviado={false} EstadoPedido={true} EstadoMenu={false} txtBoton="Ver Pedido" />
+            {showFotterMenu ? (<FooterMenu setShowPedido={setShowPedido} setShowMenu={setShowMenu} setShowPedidoEnviado={setShowMenu} EstadoPedidoEnviado={false} EstadoPedido={true} EstadoMenu={false} txtBoton="Ver Pedido" />) : (<></>)}
           </>
         ) : (<></>)}
         {showPedido ? (
