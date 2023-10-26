@@ -92,7 +92,7 @@ export default function Menu() {
   };
 
   //Como llamar la funcion ns si te sirve Nacho :）
-  getCommandByTable(1, "total")
+  getCommandByTable(2, "total")
     .then(data => {
       if (data !== null) {
         console.log(`Field Value: $${data}`);
@@ -210,7 +210,7 @@ export default function Menu() {
         { showRegistro ? (
           <div className="grid w-full h-full absolute z-40 backdrop-blur-sm backdrop-brightness-90 justify-center content-center ">
             <div className=" bg-white rounded-lg m-10 px-9 grid justify-center ">
-              <h4 className="text-black mt-8 mb-7">Ingresar los siguientes datos para ser atendido:</h4> 
+              <h4 className="text-black mt-8 mb-7">Ingresar los siguientes datos para ser atendido:</h4>
               <input type="text" className="w-full pl-2 h-10 border-BorderRegister rounded-lg border-2 bg-input text-black outline-none" placeholder="Nombre" value={nombre} onChange={(e) => setNombre(e.target.value)} />
               {nombreError && <div className="text-RojoPedido ml-1">{nombreError}</div>}
               <input type="number" className="w-full pl-2 h-10 mt-4 border-BorderRegister rounded-lg border-2 bg-input text-black outline-none placeholder:" placeholder="Número de mesa" value={numeroMesa} onChange={(e) => setNumeroMesa(e.target.value)} />
