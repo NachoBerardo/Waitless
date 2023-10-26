@@ -47,6 +47,7 @@ const FooterPopUp: React.FC<Props> = ({ titulo, descripcion, foodId, precio, ped
     console.log(pedido)
   }
   
+  //Tengo que pasar esto a FooterMenu.Tsx ??
   const handlePedido = async () => {
     try {
       console.log("asdas")
