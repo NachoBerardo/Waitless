@@ -44,32 +44,42 @@ export default function Menu() {
   const getAllMenus = async () => {
     try {
       return await axios.get("https://perfect-teal-beetle.cyclic.cloud/menu").then((response) => {
-        console.log("Menu:", response.data.data)
+        console.log(response.data.data)
         return response.data.data
       }).catch((err) => console.log(err))
-    } catch (error) {
-      console.log("Menu:", error)
-    }
-  }
-  //CUESCHON: ESTAS FUCNIONES NO DEBERIAN ESTAR FUERA DE MENU()??
-  const getAllCommand = async () => {
-    try {
-      return await axios.get("https://perfect-teal-beetle.cyclic.cloud/command").then((response) => {
-        console.log("Commands:", response.data.data)
-        return response.data.data
-      }).catch((err) => console.log("Commands:", err))
     } catch (error) {
       console.log(error)
     }
   }
 
-  const getCommandByTable = async (table: number, field?: string) => {
+  const getAllCommand = async () => {
+    try {
+      return await axios.get("https://perfect-teal-beetle.cyclic.cloud/command").then((response) => {
+        console.log(response.data.data)
+        return response.data.data
+      }).catch((err) => console.log(err))
+    } catch (error) {
+      console.log(error)
+    }
+  }
+  // const getCommandByTable = async (table: number): Promise<CommandData> => {
+  //   try {
+  //     const response = await axios.get<CommandData>(`https://perfect-teal-beetle.cyclic.cloud/command/${table}`);
+  //     return response.data;
+  //   } catch (error) {
+  //     console.error(error);
+  //     throw error;
+  //   }
+  // };
+  //console.log("This is the command of the table 1", getCommandByTable(1));
+
+  const getCommandByTable = async (table: number, fieldName?: string) => {
     try {
       const response = await axios.get(`https://perfect-teal-beetle.cyclic.cloud/command/${table}`);
       if (response.status === 200) {
         const item = response.data;
-        if (field) {
-          const fieldValue = item[field];
+        if (fieldName) {
+          const fieldValue = item[fieldName];
           return fieldValue;
         } else {
           return item;
@@ -80,7 +90,6 @@ export default function Menu() {
       throw error;
     }
   };
-
   const [numeroMesa, setNumeroMesa] = useState(0);
 
   const getAllOrder = async () => {
@@ -238,29 +247,28 @@ export default function Menu() {
       getCommandByTable(numeroMesa, "total")
         .then(data => {
           if (data !== null) {
-            console.log("a")
             console.log(`Field Value: $${data}`);
             setShowFotterMenu(true);
           }
         })
         .catch(error => {
-          console.log("b")
           console.error(error);
+          seta(false)
         });
     }
   }
-  // if (a == false) {
-  //   getCommandByTable(numeroMesa, "total")
-  //     .then(data => {
-  //       if (data !== null) {
-  //         console.log(`Field Value: $${data}`);
-  //         setShowFotterMenu(true);
-  //       }
-  //     })
-  //     .catch(error => {
-  //       console.error(error);
-  //     });
-  // }
+  if (a == false) {
+    getCommandByTable(numeroMesa, "total")
+      .then(data => {
+        if (data !== null) {
+          console.log(`Field Value: $${data}`);
+          setShowFotterMenu(true);
+        }
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  }
 
   return (
     <main className="">
