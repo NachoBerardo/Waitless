@@ -44,32 +44,42 @@ export default function Menu() {
   const getAllMenus = async () => {
     try {
       return await axios.get("https://perfect-teal-beetle.cyclic.cloud/menu").then((response) => {
-        console.log("Menu:", response.data.data)
+        console.log(response.data.data)
         return response.data.data
       }).catch((err) => console.log(err))
-    } catch (error) {
-      console.log("Menu:", error)
-    }
-  }
-  //CUESCHON: ESTAS FUCNIONES NO DEBERIAN ESTAR FUERA DE MENU()??
-  const getAllCommand = async () => {
-    try {
-      return await axios.get("https://perfect-teal-beetle.cyclic.cloud/command").then((response) => {
-        console.log("Commands:", response.data.data)
-        return response.data.data
-      }).catch((err) => console.log("Commands:", err))
     } catch (error) {
       console.log(error)
     }
   }
 
-  const getCommandByTable = async (table: number, field?: string) => {
+  const getAllCommand = async () => {
+    try {
+      return await axios.get("https://perfect-teal-beetle.cyclic.cloud/command").then((response) => {
+        console.log(response.data.data)
+        return response.data.data
+      }).catch((err) => console.log(err))
+    } catch (error) {
+      console.log(error)
+    }
+  }
+  // const getCommandByTable = async (table: number): Promise<CommandData> => {
+  //   try {
+  //     const response = await axios.get<CommandData>(`https://perfect-teal-beetle.cyclic.cloud/command/${table}`);
+  //     return response.data;
+  //   } catch (error) {
+  //     console.error(error);
+  //     throw error;
+  //   }
+  // };
+  //console.log("This is the command of the table 1", getCommandByTable(1));
+
+  const getCommandByTable = async (table: number, fieldName?: string) => {
     try {
       const response = await axios.get(`https://perfect-teal-beetle.cyclic.cloud/command/${table}`);
       if (response.status === 200) {
         const item = response.data;
-        if (field) {
-          const fieldValue = item[field];
+        if (fieldName) {
+          const fieldValue = item[fieldName];
           return fieldValue;
         } else {
           return item;
@@ -80,50 +90,10 @@ export default function Menu() {
       throw error;
     }
   };
-
   const [numeroMesa, setNumeroMesa] = useState(0);
 
   //Como llamar la funcion ns si te sirve Nacho :）
 
-
-  const getAllOrder = async () => {
-    try {
-      return await axios.get('https://perfect-teal-beetle.cyclic.cloud/order').then((response) => {
-        console.log("Orders: ", response.data.data);
-        return response.data.data;
-      }).catch((err) => console.log("Order:", err))
-    } catch (error) {
-      console.log(error);
-    }
-  }
-  //Por ahi conviene hacerlo por nombres y de ahi sacar el ID. Solo que habria que hacer que los nombres no se repitan ya sea agregando numeros a los nombre en caso de que esten repetidos? Igual los usuarios no logeados la idea seria borrarlos. 
-  const getOrderByID = async (id: number, field?: string) => {
-    try {
-      const response = await axios.get(`https://perfect-teal-beetle.cyclic.cloud/order/${id}`);
-      if (response.status === 200) {
-        const item = response.data;
-        if (field) {
-          const fieldValue = item[field];
-          return fieldValue;
-        } else {
-          return item;
-        }
-      } else { console.log("Item from Order not found"); }
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  const getAllOrderFoodByCostumer = async () => {
-    try {
-      return await axios.get('https://perfect-teal-beetle.cyclic.cloud/orderFoodByCostumer').then((response) => {
-        console.log("OrderFoodByCostumer: ", response.data.data);
-        return response.data.data;
-      }).catch((err) => console.log("OrderFoodByCostumer:", err))
-    } catch (error) {
-      console.log(error);
-    }
-  }
 
   // Queries
   const {
@@ -133,19 +103,7 @@ export default function Menu() {
   } = useQuery({ queryKey: ['menu'], queryFn: getAllMenus })
 
   const {
-    data: allOrder,
-    isLoading: isOrderLoading,
-    isError: isOrderError
-  } = useQuery({ queryKey: ['order'], queryFn: getAllOrder })
-
-  const {
-    data: allOrderFoodByCostumer,
-    isLoading: isOrderFoodByCostumerLoading,
-    isError: isOrderFoodByCostumerError
-  } = useQuery({ queryKey: ['orderFoodByCostumer'], queryFn: getAllOrderFoodByCostumer })
-
-  const {
-    data: allCommand,
+    data: Command,
     isLoading: isCommandLoading,
     isError: isCommandError,
   } = useQuery({ queryKey: ['command'], queryFn: getAllCommand })
@@ -230,9 +188,9 @@ export default function Menu() {
     }
     if (numeroMesa < 0) {
       setNumeroMesaError('Numero invalido');
-    }
+    } 
 
-    if (nombre !== '' && !Number.isNaN(numeroMesa) && numeroMesa !== 0 && numeroMesa > 0) {
+    if (nombre !== '' && !Number.isNaN(numeroMesa) && numeroMesa !== 0 && numeroMesa>0) {
       // Data is valid; you can proceed with whatever you need to do
       console.log('Nombre:', nombre);
       console.log('Numero de mesa:', numeroMesa);
@@ -241,29 +199,28 @@ export default function Menu() {
       getCommandByTable(numeroMesa, "total")
         .then(data => {
           if (data !== null) {
-            console.log("a")
             console.log(`Field Value: $${data}`);
             setShowFotterMenu(true);
           }
         })
         .catch(error => {
-          console.log("b")
           console.error(error);
+          seta(false)
         });
     }
   }
-  // if (a == false) {
-  //   getCommandByTable(numeroMesa, "total")
-  //     .then(data => {
-  //       if (data !== null) {
-  //         console.log(`Field Value: $${data}`);
-  //         setShowFotterMenu(true);
-  //       }
-  //     })
-  //     .catch(error => {
-  //       console.error(error);
-  //     });
-  // }
+  if (a == false) {
+    getCommandByTable(numeroMesa, "total")
+      .then(data => {
+        if (data !== null) {
+          console.log(`Field Value: $${data}`);
+          setShowFotterMenu(true);
+        }
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  }
 
   return (
     <main className="">
