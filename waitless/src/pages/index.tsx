@@ -10,6 +10,7 @@ import { useQuery } from '@tanstack/react-query';
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 import axios from "axios";
 import { useQueryClient } from "@tanstack/react-query";
+import { table } from "console";
 
 export interface MenuTypes {
   idFood: number;
@@ -61,6 +62,7 @@ export default function Menu() {
       console.log(error)
     }
   }
+
   const getCommandByTable = async (table: number, field?: string) => {
     try {
       const response = await axios.get(`https://perfect-teal-beetle.cyclic.cloud/command/${table}`);
@@ -72,24 +74,17 @@ export default function Menu() {
         } else {
           return item;
         }
-      } else {
-        console.log("Item from Command not found");
       }
     } catch (error) {
       console.error(error);
       throw error;
     }
   };
+
+  const [numeroMesa, setNumeroMesa] = useState(0);
+
   //Como llamar la funcion ns si te sirve Nacho :）
-  getCommandByTable(1, "total")
-    .then(data => {
-      if (data !== null) {
-        console.log(`Field Value: $${data}`);
-      }
-    })
-    .catch(error => {
-      console.error(error);
-    });
+
 
   const getAllOrder = async () => {
     try {
@@ -152,7 +147,7 @@ export default function Menu() {
   const {
     data: allCommand,
     isLoading: isCommandLoading,
-    isError: isCommandError
+    isError: isCommandError,
   } = useQuery({ queryKey: ['command'], queryFn: getAllCommand })
 
   const separateMenuItemsByCategory = (menuItems: MenuTypes[]): MenuTypes[][] => {
@@ -197,11 +192,12 @@ export default function Menu() {
   const [comanda, setComanda] = useState(false);
   const [showMenu, setShowMenu] = useState(true);
   const [showPedido, setShowPedido] = useState(false);
+  const [showFotterMenu, setShowFotterMenu] = useState(false);
+  const [a, seta] = useState(true);
   const [showRegistro, setshowRegistro] = useState(true);
   const [keyPlato, setKeyPlato] = useState(0);
   const [arrayUsed, setarrayUsed] = useState(0);
   const [nombre, setNombre] = useState('');
-  const [numeroMesa, setNumeroMesa] = useState('');
   const [nombreError, setNombreError] = useState('');
   const [numeroMesaError, setNumeroMesaError] = useState('');
 
@@ -220,43 +216,68 @@ export default function Menu() {
   }
 
   const handleClickRegistro = () => {
+    console.log(numeroMesa)
     if (nombre === '') {
-      setNombreError('Nombre es obligatorio');
+      setNombreError('El nombre es obligatorio');
     } else {
       setNombreError('');
     }
 
-    if (numeroMesa === '') {
-      setNumeroMesaError('Número de mesa es obligatorio');
+    if (numeroMesa === 0 || Number.isNaN(numeroMesa)) {
+      setNumeroMesaError('El número de mesa es obligatorio');
     } else {
       setNumeroMesaError('');
     }
+    if (numeroMesa < 0) {
+      setNumeroMesaError('Numero invalido');
+    }
 
-    if (nombre !== '' && numeroMesa !== '') {
+    if (nombre !== '' && !Number.isNaN(numeroMesa) && numeroMesa !== 0 && numeroMesa > 0) {
       // Data is valid; you can proceed with whatever you need to do
       console.log('Nombre:', nombre);
       console.log('Numero de mesa:', numeroMesa);
       setShowMenu(true);
       setshowRegistro(false);
-
+      getCommandByTable(numeroMesa, "total")
+        .then(data => {
+          if (data !== null) {
+            console.log(`Field Value: $${data}`);
+            setShowFotterMenu(true);
+          }
+        })
+        .catch(error => {
+          console.error(error);
+          seta(false)
+        });
     }
+  }
+  if (a == false) {
+    getCommandByTable(numeroMesa, "total")
+      .then(data => {
+        if (data !== null) {
+          console.log(`Field Value: $${data}`);
+          setShowFotterMenu(true);
+        }
+      })
+      .catch(error => {
+        console.error(error);
+      });
   }
 
   return (
     <main className="">
       <div className="h-screen w-screen pb-[7px] bg-background overflow-x-hidden no-scrollbar" id="general">
-        {isMenuLoading && <p>Loading</p>}
-        {isMenuError && <p>Error</p>}
-        {showRegistro && !isMenuLoading && !isMenuError ? (
+        {/* {isMenuLoading && <h1 className="animate-spin text-black">Loading</h1>}
+        {isMenuError && <h1 className="text-RojoPedido animate-bounce">Error</h1>} */}
+        {showRegistro ? (
           <div className="grid w-full h-full absolute z-40 backdrop-blur-sm backdrop-brightness-90 justify-center content-center ">
-            <div className=" bg-white grid rounded-lg m-10 px-8 ">
-              <h4 className="text-black  mt-8 mb-7">Ingresar los siguientes datos para ser atendido:</h4>
-              <input type="text" className="w-32 h-10 m-2 border-black border-2 bg-input text-black" value={nombre} onChange={(e) => setNombre(e.target.value)} />
-              {nombreError && <div className="text-RojoPedido ml-1">{nombreError}</div>}
-              <h5 className="text-black ml-1">Numero de mesa:</h5>
-              <input type="number" className="w-32 h-10 m-2 border-black border-2 bg-input text-black" value={numeroMesa} onChange={(e) => setNumeroMesa(e.target.value)} />
+            <div className=" bg-white rounded-lg m-10 px-9 grid justify-center ">
+              <h4 className="text-black mt-8 mb-7">Ingresar los siguientes datos para ser atendido:</h4>
+              <input type="text" className="w-full pl-2 h-10 border-BorderRegister rounded-lg border-2 bg-input text-black outline-none" placeholder="Nombre" value={nombre} onChange={(e) => setNombre(e.target.value)} />
+              {nombreError && <div className="text-RojoPedido ml-1 ">{nombreError}</div>}
+              <input type="number" className="w-full pl-2 h-10 mt-4 border-BorderRegister rounded-lg border-2 bg-input text-black outline-none placeholder:" placeholder="Número de mesa" onChange={(e) => setNumeroMesa(e.target.valueAsNumber)} />
               {numeroMesaError && <div className="text-RojoPedido ml-1">{numeroMesaError}</div>}
-              <button className="bg-btngreen rounded-2xl right-0  mr-7 h-[38px] w-[141px]" onClick={handleClickRegistro}>Enviar</button>
+              <button className="bg-btngreen rounded-2xl right-0 mt-10 h-[38px] w-full mb-11" onClick={handleClickRegistro}>Enviar</button>
             </div>
           </div>
         ) : (<></>)}
@@ -362,7 +383,7 @@ export default function Menu() {
                 </div>
               ))}
             </div>
-            <FooterMenu setShowPedido={setShowPedido} setShowMenu={setShowMenu} setShowPedidoEnviado={setShowMenu} EstadoPedidoEnviado={false} EstadoPedido={true} EstadoMenu={false} txtBoton="Ver Pedido" />
+            {showFotterMenu ? (<FooterMenu setShowPedido={setShowPedido} setShowMenu={setShowMenu} setShowPedidoEnviado={setShowMenu} EstadoPedidoEnviado={false} EstadoPedido={true} EstadoMenu={false} txtBoton="Ver Pedido" />) : (<></>)}
           </>
         ) : (<></>)}
         {showPedido ? (
