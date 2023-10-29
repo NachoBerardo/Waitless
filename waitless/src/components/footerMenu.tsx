@@ -19,7 +19,7 @@ const handleClickVerPedido = () =>{
 }
 return <div className="bottom-0 fixed w-full h-fit grid ">
   <div className="w-full h-fit flex justify-end">
-    <button className="rounded-full bg-btngreen h-[70px] w-[70px]  mr-9 mb-5"></button>
+    <button className="rounded-full bg-btngreen h-[70px] w-[70px] mr-9 mb-5"></button>
   </div>
   <footer className="w-full h-[90px] bg-background  shadow-top flex items-center" id="footerMenu">
     <button className=" bg-btngreen absolute rounded-2xl right-0  mr-7 h-[38px] w-[141px]">
