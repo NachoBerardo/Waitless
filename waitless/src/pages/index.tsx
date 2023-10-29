@@ -83,9 +83,6 @@ export default function Menu() {
 
   const [numeroMesa, setNumeroMesa] = useState(0);
 
-  //Como llamar la funcion ns si te sirve Nacho :）
-
-
   const getAllOrder = async () => {
     try {
       return await axios.get('https://perfect-teal-beetle.cyclic.cloud/order').then((response) => {
@@ -114,12 +111,12 @@ export default function Menu() {
     }
   };
 
-  const getAllOrderFoodByCostumer = async () => {
+  const getAllOrderFoodByCustumer = async () => {
     try {
-      return await axios.get('https://perfect-teal-beetle.cyclic.cloud/orderFoodByCostumer').then((response) => {
-        console.log("OrderFoodByCostumer: ", response.data.data);
+      return await axios.get('https://perfect-teal-beetle.cyclic.cloud/orderFoodByCustumer').then((response) => {
+        console.log("OrderFoodByCustumer: ", response.data.data);
         return response.data.data;
-      }).catch((err) => console.log("OrderFoodByCostumer:", err))
+      }).catch((err) => console.log("OrderFoodByCustomer:", err))
     } catch (error) {
       console.log(error);
     }
@@ -139,10 +136,10 @@ export default function Menu() {
   } = useQuery({ queryKey: ['order'], queryFn: getAllOrder })
 
   const {
-    data: allOrderFoodByCostumer,
-    isLoading: isOrderFoodByCostumerLoading,
-    isError: isOrderFoodByCostumerError
-  } = useQuery({ queryKey: ['orderFoodByCostumer'], queryFn: getAllOrderFoodByCostumer })
+    data: allOrderFoodByCustumer,
+    isLoading: isOrderFoodByCustumerLoading,
+    isError: isOrderFoodByCustumerError
+  } = useQuery({ queryKey: ['orderFoodByCustumer'], queryFn: getAllOrderFoodByCustumer })
 
   const {
     data: allCommand,
