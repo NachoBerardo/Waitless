@@ -17,14 +17,19 @@ const handleClickVerPedido = () =>{
   console.log(EstadoPedidoEnviado, EstadoPedido, EstadoMenu)
   // SetShowPedido en realidad es Show Menu, por ende se le pasa un true al apretar el boton para que aparezaca el menu y que el ShowPedido se vuelva false
 }
-return <footer className="w-full h-[90px] bg-background bottom-0 fixed shadow-top flex items-center" id="footerMenu">
+return <div className="bottom-0 fixed w-full h-fit grid ">
+  <div className="w-full h-fit flex justify-end">
+    <button className="rounded-full bg-btngreen h-[70px] w-[70px] mr-9 mb-5"></button>
+  </div>
+  <footer className="w-full h-[90px] bg-background  shadow-top flex items-center" id="footerMenu">
     <button className=" bg-btngreen absolute rounded-2xl right-0  mr-7 h-[38px] w-[141px]">
       <p className="text-white" onClick={(event) => handleClickVerPedido() }>{txtBoton}</p>
     </button>
-    <div className="h-full absolute">
+    <div className="h-full ">
       <p className="text-[#252525] ml-7 top-0 mt-5 ">Subtotal</p>
       <h4 className="text-[#252525] ml-7">$2.000,0</h4>
     </div>
-  </footer>;
+  </footer>
+  </div>;
 }
 export default FooterMenu;
