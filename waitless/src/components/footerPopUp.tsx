@@ -71,11 +71,11 @@ const FooterPopUp: React.FC<Props> = ({ titulo, descripcion, foodId, precio, ped
 
   
   return <footer className="w-full h-[90px] bg-background bottom-0 fixed shadow-top flex items-center" id="footerMenu">
-    <button className=" bg-btngreen absolute rounded-2xl right-0  mr-7 h-[38px] w-[89px]" onClick={() => addPedido(titulo, foodId, cantidad)}>
+    <div className=" bg-btngreen absolute rounded-2xl right-0  mr-7 h-[38px] w-[89px]" onClick={() => addPedido(titulo, foodId, cantidad)}>
       <p className="text-white" >Agregar</p>
-    </button>
+    </div>
     <div className="border-solid border-2 border-[#252525] absolute rounded-2xl right-0 flex items-center justify-between mr-[126px] h-[38px] w-[89px]">
-      <button className="text-[#252525] h-[14px] w-[14px] flex items-center justify-center my-2 ml-1" onClick={handleClickRestar}>-</button> {/*8 de arriba, 4 del margin y 20 entre otros botones*/}
+      <button className="text-[#252525] h-[14px] w-[14px] flex items-center justify-center my-2 ml-1 active:" onClick={handleClickRestar}>-</button> {/*8 de arriba, 4 del margin y 20 entre otros botones*/}
       <p className="text-[#252525] h-[14px] w-[14px] flex items-center justify-center">{cantidad}</p>
       <button className="text-[#252525] h-[14px] w-[14px] flex items-center justify-center mr-1" onClick={handleClickSumar}>+</button>
     </div>

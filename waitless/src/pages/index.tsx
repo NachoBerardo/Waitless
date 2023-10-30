@@ -75,7 +75,7 @@ export default function Menu() {
 
   const getCommandByTable = async (table: number, fieldName?: string) => {
     try {
-      const response = await axios.get(`https://perfect-teal-beetle.cyclic.cloud/command/${table}`);
+      const response = await axios.get(`https://perfect-teal-beetle.cyclic.cloud/commandTable/${table}`);
       if (response.status === 200) {
         const item = response.data;
         if (fieldName) {
