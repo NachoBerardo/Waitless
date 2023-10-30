@@ -14,7 +14,7 @@ const handleClickVerPedido = () =>{
   setShowPedido(EstadoPedido); 
   setShowMenu(EstadoMenu);
   setShowPedidoEnviado(EstadoPedidoEnviado);
-  console.log(EstadoPedidoEnviado, EstadoPedido, EstadoMenu)
+  //console.log(EstadoPedidoEnviado, EstadoPedido, EstadoMenu)
   // SetShowPedido en realidad es Show Menu, por ende se le pasa un true al apretar el boton para que aparezaca el menu y que el ShowPedido se vuelva false
 }
 return <footer className="w-full h-[90px] bg-background bottom-0 fixed shadow-top flex items-center" id="footerMenu">
