@@ -246,29 +246,32 @@ export default function Menu() {
       setshowRegistro(false);
       getCommandByTable(numeroMesa, "total")
         .then(data => {
-          if (data !== null) {
+          if (data !== null && data !== 0) {
             console.log(`Field Value: $${data}`);
             setShowFotterMenu(true);
+          console.log("b");
+
           }
         })
         .catch(error => {
           console.error(error);
-          seta(false)
+          console.log("a");
+          //seta(false)
         });
     }
   }
-  if (a == false) {
-    getCommandByTable(numeroMesa, "total")
-      .then(data => {
-        if (data !== null) {
-          console.log(`Field Value: $${data}`);
-          setShowFotterMenu(true);
-        }
-      })
-      .catch(error => {
-        console.error(error);
-      });
-  }
+  // if (a == false) {
+  //   getCommandByTable(numeroMesa, "total")
+  //     .then(data => {
+  //       if (data !== null) {
+  //         console.log(`Field Value: $${data}`);
+  //         setShowFotterMenu(true);
+  //       }
+  //     })
+  //     .catch(error => {
+  //       console.error(error);
+  //     });
+  // }
 
   return (
     <main className="">
