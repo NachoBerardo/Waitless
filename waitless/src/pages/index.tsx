@@ -92,8 +92,44 @@ export default function Menu() {
   };
   const [numeroMesa, setNumeroMesa] = useState(0);
 
-  //Como llamar la funcion ns si te sirve Nacho :）
+  const getAllOrder = async () => {
+    try {
+      return await axios.get('https://perfect-teal-beetle.cyclic.cloud/order').then((response) => {
+        console.log("Orders: ", response.data.data);
+        return response.data.data;
+      }).catch((err) => console.log("Order:", err))
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  //Por ahi conviene hacerlo por nombres y de ahi sacar el ID. Solo que habria que hacer que los nombres no se repitan ya sea agregando numeros a los nombre en caso de que esten repetidos? Igual los usuarios no logeados la idea seria borrarlos. 
+  const getOrderByID = async (id: number, field?: string) => {
+    try {
+      const response = await axios.get(`https://perfect-teal-beetle.cyclic.cloud/order/${id}`);
+      if (response.status === 200) {
+        const item = response.data;
+        if (field) {
+          const fieldValue = item[field];
+          return fieldValue;
+        } else {
+          return item;
+        }
+      } else { console.log("Item from Order not found"); }
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
+  const getAllOrderFoodByCustumer = async () => {
+    try {
+      return await axios.get('https://perfect-teal-beetle.cyclic.cloud/orderFoodByCustumer').then((response) => {
+        console.log("OrderFoodByCustumer: ", response.data.data);
+        return response.data.data;
+      }).catch((err) => console.log("OrderFoodByCustomer:", err))
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   // Queries
   const {
@@ -103,7 +139,19 @@ export default function Menu() {
   } = useQuery({ queryKey: ['menu'], queryFn: getAllMenus })
 
   const {
-    data: Command,
+    data: allOrder,
+    isLoading: isOrderLoading,
+    isError: isOrderError
+  } = useQuery({ queryKey: ['order'], queryFn: getAllOrder })
+
+  const {
+    data: allOrderFoodByCustumer,
+    isLoading: isOrderFoodByCustumerLoading,
+    isError: isOrderFoodByCustumerError
+  } = useQuery({ queryKey: ['orderFoodByCustumer'], queryFn: getAllOrderFoodByCustumer })
+
+  const {
+    data: allCommand,
     isLoading: isCommandLoading,
     isError: isCommandError,
   } = useQuery({ queryKey: ['command'], queryFn: getAllCommand })
@@ -174,19 +222,23 @@ export default function Menu() {
   }
 
   const handleClickRegistro = () => {
+    console.log(numeroMesa)
     if (nombre === '') {
-      setNombreError('Nombre es obligatorio');
+      setNombreError('El nombre es obligatorio');
     } else {
       setNombreError('');
     }
 
-    if (numeroMesa === 0) {
-      setNumeroMesaError('Número de mesa es obligatorio');
+    if (numeroMesa === 0 || Number.isNaN(numeroMesa)) {
+      setNumeroMesaError('El número de mesa es obligatorio');
     } else {
       setNumeroMesaError('');
     }
+    if (numeroMesa < 0) {
+      setNumeroMesaError('Numero invalido');
+    }
 
-    if (nombre !== '' && numeroMesa !== 0) {
+    if (nombre !== '' && !Number.isNaN(numeroMesa) && numeroMesa !== 0 && numeroMesa > 0) {
       // Data is valid; you can proceed with whatever you need to do
       console.log('Nombre:', nombre);
       console.log('Numero de mesa:', numeroMesa);
@@ -228,8 +280,8 @@ export default function Menu() {
             <div className=" bg-white rounded-lg m-10 px-9 grid justify-center ">
               <h4 className="text-black mt-8 mb-7">Ingresar los siguientes datos para ser atendido:</h4>
               <input type="text" className="w-full pl-2 h-10 border-BorderRegister rounded-lg border-2 bg-input text-black outline-none" placeholder="Nombre" value={nombre} onChange={(e) => setNombre(e.target.value)} />
-              {nombreError && <div className="text-RojoPedido ml-1">{nombreError}</div>}
-              <input type="number" className="w-full pl-2 h-10 mt-4 border-BorderRegister rounded-lg border-2 bg-input text-black outline-none placeholder:" placeholder="Número de mesa" value={numeroMesa} onChange={(e) => setNumeroMesa(e.target.valueAsNumber)} />
+              {nombreError && <div className="text-RojoPedido ml-1 ">{nombreError}</div>}
+              <input type="number" className="w-full pl-2 h-10 mt-4 border-BorderRegister rounded-lg border-2 bg-input text-black outline-none placeholder:" placeholder="Número de mesa" onChange={(e) => setNumeroMesa(e.target.valueAsNumber)} />
               {numeroMesaError && <div className="text-RojoPedido ml-1">{numeroMesaError}</div>}
               <button className="bg-btngreen rounded-2xl right-0 mt-10 h-[38px] w-full mb-11" onClick={handleClickRegistro}>Enviar</button>
             </div>
