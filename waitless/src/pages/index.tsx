@@ -75,7 +75,7 @@ export default function Menu() {
 
   const getCommandByTable = async (table: number, fieldName?: string) => {
     try {
-      const response = await axios.get(`https://perfect-teal-beetle.cyclic.cloud/command/${table}`);
+      const response = await axios.get(`https://perfect-teal-beetle.cyclic.cloud/commandTable/${table}`);
       if (response.status === 200) {
         const item = response.data;
         if (fieldName) {
@@ -246,29 +246,32 @@ export default function Menu() {
       setshowRegistro(false);
       getCommandByTable(numeroMesa, "total")
         .then(data => {
-          if (data !== null) {
+          if (data !== null && data !== 0) {
             console.log(`Field Value: $${data}`);
             setShowFotterMenu(true);
+          console.log("b");
+
           }
         })
         .catch(error => {
           console.error(error);
-          seta(false)
+          console.log("a");
+          //seta(false)
         });
     }
   }
-  if (a == false) {
-    getCommandByTable(numeroMesa, "total")
-      .then(data => {
-        if (data !== null) {
-          console.log(`Field Value: $${data}`);
-          setShowFotterMenu(true);
-        }
-      })
-      .catch(error => {
-        console.error(error);
-      });
-  }
+  // if (a == false) {
+  //   getCommandByTable(numeroMesa, "total")
+  //     .then(data => {
+  //       if (data !== null) {
+  //         console.log(`Field Value: $${data}`);
+  //         setShowFotterMenu(true);
+  //       }
+  //     })
+  //     .catch(error => {
+  //       console.error(error);
+  //     });
+  // }
 
   return (
     <main className="">
