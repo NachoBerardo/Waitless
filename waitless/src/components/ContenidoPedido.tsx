@@ -12,7 +12,7 @@ export interface MenuTypes {
 interface FoodOrder {
   foodName: string,
   foodId: number,
-  amount: number
+  quantity: number
 }
 
 interface Props {

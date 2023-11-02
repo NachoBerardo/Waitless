@@ -7,7 +7,7 @@ import { MenuTypes } from "@/pages";
 interface FoodOrder {
   foodName: string,
   foodId: number,
-  amount: number
+  quantity: number
 }
 
 interface Props {
@@ -26,7 +26,7 @@ const PopUp: React.FC<Props> = ({ combinedArray, arrayUsed, keyPlato, pedido, se
     setRotation(!rotation);
   };
   const sideDish = combinedArray[arrayUsed][keyPlato].sideDish;
-
+  
   return <div className="h-screen w-screen pb-[7px] bg-background_popup overflow-x-hidden no-scrollbar">
     <HeaderPlato url={combinedArray[arrayUsed][keyPlato].image} setShowPopUP={setShowPopUP} setShowMenu={setShowMenu} />
     <div className="w-screen h-fit pb-4 bg-background overflow-scroll drop-shadow-md">
@@ -69,7 +69,7 @@ const PopUp: React.FC<Props> = ({ combinedArray, arrayUsed, keyPlato, pedido, se
       </div>
     </div>
 
-    <FooterPopUp titulo={combinedArray[arrayUsed][keyPlato].name} descripcion={combinedArray[arrayUsed][keyPlato].description} precio={combinedArray[arrayUsed][keyPlato].price} setShowPopUP={setShowPopUP} setShowMenu={setShowMenu} setPedido={setPedido} pedido={pedido} foodId={combinedArray[arrayUsed][keyPlato].idFood}/>
+    <FooterPopUp titulo={combinedArray[arrayUsed][keyPlato].name} descripcion={combinedArray[arrayUsed][keyPlato].description} precio={combinedArray[arrayUsed][keyPlato].price} setShowPopUP={setShowPopUP} setShowMenu={setShowMenu} setPedido={setPedido} pedido={pedido} foodId={combinedArray[arrayUsed][keyPlato].id}/>
   </div>;
 }
 export default PopUp

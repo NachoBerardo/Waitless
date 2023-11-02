@@ -23,7 +23,7 @@ interface Order {
 interface FoodOrder {
   foodName: string,
   foodId: number,
-  amount: number
+  quantity: number
 }
 
 const FooterPopUp: React.FC<Props> = ({ titulo, descripcion, foodId, precio, pedido, setShowPopUP, setShowMenu, setPedido }) => {
@@ -41,31 +41,9 @@ const FooterPopUp: React.FC<Props> = ({ titulo, descripcion, foodId, precio, ped
     }
   };
 
-  const addPedido = (foodName: string, foodId: number, amount: number) => {
-    setPedido(pedido => [...pedido, { foodName, foodId ,amount }]);
+  const addPedido = (foodName: string, foodId: number, quantity: number) => {
+    setPedido(pedido => [...pedido, { foodName, foodId, quantity }]);
   }
-  
-  //Tengo que pasar esto a FooterMenu.Tsx ??
-  const handlePedido = async () => {
-    try {
-      return await axios.post("https://perfect-teal-beetle.cyclic.cloud/ordersFood", {
-        body: pedido
-      }).then((response) => {
-        
-      }).catch((err) => console.log(err))
-    } catch (error) {
-      console.log(error)
-    }
-    //const nuevoPedido = useQuery({ queryKey: ['creadoOrder'], queryFn: createOrderWithPrisma })
-    
-    setShowPopUP(false);
-    setShowMenu(true);
-
-    const mutation = useMutation({
-      mutationFn: handlePedido,
-    })
-  }
-
   
   return <footer className="w-full h-[90px] bg-background bottom-0 fixed shadow-top flex items-center" id="footerMenu">
     <div className=" bg-btngreen absolute rounded-2xl right-0  mr-7 h-[38px] w-[89px]" onClick={() => addPedido(titulo, foodId, cantidad)}>

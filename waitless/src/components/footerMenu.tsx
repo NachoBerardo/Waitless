@@ -1,8 +1,16 @@
+import axios from "axios";
 import { useState } from "react";
 interface FoodOrder {
   foodName: string,
   foodId: number,
-  amount: number
+  quantity: number
+}
+
+interface postProps {
+  orderId: Number,
+  foodId: Number,
+  customerId: Number,
+  quantity: Number
 }
 
 interface Props { 
@@ -17,12 +25,34 @@ interface Props {
 }
 
 const FooterMenu: React.FC<Props> = ({setShowPedido, setShowMenu, setShowPedidoEnviado, EstadoMenu, EstadoPedidoEnviado, EstadoPedido, txtBoton, pedido}) => {
-const handleClickVerPedido = () =>{
+const handleClickVerPedido = async () =>{
   setShowPedido(EstadoPedido); 
   setShowMenu(EstadoMenu);
   setShowPedidoEnviado(EstadoPedidoEnviado);
   
-  console.log(pedido)
+  let finishedInput: postProps[] = []
+
+  pedido.forEach((item) => {
+    const input = {
+      orderId: 5,
+      foodId: item.foodId,
+      customerId: 1,
+      quantity: item.quantity,
+      state: "enviado"
+    }
+
+    finishedInput.push(input)
+  })
+  
+  try {
+    return await axios.post("https://perfect-teal-beetle.cyclic.cloud/ordersFood", {
+      body: finishedInput
+    }).then((response) => {
+      console.log("Agregado ", response);
+    }).catch((err) => console.log(err))
+  } catch (error) {
+    console.log(error)
+  }
   //console.log(EstadoPedidoEnviado, EstadoPedido, EstadoMenu)
   // SetShowPedido en realidad es Show Menu, por ende se le pasa un true al apretar el boton para que aparezaca el menu y que el ShowPedido se vuelva false
 }

@@ -13,7 +13,7 @@ import { useQueryClient } from "@tanstack/react-query";
 import { table } from "console";
 
 export interface MenuTypes {
-  idFood: number;
+  id: number;
   category: string;
   sideDish: boolean;
   price: string;
@@ -32,7 +32,7 @@ interface CommandData {
 interface FoodOrder {
   foodName: string,
   foodId: number,
-  amount: number
+  quantity: number
 }
 
 const inter = Inter({ subsets: ["latin"] });
