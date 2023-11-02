@@ -1,4 +1,10 @@
 import { useState } from "react";
+interface FoodOrder {
+  foodName: string,
+  foodId: number,
+  amount: number
+}
+
 interface Props { 
   setShowPedido: React.Dispatch<React.SetStateAction<boolean>>;
   setShowMenu: React.Dispatch<React.SetStateAction<boolean>>;
@@ -7,13 +13,16 @@ interface Props {
   EstadoPedidoEnviado: boolean;
   EstadoPedido: boolean;
   EstadoMenu: boolean;
+  pedido: FoodOrder[];
 }
 
-const FooterMenu: React.FC<Props> = ({setShowPedido, setShowMenu, setShowPedidoEnviado, EstadoMenu, EstadoPedidoEnviado, EstadoPedido, txtBoton}) => {
+const FooterMenu: React.FC<Props> = ({setShowPedido, setShowMenu, setShowPedidoEnviado, EstadoMenu, EstadoPedidoEnviado, EstadoPedido, txtBoton, pedido}) => {
 const handleClickVerPedido = () =>{
   setShowPedido(EstadoPedido); 
   setShowMenu(EstadoMenu);
   setShowPedidoEnviado(EstadoPedidoEnviado);
+  
+  console.log(pedido)
   //console.log(EstadoPedidoEnviado, EstadoPedido, EstadoMenu)
   // SetShowPedido en realidad es Show Menu, por ende se le pasa un true al apretar el boton para que aparezaca el menu y que el ShowPedido se vuelva false
 }

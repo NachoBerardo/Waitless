@@ -9,11 +9,18 @@ export interface MenuTypes {
   commandsId: number;
 }
 
+interface FoodOrder {
+  foodName: string,
+  foodId: number,
+  amount: number
+}
+
 interface Props {
   setShowPedido: React.Dispatch<React.SetStateAction<boolean>>;
   setShowMenu: React.Dispatch<React.SetStateAction<boolean>>;
+  pedido: FoodOrder[];
 }
-const ContenidoPedido: React.FC<Props> = ({ setShowPedido, setShowMenu }) => {
+const ContenidoPedido: React.FC<Props> = ({ setShowPedido, setShowMenu, pedido }) => {
   const handleClickArrowBack = (EstadoMenu: boolean, EstadoPedido: boolean, EstadoPedidoEnviado: boolean) => {
     setShowPedido(EstadoPedido);
     setShowMenu(EstadoMenu);
@@ -116,7 +123,7 @@ const ContenidoPedido: React.FC<Props> = ({ setShowPedido, setShowMenu }) => {
               </div>
             </div>
           </div>
-          <FooterMenu setShowPedido={setShowPedido} setShowMenu={setShowMenu} setShowPedidoEnviado={setShowPedidoEnviado} EstadoPedidoEnviado={true} EstadoMenu={false} EstadoPedido={true} txtBoton="Enviar Pedido" />
+          <FooterMenu setShowPedido={setShowPedido} setShowMenu={setShowMenu} setShowPedidoEnviado={setShowPedidoEnviado} EstadoPedidoEnviado={true} EstadoMenu={false} EstadoPedido={true} txtBoton="Enviar Pedido" pedido={pedido}/>
         </div>
       </>
     )}

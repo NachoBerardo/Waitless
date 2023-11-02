@@ -1,6 +1,5 @@
 import { useState } from "react";
 import BtnSumarRestar from "./btnSumarRestar"
-import { llamarTodoMenu, llamarComida, crearComida, actualizarComida, borrarComida, crearPedido } from '../../../nodejs/fetch';
 import axios from "axios";
 import { useMutation } from "@tanstack/react-query";
 
@@ -44,13 +43,11 @@ const FooterPopUp: React.FC<Props> = ({ titulo, descripcion, foodId, precio, ped
 
   const addPedido = (foodName: string, foodId: number, amount: number) => {
     setPedido(pedido => [...pedido, { foodName, foodId ,amount }]);
-    console.log(pedido)
   }
   
   //Tengo que pasar esto a FooterMenu.Tsx ??
   const handlePedido = async () => {
     try {
-      console.log("asdas")
       return await axios.post("https://perfect-teal-beetle.cyclic.cloud/ordersFood", {
         body: pedido
       }).then((response) => {
