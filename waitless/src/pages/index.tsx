@@ -260,18 +260,7 @@ export default function Menu() {
         });
     }
   }
-  // if (a == false) {
-  //   getCommandByTable(numeroMesa, "total")
-  //     .then(data => {
-  //       if (data !== null) {
-  //         console.log(`Field Value: $${data}`);
-  //         setShowFotterMenu(true);
-  //       }
-  //     })
-  //     .catch(error => {
-  //       console.error(error);
-  //     });
-  // }
+  
 
   return (
     <main className="">

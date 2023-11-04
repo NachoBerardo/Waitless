@@ -26,20 +26,46 @@ const ContenidoPedido: React.FC<Props> = ({ setShowPedido, setShowMenu, pedido }
     setShowMenu(EstadoMenu);
     setShowPedidoEnviado(EstadoPedidoEnviado)
   }
+  const handleClickLlamarMesero = () =>{
+
+  }
+
+  const handleVerPedido= () =>{
+
+  }
   const [showPedidoEnviado, setShowPedidoEnviado] = useState(false);
+  const [error, setError] = useState(false)
 
   return <main>
     {showPedidoEnviado ? (
       <>
+       {error?(
         <div className="h-screen w-screen bg-white grid items-center">
-          <div className=" h-fit w-fit grid place-items-center ">
-            <h3 className="text-black mx-6 text-center font-normal">Tu pedido fue enviado y está en preparación</h3>
-            <button className="rounded-[40px] w-fit h-[38px] bg-btngreen mt-7 flex justify-center items-center " onClick={(event) => handleClickArrowBack(true, false, false)}>
-              <img src="BackArowWhite.svg" alt="" className="w-5 h-5 my-2 mr-1 ml-2" />
-              <h5 className="text-white my-2 mr-2">Volver al Menu</h5>
-            </button>
-          </div>
+        <div className=" h-full w-full grid place-items-center px-12 pt-16 pb-[225px] gap-1">
+          <img src="/Error.svg" alt="" className="h-[250px] w-[250px]"/>
+          <h2 className="text-black text-center font-bold">Error</h2>
+          <h5 className="text-black text-center font-normal">Estamos teniendo problemas para enviar tu pedido</h5>
+          <button className="rounded-[40px] w-fit h-fit bg-btngreen  flex justify-center items-center" onClick={(event) => handleClickLlamarMesero()}>
+            <h5 className="text-white font-normal px-16 py-3">Llamar a un mesero</h5>
+          </button>
+          <h5 className="text-btngreen font-normal px-16 py-3" onClick={(event) => handleClickArrowBack(true, false, false)}>Volver al menú</h5>
         </div>
+        <div className="absolute bottom-0 w-full h-[110px] bg-gradient-to-t from-[#D70101] opacity-[0.55]  "></div>
+      </div>
+       ):(
+        <div className="h-screen w-screen bg-white grid items-center">
+          <div className=" h-full w-full grid place-items-center px-12 pt-16 pb-[225px] gap-1">
+            <img src="/TicVerde.svg" alt="" className="h-[250px] w-[250px]"/>
+            <h2 className="text-black text-center font-bold">Muchas gracias</h2>
+            <h5 className="text-black text-center font-normal">Recibimos tu pedido y está en preparación</h5>
+            <button className="rounded-[40px] w-fit h-fit bg-btngreen  flex justify-center items-center"  onClick={(event) => handleVerPedido()}>
+              <h5 className="text-white font-normal px-16 py-3">Ver pedido</h5>
+            </button>
+            <h5 className="text-btngreen font-normal px-16 py-3" onClick={(event) => handleClickArrowBack(true, false, false)}>Volver al menú</h5>
+          </div>
+          <div className="absolute bottom-0 w-full h-[130px] bg-gradient-to-t from-[#19B400] opacity-[0.7]  "></div>
+        </div>
+       )} 
       </>
     ) : (
       <>
