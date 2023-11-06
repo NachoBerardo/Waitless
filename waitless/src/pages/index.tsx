@@ -249,7 +249,7 @@ export default function Menu() {
           if (data !== null && data !== 0) {
             console.log(`Field Value: $${data}`);
             setShowFotterMenu(true);
-          console.log("b");
+            console.log("b");
 
           }
         })
@@ -260,7 +260,7 @@ export default function Menu() {
         });
     }
   }
-  
+
 
   return (
     <main className="">
@@ -381,12 +381,12 @@ export default function Menu() {
                 </div>
               ))}
             </div>
-            {showFotterMenu ? (<FooterMenu setShowPedido={setShowPedido} setShowMenu={setShowMenu} setShowPedidoEnviado={setShowMenu} EstadoPedidoEnviado={false} EstadoPedido={true} EstadoMenu={false} txtBoton="Ver Pedido" pedido={pedido}/>) : (<></>)}
+            {showFotterMenu ? (<FooterMenu setShowPedido={setShowPedido} setShowMenu={setShowMenu} setShowPedidoEnviado={setShowMenu} EstadoPedidoEnviado={false} EstadoPedido={true} EstadoMenu={false} txtBoton="Ver Pedido" pedido={pedido} />) : (<></>)}
           </>
         ) : (<></>)}
         {showPedido ? (
           <>
-            <ContenidoPedido setShowMenu={setShowMenu} setShowPedido={setShowPedido} pedido={pedido}/>
+            <ContenidoPedido setShowMenu={setShowMenu} setShowPedido={setShowPedido} pedido={pedido} />
           </>
         ) : (<></>)}
       </div>
