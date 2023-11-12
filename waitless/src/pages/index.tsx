@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import ScrollBar from "../components/scrollbar";
 import HeaderMenu from "../components/headerMenu";
 import PopUp from "../components/PopUp";
+import Pago from "../components/pago";
 import FooterMenu from "../components/footerMenu";
 import ContenidoPedido from "../components/ContenidoPedido";
 import { useQuery } from '@tanstack/react-query';
@@ -195,6 +196,7 @@ export default function Menu() {
   };
 
   const [showPopUP, setShowPopUP] = useState(false);
+  const [showPago, setShowPago] = useState(false);
   const [comanda, setComanda] = useState(false);
   const [showMenu, setShowMenu] = useState(true);
   const [showPedido, setShowPedido] = useState(false);
@@ -381,12 +383,17 @@ export default function Menu() {
                 </div>
               ))}
             </div>
-            {showFotterMenu ? (<FooterMenu setShowPedido={setShowPedido} setShowMenu={setShowMenu} setShowPedidoEnviado={setShowMenu} EstadoPedidoEnviado={false} EstadoPedido={true} EstadoMenu={false} txtBoton="Ver Pedido" pedido={pedido} />) : (<></>)}
+            {showFotterMenu ? (<FooterMenu  setShowPago={setShowPago} setShowPedido={setShowPedido} setShowMenu={setShowMenu} setShowPedidoEnviado={setShowMenu} EstadoPedidoEnviado={false} EstadoPedido={true} EstadoMenu={false} txtBoton="Ver Pedido" pedido={pedido} />) : (<></>)}
           </>
         ) : (<></>)}
         {showPedido ? (
           <>
             <ContenidoPedido setShowMenu={setShowMenu} setShowPedido={setShowPedido} pedido={pedido} />
+          </>
+        ) : (<></>)}
+         {showPago ? (
+          <>
+            <Pago />
           </>
         ) : (<></>)}
       </div>
