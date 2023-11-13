@@ -66,7 +66,7 @@ const handleClickPago = async () =>{
 
 return <div className="bottom-0 fixed w-full h-fit grid ">
   <div className="w-full h-fit flex justify-end">
-    <button className="rounded-full bg-btngreen h-[70px] w-[70px] mr-9 mb-4 flex justify-center items-center active:outline-none" onClick={(event) => handleClickPago()}>
+    <button className="rounded-full bg-btngreen h-[70px] w-[70px] mr-6 mb-4 flex justify-center items-center active:outline-none" onClick={(event) => handleClickPago()}>
       <img src="/carrito.svg" alt="" className="h-12 w-12"/>
     </button>
   </div>

@@ -83,16 +83,16 @@ const ContenidoPedido: React.FC<Props> = ({ setShowPedido, setShowMenu, setShowP
                 <div className="relative w-[100%] h-6">
                   <hr className="bg-LineaVerdePedido h-[4px] w-full absolute bottom-[35%]" />
                 </div>
-                <h4 className="text-LineaVerdePedido px-2"></h4>
+                <h4 className="text-LineaVerdePedido px-2">Nombre</h4>
                 <div className="relative w-[100%] h-6">
                   <hr className="bg-LineaVerdePedido h-[4px] w-full absolute bottom-[35%]" />
                 </div>
               </div>
               <div className="w-fit h-fit grid grid-cols-2 gap-x-2 m-auto">
                 <div>
-                  <h3 className="text-black pl-14 pt-6 overflow-hidden inline-flex"> </h3>
-                  <p className="pl-14 text-letraGris truncate"></p>
-                  <p className="pl-14 text-letraGrisOscuro pt-1 pb-4"></p>
+                  <h3 className="text-black pl-14 pt-6 overflow-hidden inline-flex">aa </h3>
+                  <p className="pl-14 text-letraGris truncate">sss</p>
+                  <p className="pl-14 text-letraGrisOscuro pt-1 pb-4">sssss</p>
                 </div>
                 <div className="flex justify-center items-center">
                   <BtnSumarRestar2></BtnSumarRestar2>
