@@ -17,10 +17,11 @@ interface FoodOrder {
 
 interface Props {
   setShowPedido: React.Dispatch<React.SetStateAction<boolean>>;
+  setShowPago: React.Dispatch<React.SetStateAction<boolean>>;
   setShowMenu: React.Dispatch<React.SetStateAction<boolean>>;
   pedido: FoodOrder[];
 }
-const ContenidoPedido: React.FC<Props> = ({ setShowPedido, setShowMenu, pedido }) => {
+const ContenidoPedido: React.FC<Props> = ({ setShowPedido, setShowMenu, setShowPago, pedido }) => {
   const handleClickArrowBack = (EstadoMenu: boolean, EstadoPedido: boolean, EstadoPedidoEnviado: boolean) => {
     setShowPedido(EstadoPedido);
     setShowMenu(EstadoMenu);
@@ -41,9 +42,9 @@ const ContenidoPedido: React.FC<Props> = ({ setShowPedido, setShowMenu, pedido }
       <>
        {error?(
         <div className="h-screen w-screen bg-white grid items-center">
-        <div className=" h-full w-full grid place-items-center px-12 pt-16 pb-[225px] gap-1">
+        <div className="h-full w-full grid place-items-center px-12 pt-16 pb-[225px] gap-1">
           <img src="/Error.svg" alt="" className="h-[250px] w-[250px]"/>
-          <h2 className="text-black text-center font-bold">Error</h2>
+          <h2 className="text-black text-center font-bold pt-9">Error</h2>
           <h5 className="text-black text-center font-normal">Estamos teniendo problemas para enviar tu pedido</h5>
           <button className="rounded-[40px] w-fit h-fit bg-btngreen  flex justify-center items-center" onClick={(event) => handleClickLlamarMesero()}>
             <h5 className="text-white font-normal px-16 py-3">Llamar a un mesero</h5>
@@ -149,7 +150,7 @@ const ContenidoPedido: React.FC<Props> = ({ setShowPedido, setShowMenu, pedido }
               </div>
             </div>
           </div>
-          <FooterMenu setShowPedido={setShowPedido} setShowMenu={setShowMenu} setShowPedidoEnviado={setShowPedidoEnviado} EstadoPedidoEnviado={true} EstadoMenu={false} EstadoPedido={true} txtBoton="Enviar Pedido" pedido={pedido}/>
+          <FooterMenu setShowPedido={setShowPedido} setShowMenu={setShowMenu} setShowPedidoEnviado={setShowPedidoEnviado} EstadoPedidoEnviado={true} EstadoMenu={false} EstadoPedido={true} txtBoton="Enviar Pedido" pedido={pedido} setShowPago={setShowPago}/>
         </div>
       </>
     )}

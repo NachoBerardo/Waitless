@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import ScrollBar from "../components/scrollbar";
 import HeaderMenu from "../components/headerMenu";
 import PopUp from "../components/PopUp";
-import Pago from "../components/pago";
+import Pago from "../components/Pago";
 import FooterMenu from "../components/footerMenu";
 import ContenidoPedido from "../components/ContenidoPedido";
 import { useQuery } from '@tanstack/react-query';
@@ -281,6 +281,11 @@ export default function Menu() {
             </div>
           </div>
         ) : (<></>)}
+        {showPago ? (
+          <>
+            <Pago setShowPago={setShowPago}pedido={pedido} setShowMenu={setShowMenu} />
+          </>
+        ) : (<></>)}
         {showPopUP && !isMenuLoading && !isMenuError &&
           <PopUp
             combinedArray={combinedArray!}
@@ -391,11 +396,7 @@ export default function Menu() {
             <ContenidoPedido setShowMenu={setShowMenu} setShowPedido={setShowPedido} pedido={pedido} />
           </>
         ) : (<></>)}
-         {showPago ? (
-          <>
-            <Pago />
-          </>
-        ) : (<></>)}
+         
       </div>
     </main >
   );

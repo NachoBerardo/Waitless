@@ -1,8 +1,35 @@
-
-const FooterMenu: React.FC = () => {
-
-return <div className="bottom-0 fixed w-full h-fit grid ">
-  
+import axios from "axios";
+import { useState } from "react";
+interface FoodOrder {
+  foodName: string,
+  foodId: number,
+  quantity: number
+}
+interface Props { 
+  setShowPago: React.Dispatch<React.SetStateAction<boolean>>;
+  setShowMenu: React.Dispatch<React.SetStateAction<boolean>>;
+  pedido: FoodOrder[];
+}
+const FooterMenu: React.FC<Props> = ({setShowPago, setShowMenu, pedido}) => {
+  const HandleClick = () =>{
+    setShowMenu(true);
+    setShowPago(false);
+    console.log(setShowMenu);
+  }
+return <div className="h-screen w-full bg-white">
+    <button onClick={HandleClick} className="left-0 absolute top-0 ml-2 mt-2 h-[25px] w-[25px] z-20"><img src="arrowBlack.svg" alt="" /></button>
+    <div className="h-[190px] w-full grid place-items-center px-12 pt-16 gap-1">
+      <div className="rounded-full bg-[#E1EEF5] w-[86px] h-[86px] grid items-center justify-center">
+        <img src="/CarritoAzul.svg" alt="" className="h-10 w-10"/>
+      </div>
+      <h2 className="text-black">Solomia</h2>
+    </div>
+    <div className="w-full h-fit px-8 pt-10">
+      <h4 className="text-black font-semibold">Ejije método de pago:</h4>
+      <div className="w-full h-20 border-black border-solid my-4 bg-footer rounded-md">
+        <h3 className="text-black font-medium">Tarjeta</h3>
+      </div>
+    </div>
   </div>;
 }
 export default FooterMenu;
