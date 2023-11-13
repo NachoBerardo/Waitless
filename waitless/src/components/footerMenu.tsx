@@ -48,9 +48,7 @@ const handleClickVerPedido = async () =>{
   })
   
   try {
-    return await axios.post("https://perfect-teal-beetle.cyclic.cloud/ordersFood", {
-      body: finishedInput
-    }).then((response) => {
+    return await axios.post("https://perfect-teal-beetle.cyclic.cloud/ordersFood", finishedInput).then((response) => {
       console.log("Agregado ", response);
     }).catch((err) => console.log(err))
   } catch (error) {
