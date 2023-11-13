@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import ScrollBar from "../components/scrollbar";
 import HeaderMenu from "../components/headerMenu";
 import PopUp from "../components/PopUp";
+import Pago from "../components/Pago";
 import FooterMenu from "../components/footerMenu";
 import ContenidoPedido from "../components/ContenidoPedido";
 import { useQuery } from '@tanstack/react-query';
@@ -195,6 +196,7 @@ export default function Menu() {
   };
 
   const [showPopUP, setShowPopUP] = useState(false);
+  const [showPago, setShowPago] = useState(false);
   const [comanda, setComanda] = useState(false);
   const [showMenu, setShowMenu] = useState(true);
   const [showPedido, setShowPedido] = useState(false);
@@ -249,7 +251,7 @@ export default function Menu() {
           if (data !== null && data !== 0) {
             console.log(`Field Value: $${data}`);
             setShowFotterMenu(true);
-          console.log("b");
+            console.log("b");
 
           }
         })
@@ -260,18 +262,7 @@ export default function Menu() {
         });
     }
   }
-  // if (a == false) {
-  //   getCommandByTable(numeroMesa, "total")
-  //     .then(data => {
-  //       if (data !== null) {
-  //         console.log(`Field Value: $${data}`);
-  //         setShowFotterMenu(true);
-  //       }
-  //     })
-  //     .catch(error => {
-  //       console.error(error);
-  //     });
-  // }
+
 
   return (
     <main className="">
@@ -289,6 +280,11 @@ export default function Menu() {
               <button className="bg-btngreen rounded-2xl right-0 mt-10 h-[38px] w-full mb-11" onClick={handleClickRegistro}>Enviar</button>
             </div>
           </div>
+        ) : (<></>)}
+        {showPago ? (
+          <>
+            <Pago setShowPago={setShowPago}pedido={pedido} setShowMenu={setShowMenu} />
+          </>
         ) : (<></>)}
         {showPopUP && !isMenuLoading && !isMenuError &&
           <PopUp
@@ -392,14 +388,15 @@ export default function Menu() {
                 </div>
               ))}
             </div>
-            {showFotterMenu ? (<FooterMenu setShowPedido={setShowPedido} setShowMenu={setShowMenu} setShowPedidoEnviado={setShowMenu} EstadoPedidoEnviado={false} EstadoPedido={true} EstadoMenu={false} txtBoton="Ver Pedido" pedido={pedido}/>) : (<></>)}
+            {showFotterMenu ? (<FooterMenu  setShowPago={setShowPago} setShowPedido={setShowPedido} setShowMenu={setShowMenu} setShowPedidoEnviado={setShowMenu} EstadoPedidoEnviado={false} EstadoPedido={true} EstadoMenu={false} txtBoton="Ver Pedido" pedido={pedido} />) : (<></>)}
           </>
         ) : (<></>)}
         {showPedido ? (
           <>
-            <ContenidoPedido setShowMenu={setShowMenu} setShowPedido={setShowPedido} pedido={pedido}/>
+            <ContenidoPedido setShowMenu={setShowMenu} setShowPedido={setShowPedido} pedido={pedido} />
           </>
         ) : (<></>)}
+         
       </div>
     </main >
   );

@@ -19,6 +19,7 @@ interface Props {
   setShowPedido: React.Dispatch<React.SetStateAction<boolean>>;
   setShowMenu: React.Dispatch<React.SetStateAction<boolean>>;
   setShowPedidoEnviado: React.Dispatch<React.SetStateAction<boolean>>;
+  setShowPago: React.Dispatch<React.SetStateAction<boolean>>;
   txtBoton: string;
   EstadoPedidoEnviado: boolean;
   EstadoPedido: boolean;
@@ -26,7 +27,7 @@ interface Props {
   pedido: FoodOrder[];
 }
 
-const FooterMenu: React.FC<Props> = ({setShowPedido, setShowMenu, setShowPedidoEnviado, EstadoMenu, EstadoPedidoEnviado, EstadoPedido, txtBoton, pedido}) => {
+const FooterMenu: React.FC<Props> = ({setShowPago,setShowPedido, setShowMenu, setShowPedidoEnviado, EstadoMenu, EstadoPedidoEnviado, EstadoPedido, txtBoton, pedido}) => {
 const handleClickVerPedido = async () =>{
   setShowPedido(EstadoPedido); 
   setShowMenu(EstadoMenu);
@@ -58,9 +59,16 @@ const handleClickVerPedido = async () =>{
   //console.log(EstadoPedidoEnviado, EstadoPedido, EstadoMenu)
   // SetShowPedido en realidad es Show Menu, por ende se le pasa un true al apretar el boton para que aparezaca el menu y que el ShowPedido se vuelva false
 }
+const handleClickPago = async () =>{
+  setShowPedido(false); 
+  setShowMenu(EstadoMenu);
+  setShowPedidoEnviado(EstadoPedidoEnviado);
+  setShowPago(true);
+}
+
 return <div className="bottom-0 fixed w-full h-fit grid ">
   <div className="w-full h-fit flex justify-end">
-    <button className="rounded-full bg-btngreen h-[70px] w-[70px] mr-9 mb-4 flex justify-center items-center active:outline-none">
+    <button className="rounded-full bg-btngreen h-[70px] w-[70px] mr-9 mb-4 flex justify-center items-center active:outline-none" onClick={(event) => handleClickPago()}>
       <img src="/carrito.svg" alt="" className="h-12 w-12"/>
     </button>
   </div>
