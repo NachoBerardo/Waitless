@@ -1,0 +1,8 @@
+POST https://perfect-teal-beetle.cyclic.cloud/ordersFood"
+{
+  "orderId" : 5,
+     "foodId" : 4,
+     "customerId" : 1,
+     "quantity" : 6,
+      "state": "enviado"
+}
