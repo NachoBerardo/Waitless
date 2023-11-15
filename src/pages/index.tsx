@@ -13,7 +13,7 @@ import axios from "axios";
 import { useQueryClient } from "@tanstack/react-query";
 import { table } from "console";
 
-export interface MenuTypes {
+export interface MenuTypes {  
   id: number;
   category: string;
   sideDish: boolean;

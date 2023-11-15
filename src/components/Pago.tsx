@@ -31,6 +31,16 @@ return <main>
       </div>
       <h2 className="text-black">Solomia</h2>
     </div>
+    <div className="w-full h-fit px-8 pt-24 ">
+      <div className="w-full h-fit flex border-solid py-4 px-4 justify-between">
+        <h4 className="text-black font-medium">Comida1</h4>
+        <h4 className="text-black font-medium">1000</h4>
+      </div>
+      <div className="w-full h-fit flex border-solid py-4 px-4 justify-between">
+        <h4 className="text-black font-medium">Comida1</h4>
+        <h4 className="text-black font-medium">1000</h4>
+      </div>
+    </div>
   </div>
   ):(
     <div className="h-screen w-full bg-white overflow-hidden">
