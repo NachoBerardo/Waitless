@@ -59,10 +59,12 @@ const ContenidoPedido: React.FC<Props> = ({ setShowPedido, setShowMenu, setShowP
             <img src="/TicVerde.svg" alt="" className="h-[250px] w-[250px]"/>
             <h2 className="text-black text-center font-bold">Muchas gracias</h2>
             <h5 className="text-black text-center font-normal">Recibimos tu pedido y está en preparación</h5>
-            <button className="rounded-[40px] w-fit h-fit bg-btngreen  flex justify-center items-center"  onClick={(event) => handleVerPedido()}>
+            {/* <button className="rounded-[40px] w-fit h-fit bg-btngreen  flex justify-center items-center"  onClick={(event) => handleVerPedido()}>
               <h5 className="text-white font-normal px-16 py-3">Ver pedido</h5>
+            </button> */}
+            <button className="rounded-[40px] w-fit h-fit bg-btngreen  flex justify-center items-center">
+             <h5 className="text-white font-normal px-16 py-3" onClick={(event) => handleClickArrowBack(true, false, false)}>Volver al menú</h5>
             </button>
-            <h5 className="text-btngreen font-normal px-16 py-3" onClick={(event) => handleClickArrowBack(true, false, false)}>Volver al menú</h5>
           </div>
           <div className="absolute bottom-0 w-full h-[130px] bg-gradient-to-t from-[#19B400] opacity-[0.7]  "></div>
         </div>

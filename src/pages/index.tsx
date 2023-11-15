@@ -393,7 +393,7 @@ export default function Menu() {
         ) : (<></>)}
         {showPedido ? (
           <>
-            <ContenidoPedido setShowMenu={setShowMenu} setShowPedido={setShowPedido} pedido={pedido} />
+            <ContenidoPedido setShowPago={setShowPago} setShowMenu={setShowMenu} setShowPedido={setShowPedido} pedido={pedido} />
           </>
         ) : (<></>)}
          
