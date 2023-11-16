@@ -17,21 +17,40 @@ const FooterMenu: React.FC<Props> = ({setShowPago, setShowMenu, pedido}) => {
     console.log(setShowMenu);
   }
 const [showTarjeta, setShowTarjeta] = useState(false);
+const [showGracias, setshowGracias] = useState(false);
+
 const handleSiguiente= () =>{
-  if (tarjetaRadioRef.current?.checked || efectivoRadioRef.current?.checked) {
+  if (tarjetaRadioRef.current?.checked) {
     setShowTarjeta(true);
-  } else {
-    console.error("Please select a payment method");
+  } 
+  else if (efectivoRadioRef.current?.checked) {
+    setshowGracias(true);
+  }
+  else{
+    console.log("Se debe seleccionar un campo");
   }
 }
 const handlePagar= () =>{
- 
+  setshowGracias(true);
 }
 const tarjetaRadioRef = useRef<HTMLInputElement>(null);
 const efectivoRadioRef = useRef<HTMLInputElement>(null);
 
 
 return <main>
+  {showGracias?(
+    <div className="h-screen w-screen bg-white grid items-center overflow-hidden">
+        <div className="h-fit w-full grid place-items-center px-12 pt-16 pb-[225px] ">
+          <h2 className="text-black text-center font-bold pb-6">Muchas gracias por su compra</h2>
+          <h5 className="text-black text-center font-normal pb-6">Ya le traeran la cuanta a su mesa</h5>
+          <button className="rounded-[40px] w-fit h-fit bg-btngreen  flex justify-center items-center" onClick={(event) => HandleClick()}>
+            <h5 className="text-white font-normal px-16 py-3">Volver al menu</h5>
+          </button>
+        </div>
+      </div>
+  ):(
+    <></>
+  )}
   {showTarjeta?(
     <div className="h-screen w-full bg-white overflow-hidden">
     <button onClick={HandleClick} className="left-0 absolute top-0 ml-2 mt-2 h-[25px] w-[25px] z-20"><img src="arrowBlack.svg" alt="" /></button>
@@ -60,7 +79,7 @@ return <main>
         </div>
       </div>
     </div>
-    <div className="w-full h-full bg-[#F4F4F4] mt-8  px-16 shadow-top">
+    <div className="w-full h-full bg-[#F4F4F4] mt-3 px-16 shadow-top">
       <div className="grid  place-items-center">
         <div className="h-[160px] w-full rounded-xl mt-6 bg-[#3C3C3C]"></div>
         <div className="h-fit w-fit flex mt-3">
