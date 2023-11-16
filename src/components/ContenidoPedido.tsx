@@ -41,7 +41,7 @@ const ContenidoPedido: React.FC<Props> = ({ setShowPedido, setShowMenu, setShowP
     {showPedidoEnviado ? (
       <>
        {error?(
-        <div className="h-screen w-screen bg-white grid items-center">
+        <div className="h-screen w-screen bg-white grid items-center overflow-hidden">
         <div className="h-full w-full grid place-items-center px-12 pt-16 pb-[225px] gap-1">
           <img src="/Error.svg" alt="" className="h-[250px] w-[250px]"/>
           <h2 className="text-black text-center font-bold pt-9">Error</h2>
