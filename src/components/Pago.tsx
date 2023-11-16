@@ -59,15 +59,15 @@ return <main>
   {showTarjeta?(
     <div className="h-screen w-full bg-white overflow-hidden">
     <button onClick={HandleClick} className="left-0 absolute top-0 ml-2 mt-2 h-[25px] w-[25px] z-20"><img src="arrowBlack.svg" alt="" /></button>
-    <div className="h-[200px] w-full grid place-items-center px-12 pt-16 gap-1">
+    <div className="h-[200px] w-full grid place-items-center px-12 pt-10 ">
       <div className="rounded-full bg-[#E1EEF5] w-[86px] h-[86px] grid items-center justify-center">
         <img src="/CarritoAzul.svg" alt="" className="h-10 w-10"/>
       </div>
       <h2 className="text-black">Solomia</h2>
     </div>
-    <div className="w-full h-fit px-8 pt-24">
-      <div className="">
-        <div className="w-full h-fit flex border-solid pt-4 pb-5 px-4 justify-between">
+    <div className="w-full h-fit px-8 pt-10">
+      <div className="overflow-scroll no-scrollbar">
+        <div className="w-full h-fit flex border-solid pt-2 pb-5 px-4 justify-between">
           <h4 className="text-black font-medium">Comida1</h4>
           <h4 className="text-black font-medium">1000</h4>
         </div>
