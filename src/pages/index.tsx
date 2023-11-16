@@ -13,7 +13,7 @@ import axios from "axios";
 import { useQueryClient } from "@tanstack/react-query";
 import { table } from "console";
 
-export interface MenuTypes {  
+export interface MenuTypes {
   id: number;
   category: string;
   sideDish: boolean;
@@ -123,7 +123,7 @@ export default function Menu() {
 
   const getAllOrderFoodByCustumer = async () => {
     try {
-      return await axios.get('https://perfect-teal-beetle.cyclic.cloud/orderFoodByCustumer').then((response) => {
+      return await axios.get('https://perfect-teal-beetle.cyclic.cloud/orderByCustomer').then((response) => {
         console.log("OrderFoodByCustumer: ", response.data.data);
         return response.data.data;
       }).catch((err) => console.log("OrderFoodByCustomer:", err))
@@ -283,7 +283,7 @@ export default function Menu() {
         ) : (<></>)}
         {showPago ? (
           <>
-            <Pago setShowPago={setShowPago}pedido={pedido} setShowMenu={setShowMenu} />
+            <Pago setShowPago={setShowPago} pedido={pedido} setShowMenu={setShowMenu} />
           </>
         ) : (<></>)}
         {showPopUP && !isMenuLoading && !isMenuError &&
@@ -388,7 +388,7 @@ export default function Menu() {
                 </div>
               ))}
             </div>
-            {showFotterMenu ? (<FooterMenu  setShowPago={setShowPago} setShowPedido={setShowPedido} setShowMenu={setShowMenu} setShowPedidoEnviado={setShowMenu} EstadoPedidoEnviado={false} EstadoPedido={true} EstadoMenu={false} txtBoton="Ver Pedido" pedido={pedido} />) : (<></>)}
+            {showFotterMenu ? (<FooterMenu setShowPago={setShowPago} setShowPedido={setShowPedido} setShowMenu={setShowMenu} setShowPedidoEnviado={setShowMenu} EstadoPedidoEnviado={false} EstadoPedido={true} EstadoMenu={false} txtBoton="Ver Pedido" pedido={pedido} />) : (<></>)}
           </>
         ) : (<></>)}
         {showPedido ? (
@@ -396,7 +396,7 @@ export default function Menu() {
             <ContenidoPedido setShowPago={setShowPago} setShowMenu={setShowMenu} setShowPedido={setShowPedido} pedido={pedido} />
           </>
         ) : (<></>)}
-         
+
       </div>
     </main >
   );
