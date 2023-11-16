@@ -1,11 +1,11 @@
 import axios from "axios";
-import { useState } from "react";
+import { useState, useRef } from "react";
 interface FoodOrder {
   foodName: string,
   foodId: number,
   quantity: number
 }
-interface Props { 
+interface Props {
   setShowPago: React.Dispatch<React.SetStateAction<boolean>>;
   setShowMenu: React.Dispatch<React.SetStateAction<boolean>>;
   pedido: FoodOrder[];
@@ -18,8 +18,18 @@ const FooterMenu: React.FC<Props> = ({setShowPago, setShowMenu, pedido}) => {
   }
 const [showTarjeta, setShowTarjeta] = useState(false);
 const handleSiguiente= () =>{
-  setShowTarjeta(true);
+  if (tarjetaRadioRef.current?.checked || efectivoRadioRef.current?.checked) {
+    setShowTarjeta(true);
+  } else {
+    console.error("Please select a payment method");
+  }
 }
+const handlePagar= () =>{
+ 
+}
+const tarjetaRadioRef = useRef<HTMLInputElement>(null);
+const efectivoRadioRef = useRef<HTMLInputElement>(null);
+
 
 return <main>
   {showTarjeta?(
@@ -31,14 +41,36 @@ return <main>
       </div>
       <h2 className="text-black">Solomia</h2>
     </div>
-    <div className="w-full h-fit px-8 pt-24 ">
-      <div className="w-full h-fit flex border-solid py-4 px-4 justify-between">
-        <h4 className="text-black font-medium">Comida1</h4>
-        <h4 className="text-black font-medium">1000</h4>
+    <div className="w-full h-fit px-8 pt-24">
+      <div className="">
+        <div className="w-full h-fit flex border-solid pt-4 pb-5 px-4 justify-between">
+          <h4 className="text-black font-medium">Comida1</h4>
+          <h4 className="text-black font-medium">1000</h4>
+        </div>
+        <div className="w-full h-fit flex border-solid pb-5 px-4 justify-between">
+          <h4 className="text-black font-medium">Comida1</h4>
+          <h4 className="text-black font-medium">1000</h4>
+        </div>
+        <hr className="bg-[#D0D0D0] h-[2px] w-full" />
       </div>
-      <div className="w-full h-fit flex border-solid py-4 px-4 justify-between">
-        <h4 className="text-black font-medium">Comida1</h4>
-        <h4 className="text-black font-medium">1000</h4>
+      <div>
+       <div className="w-full h-fit flex border-solid pt-4 pb-5 px-4 justify-between">
+          <h4 className="text-black font-bold">Total:</h4>
+          <h4 className="text-black font-bold">2000</h4>
+        </div>
+      </div>
+    </div>
+    <div className="w-full h-full bg-[#F4F4F4] mt-8  px-16 shadow-top">
+      <div className="grid  place-items-center">
+        <div className="h-[160px] w-full rounded-xl mt-6 bg-[#3C3C3C]"></div>
+        <div className="h-fit w-fit flex mt-3">
+          <div className="rounded-full w-3 h-3 mr-2 bg-btngreen"></div>
+          <div className="rounded-full w-3 h-3 mr-2 bg-[#D9D9D9]"></div>
+          <div className="rounded-full w-3 h-3 bg-[#D9D9D9]"></div>
+        </div>
+        <button className="rounded-[40px] w-fit h-fit bg-btngreen  flex justify-center items-center mt-3" onClick={handlePagar}>
+          <h5 className="text-white font-normal px-24 py-3">Pagar</h5>
+        </button>
       </div>
     </div>
   </div>
@@ -55,11 +87,11 @@ return <main>
       <h4 className="text-black font-semibold">Ejije método de pago:</h4>
       <div className="w-full h-fit flex border-solid py-4 mt-5 ring-FocusEspecificaciones ring-1 rounded-md px-4 justify-between">
         <h4 className="text-black font-medium">Tarjeta</h4>
-        <input type="radio" className="rounded-full accent-black" name="pago" />
+        <input type="radio" className="rounded-full accent-black" name="pago" ref={tarjetaRadioRef}/>
       </div>
       <div className="w-full h-fit flex border-solid py-4 mt-5 ring-FocusEspecificaciones ring-1 rounded-md px-4 justify-between">
         <h4 className="text-black font-medium">Efectivo</h4>
-        <input type="radio" className="rounded-full accent-black" name="pago" />
+        <input type="radio" className="rounded-full accent-black" name="pago" ref={efectivoRadioRef}/>
       </div>
     </div>
     <div className="w-full h-screen bg-[#F4F4F4] mt-8 grid justify-center shadow-top">
@@ -67,9 +99,10 @@ return <main>
         <h5 className="text-white font-normal px-24 py-3">Siguiente</h5>
       </button>
     </div>
-    
+   
   </div>
   )}
+
 
   </main>;
 }

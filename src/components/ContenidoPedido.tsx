@@ -2,6 +2,7 @@ import FooterMenu from "./footerMenu";
 import BtnSumarRestar2 from "./btnSumarRestar2";
 import { useState } from "react";
 
+
 export interface MenuTypes {
   idOrder: number;
   sendedAt: string;
@@ -9,11 +10,13 @@ export interface MenuTypes {
   commandsId: number;
 }
 
+
 interface FoodOrder {
   foodName: string,
   foodId: number,
   quantity: number
 }
+
 
 interface Props {
   setShowPedido: React.Dispatch<React.SetStateAction<boolean>>;
@@ -29,13 +32,17 @@ const ContenidoPedido: React.FC<Props> = ({ setShowPedido, setShowMenu, setShowP
   }
   const handleClickLlamarMesero = () =>{
 
+
   }
 
+
   const handleVerPedido= () =>{
+
 
   }
   const [showPedidoEnviado, setShowPedidoEnviado] = useState(false);
   const [error, setError] = useState(false)
+
 
   return <main>
     {showPedidoEnviado ? (
@@ -54,7 +61,7 @@ const ContenidoPedido: React.FC<Props> = ({ setShowPedido, setShowMenu, setShowP
         <div className="absolute bottom-0 w-full h-[110px] bg-gradient-to-t from-[#D70101] opacity-[0.55]  "></div>
       </div>
        ):(
-        <div className="h-screen w-screen bg-white grid items-center">
+        <div className="h-screen w-screen bg-white grid items-center overflow-hidden">
           <div className=" h-full w-full grid place-items-center px-12 pt-16 pb-[225px] gap-1">
             <img src="/TicVerde.svg" alt="" className="h-[250px] w-[250px]"/>
             <h2 className="text-black text-center font-bold">Muchas gracias</h2>
@@ -68,7 +75,7 @@ const ContenidoPedido: React.FC<Props> = ({ setShowPedido, setShowMenu, setShowP
           </div>
           <div className="absolute bottom-0 w-full h-[130px] bg-gradient-to-t from-[#19B400] opacity-[0.7]  "></div>
         </div>
-       )} 
+       )}
       </>
     ) : (
       <>
@@ -104,6 +111,7 @@ const ContenidoPedido: React.FC<Props> = ({ setShowPedido, setShowMenu, setShowP
                 <hr className="border-b bg-LineaPedido w-[100%] h-px mb-4 mx-7" />
               </div>
 
+
               <div className="w-fit h-fit grid grid-cols-2 gap-x-2 m-auto ">
                 <div>
                   <h3 className="text-black pl-14 pt-6 overflow-hidden inline-flex"></h3>
@@ -115,7 +123,9 @@ const ContenidoPedido: React.FC<Props> = ({ setShowPedido, setShowMenu, setShowP
                 </div>
               </div>
 
+
               {/* separadooooooor */}
+
 
               <div className=" flex mt-3">
                 <div className="relative w-[100%] h-6">
@@ -140,6 +150,7 @@ const ContenidoPedido: React.FC<Props> = ({ setShowPedido, setShowMenu, setShowP
                 <hr className="border-b bg-LineaPedido w-[100%] h-px mb-4 mx-7" />
               </div>
 
+
               <div className="w-fit h-fit grid grid-cols-2 gap-x-2 m-auto">
                 <div>
                   <h3 className="text-black pl-14 pt-6 overflow-hidden inline-flex"> </h3>
@@ -156,6 +167,7 @@ const ContenidoPedido: React.FC<Props> = ({ setShowPedido, setShowMenu, setShowP
         </div>
       </>
     )}
+
 
   </main>;
 }
