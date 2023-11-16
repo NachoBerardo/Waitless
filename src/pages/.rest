@@ -1,0 +1,11 @@
+POST https://perfect-teal-beetle.cyclic.cloud/ordersFood HTTP/1.1
+#POST http://localhost:3002/ordersFood 
+Content-Type: application/json
+
+{
+  "orderId" : 5,
+  "foodId" : 4,
+  "customerId" : 1,
+  "quantity" : 6,
+  "state": "enviado"
+}
