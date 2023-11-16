@@ -18,13 +18,18 @@ const FooterMenu: React.FC<Props> = ({setShowPago, setShowMenu, pedido}) => {
   }
 const [showTarjeta, setShowTarjeta] = useState(false);
 const [showGracias, setshowGracias] = useState(false);
+const [showEleccion, setshowEleccion] = useState(true);
 
 const handleSiguiente= () =>{
   if (tarjetaRadioRef.current?.checked) {
     setShowTarjeta(true);
+    setshowEleccion(false);
+    setshowGracias(false);
   } 
   else if (efectivoRadioRef.current?.checked) {
     setshowGracias(true);
+    setShowTarjeta(false);
+    setshowEleccion(false);
   }
   else{
     console.log("Se debe seleccionar un campo");
@@ -42,7 +47,7 @@ return <main>
     <div className="h-screen w-screen bg-white grid items-center overflow-hidden">
         <div className="h-fit w-full grid place-items-center px-12 pt-16 pb-[225px] ">
           <h2 className="text-black text-center font-bold pb-6">Muchas gracias por su compra</h2>
-          <h5 className="text-black text-center font-normal pb-6">Ya le traeran la cuanta a su mesa</h5>
+          <h5 className="text-black text-center font-normal pb-6">Ya le traeran la cuenta a su mesa</h5>
           <button className="rounded-[40px] w-fit h-fit bg-btngreen  flex justify-center items-center" onClick={(event) => HandleClick()}>
             <h5 className="text-white font-normal px-16 py-3">Volver al menu</h5>
           </button>
@@ -94,6 +99,9 @@ return <main>
     </div>
   </div>
   ):(
+    <></>
+  )}
+  {showEleccion?(
     <div className="h-screen w-full bg-white overflow-hidden">
     <button onClick={HandleClick} className="left-0 absolute top-0 ml-2 mt-2 h-[25px] w-[25px] z-20"><img src="arrowBlack.svg" alt="" /></button>
     <div className="h-[200px] w-full grid place-items-center px-12 pt-16 gap-1">
@@ -120,6 +128,8 @@ return <main>
     </div>
    
   </div>
+  ):(
+    <></>
   )}
 
 
