@@ -9,6 +9,13 @@ interface FoodOrder {
   quantity: number
 }
 
+interface NullOrder {
+  id: number,
+  sendedAt: number,
+  aclaration: string,
+  commandsId: number
+}
+
 interface postProps {
   orderId: Number,
   foodId: Number,
@@ -16,7 +23,7 @@ interface postProps {
   quantity: Number
 }
 
-interface Props { 
+interface Props {
   setShowPedido: React.Dispatch<React.SetStateAction<boolean>>;
   setShowMenu: React.Dispatch<React.SetStateAction<boolean>>;
   setShowPedidoEnviado: React.Dispatch<React.SetStateAction<boolean>>;
@@ -27,15 +34,25 @@ interface Props {
   EstadoPedido: boolean;
   EstadoMenu: boolean;
   pedido: FoodOrder[];
+  nullPedido: NullOrder[];
 }
 
-const FooterMenu: React.FC<Props> = ({setShowPago,setShowPedido, setShowMenu, setShowPedidoEnviado, setPedido, EstadoMenu, EstadoPedidoEnviado, EstadoPedido, txtBoton, pedido, }) => {
-const handleClickVerPedido = async () =>{
-  setShowPedido(EstadoPedido); 
-  setShowMenu(EstadoMenu);
-  setShowPedidoEnviado(EstadoPedidoEnviado);
-  
+const FooterMenu: React.FC<Props> = ({ setShowPago, setShowPedido, setShowMenu, setShowPedidoEnviado, setPedido, EstadoMenu, EstadoPedidoEnviado, EstadoPedido, txtBoton, pedido, nullPedido }) => {
   let finishedInput: postProps[] = []
+  let orders: postProps[] = []
+
+
+  const crearPedido = async () => {
+    try {
+      return await axios.post("https://perfect-teal-beetle.cyclic.cloud/createOrder", orders).then((response) => {
+        console.log("Pedido creado ", response);
+        //setPedido([]);
+      }).catch((err) => console.log(err))
+    } catch (error) {
+      console.log(error)
+    }
+    // SetShowPedido en realidad es Show Menu, por ende se le pasa un true al apretar el boton para que aparezaca el menu y que el ShowPedido se vuelva false
+  }
 
   pedido.forEach((item) => {
     const input = {
@@ -48,41 +65,46 @@ const handleClickVerPedido = async () =>{
 
     finishedInput.push(input)
   })
-  const postOrder = async() => {
-  try {
-    return await axios.post("https://perfect-teal-beetle.cyclic.cloud/ordersFood", finishedInput).then((response) => {
-      console.log("Agregado ", response);
-      //setPedido([]);
-    }).catch((err) => console.log(err))
-  } catch (error) {
-    console.log(error)
+  const postOrder = async () => {
+    try {
+      return await axios.post("https://perfect-teal-beetle.cyclic.cloud/ordersFood", finishedInput).then((response) => {
+        console.log("Agregado ", response);
+        //setPedido([]);
+      }).catch((err) => console.log(err))
+    } catch (error) {
+      console.log(error)
+    }
+    // SetShowPedido en realidad es Show Menu, por ende se le pasa un true al apretar el boton para que aparezaca el menu y que el ShowPedido se vuelva false
   }
-  //console.log(EstadoPedidoEnviado, EstadoPedido, EstadoMenu)
-  // SetShowPedido en realidad es Show Menu, por ende se le pasa un true al apretar el boton para que aparezaca el menu y que el ShowPedido se vuelva false
-}
-}
-const handleClickPago = async () =>{
-  setShowPedido(false); 
-  setShowMenu(EstadoMenu);
-  setShowPedidoEnviado(EstadoPedidoEnviado);
-  setShowPago(true);
-}
+  const handleClickVerPedido = async () => {
+    setShowPedido(EstadoPedido);
+    setShowMenu(EstadoMenu);
+    setShowPedidoEnviado(EstadoPedidoEnviado);
+    crearPedido();
+    postOrder();
+  }
+  const handleClickPago = async () => {
+    setShowPedido(false);
+    setShowMenu(EstadoMenu);
+    setShowPedidoEnviado(EstadoPedidoEnviado);
+    setShowPago(true);
+  }
 
-return <div className="bottom-0 fixed w-full h-fit grid ">
-  <div className="w-full h-fit flex justify-end">
-    <button className="rounded-full bg-btngreen h-[70px] w-[70px] mr-6 mb-4 flex justify-center items-center active:outline-none" onClick={(event) => handleClickPago()}>
-      <img src="/carrito.svg" alt="" className="h-12 w-12"/>
-    </button>
-  </div>
-  <footer className="w-full h-[90px] bg-background  shadow-top flex items-center" id="footerMenu">
-    <button className=" bg-btngreen absolute rounded-2xl right-0  mr-7 h-[38px] w-[141px]">
-      <p className="text-white" onClick={(event) => handleClickVerPedido() }>{txtBoton}</p>
-    </button>
-    <div className="h-full ">
-      <p className="text-[#252525] ml-7 top-0 mt-5 ">Subtotal</p>
-      <h4 className="text-[#252525] ml-7">$2.000,0</h4>
+  return <div className="bottom-0 fixed w-full h-fit grid ">
+    <div className="w-full h-fit flex justify-end">
+      <button className="rounded-full bg-btngreen h-[70px] w-[70px] mr-6 mb-4 flex justify-center items-center active:outline-none" onClick={(event) => handleClickPago()}>
+        <img src="/carrito.svg" alt="" className="h-12 w-12" />
+      </button>
     </div>
-  </footer>
+    <footer className="w-full h-[90px] bg-background  shadow-top flex items-center" id="footerMenu">
+      <button className=" bg-btngreen absolute rounded-2xl right-0  mr-7 h-[38px] w-[141px]">
+        <p className="text-white" onClick={(event) => handleClickVerPedido()}>{txtBoton}</p>
+      </button>
+      <div className="h-full ">
+        <p className="text-[#252525] ml-7 top-0 mt-5 ">Subtotal</p>
+        <h4 className="text-[#252525] ml-7">$2.000,0</h4>
+      </div>
+    </footer>
   </div>;
 }
 export default FooterMenu;

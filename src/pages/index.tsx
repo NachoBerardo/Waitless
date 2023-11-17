@@ -23,6 +23,13 @@ export interface MenuTypes {
   image: string;
 }
 
+interface NullOrder {
+  id: number,
+  sendedAt: number,
+  aclaration: string,
+  commandsId: number
+}
+
 interface CommandData {
   idCommand: number;
   sendedAt: Date;
@@ -41,6 +48,7 @@ const inter = Inter({ subsets: ["latin"] });
 export default function Menu() {
   const [menu, setMenu] = useState<MenuTypes[]>([]);
   const [pedido, setPedido] = useState<FoodOrder[]>([]);
+  const [nullPedido, setNullPedido] = useState<NullOrder[]>([])
 
   const getAllMenus = async () => {
     try {
@@ -379,7 +387,7 @@ export default function Menu() {
                 </div>
               ))}
             </div>
-            {showFotterMenu ? (<FooterMenu setShowPago={setShowPago} setPedido={setPedido} setShowPedido={setShowPedido} setShowMenu={setShowMenu} setShowPedidoEnviado={setShowMenu} EstadoPedidoEnviado={false} EstadoPedido={true} EstadoMenu={false} txtBoton="Ver Pedido" pedido={pedido} />) : (<></>)}
+            {showFotterMenu ? (<FooterMenu setShowPago={setShowPago} setPedido={setPedido} setShowPedido={setShowPedido} nullPedido={nullPedido} setShowMenu={setShowMenu} setShowPedidoEnviado={setShowMenu} EstadoPedidoEnviado={false} EstadoPedido={true} EstadoMenu={false} txtBoton="Ver Pedido" pedido={pedido} />) : (<></>)}
           </>
         ) : (<></>)}
         {showPedido ? (
