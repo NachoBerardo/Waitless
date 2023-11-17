@@ -1,4 +1,5 @@
 import axios from "axios";
+import { Kolker_Brush } from "next/font/google";
 import { useState } from "react";
 import addPedido from "../components/footerPopUp"
 
@@ -20,7 +21,7 @@ interface postProps {
   orderId: Number,
   foodId: Number,
   customerId: Number,
-  quantity: Number
+  quantity: Number,
 }
 
 interface Props {
@@ -40,7 +41,6 @@ const FooterMenu: React.FC<Props> = ({ setShowPago, setShowPedido, setShowMenu, 
   let finishedInput: postProps[] = []
   let orders: postProps[] = []
 
-
   const crearPedido = async () => {
     try {
       return await axios.post("https://perfect-teal-beetle.cyclic.cloud/createOrder", orders).then((response) => {
@@ -52,6 +52,22 @@ const FooterMenu: React.FC<Props> = ({ setShowPago, setShowPedido, setShowMenu, 
     }
     // SetShowPedido en realidad es Show Menu, por ende se le pasa un true al apretar el boton para que aparezaca el menu y que el ShowPedido se vuelva false
   }
+  const getFoodByID = async (id: number, field?: string) => {
+    try {
+      const response = await axios.get(`https://perfect-teal-beetle.cyclic.cloud/menu/${id}`);
+      if (response.status === 200) {
+        const item = response.data;
+        if (field) {
+          const fieldValue = item[field];
+          return fieldValue;
+        } else {
+          return item;
+        }
+      } else { console.log("Item from Order not found"); }
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   pedido.forEach((item) => {
     const input = {
@@ -61,7 +77,6 @@ const FooterMenu: React.FC<Props> = ({ setShowPago, setShowPedido, setShowMenu, 
       quantity: item.quantity,
       state: "enviado"
     }
-
     finishedInput.push(input)
   })
   const postOrder = async () => {

@@ -387,7 +387,7 @@ export default function Menu() {
                 </div>
               ))}
             </div>
-            {showFotterMenu ? (<FooterMenu setShowPago={setShowPago} setPedido={setPedido} setShowPedido={setShowPedido} nullPedido={nullPedido} setShowMenu={setShowMenu} setShowPedidoEnviado={setShowMenu} EstadoPedidoEnviado={false} EstadoPedido={true} EstadoMenu={false} txtBoton="Ver Pedido" pedido={pedido} />) : (<></>)}
+            {showFotterMenu ? (<FooterMenu setShowPago={setShowPago} setPedido={setPedido} setShowPedido={setShowPedido} setShowMenu={setShowMenu} setShowPedidoEnviado={setShowMenu} EstadoPedidoEnviado={false} EstadoPedido={true} EstadoMenu={false} txtBoton="Ver Pedido" pedido={pedido} />) : (<></>)}
           </>
         ) : (<></>)}
         {showPedido ? (
