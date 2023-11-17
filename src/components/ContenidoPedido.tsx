@@ -87,22 +87,84 @@ const ContenidoPedido: React.FC<Props> = ({ setShowPedido, setShowMenu, setShowP
             </button>
           </header>
           <div className="h-full w-full">
-            <div className="flex w-screen justify-around mt-2 gap-[10px] text-xl">
-              <p>Nombre</p>
-              <p>Cantidad</p>
+            <div className="w-full h-fit ">
+            <div className="bg-footer">
+              <div className=" flex mt-9">
+                <div className="relative w-[100%] h-6">
+                  <hr className="bg-LineaVerdePedido h-[4px] w-full absolute bottom-[35%]" />
+                </div>
+                <h4 className="text-LineaVerdePedido px-2">Nombre</h4>
+                <div className="relative w-[100%] h-6">
+                  <hr className="bg-LineaVerdePedido h-[4px] w-full absolute bottom-[35%]" />
+                </div>
+              </div>
+              <div className="w-fit h-fit grid grid-cols-2 gap-x-2 m-auto">
+                <div>
+                  <h3 className="text-black pl-14 pt-6 overflow-hidden inline-flex">aa </h3>
+                  <p className="pl-14 text-letraGris truncate">sss</p>
+                  <p className="pl-14 text-letraGrisOscuro pt-1 pb-4">sssss</p>
+                </div>
+                <div className="flex justify-center items-center">
+                  <BtnSumarRestar2></BtnSumarRestar2>
+                </div>
+              </div>
+              <div className="w-full h-fit flex justify-center">
+                <hr className="border-b bg-LineaPedido w-[100%] h-px mb-4 mx-7" />
+              </div>
+
+
+              <div className="w-fit h-fit grid grid-cols-2 gap-x-2 m-auto ">
+                <div>
+                  <h3 className="text-black pl-14 pt-6 overflow-hidden inline-flex">bbb</h3>
+                  <p className="pl-14 text-letraGris truncate">bbbb</p>
+                  <p className="pl-14 text-letraGrisOscuro pt-1 pb-4">bbbbb</p>
+                </div>
+                <div className="flex justify-center items-center">
+                  <BtnSumarRestar2></BtnSumarRestar2>
+                </div>
+              </div>
+              </div>
+
+              {/* separadooooooor */}
+
+
+              <div className=" flex mt-3">
+                <div className="relative w-[100%] h-6">
+                  <hr className="bg-populetter h-[4px] w-full absolute bottom-[35%]" />
+                </div>
+                <h4 className="text-populetter px-2"></h4>
+                <div className="relative w-[100%] h-6">
+                  <hr className="bg-populetter h-[4px] w-full absolute bottom-[35%]" />
+                </div>
+              </div>
+              <div className="w-fit h-fit grid grid-cols-2 gap-x-2 m-auto">
+                <div className="">
+                  <h3 className="text-black pl-14 pt-6 overflow-hidden inline-flex truncate"></h3>
+                  <p className="pl-14 text-letraGris truncate"></p>
+                  <p className="pl-14 text-letraGrisOscuro pt-1 pb-4"></p>
+                </div>
+                <div className="flex justify-center items-center">
+                  <BtnSumarRestar2></BtnSumarRestar2>
+                </div>
+              </div>
+              <div className="w-full h-fit flex justify-center">
+                <hr className="border-b bg-LineaPedido w-[100%] h-px mb-4 mx-7" />
+              </div>
+
+
+              <div className="w-fit h-fit grid grid-cols-2 gap-x-2 m-auto">
+                <div>
+                  <h3 className="text-black pl-14 pt-6 overflow-hidden inline-flex"> </h3>
+                  <p className="pl-14 text-letraGris truncate"></p>
+                  <p className="pl-14 text-letraGrisOscuro pt-1 pb-4"></p>
+                </div>
+                <div className="flex justify-center items-center">
+                  <BtnSumarRestar2></BtnSumarRestar2>
+                </div>
+              </div>
             </div>
-            {
-              pedido.map((pedido) => {
-                return (
-                  <div className="flex w-screen justify-between mt-5 border-b-2">
-                    <h1>{ pedido.foodName } </h1>
-                    <h1> { pedido.quantity } </h1>
-                  </div>
-                )
-              }) 
-            }
           </div>
-          <FooterMenu setShowPedido={setShowPedido} setShowMenu={setShowMenu} setShowPedidoEnviado={setShowPedidoEnviado} setPedido={setPedido} EstadoPedidoEnviado={true} EstadoMenu={false} EstadoPedido={true} txtBoton="Enviar Pedido" pedido={pedido} setShowPago={setShowPago}/>
+          <FooterMenu setShowPedido={setShowPedido} setShowMenu={setShowMenu} setShowPedidoEnviado={setShowPedidoEnviado} EstadoPedidoEnviado={true} EstadoMenu={false} EstadoPedido={true} txtBoton="Enviar Pedido" pedido={pedido} setShowPago={setShowPago}/>
         </div>
       </>
     )}
@@ -111,3 +173,15 @@ const ContenidoPedido: React.FC<Props> = ({ setShowPedido, setShowMenu, setShowP
   </main>;
 }
 export default ContenidoPedido;
+            
+            // {
+            //   pedido.map((pedido) => {
+            //     return (
+            //       <div className="flex w-screen justify-between mt-5 border-b-2">
+            //         <h1>{ pedido.foodName } </h1>
+            //         <h1> { pedido.quantity } </h1>
+            //       </div>
+            //     )
+            //   }) 
+            // }
+        

@@ -34,10 +34,9 @@ interface Props {
   EstadoPedido: boolean;
   EstadoMenu: boolean;
   pedido: FoodOrder[];
-  nullPedido: NullOrder[];
 }
 
-const FooterMenu: React.FC<Props> = ({ setShowPago, setShowPedido, setShowMenu, setShowPedidoEnviado, setPedido, EstadoMenu, EstadoPedidoEnviado, EstadoPedido, txtBoton, pedido, nullPedido }) => {
+const FooterMenu: React.FC<Props> = ({ setShowPago, setShowPedido, setShowMenu, setShowPedidoEnviado, setPedido, EstadoMenu, EstadoPedidoEnviado, EstadoPedido, txtBoton, pedido }) => {
   let finishedInput: postProps[] = []
   let orders: postProps[] = []
 
