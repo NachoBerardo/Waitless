@@ -17,18 +17,6 @@ interface FoodOrder {
   quantity: number
 }
 
- /*
-const getPedido = async () => {
-  try {
-    return await axios.get("https://perfect-teal-beetle.cyclic.cloud/").then((response) => {
-      console.log(response.data.data)
-      return response.data.data
-    }).catch((err) => console.log(err))
-  } catch (error) {
-    console.log(error)
-  }
-}
-*/
 interface Props {
   setShowPedido: React.Dispatch<React.SetStateAction<boolean>>;
   setShowPago: React.Dispatch<React.SetStateAction<boolean>>;
