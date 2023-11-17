@@ -31,7 +31,7 @@ const FooterPopUp: React.FC<Props> = ({ titulo, descripcion, foodId, precio, ped
   const [precioTotal, setPrecioTotal] = useState(+precio);
   const handleClickSumar = () => {
     setCantidad(cantidad + 1);
-    setPrecioTotal (+precio * (cantidad + 1))
+    setPrecioTotal(+precio * (cantidad + 1))
   };
 
   const handleClickRestar = () => {
@@ -45,7 +45,7 @@ const FooterPopUp: React.FC<Props> = ({ titulo, descripcion, foodId, precio, ped
     setPedido(pedido => [...pedido, { foodName, foodId, quantity }]);
     console.log(pedido)
   }
-  
+
   return <footer className="w-full h-[90px] bg-background bottom-0 fixed shadow-top flex items-center" id="footerMenu">
     <div className=" bg-btngreen absolute rounded-2xl right-0 flex justify-center items-center mr-7 h-[38px] w-[89px]" onClick={() => addPedido(titulo, foodId, cantidad)}>
       <p className="text-white " >Agregar</p>

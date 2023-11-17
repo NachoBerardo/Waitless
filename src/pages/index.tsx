@@ -102,6 +102,7 @@ export default function Menu() {
       console.log(error);
     }
   }
+
   //Por ahi conviene hacerlo por nombres y de ahi sacar el ID. Solo que habria que hacer que los nombres no se repitan ya sea agregando numeros a los nombre en caso de que esten repetidos? Igual los usuarios no logeados la idea seria borrarlos. 
   const getOrderByID = async (id: number, field?: string) => {
     try {
