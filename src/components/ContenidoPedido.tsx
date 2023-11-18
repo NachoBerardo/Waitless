@@ -162,7 +162,7 @@ const ContenidoPedido: React.FC<Props> = ({ setShowPedido, setShowMenu, setShowP
               </div> */}
             </div>
           </div>
-          <FooterMenu setPedido={setPedido} setShowPedido={setShowPedido} setShowMenu={setShowMenu} setShowPedidoEnviado={setShowPedidoEnviado} EstadoPedidoEnviado={true} EstadoMenu={false} EstadoPedido={true} txtBoton="Enviar Pedido" pedido={pedido} setShowPago={setShowPago}/>
+          <FooterMenu Verpedido={false} setPedido={setPedido} setShowPedido={setShowPedido} setShowMenu={setShowMenu} setShowPedidoEnviado={setShowPedidoEnviado} EstadoPedidoEnviado={true} EstadoMenu={false} EstadoPedido={true} txtBoton="Enviar Pedido" pedido={pedido} setShowPago={setShowPago}/>
         </div>
       </>
     )}

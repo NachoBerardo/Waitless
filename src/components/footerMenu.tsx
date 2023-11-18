@@ -34,10 +34,11 @@ interface Props {
   EstadoPedidoEnviado: boolean;
   EstadoPedido: boolean;
   EstadoMenu: boolean;
+  Verpedido: boolean;
   pedido: FoodOrder[];
 }
 
-const FooterMenu: React.FC<Props> = ({ setShowPago, setShowPedido, setShowMenu, setShowPedidoEnviado, setPedido, EstadoMenu, EstadoPedidoEnviado, EstadoPedido, txtBoton, pedido }) => {
+const FooterMenu: React.FC<Props> = ({Verpedido, setShowPago, setShowPedido, setShowMenu, setShowPedidoEnviado, setPedido, EstadoMenu, EstadoPedidoEnviado, EstadoPedido, txtBoton, pedido }) => {
   let finishedInput: postProps[] = []
   let orders: postProps[] = []
 
@@ -94,6 +95,11 @@ const FooterMenu: React.FC<Props> = ({ setShowPago, setShowPedido, setShowMenu, 
     setShowPedido(EstadoPedido);
     setShowMenu(EstadoMenu);
     setShowPedidoEnviado(EstadoPedidoEnviado);
+  }
+  const handleClickEnviarPedido = async () => {
+    setShowPedido(EstadoPedido);
+    setShowMenu(EstadoMenu);
+    setShowPedidoEnviado(EstadoPedidoEnviado);
     crearPedido();
     postOrder();
   }
@@ -111,9 +117,16 @@ const FooterMenu: React.FC<Props> = ({ setShowPago, setShowPedido, setShowMenu, 
       </button>
     </div>
     <footer className="w-full h-[90px] bg-background  shadow-top flex items-center" id="footerMenu">
-      <button className=" bg-btngreen absolute rounded-2xl right-0  mr-7 h-[38px] w-[141px]">
-        <p className="text-white" onClick={(event) => handleClickVerPedido()}>{txtBoton}</p>
+      {Verpedido?(
+        <button className=" bg-btngreen absolute rounded-2xl right-0  mr-7 h-[38px] w-[141px]">
+        <p className="text-white" onClick={(event) => handleClickVerPedido()}>Ver pedido</p>
+        </button>
+      ):(
+        <button className=" bg-btngreen absolute rounded-2xl right-0  mr-7 h-[38px] w-[141px]">
+        <p className="text-white" onClick={(event) => handleClickEnviarPedido()}>Enviar Pedido</p>
       </button>
+      )}
+      
       <div className="h-full ">
         <p className="text-[#252525] ml-7 top-0 mt-5 ">Subtotal</p>
         <h4 className="text-[#252525] ml-7">$2.000,0</h4>
