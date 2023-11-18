@@ -3,7 +3,7 @@ import { useState, useRef } from "react";
 interface FoodOrder {
   foodName: string,
   foodId: number,
-  quantity: number
+  quantity: number,
 }
 interface Props {
   setShowPago: React.Dispatch<React.SetStateAction<boolean>>;
@@ -66,15 +66,17 @@ return <main>
       <h2 className="text-black">Solomia</h2>
     </div>
     <div className="w-full h-fit px-8 pt-10">
-      <div className="overflow-scroll no-scrollbar">
-        <div className="w-full h-fit flex border-solid pt-2 pb-5 px-4 justify-between">
-          <h4 className="text-black font-medium">Comida1</h4>
-          <h4 className="text-black font-medium">1000</h4>
-        </div>
-        <div className="w-full h-fit flex border-solid pb-5 px-4 justify-between">
-          <h4 className="text-black font-medium">Comida1</h4>
-          <h4 className="text-black font-medium">1000</h4>
-        </div>
+      <div className="overflow-scroll no-scrollbar ">
+        {pedido.map((pedido) => {
+                return (
+                  <div className="w-full h-fit flex border-solid pt-2 pb-5 px-4 justify-between">
+                    <h4 className="text-black font-medium">{pedido.foodName}</h4>
+                    <h4 className="text-black font-medium">Falta el precio</h4>
+                  </div>
+                )
+              }) 
+            }
+        
         <hr className="bg-[#D0D0D0] h-[2px] w-full" />
       </div>
       <div>
