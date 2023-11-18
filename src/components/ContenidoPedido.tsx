@@ -79,7 +79,7 @@ const ContenidoPedido: React.FC<Props> = ({ setShowPedido, setShowMenu, setShowP
       </>
     ) : (
       <>
-        <div className="h-screen w-screen pb-[7px] bg-white overflow-x-hidden no-scrollbar">
+        <div className="h-screen w-screen pb-[7px] bg-white overflow-x-auto no-scrollbar">
           <header className="top-0 w-full h-[67px] flex items-center justify-center bg-white drop-shadow-md relative">
             <h3 className="font-bold text-black">Pedido de tu mesa</h3>
             <button className=" absolute left-0 ml-4 h-[25px] w-[25px] " onClick={(event) => handleClickArrowBack(true, false, false)}>
@@ -98,6 +98,7 @@ const ContenidoPedido: React.FC<Props> = ({ setShowPedido, setShowMenu, setShowP
                   <hr className="bg-LineaVerdePedido h-[4px] w-full absolute bottom-[35%]" />
                 </div>
               </div>
+              <div className="pb-20">
              {
               pedido.map((pedido) => {
                 return (
@@ -119,6 +120,7 @@ const ContenidoPedido: React.FC<Props> = ({ setShowPedido, setShowMenu, setShowP
                 )
               }) 
             }
+            </div>
             </div>
 
               {/* separadooooooor */}
