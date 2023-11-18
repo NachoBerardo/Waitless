@@ -21,16 +21,16 @@ const ScrollBar:React.FC = () => {
   // window.addEventListener('scroll', a);
 
   return <div className=" w-full h-[40px] overflow-x-auto bg-white flex place-items-center drop-shadow-md sticky top-0 no-scrollbar">
-    <div onClick={(event) => handleClickScroll("entradas")} className="pl-8 text-black font-bold text-md h-full grid place-content-center  active:text-btngreen ">
+    <button onClick={(event) => handleClickScroll("entradas")} className="pl-8 text-black font-bold text-md h-full grid place-content-center  active:text-btngreen bg-none">
       Entradas
       {/* <div className="absolute bottom-0  w-[75px] h-[7px] rounded-t bg-btngreen"></div> */}
-    </div>
-    <div onClick={(event) => handleClickScroll("principales")} className=" text-black font-bold h-full grid place-content-center pl-8 active:text-btngreen ">
+    </button>
+    <button onClick={(event) => handleClickScroll("principales")} className=" text-black font-bold h-full grid place-content-center pl-8 active:text-btngreen ">
       Principales
-    </div>
-    <div onClick={(event) => handleClickScroll("postres")} className="text-black font-bold h-full grid place-content-center pl-8 active:text-btngreen">
+    </button>
+    <button onClick={(event) => handleClickScroll("postres")} className="text-black font-bold h-full grid place-content-center pl-8 active:text-btngreen">
       Postres
-    </div>
+    </button>
   </div>;
 }
 export default ScrollBar;

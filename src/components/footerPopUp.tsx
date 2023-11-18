@@ -44,6 +44,8 @@ const FooterPopUp: React.FC<Props> = ({ titulo, descripcion, foodId, precio, ped
   const addPedido = (foodName: string, foodId: number, quantity: number) => {
     setPedido(pedido => [...pedido, { foodName, foodId, quantity }]);
     console.log(pedido)
+    setShowPopUP(false);
+    setShowMenu(true);
   }
 
   return <footer className="w-full h-[90px] bg-background bottom-0 fixed shadow-top flex items-center" id="footerMenu">
