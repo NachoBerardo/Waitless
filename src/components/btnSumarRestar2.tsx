@@ -1,12 +1,11 @@
 import { useState } from "react";
 
-type btnSumarRestarProps = {
-    x?: number;
-    y?: number;
+interface btnSumarRestarProps  {
+    cantidadOriginal: number
 }
 
-const btnSumarRestar2: React.FC=()=>{
-  const [cantidad, setCantidad] = useState(1);
+const btnSumarRestar2: React.FC<btnSumarRestarProps>=({cantidadOriginal})=>{
+  const [cantidad, setCantidad] = useState(cantidadOriginal);
   const handleClickSumar = () => {
     setCantidad(cantidad + 1);
   };

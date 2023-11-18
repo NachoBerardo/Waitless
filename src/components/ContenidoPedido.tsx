@@ -109,7 +109,7 @@ const ContenidoPedido: React.FC<Props> = ({ setShowPedido, setShowMenu, setShowP
                   <p className="pl-14 text-letraGrisOscuro pt-1 pb-4">sssss</p>
                 </div>
                 <div className="flex justify-center items-center">
-                  <BtnSumarRestar2 cantidadOriginal={1}/>
+                  <BtnSumarRestar2 cantidadOriginal={pedido.quantity}/>
                 </div>
               </div>
               <div className="w-full h-fit flex justify-center">
