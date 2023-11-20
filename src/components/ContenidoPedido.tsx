@@ -10,7 +10,6 @@ export interface MenuTypes {
   commandsId: number;
 }
 
-
 interface FoodOrder {
   foodName: string,
   foodId: number,
@@ -24,6 +23,9 @@ interface Props {
   setPedido: React.Dispatch<React.SetStateAction<FoodOrder[]>>;
   pedido: FoodOrder[];
 }
+
+//GET PRECIO Y DESCRIPCION DE LOS PLATOS EN ORDER.
+
 const ContenidoPedido: React.FC<Props> = ({ setShowPedido, setShowMenu, setShowPago, setPedido, pedido }) => {
   const handleClickArrowBack = (EstadoMenu: boolean, EstadoPedido: boolean, EstadoPedidoEnviado: boolean) => {
     setShowPedido(EstadoPedido);

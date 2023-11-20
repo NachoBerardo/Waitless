@@ -20,6 +20,24 @@ interface Order {
   price: string;
 }
 
+const getFoodByID = async (id: number, field?: string) => {
+  try {
+    const response = await axios.get(`https://perfect-teal-beetle.cyclic.cloud/menu/${id}`);
+    if (response.status === 200) {
+      const item = response.data;
+      if (field) {
+        const fieldValue = item[field];
+        return fieldValue;
+      } else {
+        return item;
+      }
+    } else { console.log("Item from Order not found"); }
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+
 interface FoodOrder {
   foodName: string,
   foodId: number,
@@ -41,8 +59,8 @@ const FooterPopUp: React.FC<Props> = ({ titulo, descripcion, foodId, precio, ped
     }
   };
 
-  const addPedido = (foodName: string, foodId: number, quantity: number) => {
-    setPedido(pedido => [...pedido, { foodName, foodId, quantity }]);
+  const addPedido = (foodName: string, foodId: number, quantity: number, description: string, price: number) => {
+    setPedido(pedido => [...pedido, { foodName, foodId, quantity, description, price }]);
     console.log(pedido)
     setShowPopUP(false);
     setShowMenu(true);
