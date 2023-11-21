@@ -324,9 +324,10 @@ export default function Menu() {
                     <h5 className=" text-black leading-snug overflow-hidden">
                       {comida.name}
                     </h5>
-                    <p className="text-populetter leading-snug pb-2 max-h- overflow-hidden text-ellipsis">
+                    <p className="text-populetter leading-snug max-h- overflow-hidden text-ellipsis">
                       {MaxLength(comida.description, 35)}
                     </p>
+                    <h6 className="text-black pb-2 overflow-hidden font-semibold">${comida.price}</h6>
                   </div>
                 </div>
               ))}
@@ -353,9 +354,10 @@ export default function Menu() {
                     <h5 className=" text-black leading-snug overflow-hidden">
                       {comida.name}
                     </h5>
-                    <p className="text-populetter leading-snug pb-2 max-h- overflow-hidden text-ellipsis">
+                    <p className="text-populetter leading-snug max-h- overflow-hidden text-ellipsis">
                       {MaxLength(comida.description, 35)}
                     </p>
+                    <h6 className="text-black pb-2 overflow-hidden font-semibold">${comida.price}</h6>
                   </div>
                 </div>
               ))}
@@ -381,9 +383,10 @@ export default function Menu() {
                     <h5 className=" text-black leading-snug overflow-hidden">
                       {comida.name}
                     </h5>
-                    <p className="text-populetter leading-snug pb-2 max-h- overflow-hidden text-ellipsis">
+                    <p className="text-populetter leading-snug  max-h- overflow-hidden text-ellipsis">
                       {MaxLength(comida.description, 35)}
                     </p>
+                    <h6 className="text-black pb-2 overflow-hidden font-semibold">${comida.price}</h6>
                   </div>
                 </div>
               ))}
