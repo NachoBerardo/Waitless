@@ -55,11 +55,6 @@ const ContenidoPedido: React.FC<Props> = ({ setShowPedido, setShowMenu, setShowP
 
   }
 
-
-  const handleVerPedido = () => {
-
-
-  }
   const [showPedidoEnviado, setShowPedidoEnviado] = useState(false);
   const [error, setError] = useState(false)
 
@@ -121,6 +116,13 @@ const ContenidoPedido: React.FC<Props> = ({ setShowPedido, setShowMenu, setShowP
                 <div className="pb-20">
                   {
                     pedido.map((pedido) => {
+                      getFoodByID(pedido.foodId)
+                       .then(data => {
+                        if (data !== null) {
+                          console.log(data);
+              
+                        }
+                      })
                       return (
                         <div className="">
                           <div className="w-full h-fit grid grid-cols-2 gap-x-2 m-auto ">
