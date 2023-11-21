@@ -25,6 +25,24 @@ interface Props {
 }
 
 //GET PRECIO Y DESCRIPCION DE LOS PLATOS EN ORDER.
+//"id" es "foodId" de los pedidos y "fieldName" es "price" y "description"
+const getFoodFieldsByID = async (id: number, fieldName?: string) => {
+  try {
+    const response = await axios.get(`https://perfect-teal-beetle.cyclic.cloud/menu/${id}`);
+    if (response.status === 200) {
+      const item = response.data;
+      if (fieldName) {
+        const fieldValue = item[fieldName];
+        return fieldValue;
+      } else {
+        return item;
+      }
+    }
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+};
 
 const ContenidoPedido: React.FC<Props> = ({ setShowPedido, setShowMenu, setShowPago, setPedido, pedido }) => {
   const handleClickArrowBack = (EstadoMenu: boolean, EstadoPedido: boolean, EstadoPedidoEnviado: boolean) => {
