@@ -78,7 +78,7 @@ const PopUp: React.FC<Props> = ({ combinedArray, arrayUsed, keyPlato, pedido, se
     </div>
 
 
-    <FooterPopUp titulo={combinedArray[arrayUsed][keyPlato].name} descripcion={combinedArray[arrayUsed][keyPlato].description} precio={combinedArray[arrayUsed][keyPlato].price} setShowPopUP={setShowPopUP} setShowMenu={setShowMenu} setPedido={setPedido} pedido={pedido} foodId={combinedArray[arrayUsed][keyPlato].id}/>
+    <FooterPopUp titulo={combinedArray[arrayUsed][keyPlato].name} descripcion={combinedArray[arrayUsed][keyPlato].description} precio={parseInt(combinedArray[arrayUsed][keyPlato].price)} setShowPopUP={setShowPopUP} setShowMenu={setShowMenu} setPedido={setPedido} pedido={pedido} foodId={combinedArray[arrayUsed][keyPlato].id}/>
   </div>;
 }
 export default PopUp

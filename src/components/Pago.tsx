@@ -37,6 +37,7 @@ const handleSiguiente= () =>{
 }
 const handlePagar= () =>{
   setshowGracias(true);
+  setShowTarjeta(false);
 }
 const tarjetaRadioRef = useRef<HTMLInputElement>(null);
 const efectivoRadioRef = useRef<HTMLInputElement>(null);
