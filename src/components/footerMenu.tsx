@@ -1,7 +1,8 @@
 import axios from "axios";
 import { Kolker_Brush } from "next/font/google";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import addPedido from "../components/footerPopUp"
+
 
 
 interface FoodOrder {
@@ -94,7 +95,7 @@ const FooterMenu: React.FC<Props> = ({ Verpedido, setShowPago, setShowPedido, se
     }
     // SetShowPedido en realidad es Show Menu, por ende se le pasa un true al apretar el boton para que aparezaca el menu y que el ShowPedido se vuelva false
   }
-
+  
   
   const handleClickVerPedido = async () => {
     setShowPedido(EstadoPedido);
@@ -114,6 +115,14 @@ const FooterMenu: React.FC<Props> = ({ Verpedido, setShowPago, setShowPedido, se
     setShowPedidoEnviado(EstadoPedidoEnviado);
     setShowPago(true);
   }
+  const [precioTotal, setPrecioTotal] = useState(0);
+  useEffect(() => {
+    let total = 0;
+    pedido.forEach((item) => {
+      total += item.price * item.quantity;
+    });
+    setPrecioTotal(total);
+  }, [pedido]); 
 
   return <div className="bottom-0 fixed w-full h-fit grid ">
     <div className="w-full h-fit flex justify-end">
@@ -134,7 +143,7 @@ const FooterMenu: React.FC<Props> = ({ Verpedido, setShowPago, setShowPedido, se
 
       <div className="h-full ">
         <p className="text-[#252525] ml-7 top-0 mt-5 ">Subtotal</p>
-        <h4 className="text-[#252525] ml-7">${}</h4>
+        <h4 className="text-[#252525] ml-7">${precioTotal}</h4>
       </div>
     </footer>
   </div>;
