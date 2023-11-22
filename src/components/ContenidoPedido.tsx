@@ -13,7 +13,9 @@ export interface MenuTypes {
 interface FoodOrder {
   foodName: string,
   foodId: number,
-  quantity: number
+  quantity: number,
+  description: string,
+  price: number
 }
 
 interface Props {

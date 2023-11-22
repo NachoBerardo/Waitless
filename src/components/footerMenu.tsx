@@ -8,6 +8,8 @@ interface FoodOrder {
   foodName: string,
   foodId: number,
   quantity: number,
+  description: string,
+  price: number
 }
 
 interface NullOrder {
@@ -84,7 +86,7 @@ const FooterMenu: React.FC<Props> = ({ Verpedido, setShowPago, setShowPedido, se
     try {
       return await axios.post("https://perfect-teal-beetle.cyclic.cloud/ordersFood", finishedInput).then((response) => {
         console.log("Agregado ", response);
-        //setPedido([]);
+        setPedido([]);
       }).catch((err) => console.log(err))
     } catch (error) {
       console.log(error)
@@ -129,7 +131,7 @@ const FooterMenu: React.FC<Props> = ({ Verpedido, setShowPago, setShowPedido, se
 
       <div className="h-full ">
         <p className="text-[#252525] ml-7 top-0 mt-5 ">Subtotal</p>
-        <h4 className="text-[#252525] ml-7">$2.000,0</h4>
+        <h4 className="text-[#252525] ml-7"></h4>
       </div>
     </footer>
   </div>;

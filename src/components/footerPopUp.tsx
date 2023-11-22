@@ -41,7 +41,9 @@ const getFoodByID = async (id: number, field?: string) => {
 interface FoodOrder {
   foodName: string,
   foodId: number,
-  quantity: number
+  quantity: number,
+  description: string,
+  price: number
 }
 
 const FooterPopUp: React.FC<Props> = ({ titulo, descripcion, foodId, precio, pedido, setShowPopUP, setShowMenu, setPedido }) => {
