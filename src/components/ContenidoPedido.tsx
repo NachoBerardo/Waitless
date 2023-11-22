@@ -130,8 +130,8 @@ const ContenidoPedido: React.FC<Props> = ({ setShowPedido, setShowMenu, setShowP
                           <div className="w-full h-fit grid grid-cols-2 gap-x-2 m-auto ">
                             <div>
                               <h3 className="text-black pl-14 pt-6 overflow-hidden inline-flex">{pedido.foodName} </h3>
-                              <p className="pl-14 text-letraGris truncate">{pedido.price}</p>
-                              <p className="pl-14 text-letraGrisOscuro pt-1 pb-4">sssss</p>
+                              <p className="pl-14 text-letraGris truncate">{(pedido.price)*pedido.quantity}</p>
+                              <p className="pl-14 text-letraGrisOscuro pt-1 pb-4">{pedido.description}</p>
                             </div>
                             <div className="flex justify-center items-center">
                               <BtnSumarRestar2 cantidadOriginal={pedido.quantity} />
