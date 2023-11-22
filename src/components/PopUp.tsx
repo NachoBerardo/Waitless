@@ -21,11 +21,12 @@ interface Props {
   pedido: FoodOrder[];
   setShowPopUP: React.Dispatch<React.SetStateAction<boolean>>;
   setShowMenu: React.Dispatch<React.SetStateAction<boolean>>;
+  setShowFotterMenu: React.Dispatch<React.SetStateAction<boolean>>;
   setPedido: React.Dispatch<React.SetStateAction<FoodOrder[]>>;
 }
 
 
-const PopUp: React.FC<Props> = ({ combinedArray, arrayUsed, keyPlato, pedido, setShowPopUP, setShowMenu, setPedido }) => {
+const PopUp: React.FC<Props> = ({ combinedArray, arrayUsed, keyPlato, pedido, setShowPopUP, setShowMenu, setPedido, setShowFotterMenu }) => {
   const [rotation, setRotation] = useState(false);
   const handleClickRotation = () => {
     setRotation(!rotation);
@@ -78,9 +79,7 @@ const PopUp: React.FC<Props> = ({ combinedArray, arrayUsed, keyPlato, pedido, se
         <input type="text" className="w-[90%] h-20 bg-input text-black px-4 pb-4 focus:outline-none focus:ring-2 ring-FocusEspecificaciones" placeholder="Especificaciones..." />
       </div>
     </div>
-
-
-    <FooterPopUp titulo={combinedArray[arrayUsed][keyPlato].name} descripcion={combinedArray[arrayUsed][keyPlato].description} precio={parseInt(combinedArray[arrayUsed][keyPlato].price)} setShowPopUP={setShowPopUP} setShowMenu={setShowMenu} setPedido={setPedido} pedido={pedido} foodId={combinedArray[arrayUsed][keyPlato].id}/>
+    <FooterPopUp setShowFotterMenu={setShowFotterMenu} titulo={combinedArray[arrayUsed][keyPlato].name} descripcion={combinedArray[arrayUsed][keyPlato].description} precio={parseInt(combinedArray[arrayUsed][keyPlato].price)} setShowPopUP={setShowPopUP} setShowMenu={setShowMenu} setPedido={setPedido} pedido={pedido} foodId={combinedArray[arrayUsed][keyPlato].id}/>
   </div>;
 }
 export default PopUp

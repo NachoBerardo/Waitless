@@ -250,7 +250,7 @@ export default function Menu() {
       setshowRegistro(false);
       getCommandByTable(numeroMesa, "total")
         .then(data => {
-          if (data !== null && data !== 0) {
+          if (data !== null && data !== 0 && data !== undefined) {
             console.log(`Field Value: $${data}`);
             setShowFotterMenu(true);
             console.log("b");
@@ -297,6 +297,7 @@ export default function Menu() {
             setShowPopUP={setShowPopUP}
             setShowMenu={setShowMenu}
             setPedido={setPedido}
+            setShowFotterMenu={setShowFotterMenu}
           ></PopUp>
         }
         {!isMenuLoading && !isMenuError && combinedArray && showMenu ? (
