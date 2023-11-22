@@ -54,7 +54,7 @@ export default function Menu() {
 
   const getAllMenus = async () => {
     try {
-      return await axios.get("https://perfect-teal-beetle.cyclic.cloud/menu").then((response) => {
+      return await axios.get("https://nice-blue-salamander-sock.cyclic.app/menu").then((response) => {
         console.log(response.data.data)
         return response.data.data
       }).catch((err) => console.log(err))
@@ -65,7 +65,7 @@ export default function Menu() {
 
   const getAllCommand = async () => {
     try {
-      return await axios.get("https://perfect-teal-beetle.cyclic.cloud/command").then((response) => {
+      return await axios.get("https://nice-blue-salamander-sock.cyclic.app/command").then((response) => {
         console.log(response.data.data)
         return response.data.data
       }).catch((err) => console.log(err))
@@ -76,7 +76,7 @@ export default function Menu() {
 
   const getCommandByTable = async (table: number, fieldName?: string) => {
     try {
-      const response = await axios.get(`https://perfect-teal-beetle.cyclic.cloud/commandTable/${table}`);
+      const response = await axios.get(`https://nice-blue-salamander-sock.cyclic.app/commandTable/${table}`);
       if (response.status === 200) {
         const item = response.data;
         if (fieldName) {
@@ -96,7 +96,7 @@ export default function Menu() {
 
   const getAllOrder = async () => {
     try {
-      return await axios.get('https://perfect-teal-beetle.cyclic.cloud/order').then((response) => {
+      return await axios.get('https://nice-blue-salamander-sock.cyclic.app/order').then((response) => {
         console.log("Orders: ", response.data.data);
         return response.data.data;
       }).catch((err) => console.log("Order:", err))
@@ -108,7 +108,7 @@ export default function Menu() {
   //Por ahi conviene hacerlo por nombres y de ahi sacar el ID. Solo que habria que hacer que los nombres no se repitan ya sea agregando numeros a los nombre en caso de que esten repetidos? Igual los usuarios no logeados la idea seria borrarlos. 
   const getOrderByID = async (id: number, field?: string) => {
     try {
-      const response = await axios.get(`https://perfect-teal-beetle.cyclic.cloud/order/${id}`);
+      const response = await axios.get(`https://nice-blue-salamander-sock.cyclic.app/order/${id}`);
       if (response.status === 200) {
         const item = response.data;
         if (field) {
@@ -125,7 +125,7 @@ export default function Menu() {
 
   const getAllOrderFoodByCustumer = async () => {
     try {
-      return await axios.get('https://perfect-teal-beetle.cyclic.cloud/orderByCustomer').then((response) => {
+      return await axios.get('https://nice-blue-salamander-sock.cyclic.app/orderByCustomer').then((response) => {
         console.log("OrderFoodByCustumer: ", response.data.data);
         return response.data.data;
       }).catch((err) => console.log("OrderFoodByCustomer:", err))

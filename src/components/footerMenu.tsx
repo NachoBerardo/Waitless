@@ -46,7 +46,7 @@ const FooterMenu: React.FC<Props> = ({ Verpedido, setShowPago, setShowPedido, se
 
   const crearPedido = async () => {
     try {
-      return await axios.post("https://perfect-teal-beetle.cyclic.cloud/createOrder", orders).then((response) => {
+      return await axios.post("https://nice-blue-salamander-sock.cyclic.app/createOrder", orders).then((response) => {
         console.log("Pedido creado ", response);
         //setPedido([]);
       }).catch((err) => console.log(err))
@@ -57,7 +57,7 @@ const FooterMenu: React.FC<Props> = ({ Verpedido, setShowPago, setShowPedido, se
   }
   const getFoodByID = async (id: number, field?: string) => {
     try {
-      const response = await axios.get(`https://perfect-teal-beetle.cyclic.cloud/menu/${id}`);
+      const response = await axios.get(`https://nice-blue-salamander-sock.cyclic.app/menu/${id}`);
       if (response.status === 200) {
         const item = response.data;
         if (field) {
@@ -84,7 +84,7 @@ const FooterMenu: React.FC<Props> = ({ Verpedido, setShowPago, setShowPedido, se
   })
   const postOrder = async () => {
     try {
-      return await axios.post("https://perfect-teal-beetle.cyclic.cloud/ordersFood", finishedInput).then((response) => {
+      return await axios.post("https://nice-blue-salamander-sock.cyclic.app/ordersFood", finishedInput).then((response) => {
         console.log("Agregado ", response);
         setPedido([]);
       }).catch((err) => console.log(err))

@@ -1,4 +1,4 @@
-POST https://perfect-teal-beetle.cyclic.cloud/ordersFood HTTP/1.1
+POST https://nice-blue-salamander-sock.cyclic.app/ordersFood HTTP/1.1
 #POST http://localhost:3002/ordersFood 
 Content-Type: application/json
 

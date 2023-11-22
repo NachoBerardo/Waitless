@@ -30,7 +30,7 @@ interface Props {
 //ID es el foodId y field es "precio" o "descripcion"
 const getFoodByID = async (id: number, field?: string) => {
   try {
-    const response = await axios.get(`https://perfect-teal-beetle.cyclic.cloud/menu/${id}`);
+    const response = await axios.get(`https://nice-blue-salamander-sock.cyclic.app/menu/${id}`);
     if (response.status === 200) {
       const item = response.data;
       if (field) {
