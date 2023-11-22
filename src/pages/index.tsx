@@ -147,11 +147,11 @@ export default function Menu() {
     isError: isOrderError
   } = useQuery({ queryKey: ['order'], queryFn: getAllOrder })
 
-  const {
-    data: allOrderFoodByCustumer,
-    isLoading: isOrderFoodByCustumerLoading,
-    isError: isOrderFoodByCustumerError
-  } = useQuery({ queryKey: ['orderFoodByCustumer'], queryFn: getAllOrderFoodByCustumer })
+  // const {
+  //   data: allOrderFoodByCustumer,
+  //   isLoading: isOrderFoodByCustumerLoading,
+  //   isError: isOrderFoodByCustumerError
+  // } = useQuery({ queryKey: ['orderFoodByCustumer'], queryFn: getAllOrderFoodByCustumer })
 
   const {
     data: allCommand,
