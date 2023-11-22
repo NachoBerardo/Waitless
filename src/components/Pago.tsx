@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 interface FoodOrder {
   foodName: string,
   foodId: number,
@@ -45,6 +45,14 @@ const handlePagar= () =>{
 const tarjetaRadioRef = useRef<HTMLInputElement>(null);
 const efectivoRadioRef = useRef<HTMLInputElement>(null);
 
+useEffect(() => {
+  // Calculate the total price when the "pedido" array changes
+  let total = 0;
+  pedido.forEach((item) => {
+    total += item.price * item.quantity;
+  });
+  setPrecioTotal(total);
+}, [pedido]); // Dependency array ensures that the effect runs when "pedido" changes
 
 return <main>
   {showGracias?(
@@ -70,13 +78,11 @@ return <main>
       <h2 className="text-black">Solomia</h2>
     </div>
     <div className="w-full h-fit px-8 pt-10">
-      <div className="overflow-scroll no-scrollbar ">
+      <div className=" w-full h-40 overflow-scroll no-scrollbar ">
         {pedido.map((pedido) => {
-            setPrecioTotal(precioTotal+((pedido.price)*pedido.quantity))
-            console.log(precioTotal)
                 return (
                   <div className="w-full h-fit flex border-solid pt-2 pb-5 px-4 justify-between">
-                    <h4 className="text-black font-medium">{pedido.foodName}</h4>
+                    <h4 className="text-black font-medium">{pedido.foodName}   x{pedido.quantity}</h4>
                     <h4 className="text-black font-medium">{(pedido.price)*pedido.quantity}</h4>
                   </div>
                 )
