@@ -6,7 +6,7 @@ import { useMutation } from "@tanstack/react-query";
 interface Props {
   titulo: string;
   descripcion: string;
-  precio: string;
+  precio: number;
   pedido: FoodOrder[];
   foodId: number;
   setShowPopUP: React.Dispatch<React.SetStateAction<boolean>>;
@@ -41,7 +41,9 @@ const getFoodByID = async (id: number, field?: string) => {
 interface FoodOrder {
   foodName: string,
   foodId: number,
-  quantity: number
+  quantity: number,
+  description: string,
+  price: number
 }
 
 const FooterPopUp: React.FC<Props> = ({ titulo, descripcion, foodId, precio, pedido, setShowPopUP, setShowMenu, setPedido }) => {
@@ -67,7 +69,7 @@ const FooterPopUp: React.FC<Props> = ({ titulo, descripcion, foodId, precio, ped
   }
 
   return <footer className="w-full h-[90px] bg-background bottom-0 fixed shadow-top flex items-center" id="footerMenu">
-    <div className=" bg-btngreen absolute rounded-2xl right-0 flex justify-center items-center mr-7 h-[38px] w-[89px]" onClick={() => addPedido(titulo, foodId, cantidad)}>
+    <div className=" bg-btngreen absolute rounded-2xl right-0 flex justify-center items-center mr-7 h-[38px] w-[89px]" onClick={() => addPedido(titulo, foodId, cantidad, descripcion, precio)}>
       <p className="text-white " >Agregar</p>
     </div>
     <div className="border-solid border-2 border-[#252525] absolute rounded-2xl right-0 flex items-center justify-between mr-[126px] h-[38px] w-[89px]">

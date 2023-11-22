@@ -40,7 +40,9 @@ interface CommandData {
 interface FoodOrder {
   foodName: string,
   foodId: number,
-  quantity: number
+  quantity: number,
+  description: string,
+  price: number
 }
 
 const inter = Inter({ subsets: ["latin"] });
