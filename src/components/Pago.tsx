@@ -4,6 +4,7 @@ interface FoodOrder {
   foodName: string,
   foodId: number,
   quantity: number,
+  price:number
 }
 interface Props {
   setShowPago: React.Dispatch<React.SetStateAction<boolean>>;
@@ -19,6 +20,8 @@ const FooterMenu: React.FC<Props> = ({setShowPago, setShowMenu, pedido}) => {
 const [showTarjeta, setShowTarjeta] = useState(false);
 const [showGracias, setshowGracias] = useState(false);
 const [showEleccion, setshowEleccion] = useState(true);
+const [precioTotal, setPrecioTotal] = useState(0);
+
 
 const handleSiguiente= () =>{
   if (tarjetaRadioRef.current?.checked) {
@@ -69,10 +72,12 @@ return <main>
     <div className="w-full h-fit px-8 pt-10">
       <div className="overflow-scroll no-scrollbar ">
         {pedido.map((pedido) => {
+            setPrecioTotal(precioTotal+((pedido.price)*pedido.quantity))
+            console.log(precioTotal)
                 return (
                   <div className="w-full h-fit flex border-solid pt-2 pb-5 px-4 justify-between">
                     <h4 className="text-black font-medium">{pedido.foodName}</h4>
-                    <h4 className="text-black font-medium">Falta el precio</h4>
+                    <h4 className="text-black font-medium">{(pedido.price)*pedido.quantity}</h4>
                   </div>
                 )
               }) 
@@ -83,7 +88,7 @@ return <main>
       <div>
        <div className="w-full h-fit flex border-solid pt-4 pb-5 px-4 justify-between">
           <h4 className="text-black font-bold">Total:</h4>
-          <h4 className="text-black font-bold">2000</h4>
+          <h4 className="text-black font-bold">{precioTotal}</h4>
         </div>
       </div>
     </div>
