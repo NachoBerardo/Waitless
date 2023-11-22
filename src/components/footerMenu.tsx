@@ -44,6 +44,7 @@ const FooterMenu: React.FC<Props> = ({ Verpedido, setShowPago, setShowPedido, se
   let finishedInput: postProps[] = []
   let orders: postProps[] = []
 
+ 
   const crearPedido = async () => {
     try {
       return await axios.post("https://nice-blue-salamander-sock.cyclic.app/createOrder", orders).then((response) => {
@@ -93,6 +94,8 @@ const FooterMenu: React.FC<Props> = ({ Verpedido, setShowPago, setShowPedido, se
     }
     // SetShowPedido en realidad es Show Menu, por ende se le pasa un true al apretar el boton para que aparezaca el menu y que el ShowPedido se vuelva false
   }
+
+  
   const handleClickVerPedido = async () => {
     setShowPedido(EstadoPedido);
     setShowMenu(EstadoMenu);
@@ -131,7 +134,7 @@ const FooterMenu: React.FC<Props> = ({ Verpedido, setShowPago, setShowPedido, se
 
       <div className="h-full ">
         <p className="text-[#252525] ml-7 top-0 mt-5 ">Subtotal</p>
-        <h4 className="text-[#252525] ml-7"></h4>
+        <h4 className="text-[#252525] ml-7">${}</h4>
       </div>
     </footer>
   </div>;

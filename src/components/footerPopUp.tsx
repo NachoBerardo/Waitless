@@ -50,9 +50,11 @@ interface FoodOrder {
 const FooterPopUp: React.FC<Props> = ({ titulo, descripcion, foodId, precio, pedido, setShowPopUP, setShowMenu, setPedido, setShowFotterMenu}) => {
   const [cantidad, setCantidad] = useState(1);
   const [precioTotal, setPrecioTotal] = useState(+precio);
+  //const[precioTotaldelTotal, setPrecioTotalidad] = useState(+precioTotal)
   const handleClickSumar = () => {
     setCantidad(cantidad + 1);
     setPrecioTotal(+precio * (cantidad + 1))
+    //setPrecioTotalidad(+precioTotal)
   };
 
   const handleClickRestar = () => {
@@ -81,7 +83,7 @@ const FooterPopUp: React.FC<Props> = ({ titulo, descripcion, foodId, precio, ped
     </div>
     <div className="h-full absolute">
       <p className="text-[#252525] ml-7 top-0 mt-5 ">Subtotal</p>
-      <h4 className="text-[#252525] ml-7">${precioTotal}</h4>
+      <h4 className="text-[#252525] ml-7">$ {precioTotal}</h4>
     </div>
   </footer>;
 }
