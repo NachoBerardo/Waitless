@@ -32,11 +32,13 @@ const handleSiguiente= () =>{
     setShowTarjeta(true);
     setshowEleccion(false);
     setshowGracias(false);
+    
   } 
   else if (efectivoRadioRef.current?.checked) {
     setshowGracias(true);
     setShowTarjeta(false);
     setshowEleccion(false);
+    setPedido([]);
   }
   else{
     console.log("Se debe seleccionar un campo");
