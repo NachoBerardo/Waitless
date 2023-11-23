@@ -97,11 +97,11 @@ return <main>
           <h4 className="text-black font-medium">3600</h4>
         </div>
         <div className="w-full h-fit flex border-solid pt-2 pb-5 px-4 justify-between">
-          <h4 className="text-black font-medium">Matambre</h4>
+          <h4 className="text-black font-medium">Matambre x2</h4>
           <h4 className="text-black font-medium">7200</h4>
         </div>
         <div className="w-full h-fit flex border-solid pt-2 pb-5 px-4 justify-between">
-          <h4 className="text-black font-medium">Volcan de chocolate</h4>
+          <h4 className="text-black font-medium">Volcan de chocolate x1</h4>
           <h4 className="text-black font-medium">1700</h4>
         </div>
         <hr className="bg-[#D0D0D0] h-[2px] w-full" />
