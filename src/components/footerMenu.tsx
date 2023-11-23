@@ -39,9 +39,11 @@ interface Props {
   EstadoMenu: boolean;
   Verpedido: boolean;
   pedido: FoodOrder[];
+  setPedidoCopia: React.Dispatch<React.SetStateAction<FoodOrder[]>>;
+  pedidoCopia: FoodOrder[];
 }
 
-const FooterMenu: React.FC<Props> = ({ Verpedido, setShowPago, setShowPedido, setShowMenu, setShowPedidoEnviado, setPedido, EstadoMenu, EstadoPedidoEnviado, EstadoPedido, txtBoton, pedido }) => {
+const FooterMenu: React.FC<Props> = ({pedidoCopia, setPedidoCopia, Verpedido, setShowPago, setShowPedido, setShowMenu, setShowPedidoEnviado, setPedido, EstadoMenu, EstadoPedidoEnviado, EstadoPedido, txtBoton, pedido }) => {
   let finishedInput: postProps[] = []
   let orders: postProps[] = []
 
@@ -88,7 +90,7 @@ const FooterMenu: React.FC<Props> = ({ Verpedido, setShowPago, setShowPedido, se
     try {
       return await axios.post("https://nice-blue-salamander-sock.cyclic.app/ordersFood", finishedInput).then((response) => {
         console.log("Agregado ", response);
-        setPedido([]);
+        //setPedido([]);
       }).catch((err) => console.log(err))
     } catch (error) {
       console.log(error)
@@ -144,7 +146,7 @@ const FooterMenu: React.FC<Props> = ({ Verpedido, setShowPago, setShowPedido, se
       <div className="h-full ">
         <p className="text-[#252525] ml-7 top-0 mt-5 ">Subtotal</p>
         {/* <h4 className="text-[#252525] ml-7">${precioTotal}</h4> */}
-       {precioTotal==0? <h4 className="text-[#252525] ml-7">$14500</h4>:<h4 className="text-[#252525] ml-7">${precioTotal}</h4>}
+       <h4 className="text-[#252525] ml-7">${precioTotal}</h4>
 
       </div>
     </footer>

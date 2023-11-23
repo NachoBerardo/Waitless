@@ -13,6 +13,8 @@ interface Props {
   setShowFotterMenu: React.Dispatch<React.SetStateAction<boolean>>;
   setShowMenu: React.Dispatch<React.SetStateAction<boolean>>;
   setPedido: React.Dispatch<React.SetStateAction<FoodOrder[]>>;
+  setPedidoCopia: React.Dispatch<React.SetStateAction<FoodOrder[]>>;
+  pedidoCopia: FoodOrder[];
 }
 
 interface Order {

@@ -50,6 +50,7 @@ const inter = Inter({ subsets: ["latin"] });
 export default function Menu() {
   const [menu, setMenu] = useState<MenuTypes[]>([]);
   const [pedido, setPedido] = useState<FoodOrder[]>([]);
+  const [pedidoCopia, setPedidoCopia] = useState<FoodOrder[]>([]);
   const [nullPedido, setNullPedido] = useState<NullOrder[]>([])
 
   const getAllMenus = async () => {
@@ -285,7 +286,7 @@ export default function Menu() {
         ) : (<></>)}
         {showPago ? (
           <>
-            <Pago setShowPago={setShowPago} pedido={pedido} setShowMenu={setShowMenu} />
+            <Pago setPedidoCopia={setPedidoCopia} pedidoCopia={pedidoCopia} setPedido={setPedido} setShowPago={setShowPago} pedido={pedido} setShowMenu={setShowMenu} />
           </>
         ) : (<></>)}
         {showPopUP && !isMenuLoading && !isMenuError &&
@@ -298,6 +299,8 @@ export default function Menu() {
             setShowMenu={setShowMenu}
             setPedido={setPedido}
             setShowFotterMenu={setShowFotterMenu}
+            pedidoCopia={pedidoCopia}
+            setPedidoCopia={setPedidoCopia}
           ></PopUp>
         }
         {!isMenuLoading && !isMenuError && combinedArray && showMenu ? (
@@ -394,12 +397,12 @@ export default function Menu() {
                 </div>
               ))}
             </div>
-            {showFotterMenu ? (<FooterMenu Verpedido={true} setShowPago={setShowPago} setPedido={setPedido} setShowPedido={setShowPedido} setShowMenu={setShowMenu} setShowPedidoEnviado={setShowMenu} EstadoPedidoEnviado={false} EstadoPedido={true} EstadoMenu={false} txtBoton="Ver Pedido" pedido={pedido} />) : (<></>)}
+            {showFotterMenu ? (<FooterMenu setPedidoCopia={setPedidoCopia} pedidoCopia={pedidoCopia} Verpedido={true} setShowPago={setShowPago} setPedido={setPedido} setShowPedido={setShowPedido} setShowMenu={setShowMenu} setShowPedidoEnviado={setShowMenu} EstadoPedidoEnviado={false} EstadoPedido={true} EstadoMenu={false} txtBoton="Ver Pedido" pedido={pedido} />) : (<></>)}
           </>
         ) : (<></>)}
         {showPedido ? (
           <>
-            <ContenidoPedido setShowPago={setShowPago} setPedido={setPedido} setShowMenu={setShowMenu} setShowPedido={setShowPedido} pedido={pedido} />
+            <ContenidoPedido pedidoCopia={pedidoCopia} setPedidoCopia={setPedidoCopia} setShowPago={setShowPago} setPedido={setPedido} setShowMenu={setShowMenu} setShowPedido={setShowPedido} pedido={pedido} />
           </>
         ) : (<></>)}
 

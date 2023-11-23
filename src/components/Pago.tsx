@@ -4,14 +4,18 @@ interface FoodOrder {
   foodName: string,
   foodId: number,
   quantity: number,
+  description: string,
   price:number
 }
 interface Props {
   setShowPago: React.Dispatch<React.SetStateAction<boolean>>;
   setShowMenu: React.Dispatch<React.SetStateAction<boolean>>;
   pedido: FoodOrder[];
+  setPedido: React.Dispatch<React.SetStateAction<FoodOrder[]>>;
+  setPedidoCopia: React.Dispatch<React.SetStateAction<FoodOrder[]>>;
+  pedidoCopia: FoodOrder[];
 }
-const FooterMenu: React.FC<Props> = ({setShowPago, setShowMenu, pedido}) => {
+const FooterMenu: React.FC<Props> = ({setShowPago, setShowMenu, pedido, setPedido, pedidoCopia, setPedidoCopia}) => {
   const HandleClick = () =>{
     setShowMenu(true);
     setShowPago(false);
@@ -41,6 +45,7 @@ const handleSiguiente= () =>{
 const handlePagar= () =>{
   setshowGracias(true);
   setShowTarjeta(false);
+  setPedido([]);
 }
 const tarjetaRadioRef = useRef<HTMLInputElement>(null);
 const efectivoRadioRef = useRef<HTMLInputElement>(null);
@@ -79,7 +84,7 @@ return <main>
     </div>
     <div className="w-full h-fit px-8 pt-10">
       <div className=" w-full h-40 overflow-scroll no-scrollbar ">
-        {/* {pedido.map((pedido) => {
+         {pedido.map((pedido) => {
                 return (
                   <div className="w-full h-fit flex border-solid pt-2 pb-5 px-4 justify-between">
                     <h4 className="text-black font-medium">{pedido.foodName}   x{pedido.quantity}</h4>
@@ -87,8 +92,8 @@ return <main>
                   </div>
                 )
               }) 
-            } */}
-        <div className="w-full h-fit flex border-solid pt-2 pb-5 px-4 justify-between">
+            } 
+        {/* <div className="w-full h-fit flex border-solid pt-2 pb-5 px-4 justify-between">
           <h4 className="text-black font-medium">Empanada x2</h4>
           <h4 className="text-black font-medium">2000</h4>
         </div>
@@ -103,14 +108,14 @@ return <main>
         <div className="w-full h-fit flex border-solid pt-2 pb-5 px-4 justify-between">
           <h4 className="text-black font-medium">Volcan de chocolate x1</h4>
           <h4 className="text-black font-medium">1700</h4>
-        </div>
+        </div> */}
         <hr className="bg-[#D0D0D0] h-[2px] w-full" />
       </div>
       <div>
        <div className="w-full h-fit flex border-solid pt-4 pb-5 px-4 justify-between">
           <h4 className="text-black font-bold">Total:</h4>
           {/* <h4 className="text-black font-bold">{precioTotal}</h4> */}
-         <h4 className="text-black font-bold">14500</h4> 
+         <h4 className="text-black font-bold">{precioTotal}</h4> 
 
         </div>
       </div>
@@ -142,7 +147,7 @@ return <main>
       <h2 className="text-black">Solomia</h2>
     </div>
     <div className="w-full h-fit px-8 pt-10">
-      <h4 className="text-black font-semibold">Ejije método de pago:</h4>
+      <h4 className="text-black font-semibold">Elije método de pago:</h4>
       <div className="w-full h-fit flex border-solid py-4 mt-5 ring-FocusEspecificaciones ring-1 rounded-md px-4 justify-between">
         <h4 className="text-black font-medium">Tarjeta</h4>
         <input type="radio" className="rounded-full accent-black" name="pago" ref={tarjetaRadioRef}/>

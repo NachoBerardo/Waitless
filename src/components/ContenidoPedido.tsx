@@ -24,6 +24,8 @@ interface Props {
   setShowMenu: React.Dispatch<React.SetStateAction<boolean>>;
   setPedido: React.Dispatch<React.SetStateAction<FoodOrder[]>>;
   pedido: FoodOrder[];
+  setPedidoCopia: React.Dispatch<React.SetStateAction<FoodOrder[]>>;
+  pedidoCopia: FoodOrder[];
 }
 
 //GET PRECIO Y DESCRIPCION DE LOS PLATOS EN ORDER.
@@ -61,7 +63,7 @@ const MaxLength = (description: string, MaxCharcters: number): string => {
   return descrptionShort + " ...";
 };
 
-const ContenidoPedido: React.FC<Props> = ({ setShowPedido, setShowMenu, setShowPago, setPedido, pedido }) => {
+const ContenidoPedido: React.FC<Props> = ({pedidoCopia, setPedidoCopia, setShowPedido, setShowMenu, setShowPago, setPedido, pedido }) => {
   const handleClickArrowBack = (EstadoMenu: boolean, EstadoPedido: boolean, EstadoPedidoEnviado: boolean) => {
     setShowPedido(EstadoPedido);
     setShowMenu(EstadoMenu);
@@ -200,7 +202,7 @@ const ContenidoPedido: React.FC<Props> = ({ setShowPedido, setShowMenu, setShowP
               </div> */}
             </div>
           </div>
-          <FooterMenu Verpedido={false} setPedido={setPedido} setShowPedido={setShowPedido} setShowMenu={setShowMenu} setShowPedidoEnviado={setShowPedidoEnviado} EstadoPedidoEnviado={true} EstadoMenu={false} EstadoPedido={true} txtBoton="Enviar Pedido" pedido={pedido} setShowPago={setShowPago} />
+          <FooterMenu pedidoCopia={pedidoCopia} setPedidoCopia={setPedidoCopia} Verpedido={false} setPedido={setPedido} setShowPedido={setShowPedido} setShowMenu={setShowMenu} setShowPedidoEnviado={setShowPedidoEnviado} EstadoPedidoEnviado={true} EstadoMenu={false} EstadoPedido={true} txtBoton="Enviar Pedido" pedido={pedido} setShowPago={setShowPago} />
         </div>
       </>
     )}
