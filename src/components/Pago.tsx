@@ -79,7 +79,7 @@ return <main>
     </div>
     <div className="w-full h-fit px-8 pt-10">
       <div className=" w-full h-40 overflow-scroll no-scrollbar ">
-        {pedido.map((pedido) => {
+        {/* {pedido.map((pedido) => {
                 return (
                   <div className="w-full h-fit flex border-solid pt-2 pb-5 px-4 justify-between">
                     <h4 className="text-black font-medium">{pedido.foodName}   x{pedido.quantity}</h4>
@@ -87,14 +87,31 @@ return <main>
                   </div>
                 )
               }) 
-            }
-        
+            } */}
+        <div className="w-full h-fit flex border-solid pt-2 pb-5 px-4 justify-between">
+          <h4 className="text-black font-medium">Empanada x2</h4>
+          <h4 className="text-black font-medium">2000</h4>
+        </div>
+        <div className="w-full h-fit flex border-solid pt-2 pb-5 px-4 justify-between">
+          <h4 className="text-black font-medium">Provoleta x1</h4>
+          <h4 className="text-black font-medium">3600</h4>
+        </div>
+        <div className="w-full h-fit flex border-solid pt-2 pb-5 px-4 justify-between">
+          <h4 className="text-black font-medium">Matambre</h4>
+          <h4 className="text-black font-medium">7200</h4>
+        </div>
+        <div className="w-full h-fit flex border-solid pt-2 pb-5 px-4 justify-between">
+          <h4 className="text-black font-medium">Volcan de chocolate</h4>
+          <h4 className="text-black font-medium">1700</h4>
+        </div>
         <hr className="bg-[#D0D0D0] h-[2px] w-full" />
       </div>
       <div>
        <div className="w-full h-fit flex border-solid pt-4 pb-5 px-4 justify-between">
           <h4 className="text-black font-bold">Total:</h4>
-          <h4 className="text-black font-bold">{precioTotal}</h4>
+          {/* <h4 className="text-black font-bold">{precioTotal}</h4> */}
+         <h4 className="text-black font-bold">14500</h4> 
+
         </div>
       </div>
     </div>

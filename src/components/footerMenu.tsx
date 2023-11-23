@@ -143,7 +143,9 @@ const FooterMenu: React.FC<Props> = ({ Verpedido, setShowPago, setShowPedido, se
 
       <div className="h-full ">
         <p className="text-[#252525] ml-7 top-0 mt-5 ">Subtotal</p>
-        <h4 className="text-[#252525] ml-7">${precioTotal}</h4>
+        {/* <h4 className="text-[#252525] ml-7">${precioTotal}</h4> */}
+       {precioTotal==0? <h4 className="text-[#252525] ml-7">$14500</h4>:<h4 className="text-[#252525] ml-7">${precioTotal}</h4>}
+
       </div>
     </footer>
   </div>;

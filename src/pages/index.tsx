@@ -368,11 +368,11 @@ export default function Menu() {
             <h3 className="text-black text mt-4 ml-4" id="postres">
               Postres
             </h3>
-            <div className="grid grid-cols-2 gap-x-2 justify-center m-auto w-[360px]">
+            <div className="grid grid-cols-2 gap-x-2 justify-center m-auto w-[360px] pb-36">
               {combinedArray[2].map((comida, key) => (
                 <div
                   onClick={(event) => handleclick(key, true, 2)}
-                  className="container m-2 h-fit content-center pb-36"
+                  className="container m-2 h-fit content-center "
                   key={key}
                 >
                   <div className="h-[105px] w-[150px] mx-2 mt-1 overflow-hidden grid content-center">

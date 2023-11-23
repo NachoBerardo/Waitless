@@ -45,6 +45,21 @@ const getFoodByID = async (id: number, field?: string) => {
   }
 };
 
+const MaxLength = (description: string, MaxCharcters: number): string => {
+  if (description.length <= MaxCharcters) {
+    return description;
+  }
+  let descrptionShort = description.substring(0, MaxCharcters);
+  const LastSpace = descrptionShort.lastIndexOf(" ");
+
+  if (LastSpace !== -1) {
+    descrptionShort = descrptionShort.substring(0, LastSpace);
+  } else {
+    return descrptionShort;
+  }
+
+  return descrptionShort + " ...";
+};
 
 const ContenidoPedido: React.FC<Props> = ({ setShowPedido, setShowMenu, setShowPago, setPedido, pedido }) => {
   const handleClickArrowBack = (EstadoMenu: boolean, EstadoPedido: boolean, EstadoPedidoEnviado: boolean) => {
@@ -122,8 +137,7 @@ const ContenidoPedido: React.FC<Props> = ({ setShowPedido, setShowMenu, setShowP
                        .then(data => {
                         if (data !== null) {
                           console.log(data);
-              
-                        }
+                    }
                       })
                       return (
                         <div className="">
@@ -131,7 +145,7 @@ const ContenidoPedido: React.FC<Props> = ({ setShowPedido, setShowMenu, setShowP
                             <div>
                               <h3 className="text-black pl-14 pt-6 overflow-hidden inline-flex">{pedido.foodName} </h3>
                               <p className="pl-14 text-letraGris truncate">{(pedido.price)*pedido.quantity}</p>
-                              <p className="pl-14 text-letraGrisOscuro pt-1 pb-4">{pedido.description}</p>
+                              <p className="pl-14 text-letraGrisOscuro pt-1 pb-4">{MaxLength(pedido.description, 35)}</p>
                             </div>
                             <div className="flex justify-center items-center">
                               <BtnSumarRestar2 cantidadOriginal={pedido.quantity} />
